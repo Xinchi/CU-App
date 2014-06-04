@@ -29,6 +29,25 @@
 		5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F262193ECDB500BF3DAC /* Security.framework */; };
 		5005F265193ECDBC00BF3DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F264193ECDBC00BF3DAC /* StoreKit.framework */; };
 		5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
+		5005F278193ED8C500BF3DAC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F277193ED8C500BF3DAC /* FacebookSDK.framework */; };
+		5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F27A193EDD7500BF3DAC /* MyLogInViewController.m */; };
+		5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F27C193EDD7500BF3DAC /* MySignUpViewController.m */; };
+		5005F282193EDD7500BF3DAC /* SubclassConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F27E193EDD7500BF3DAC /* SubclassConfigViewController.m */; };
+		5005F283193EDD7500BF3DAC /* SubclassConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5005F27F193EDD7500BF3DAC /* SubclassConfigViewController.xib */; };
+		5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
+		5005F29C193EE3B000BF3DAC /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F28F193EE3B000BF3DAC /* Exit.png */; };
+		5005F29D193EE3B000BF3DAC /* ExitDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F290193EE3B000BF3DAC /* ExitDown.png */; };
+		5005F29E193EE3B000BF3DAC /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F291193EE3B000BF3DAC /* Facebook.png */; };
+		5005F29F193EE3B000BF3DAC /* FacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F292193EE3B000BF3DAC /* FacebookDown.png */; };
+		5005F2A0193EE3B000BF3DAC /* LoginFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F293193EE3B000BF3DAC /* LoginFieldBG.png */; };
+		5005F2A1193EE3B000BF3DAC /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F294193EE3B000BF3DAC /* Logo.png */; };
+		5005F2A2193EE3B000BF3DAC /* Logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F295193EE3B000BF3DAC /* Logo2.png */; };
+		5005F2A3193EE3B000BF3DAC /* MainBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F296193EE3B000BF3DAC /* MainBG.png */; };
+		5005F2A4193EE3B000BF3DAC /* SignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F297193EE3B000BF3DAC /* SignUp.png */; };
+		5005F2A5193EE3B000BF3DAC /* SignUpDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F298193EE3B000BF3DAC /* SignUpDown.png */; };
+		5005F2A6193EE3B000BF3DAC /* SignUpFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F299193EE3B000BF3DAC /* SignUpFieldBG.png */; };
+		5005F2A7193EE3B000BF3DAC /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F29A193EE3B000BF3DAC /* Twitter.png */; };
+		5005F2A8193EE3B000BF3DAC /* TwitterDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F29B193EE3B000BF3DAC /* TwitterDown.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +87,28 @@
 		5005F262193ECDB500BF3DAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5005F264193ECDBC00BF3DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5005F277193ED8C500BF3DAC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		5005F279193EDD7500BF3DAC /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
+		5005F27A193EDD7500BF3DAC /* MyLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLogInViewController.m; sourceTree = "<group>"; };
+		5005F27B193EDD7500BF3DAC /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
+		5005F27C193EDD7500BF3DAC /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
+		5005F27D193EDD7500BF3DAC /* SubclassConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubclassConfigViewController.h; sourceTree = "<group>"; };
+		5005F27E193EDD7500BF3DAC /* SubclassConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubclassConfigViewController.m; sourceTree = "<group>"; };
+		5005F27F193EDD7500BF3DAC /* SubclassConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubclassConfigViewController.xib; sourceTree = "<group>"; };
+		5005F28C193EE09200BF3DAC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5005F28F193EE3B000BF3DAC /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Exit.png; sourceTree = "<group>"; };
+		5005F290193EE3B000BF3DAC /* ExitDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExitDown.png; sourceTree = "<group>"; };
+		5005F291193EE3B000BF3DAC /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook.png; sourceTree = "<group>"; };
+		5005F292193EE3B000BF3DAC /* FacebookDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookDown.png; sourceTree = "<group>"; };
+		5005F293193EE3B000BF3DAC /* LoginFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginFieldBG.png; sourceTree = "<group>"; };
+		5005F294193EE3B000BF3DAC /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		5005F295193EE3B000BF3DAC /* Logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo2.png; sourceTree = "<group>"; };
+		5005F296193EE3B000BF3DAC /* MainBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainBG.png; sourceTree = "<group>"; };
+		5005F297193EE3B000BF3DAC /* SignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUp.png; sourceTree = "<group>"; };
+		5005F298193EE3B000BF3DAC /* SignUpDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUpDown.png; sourceTree = "<group>"; };
+		5005F299193EE3B000BF3DAC /* SignUpFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUpFieldBG.png; sourceTree = "<group>"; };
+		5005F29A193EE3B000BF3DAC /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
+		5005F29B193EE3B000BF3DAC /* TwitterDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterDown.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */,
 				5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */,
 				5005F265193ECDBC00BF3DAC /* StoreKit.framework in Frameworks */,
 				5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */,
@@ -88,6 +130,7 @@
 				5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */,
 				5005F255193ECD3A00BF3DAC /* Parse.framework in Frameworks */,
 				5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */,
+				5005F278193ED8C500BF3DAC /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +169,8 @@
 		5005F224193EAC1600BF3DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5005F28C193EE09200BF3DAC /* Social.framework */,
+				5005F277193ED8C500BF3DAC /* FacebookSDK.framework */,
 				5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */,
 				5005F264193ECDBC00BF3DAC /* StoreKit.framework */,
 				5005F262193ECDB500BF3DAC /* Security.framework */,
@@ -147,6 +192,8 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5005F28E193EE3A400BF3DAC /* Assets */,
+				5005F268193ED75B00BF3DAC /* Login */,
 				5005F234193EAC1600BF3DAC /* AppDelegate.h */,
 				5005F235193EAC1600BF3DAC /* AppDelegate.m */,
 				5005F237193EAC1700BF3DAC /* Images.xcassets */,
@@ -182,6 +229,40 @@
 				5005F247193EAC1700BF3DAC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5005F268193ED75B00BF3DAC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5005F279193EDD7500BF3DAC /* MyLogInViewController.h */,
+				5005F27A193EDD7500BF3DAC /* MyLogInViewController.m */,
+				5005F27B193EDD7500BF3DAC /* MySignUpViewController.h */,
+				5005F27C193EDD7500BF3DAC /* MySignUpViewController.m */,
+				5005F27D193EDD7500BF3DAC /* SubclassConfigViewController.h */,
+				5005F27E193EDD7500BF3DAC /* SubclassConfigViewController.m */,
+				5005F27F193EDD7500BF3DAC /* SubclassConfigViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		5005F28E193EE3A400BF3DAC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5005F28F193EE3B000BF3DAC /* Exit.png */,
+				5005F290193EE3B000BF3DAC /* ExitDown.png */,
+				5005F291193EE3B000BF3DAC /* Facebook.png */,
+				5005F292193EE3B000BF3DAC /* FacebookDown.png */,
+				5005F293193EE3B000BF3DAC /* LoginFieldBG.png */,
+				5005F294193EE3B000BF3DAC /* Logo.png */,
+				5005F295193EE3B000BF3DAC /* Logo2.png */,
+				5005F296193EE3B000BF3DAC /* MainBG.png */,
+				5005F297193EE3B000BF3DAC /* SignUp.png */,
+				5005F298193EE3B000BF3DAC /* SignUpDown.png */,
+				5005F299193EE3B000BF3DAC /* SignUpFieldBG.png */,
+				5005F29A193EE3B000BF3DAC /* Twitter.png */,
+				5005F29B193EE3B000BF3DAC /* TwitterDown.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +340,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5005F2A1193EE3B000BF3DAC /* Logo.png in Resources */,
+				5005F29F193EE3B000BF3DAC /* FacebookDown.png in Resources */,
+				5005F2A5193EE3B000BF3DAC /* SignUpDown.png in Resources */,
+				5005F2A7193EE3B000BF3DAC /* Twitter.png in Resources */,
+				5005F2A3193EE3B000BF3DAC /* MainBG.png in Resources */,
+				5005F2A4193EE3B000BF3DAC /* SignUp.png in Resources */,
+				5005F2A0193EE3B000BF3DAC /* LoginFieldBG.png in Resources */,
+				5005F2A2193EE3B000BF3DAC /* Logo2.png in Resources */,
 				5005F230193EAC1600BF3DAC /* InfoPlist.strings in Resources */,
+				5005F29D193EE3B000BF3DAC /* ExitDown.png in Resources */,
+				5005F29C193EE3B000BF3DAC /* Exit.png in Resources */,
+				5005F29E193EE3B000BF3DAC /* Facebook.png in Resources */,
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
+				5005F2A8193EE3B000BF3DAC /* TwitterDown.png in Resources */,
+				5005F283193EDD7500BF3DAC /* SubclassConfigViewController.xib in Resources */,
+				5005F2A6193EE3B000BF3DAC /* SignUpFieldBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
 				5005F236193EAC1600BF3DAC /* AppDelegate.m in Sources */,
+				5005F282193EDD7500BF3DAC /* SubclassConfigViewController.m in Sources */,
+				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +502,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";
 				INFOPLIST_FILE = "Chinese Union/Chinese Union-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,6 +523,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";
 				INFOPLIST_FILE = "Chinese Union/Chinese Union-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -485,6 +591,7 @@
 				5005F250193EAC1700BF3DAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5005F251193EAC1700BF3DAC /* Build configuration list for PBXNativeTarget "Chinese UnionTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +600,7 @@
 				5005F253193EAC1700BF3DAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
