@@ -48,6 +48,10 @@
 		5005F2A6193EE3B000BF3DAC /* SignUpFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F299193EE3B000BF3DAC /* SignUpFieldBG.png */; };
 		5005F2A7193EE3B000BF3DAC /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F29A193EE3B000BF3DAC /* Twitter.png */; };
 		5005F2A8193EE3B000BF3DAC /* TwitterDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F29B193EE3B000BF3DAC /* TwitterDown.png */; };
+		5005F2AC193EE58000BF3DAC /* TWTSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F2AB193EE58000BF3DAC /* TWTSideMenuViewController.m */; };
+		5005F2B2193EE7E200BF3DAC /* TWTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F2AF193EE7E200BF3DAC /* TWTMainViewController.m */; };
+		5005F2B3193EE7E200BF3DAC /* TWTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F2B1193EE7E200BF3DAC /* TWTMenuViewController.m */; };
+		5005F2B5193EE88200BF3DAC /* galaxy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5005F2B4193EE88200BF3DAC /* galaxy.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +113,13 @@
 		5005F299193EE3B000BF3DAC /* SignUpFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUpFieldBG.png; sourceTree = "<group>"; };
 		5005F29A193EE3B000BF3DAC /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
 		5005F29B193EE3B000BF3DAC /* TwitterDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterDown.png; sourceTree = "<group>"; };
+		5005F2AA193EE58000BF3DAC /* TWTSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTSideMenuViewController.h; sourceTree = "<group>"; };
+		5005F2AB193EE58000BF3DAC /* TWTSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTSideMenuViewController.m; sourceTree = "<group>"; };
+		5005F2AE193EE7E200BF3DAC /* TWTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTMainViewController.h; sourceTree = "<group>"; };
+		5005F2AF193EE7E200BF3DAC /* TWTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTMainViewController.m; sourceTree = "<group>"; };
+		5005F2B0193EE7E200BF3DAC /* TWTMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTMenuViewController.h; sourceTree = "<group>"; };
+		5005F2B1193EE7E200BF3DAC /* TWTMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTMenuViewController.m; sourceTree = "<group>"; };
+		5005F2B4193EE88200BF3DAC /* galaxy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = galaxy.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +203,8 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5005F2AD193EE7CD00BF3DAC /* TWTMenu */,
+				5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */,
 				5005F28E193EE3A400BF3DAC /* Assets */,
 				5005F268193ED75B00BF3DAC /* Login */,
 				5005F234193EAC1600BF3DAC /* AppDelegate.h */,
@@ -248,6 +261,7 @@
 		5005F28E193EE3A400BF3DAC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5005F2B4193EE88200BF3DAC /* galaxy.png */,
 				5005F28F193EE3B000BF3DAC /* Exit.png */,
 				5005F290193EE3B000BF3DAC /* ExitDown.png */,
 				5005F291193EE3B000BF3DAC /* Facebook.png */,
@@ -263,6 +277,26 @@
 				5005F29B193EE3B000BF3DAC /* TwitterDown.png */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5005F2AA193EE58000BF3DAC /* TWTSideMenuViewController.h */,
+				5005F2AB193EE58000BF3DAC /* TWTSideMenuViewController.m */,
+			);
+			path = TWTSideMenuViewController;
+			sourceTree = "<group>";
+		};
+		5005F2AD193EE7CD00BF3DAC /* TWTMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5005F2AE193EE7E200BF3DAC /* TWTMainViewController.h */,
+				5005F2AF193EE7E200BF3DAC /* TWTMainViewController.m */,
+				5005F2B0193EE7E200BF3DAC /* TWTMenuViewController.h */,
+				5005F2B1193EE7E200BF3DAC /* TWTMenuViewController.m */,
+			);
+			name = TWTMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +388,7 @@
 				5005F29E193EE3B000BF3DAC /* Facebook.png in Resources */,
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
 				5005F2A8193EE3B000BF3DAC /* TwitterDown.png in Resources */,
+				5005F2B5193EE88200BF3DAC /* galaxy.png in Resources */,
 				5005F283193EDD7500BF3DAC /* SubclassConfigViewController.xib in Resources */,
 				5005F2A6193EE3B000BF3DAC /* SignUpFieldBG.png in Resources */,
 			);
@@ -374,10 +409,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5005F2AC193EE58000BF3DAC /* TWTSideMenuViewController.m in Sources */,
 				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
 				5005F236193EAC1600BF3DAC /* AppDelegate.m in Sources */,
 				5005F282193EDD7500BF3DAC /* SubclassConfigViewController.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
+				5005F2B3193EE7E200BF3DAC /* TWTMenuViewController.m in Sources */,
+				5005F2B2193EE7E200BF3DAC /* TWTMainViewController.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

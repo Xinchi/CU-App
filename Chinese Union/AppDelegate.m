@@ -8,11 +8,23 @@
 
 #import "AppDelegate.h"
 #import "SubclassConfigViewController.h"
+#import "TWTMenuViewController.h"
+#import "TWTMainViewController.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, strong) TWTMainViewController *mainViewController;
+@property (nonatomic, strong) TWTMenuViewController *menuViewController;
+@property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
+
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
     [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
                   clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -22,9 +34,29 @@
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.menuViewController = [[TWTMenuViewController alloc] initWithNibName:nil bundle:nil];
+    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
+    
+    
+    // create a new side menu
+    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:[[UINavigationController alloc] initWithRootViewController:self.mainViewController]];
+    
+    
+    //side menu controller configuration
+    self.sideMenuViewController.shadowColor = [UIColor blackColor];
+    self.sideMenuViewController.edgeOffset = (UIOffset) { .horizontal = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 18.0f : 0.0f };
+    self.sideMenuViewController.zoomScale = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 0.5634f : 0.85f;
+    self.sideMenuViewController.delegate = self;
+    self.window.rootViewController = self.sideMenuViewController;
+    
+    // set the side menu controller as the root view controller
+    self.window.rootViewController = self.sideMenuViewController;
+    
+    
+    
 //    // Override point for customization after application launch.
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
+//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
