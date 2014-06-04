@@ -1,0 +1,40 @@
+
+[
+ {
+ "imageFilename": "event",
+ "title": "Events"
+ },
+ {
+ "imageFilename": "store",
+ "title": "Store"
+ },
+ {
+ "imageFilename": "calendar",
+ "title": "Calendar"
+ },
+ {
+ "imageFilename": "soccer",
+ "title": "Soccer Team"
+ },
+ {
+ "imageFilename": "basketball",
+ "title": "Basketball Team"
+ },
+ {
+ "imageFilename": "contacts",
+ "title": "Contacts"
+ },
+ {
+ "imageFilename": "videos",
+ "title": "Videos"
+ },
+ {
+ "imageFilename": "yelp",
+ "title": "Yelp"
+ },
+ {
+ "imageFilename": "photo",
+ "title": "Photo Sharing"
+ }
+ ]
+
