@@ -10,10 +10,11 @@
 #import "SubclassConfigViewController.h"
 #import "TWTMenuViewController.h"
 #import "TWTMainViewController.h"
+#import "CUMainViewController.h"
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) TWTMainViewController *mainViewController;
+@property (nonatomic, strong) UIViewController *mainViewController;
 @property (nonatomic, strong) TWTMenuViewController *menuViewController;
 @property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
 
@@ -36,8 +37,8 @@
     
     
     self.menuViewController = [[TWTMenuViewController alloc] initWithNibName:nil bundle:nil];
-    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
-    
+//    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
+    self.mainViewController = [[CUMainViewController alloc] initWithNibName:@"CUMainViewController" bundle:nil];
     
     // create a new side menu
     self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:[[UINavigationController alloc] initWithRootViewController:self.mainViewController]];
