@@ -15,7 +15,7 @@
 @interface AppDelegate ()
 
 @property (nonatomic, strong) UIViewController *mainViewController;
-@property (nonatomic, strong) TWTMenuViewController *menuViewController;
+@property (nonatomic, strong) SubclassConfigViewController *menuViewController;
 @property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
 
 @end
@@ -36,7 +36,7 @@
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
     
-    self.menuViewController = [[TWTMenuViewController alloc] initWithNibName:nil bundle:nil];
+    self.menuViewController = [[SubclassConfigViewController alloc] initWithNibName:nil bundle:nil];
 //    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
     self.mainViewController = [[CUMainViewController alloc] initWithNibName:@"CUMainViewController" bundle:nil];
     

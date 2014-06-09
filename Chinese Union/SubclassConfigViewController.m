@@ -27,8 +27,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+
+}
+
+- (void) loginAndLogOut{
     // Check if user is logged in
-    if (![PFUser currentUser]) {        
+    if (![PFUser currentUser]) {
         // Customize the Log In View Controller
         MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
         logInViewController.delegate = self;
@@ -44,9 +48,12 @@
         // Present Log In View Controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     }
+    else
+    {
+        [PFUser logOut];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
-
-
 #pragma mark - PFLogInViewControllerDelegate
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
@@ -114,8 +121,7 @@
 #pragma mark - ()
 
 - (IBAction)logOutButtonTapAction:(id)sender {
-    [PFUser logOut];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self loginAndLogOut];
 }
 
 @end

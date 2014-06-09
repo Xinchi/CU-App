@@ -52,6 +52,7 @@
     [changeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [changeButton addTarget:self action:@selector(changeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:changeButton];
+    
 }
 
 - (void)changeButtonPressed

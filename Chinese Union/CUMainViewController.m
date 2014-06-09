@@ -37,7 +37,7 @@
     self.dataSource = [[CustomDataSource alloc] init];
     self.collectionView.dataSource = self.dataSource;
 
-    UIBarButtonItem *openItem = [[UIBarButtonItem alloc] initWithTitle:@"Option" style:UIBarButtonItemStylePlain target:self action:@selector(openButtonPressed)];
+    UIBarButtonItem *openItem = [[UIBarButtonItem alloc] initWithTitle:@"Account" style:UIBarButtonItemStylePlain target:self action:@selector(openButtonPressed)];
     self.navigationItem.leftBarButtonItem = openItem;
     
     [self.collectionView registerClass:[MosaicCell class] forCellWithReuseIdentifier:@"cell"];

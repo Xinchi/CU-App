@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TWTMenuViewController : UIViewController
+@interface TWTMenuViewController : UIViewController <PFSignUpViewControllerDelegate>
 
 @end
