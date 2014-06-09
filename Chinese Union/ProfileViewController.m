@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "MyLogInViewController.h"
 #import "MySignUpViewController.h"
+#import "TWTSideMenuViewController/TWTSideMenuViewController.h"
 
 @implementation ProfileViewController
 
@@ -121,7 +122,10 @@
 #pragma mark - ()
 
 - (IBAction)logOutButtonTapAction:(id)sender {
-    [self loginAndLogOut];
+    [PFUser logOut];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+    
 }
 
 @end

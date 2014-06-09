@@ -56,6 +56,8 @@ typedef enum {
 /// This field is intended to be customized.
 @property (nonatomic, readonly, retain) UITextField *additionalField;
 
+@property (nonatomic, readonly, retain) UITextField *firstNameField;
+
 /// The sign up button. It is nil if the element is not enabled.
 @property (nonatomic, readonly, retain) UIButton *signUpButton;
 
