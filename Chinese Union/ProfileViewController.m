@@ -30,30 +30,7 @@
 
 }
 
-- (void) loginAndLogOut{
-    // Check if user is logged in
-    if (![PFUser currentUser]) {
-        // Customize the Log In View Controller
-        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
-        logInViewController.delegate = self;
-        logInViewController.facebookPermissions = @[@"friends_about_me"];
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
-        
-        // Customize the Sign Up View Controller
-        MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
-        signUpViewController.delegate = self;
-        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
-        logInViewController.signUpController = signUpViewController;
-        
-        // Present Log In View Controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
-    }
-    else
-    {
-        [PFUser logOut];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+
 #pragma mark - PFLogInViewControllerDelegate
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
@@ -122,6 +99,31 @@
 
 - (IBAction)logOutButtonTapAction:(id)sender {
     [self loginAndLogOut];
+}
+
+- (void) loginAndLogOut{
+    // Check if user is logged in
+    if (![PFUser currentUser]) {
+        // Customize the Log In View Controller
+        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
+        logInViewController.delegate = self;
+        logInViewController.facebookPermissions = @[@"friends_about_me"];
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+        
+        // Customize the Sign Up View Controller
+        MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
+        signUpViewController.delegate = self;
+        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+        logInViewController.signUpController = signUpViewController;
+        
+        // Present Log In View Controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+    else
+    {
+        [PFUser logOut];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
