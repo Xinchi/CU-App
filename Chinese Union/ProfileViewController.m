@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 //
 
-#import "SubclassConfigViewController.h"
+#import "ProfileViewController.h"
 #import "MyLogInViewController.h"
 #import "MySignUpViewController.h"
 
-@implementation SubclassConfigViewController
+@implementation ProfileViewController
 
 
 #pragma mark - UIViewController
