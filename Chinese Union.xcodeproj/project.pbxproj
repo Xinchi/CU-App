@@ -295,6 +295,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5005F2B619465D5200BF3DAC /* Signup */,
 				42308B21193FBEE30022D3E7 /* MosaicLayout */,
 				42308B3B193FC1030022D3E7 /* AFNetworking */,
 				5005F2AD193EE7CD00BF3DAC /* TWTMenu */,
@@ -375,6 +376,13 @@
 				5005F2B1193EE7E200BF3DAC /* TWTMenuViewController.m */,
 			);
 			name = TWTMenu;
+			sourceTree = "<group>";
+		};
+		5005F2B619465D5200BF3DAC /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Signup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

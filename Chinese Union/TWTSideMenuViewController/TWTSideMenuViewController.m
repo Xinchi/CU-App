@@ -260,6 +260,7 @@ static NSTimeInterval const kDefaultSwapAnimationClosedDuration = 0.35;
     [self removeOverlayButtonFromMainViewController];
     
     void (^closeMenuBlock)(void) = ^{
+        [self.mainViewController viewWillAppear:YES];
         self.menuViewController.view.transform = [self closeTransformForMenuView];
         self.containerView.transform = CGAffineTransformIdentity;
     };

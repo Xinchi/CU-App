@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MosaicLayoutDelegate.h"
 
-@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate>
+@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @end
