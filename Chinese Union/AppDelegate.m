@@ -12,6 +12,10 @@
 #import "TWTMainViewController.h"
 #import "CUMainViewController.h"
 #import "UIImage+MDQRCode.h"
+#import "CUMembers.h"
+#import "CUEvents.h"
+#import "CUStoreItems.h"
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +31,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    [self registerPFSubclass];
     [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
                   clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -91,4 +96,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)registerPFSubclass
+{
+    [CUMembers registerSubclass];
+    [CUEvents registerSubclass];
+    [CUStoreItems registerSubclass];
+    [User registerSubclass];
+}
 @end

@@ -15,6 +15,7 @@
 #import "MySignUpViewController.h"
 #import "MyLogInViewController.h"
 
+
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
 #define kColumnsiPadPortrait 4
