@@ -11,6 +11,7 @@
 #import "TWTMenuViewController.h"
 #import "TWTMainViewController.h"
 #import "CUMainViewController.h"
+#import "UIImage+MDQRCode.h"
 
 @interface AppDelegate ()
 
@@ -34,7 +35,6 @@
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-    
     
     self.menuViewController = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
 //    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
@@ -62,6 +62,7 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -56,6 +56,14 @@
 		5005F2B3193EE7E200BF3DAC /* TWTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F2B1193EE7E200BF3DAC /* TWTMenuViewController.m */; };
 		5005F2BA19467A1700BF3DAC /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F2B819467A1700BF3DAC /* SignUpViewController.m */; };
 		5005F2BB19467A1700BF3DAC /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5005F2B919467A1700BF3DAC /* SignUpViewController.xib */; };
+		5005F311194968E300BF3DAC /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F301194968E300BF3DAC /* bitstream.c */; };
+		5005F312194968E300BF3DAC /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F303194968E300BF3DAC /* mask.c */; };
+		5005F313194968E300BF3DAC /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F305194968E300BF3DAC /* qrencode.c */; };
+		5005F314194968E300BF3DAC /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F307194968E300BF3DAC /* qrinput.c */; };
+		5005F315194968E300BF3DAC /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F309194968E300BF3DAC /* qrspec.c */; };
+		5005F316194968E300BF3DAC /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F30B194968E300BF3DAC /* rscode.c */; };
+		5005F317194968E300BF3DAC /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 5005F30D194968E300BF3DAC /* split.c */; };
+		5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F310194968E300BF3DAC /* UIImage+MDQRCode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +153,22 @@
 		5005F2B719467A1700BF3DAC /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		5005F2B819467A1700BF3DAC /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		5005F2B919467A1700BF3DAC /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		5005F301194968E300BF3DAC /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		5005F302194968E300BF3DAC /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		5005F303194968E300BF3DAC /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		5005F304194968E300BF3DAC /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		5005F305194968E300BF3DAC /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		5005F306194968E300BF3DAC /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		5005F307194968E300BF3DAC /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		5005F308194968E300BF3DAC /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		5005F309194968E300BF3DAC /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		5005F30A194968E300BF3DAC /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		5005F30B194968E300BF3DAC /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		5005F30C194968E300BF3DAC /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		5005F30D194968E300BF3DAC /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		5005F30E194968E300BF3DAC /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		5005F30F194968E300BF3DAC /* UIImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDQRCode.h"; sourceTree = "<group>"; };
+		5005F310194968E300BF3DAC /* UIImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MDQRCode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +324,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5005F2FF194968E300BF3DAC /* QR */,
 				5005F2B619465D5200BF3DAC /* Signup */,
 				42308B21193FBEE30022D3E7 /* MosaicLayout */,
 				42308B3B193FC1030022D3E7 /* AFNetworking */,
@@ -391,6 +416,37 @@
 				5005F2B919467A1700BF3DAC /* SignUpViewController.xib */,
 			);
 			name = Signup;
+			sourceTree = "<group>";
+		};
+		5005F2FF194968E300BF3DAC /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				5005F300194968E300BF3DAC /* libqrencode */,
+				5005F30F194968E300BF3DAC /* UIImage+MDQRCode.h */,
+				5005F310194968E300BF3DAC /* UIImage+MDQRCode.m */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		5005F300194968E300BF3DAC /* libqrencode */ = {
+			isa = PBXGroup;
+			children = (
+				5005F301194968E300BF3DAC /* bitstream.c */,
+				5005F302194968E300BF3DAC /* bitstream.h */,
+				5005F303194968E300BF3DAC /* mask.c */,
+				5005F304194968E300BF3DAC /* mask.h */,
+				5005F305194968E300BF3DAC /* qrencode.c */,
+				5005F306194968E300BF3DAC /* qrencode.h */,
+				5005F307194968E300BF3DAC /* qrinput.c */,
+				5005F308194968E300BF3DAC /* qrinput.h */,
+				5005F309194968E300BF3DAC /* qrspec.c */,
+				5005F30A194968E300BF3DAC /* qrspec.h */,
+				5005F30B194968E300BF3DAC /* rscode.c */,
+				5005F30C194968E300BF3DAC /* rscode.h */,
+				5005F30D194968E300BF3DAC /* split.c */,
+				5005F30E194968E300BF3DAC /* split.h */,
+			);
+			path = libqrencode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,14 +552,22 @@
 				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
 				5005F236193EAC1600BF3DAC /* AppDelegate.m in Sources */,
+				5005F313194968E300BF3DAC /* qrencode.c in Sources */,
 				42308B55193FC1030022D3E7 /* AFURLConnectionOperation.m in Sources */,
+				5005F316194968E300BF3DAC /* rscode.c in Sources */,
 				42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */,
 				42308B4F193FC1030022D3E7 /* AFHTTPClient.m in Sources */,
+				5005F311194968E300BF3DAC /* bitstream.c in Sources */,
 				42308B54193FC1030022D3E7 /* AFPropertyListRequestOperation.m in Sources */,
 				42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */,
+				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
+				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
+				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */,
+				5005F317194968E300BF3DAC /* split.c in Sources */,
 				42308B51193FC1030022D3E7 /* AFImageRequestOperation.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
 				42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */,
