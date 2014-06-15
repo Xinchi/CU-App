@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import "User.h"
 
 @interface SignUpViewController ()
 
@@ -36,7 +37,7 @@
 }
 
 - (void)doSignup {
-    PFUser *user = [PFUser user];
+    User *user = (User *)[User user];
     user.username = @"my name";
     user.password = @"my pass";
     user.email = @"email@example.com";

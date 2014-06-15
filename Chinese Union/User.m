@@ -9,5 +9,10 @@
 #import "User.h"
 #import <Parse/PFObject+Subclass.h>
 @implementation User
-
+@dynamic firstName;
+@dynamic lastName;
+@dynamic CUMemberID;
+@dynamic wechatID;
+@dynamic birthday;
+@dynamic phone;
 @end

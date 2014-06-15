@@ -14,6 +14,7 @@
 #import "TWTSideMenuViewController.h"
 #import "MySignUpViewController.h"
 #import "MyLogInViewController.h"
+#import "User.h"
 
 
 #define kDoubleColumnProbability 40
@@ -56,7 +57,7 @@
 }
 
 - (void)updateButtonTitle {
-    bool loggedin = [PFUser currentUser];
+    bool loggedin = [User currentUser];
     if (loggedin) {
         self.navigationItem.leftBarButtonItem.title = @"Account";
     }
@@ -68,7 +69,7 @@
 
 - (void)openButtonPressed
 {
-    if([PFUser currentUser])
+    if([User currentUser])
         [self.sideMenuViewController openMenuAnimated:YES completion:nil];
     else{
         // Customize the Log In View Controller
@@ -221,7 +222,7 @@
 }
 
 // Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(User *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self updateButtonTitle];
 }
@@ -258,7 +259,7 @@
 }
 
 // Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(User *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self updateButtonTitle];
 }
