@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "NSString+Additions.h"
+#import "User.h"
 
 @interface SignUpViewController ()
 
@@ -51,18 +52,20 @@
 }
 
 - (void)doSignup {
-    PFUser *user = [PFUser user];
+
+    User *user = (User *)[User user];
+
     
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
     
     // other fields can be set just like with PFObject
-    user[@"phone"] = self.phoneTextField.text;
-    user[@"wechat"] = self.weChatTextField.text;
-    user[@"firstName"] = self.firstNameTextField.text;
-    user[@"lastName"] = self.lastNameTextField.text;
-    user[@"birthday"] = [NSDate date];
+    user.phone = self.phoneTextField.text;
+    user.wechatID = self.weChatTextField.text;
+    user.firstName = self.firstNameTextField.text;
+    user.lastName = self.lastNameTextField.text;
+    user.birthday = [NSDate date];
 //    user[@"memberID"] = @"";
 //    user[@""] = @"";
     

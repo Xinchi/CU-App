@@ -10,4 +10,11 @@
 
 @interface User : PFUser<PFSubclassing>
 
+@property (retain) NSString *firstName;
+@property (retain) NSString *lastName;
+@property (retain) NSString *CUMemberID;
+@property (retain) NSString *wechatID;
+@property (retain) NSDate *birthday;
+@property (retain) NSString *phone;
+
 @end
