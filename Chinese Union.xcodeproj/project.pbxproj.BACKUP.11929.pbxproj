@@ -365,8 +365,11 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				426CEE53194D458800522DCF /* Categories */,
 				426CEE45194D236100522DCF /* SLGlowingTextField */,
+=======
+>>>>>>> dev
 				5005F319194A531900BF3DAC /* DataModel */,
 				5005F2FF194968E300BF3DAC /* QR */,
 				5005F2B619465D5200BF3DAC /* Signup */,
@@ -458,9 +461,12 @@
 				5005F2B719467A1700BF3DAC /* SignUpViewController.h */,
 				5005F2B819467A1700BF3DAC /* SignUpViewController.m */,
 				5005F2B919467A1700BF3DAC /* SignUpViewController.xib */,
+<<<<<<< HEAD
 				426CEE4E194D2BDE00522DCF /* CULoginViewController.h */,
 				426CEE4F194D2BDE00522DCF /* CULoginViewController.m */,
 				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
+=======
+>>>>>>> dev
 			);
 			name = Signup;
 			sourceTree = "<group>";
@@ -622,7 +628,10 @@
 				42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */,
 				5005F322194A554F00BF3DAC /* CUStoreItems.m in Sources */,
 				42308B4F193FC1030022D3E7 /* AFHTTPClient.m in Sources */,
+<<<<<<< HEAD
 				426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */,
+=======
+>>>>>>> dev
 				5005F311194968E300BF3DAC /* bitstream.c in Sources */,
 				42308B54193FC1030022D3E7 /* AFPropertyListRequestOperation.m in Sources */,
 				5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */,

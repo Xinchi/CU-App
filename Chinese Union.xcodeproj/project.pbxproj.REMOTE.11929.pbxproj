@@ -23,10 +23,6 @@
 		42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4C193FC1030022D3E7 /* AFXMLRequestOperation.m */; };
 		42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */; };
 		42308B59193FC14A0022D3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 42308B58193FC14A0022D3E7 /* data.json */; };
-		426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE47194D236F00522DCF /* SLGlowingTextField.m */; };
-		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
-		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
-		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
 		5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F225193EAC1600BF3DAC /* Foundation.framework */; };
 		5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F227193EAC1600BF3DAC /* CoreGraphics.framework */; };
 		5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F229193EAC1600BF3DAC /* UIKit.framework */; };
@@ -117,13 +113,6 @@
 		42308B4D193FC1030022D3E7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		42308B58193FC14A0022D3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		426CEE46194D236F00522DCF /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
-		426CEE47194D236F00522DCF /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
-		426CEE4E194D2BDE00522DCF /* CULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CULoginViewController.h; sourceTree = "<group>"; };
-		426CEE4F194D2BDE00522DCF /* CULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CULoginViewController.m; sourceTree = "<group>"; };
-		426CEE50194D2BDE00522DCF /* CULoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CULoginViewController.xib; sourceTree = "<group>"; };
-		426CEE54194D459400522DCF /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		5005F222193EAC1600BF3DAC /* Chinese Union.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chinese Union.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5005F225193EAC1600BF3DAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5005F227193EAC1600BF3DAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -302,24 +291,6 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		426CEE45194D236100522DCF /* SLGlowingTextField */ = {
-			isa = PBXGroup;
-			children = (
-				426CEE46194D236F00522DCF /* SLGlowingTextField.h */,
-				426CEE47194D236F00522DCF /* SLGlowingTextField.m */,
-			);
-			name = SLGlowingTextField;
-			sourceTree = "<group>";
-		};
-		426CEE53194D458800522DCF /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				426CEE54194D459400522DCF /* NSString+Additions.h */,
-				426CEE55194D459400522DCF /* NSString+Additions.m */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
 		5005F219193EAC1600BF3DAC = {
 			isa = PBXGroup;
 			children = (
@@ -365,8 +336,6 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
-				426CEE53194D458800522DCF /* Categories */,
-				426CEE45194D236100522DCF /* SLGlowingTextField */,
 				5005F319194A531900BF3DAC /* DataModel */,
 				5005F2FF194968E300BF3DAC /* QR */,
 				5005F2B619465D5200BF3DAC /* Signup */,
@@ -458,9 +427,6 @@
 				5005F2B719467A1700BF3DAC /* SignUpViewController.h */,
 				5005F2B819467A1700BF3DAC /* SignUpViewController.m */,
 				5005F2B919467A1700BF3DAC /* SignUpViewController.xib */,
-				426CEE4E194D2BDE00522DCF /* CULoginViewController.h */,
-				426CEE4F194D2BDE00522DCF /* CULoginViewController.m */,
-				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
 			);
 			name = Signup;
 			sourceTree = "<group>";
@@ -586,7 +552,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				42308B59193FC14A0022D3E7 /* data.json in Resources */,
 				42308B37193FBF260022D3E7 /* CUMainViewController.xib in Resources */,
 				5005F230193EAC1600BF3DAC /* InfoPlist.strings in Resources */,
@@ -613,7 +578,6 @@
 			files = (
 				5005F2AC193EE58000BF3DAC /* TWTSideMenuViewController.m in Sources */,
 				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
-				426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
 				5005F236193EAC1600BF3DAC /* AppDelegate.m in Sources */,
 				5005F313194968E300BF3DAC /* qrencode.c in Sources */,
@@ -622,7 +586,6 @@
 				42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */,
 				5005F322194A554F00BF3DAC /* CUStoreItems.m in Sources */,
 				42308B4F193FC1030022D3E7 /* AFHTTPClient.m in Sources */,
-				426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */,
 				5005F311194968E300BF3DAC /* bitstream.c in Sources */,
 				42308B54193FC1030022D3E7 /* AFPropertyListRequestOperation.m in Sources */,
 				5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */,
@@ -648,7 +611,6 @@
 				42308B52193FC1030022D3E7 /* AFJSONRequestOperation.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 				42308B3A193FC0670022D3E7 /* CustomDataSource.m in Sources */,
-				426CEE56194D459400522DCF /* NSString+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

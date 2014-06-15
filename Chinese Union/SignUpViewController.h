@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController
+@protocol CUSignUpViewControllerDelegate <NSObject>
+@optional
+
+/// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(UIViewController *)signUpController didSignUpUser:(PFUser *)user;
+
+@end
+
+@interface SignUpViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) id<CUSignUpViewControllerDelegate> delegate;
 
 @end

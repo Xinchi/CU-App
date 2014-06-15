@@ -14,6 +14,8 @@
 #import "TWTSideMenuViewController.h"
 #import "MySignUpViewController.h"
 #import "MyLogInViewController.h"
+#import "SignUpViewController.h"
+#import "CULoginViewController.h"
 
 
 #define kDoubleColumnProbability 40
@@ -66,25 +68,34 @@
     
 }
 
+#pragma mark - Button
+
 - (void)openButtonPressed
 {
     if([PFUser currentUser])
         [self.sideMenuViewController openMenuAnimated:YES completion:nil];
     else{
-        // Customize the Log In View Controller
-        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
-        logInViewController.delegate = self;
-        logInViewController.facebookPermissions = @[@"friends_about_me"];
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+//        // Customize the Log In View Controller
+//        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
+//        logInViewController.delegate = self;
+//        logInViewController.facebookPermissions = @[@"friends_about_me"];
+//        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+//        
+//        // Customize the Sign Up View Controller
+//        MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
+//        signUpViewController.delegate = self;
+//        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+//        logInViewController.signUpController = signUpViewController;
+//        
+//        // Present Log In View Controller
+//        [self presentViewController:logInViewController animated:YES completion:NULL];
+        CULoginViewController *loginVC = [[CULoginViewController alloc] init];
+        loginVC.delegate = self;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:nil];
         
-        // Customize the Sign Up View Controller
-        MySignUpViewController *signUpViewController = [[MySignUpViewController alloc] init];
-        signUpViewController.delegate = self;
-        signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
-        logInViewController.signUpController = signUpViewController;
-        
-        // Present Log In View Controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
+//        SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
+//        [self presentViewController:signUpVC animated:YES completion:nil];
 
     }
 }
@@ -96,84 +107,86 @@
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
     float retVal = 1.0;
     
-    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
-    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
-    
-    if (aMosaicModule.relativeHeight != 0){
-        
-        //  If the relative height was set before, return it
-        retVal = aMosaicModule.relativeHeight;
-        
-    }else{
-        
-        BOOL isDoubleColumn = [self collectionView:collectionView isDoubleColumnAtIndexPath:indexPath];
-        if (isDoubleColumn){
-            //  Base relative height for double layout type. This is 0.75 (height equals to 75% width)
-            retVal = 0.75;
-        }
-        
-        /*  Relative height random modifier. The max height of relative height is 25% more than
-         *  the base relative height */
-        
-        float extraRandomHeight = arc4random() % 25;
-        retVal = retVal + (extraRandomHeight / 100);
-        
-        /*  Persist the relative height on MosaicData so the value will be the same every time
-         *  the mosaic layout invalidates */
-        
-        aMosaicModule.relativeHeight = retVal;
-    }
+//    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
+//    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
+//    
+//    if (aMosaicModule.relativeHeight != 0){
+//        
+//        //  If the relative height was set before, return it
+//        retVal = aMosaicModule.relativeHeight;
+//        
+//    }else{
+//        
+//        BOOL isDoubleColumn = [self collectionView:collectionView isDoubleColumnAtIndexPath:indexPath];
+//        if (isDoubleColumn){
+//            //  Base relative height for double layout type. This is 0.75 (height equals to 75% width)
+//            retVal = 0.75;
+//        }
+//        
+//        /*  Relative height random modifier. The max height of relative height is 25% more than
+//         *  the base relative height */
+//        
+//        //float extraRandomHeight = arc4random() % 25;
+//        //retVal = retVal + (extraRandomHeight / 100);
+//        
+//        /*  Persist the relative height on MosaicData so the value will be the same every time
+//         *  the mosaic layout invalidates */
+//        
+//        aMosaicModule.relativeHeight = retVal;
+//    }
     
     return retVal;
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView isDoubleColumnAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
-    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
-    
-    if (aMosaicModule.layoutType == kMosaicLayoutTypeUndefined){
-        
-        /*  First layout. We have to decide if the MosaicData should be
-         *  double column (if possible) or not. */
-        
-        NSUInteger random = arc4random() % 100;
-        if (random < kDoubleColumnProbability){
-            aMosaicModule.layoutType = kMosaicLayoutTypeDouble;
-        }else{
-            aMosaicModule.layoutType = kMosaicLayoutTypeSingle;
-        }
-    }
-    
-    BOOL retVal = aMosaicModule.layoutType == kMosaicLayoutTypeDouble;
-    
-    return retVal;
+//    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
+//    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
+//    
+//    if (aMosaicModule.layoutType == kMosaicLayoutTypeUndefined){
+//        
+//        /*  First layout. We have to decide if the MosaicData should be
+//         *  double column (if possible) or not. */
+//        
+//        NSUInteger random = arc4random() % 100;
+//        if (random < kDoubleColumnProbability){
+//            aMosaicModule.layoutType = kMosaicLayoutTypeDouble;
+//        }else{
+//            aMosaicModule.layoutType = kMosaicLayoutTypeSingle;
+//        }
+//    }
+//    
+//    BOOL retVal = aMosaicModule.layoutType == kMosaicLayoutTypeDouble;
+//    
+//    return retVal;
+    return NO;
     
 }
 
 -(NSUInteger)numberOfColumnsInCollectionView:(UICollectionView *)collectionView{
     
-    UIInterfaceOrientation anOrientation = self.interfaceOrientation;
-    
-    //  Set the quantity of columns according of the device and interface orientation
-    NSUInteger retVal = 0;
-    if (UIInterfaceOrientationIsLandscape(anOrientation)){
-        
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-            retVal = kColumnsiPadLandscape;
-        }else{
-            retVal = kColumnsiPhoneLandscape;
-        }
-        
-    }else{
-        
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-            retVal = kColumnsiPadPortrait;
-        }else{
-            retVal = kColumnsiPhonePortrait;
-        }
-    }
-    
-    return retVal;
+//    UIInterfaceOrientation anOrientation = self.interfaceOrientation;
+//    
+//    //  Set the quantity of columns according of the device and interface orientation
+//    NSUInteger retVal = 0;
+//    if (UIInterfaceOrientationIsLandscape(anOrientation)){
+//        
+//        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+//            retVal = kColumnsiPadLandscape;
+//        }else{
+//            retVal = kColumnsiPhoneLandscape;
+//        }
+//        
+//    }else{
+//        
+//        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+//            retVal = kColumnsiPadPortrait;
+//        }else{
+//            retVal = kColumnsiPhonePortrait;
+//        }
+//    }
+//    
+//    return retVal;
+    return 2;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -208,71 +221,77 @@
 //    }
 }
 
-#pragma mark - PFLogInViewControllerDelegate
+#pragma mark - CTSingUpViewControllerDelegate
 
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
-- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-    if (username && password && username.length && password.length) {
-        return YES;
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-    return NO;
-}
-
-// Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+- (void)signUpViewController:(UIViewController *)signUpController didSignUpUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self updateButtonTitle];
+
 }
 
-// Sent to the delegate when the log in attempt fails.
-- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
-}
-
-// Sent to the delegate when the log in screen is dismissed.
-- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-    NSLog(@"User dismissed the logInViewController");
-}
-
-
-#pragma mark - PFSignUpViewControllerDelegate
-
-// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-    BOOL informationComplete = YES;
-    for (id key in info) {
-        NSString *field = [info objectForKey:key];
-        if (!field || field.length == 0) {
-            informationComplete = NO;
-            break;
-        }
-    }
-    
-    if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-    }
-    
-    return informationComplete;
-}
-
-// Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    [self updateButtonTitle];
-}
-
-// Sent to the delegate when the sign up attempt fails.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    NSLog(@"Failed to sign up...");
-}
-
-// Sent to the delegate when the sign up screen is dismissed.
-- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    NSLog(@"User dismissed the signUpViewController");
-}
-
-
+//#pragma mark - PFLogInViewControllerDelegate
+//
+//// Sent to the delegate to determine whether the log in request should be submitted to the server.
+//- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+//    if (username && password && username.length && password.length) {
+//        return YES;
+//    }
+//    
+//    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+//    return NO;
+//}
+//
+//// Sent to the delegate when a PFUser is logged in.
+//- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self updateButtonTitle];
+//}
+//
+//// Sent to the delegate when the log in attempt fails.
+//- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+//    NSLog(@"Failed to log in...");
+//}
+//
+//// Sent to the delegate when the log in screen is dismissed.
+//- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+//    NSLog(@"User dismissed the logInViewController");
+//}
+//
+//
+//#pragma mark - PFSignUpViewControllerDelegate
+//
+//// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+//- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+//    BOOL informationComplete = YES;
+//    for (id key in info) {
+//        NSString *field = [info objectForKey:key];
+//        if (!field || field.length == 0) {
+//            informationComplete = NO;
+//            break;
+//        }
+//    }
+//    
+//    if (!informationComplete) {
+//        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+//    }
+//    
+//    return informationComplete;
+//}
+//
+//// Sent to the delegate when a PFUser is signed up.
+//- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self updateButtonTitle];
+//}
+//
+//// Sent to the delegate when the sign up attempt fails.
+//- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+//    NSLog(@"Failed to sign up...");
+//}
+//
+//// Sent to the delegate when the sign up screen is dismissed.
+//- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+//    NSLog(@"User dismissed the signUpViewController");
+//}
 
 @end

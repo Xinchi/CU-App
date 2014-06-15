@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MosaicLayoutDelegate.h"
+#import "SignUpViewController.h"
 
-@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate, CUSignUpViewControllerDelegate>
 
 @end
