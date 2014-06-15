@@ -52,6 +52,7 @@
 
 - (void)doSignup {
     PFUser *user = [PFUser user];
+    
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
@@ -64,7 +65,6 @@
     user[@"birthday"] = [NSDate date];
 //    user[@"memberID"] = @"";
 //    user[@""] = @"";
-    
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
