@@ -11,31 +11,34 @@
 #import "MySignUpViewController.h"
 #import "TWTSideMenuViewController/TWTSideMenuViewController.h"
 
+@interface ProfileViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *realNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
+@property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
+@property (weak, nonatomic) IBOutlet UIImage *profilePic;
+
+@end
+
 @implementation ProfileViewController
 
 
 #pragma mark - UIViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if ([PFUser currentUser]) {
-        self.welcomeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];
+- (void)viewDidLoad {
+    PFUser *user = [PFUser currentUser];
+    if (user) {
+        self.userNameLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [user username]];
+//        self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.];
     } else {
-        self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
+        self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-
-}
-
-
-
-
-
-#pragma mark - ()
+#pragma mark - IBAction
 
 - (IBAction)logOutButtonTapAction:(id)sender {
     [PFUser logOut];
