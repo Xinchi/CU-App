@@ -7,12 +7,16 @@
 //
 
 #import "SignUpViewController.h"
+#import "NSString+Additions.h"
 
 @interface SignUpViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) UIEdgeInsets originalInsets;
 @property (weak, nonatomic) UITextField *activeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 @end
 
@@ -99,6 +103,19 @@
     
     NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
 
+    if (textField == self.userNameTextField || textField == self.passwordTextField) {
+        BOOL valid = [string isAlphaNumeric];
+        
+        if (!valid) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"String is %@", string] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+        
+        return valid;
+    }
+    
+    return YES;
+    
 //    if (YES) {
 //        NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
 //        NSLog(@"current string length: %d", textField.text.length);
@@ -114,7 +131,6 @@
 //            return NO;
 //        }
 //    }
-    return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -123,6 +139,14 @@
 
 - (IBAction)signUpButtonPressed:(id)sender {
     [self.activeTextField resignFirstResponder];
+    
+    BOOL emailValid = [self.emailTextField.text isEmailFormat];
+    
+    if (!emailValid) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong Email Format" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+    
 }
 
 @end

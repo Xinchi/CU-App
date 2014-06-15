@@ -27,4 +27,10 @@
     return [emailTest evaluateWithObject:self];
 }
 
+- (BOOL)isAlphaNumeric {
+    NSCharacterSet *alphaSet = [NSCharacterSet alphanumericCharacterSet];
+    BOOL valid = [[self stringByTrimmingCharactersInSet:alphaSet] isEqualToString:@""];
+    return valid;
+}
+
 @end

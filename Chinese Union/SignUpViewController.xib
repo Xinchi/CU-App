@@ -6,7 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController">
             <connections>
+                <outlet property="emailTextField" destination="TYu-CF-FDA" id="SqP-Uh-iQh"/>
+                <outlet property="passwordTextField" destination="Ed8-lo-BlV" id="eGK-HJ-iBr"/>
                 <outlet property="scrollView" destination="7MQ-NG-SFc" id="eI0-cz-ndZ"/>
+                <outlet property="userNameTextField" destination="MuU-Bf-Aa2" id="gMF-yH-Klw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +26,7 @@
                             <rect key="frame" x="85" y="261" width="151" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="PHT-p1-Ncd"/>
                             </connections>

@@ -13,5 +13,6 @@
 - (NSString *)cleanString;
 - (BOOL)hasNoContent;
 - (BOOL)isEmailFormat;
+- (BOOL)isAlphaNumeric;
 
 @end
