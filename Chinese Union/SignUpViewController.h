@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @protocol CUSignUpViewControllerDelegate <NSObject>
 @optional
 
 /// Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(UIViewController *)signUpController didSignUpUser:(PFUser *)user;
+- (void)signUpViewController:(UIViewController *)signUpController didSignUpUser:(User *)user;
 
 @end
 
