@@ -8,8 +8,12 @@
 
 #import "CULoginViewController.h"
 #import "SignUpViewController.h"
+#import "User.h"
 
 @interface CULoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -32,7 +36,29 @@
 - (IBAction)signUpButtonPressed:(id)sender {
     SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+    signUpVC.delegate = self.delegate;
+    NSLog(@"Delegate:%@", signUpVC.delegate);
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)loginButtonPressed:(id)sender {
+    NSError *error;
+    [User logInWithUsername:self.userNameTextField.text
+                   password:self.passwordTextField.text
+                      error:&error];
+    
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error userInfo][@"error"]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+    }
+    else {
+        NSLog(@"Login Succeeded!");
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
