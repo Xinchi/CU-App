@@ -11,6 +11,13 @@
 
 @implementation CUEvents
 
+@dynamic name;
+@dynamic description;
+@dynamic start;
+@dynamic duration;
+@dynamic venue;
+@dynamic pid;
+
 + (NSString *)parseClassName {
     return @"CUEvents";
 }

@@ -10,9 +10,11 @@
 @interface CUEvents : PFObject<PFSubclassing>
 +(NSString *)parseClassName;
 
-@property(retain) NSString *eventName;
-@property(retain) NSString *eventDescription;
-@property(retain) NSString *eventVenue;
-@property(retain) NSString *eventDuration;
+@property(retain) NSString *name;
+@property(retain) NSString *description;
+@property(retain) NSString *venue;
+@property(retain) NSDate *start;
+@property(retain) NSString *duration;
+@property(retain) NSString *pid;
 
 @end

@@ -9,4 +9,9 @@
 
 @interface CUMembers : PFObject<PFSubclassing>
 +(NSString *)parseClassName;
+
+@property (retain) NSString *uid;
+@property (retain) NSDate *activatedDate;
+@property (retain) NSDate *expireDate;
+
 @end

@@ -10,6 +10,16 @@
 #import <Parse/PFObject+Subclass.h>
 
 @implementation CUStoreItems
+
+@dynamic name;
+@dynamic description;
+@dynamic image;
+@dynamic price_non_member_male;
+@dynamic price_non_member_female;
+@dynamic price_member_male;
+@dynamic price_member_female;
+@dynamic quantity;
+
 + (NSString *)parseClassName {
     return @"CUStoreItems";
 }

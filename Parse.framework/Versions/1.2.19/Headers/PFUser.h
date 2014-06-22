@@ -29,6 +29,7 @@ A Parse Framework User Object that is a local representation of a user persisted
  Gets the currently logged in user from disk and returns an instance of it.
  @result Returns a PFUser that is the currently logged in user. If there is none, returns nil.
  */
+
 + (instancetype)currentUser;
 
 /// The session token for the PFUser. This is set by the server upon successful authentication.
