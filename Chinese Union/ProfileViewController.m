@@ -30,13 +30,16 @@
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
-    PFUser *user = [PFUser currentUser];
+    User *user = [User currentUser];
+    
     if (user) {
-        self.userNameLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [user username]];
-//        self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.];
+        self.userNameLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), user.username];
+        self.realNameLabel.text = [NSString stringWithFormat:@"%@", user.firstName];
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
+    NSLog(@"emailVerified = %hhd", user.emailVerified);
+    NSLog(@"objectId = %@", user.objectId);
 }
 
 #pragma mark - IBAction

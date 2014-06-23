@@ -1,22 +1,23 @@
 //
-//  CUMember.m
+//  CUTickets.m
 //  Chinese Union
 //
-//  Created by Max Gu on 6/12/14.
+//  Created by Max Gu on 6/22/14.
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "CUMembers.h"
+#import "CUTickets.h"
 #import <Parse/PFObject+Subclass.h>
 
-@implementation CUMembers
+@implementation CUTickets
 
+@dynamic pid;
 @dynamic uid;
-@dynamic activatedDate;
-@dynamic expireDate;
+@dynamic checkedIn;
+@dynamic expire;
 
 + (NSString *)parseClassName {
-    return @"CUMembers";
+    return @"CUTickets";
 }
 
 @end

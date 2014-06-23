@@ -10,11 +10,17 @@
 
 @interface User : PFUser<PFSubclassing>
 
+@property (retain) NSString *objectId;
+@property (retain) NSString *role;
 @property (retain) NSString *firstName;
 @property (retain) NSString *lastName;
 @property (retain) NSString *CUMemberID;
 @property (retain) NSString *wechatID;
 @property (retain) NSDate *birthday;
 @property (retain) NSString *phone;
+@property (retain) PFFile *profilePic;
+@property (retain) PFFile *IDPic;
+@property BOOL emailVerified;
+@property BOOL IDPicVerified;
 
 @end
