@@ -30,7 +30,7 @@
                     <rect key="frame" x="83" y="105" width="155" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ZSg-Nd-23A"/>
                     </connections>

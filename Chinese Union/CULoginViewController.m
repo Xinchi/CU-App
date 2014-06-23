@@ -32,7 +32,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (IBAction)signUpButtonPressed:(id)sender {
     SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUpVC];
@@ -59,6 +58,16 @@
         NSLog(@"Login Succeeded!");
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.userNameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    }
+    else if (textField == self.passwordTextField) {
+        [self loginButtonPressed:nil];
+    }
+    return YES;
 }
 
 @end

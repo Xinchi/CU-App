@@ -67,11 +67,17 @@
     
     if (user) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@", user.username];
-        self.realNameLabel.text = [NSString stringWithFormat:@"%@", user.firstName];
+        self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         self.emailLabel.text    = [NSString stringWithFormat:@"%@", user.email];
         self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [self.dateFormatter stringFromDate:user.birthday]];
         self.phoneLabel.text    = [NSString stringWithFormat:@"%@", user.phone];
         self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID];
+        
+        if (user.profilePic) {
+            NSData *picData = [user.profilePic getData];
+            UIImage *profileImage = [UIImage imageWithData:picData];
+            self.profilePicView.image = profileImage;
+        }
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
