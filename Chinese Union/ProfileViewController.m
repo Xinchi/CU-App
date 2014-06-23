@@ -29,7 +29,7 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad {
+- (void)viewWillAppear:(BOOL)animated {
     User *user = [User currentUser];
     
     if (user) {
