@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CULoginViewController">
             <connections>
                 <outlet property="passwordTextField" destination="IhP-ny-5R2" id="T9D-Ib-f05"/>
+                <outlet property="tapGR" destination="Sda-Be-vyn" id="4gt-Ld-5Zw"/>
                 <outlet property="userNameTextField" destination="Xck-HU-1Ph" id="1Sy-Ty-vv3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -73,5 +74,10 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <tapGestureRecognizer id="Sda-Be-vyn">
+            <connections>
+                <action selector="viewTapped:" destination="-1" id="4Ad-qg-MTm"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

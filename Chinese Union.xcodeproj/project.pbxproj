@@ -23,6 +23,7 @@
 		42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4C193FC1030022D3E7 /* AFXMLRequestOperation.m */; };
 		42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */; };
 		42308B59193FC14A0022D3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 42308B58193FC14A0022D3E7 /* data.json */; };
+		425490791957D92B005A61B0 /* CUInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 425490781957D92B005A61B0 /* CUInputButton.m */; };
 		426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE47194D236F00522DCF /* SLGlowingTextField.m */; };
 		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
@@ -119,6 +120,8 @@
 		42308B4D193FC1030022D3E7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		42308B58193FC14A0022D3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		425490771957D92B005A61B0 /* CUInputButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUInputButton.h; sourceTree = "<group>"; };
+		425490781957D92B005A61B0 /* CUInputButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUInputButton.m; sourceTree = "<group>"; };
 		426CEE46194D236F00522DCF /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
 		426CEE47194D236F00522DCF /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
 		426CEE4E194D2BDE00522DCF /* CULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CULoginViewController.h; sourceTree = "<group>"; };
@@ -375,7 +378,7 @@
 				426CEE45194D236100522DCF /* SLGlowingTextField */,
 				5005F319194A531900BF3DAC /* DataModel */,
 				5005F2FF194968E300BF3DAC /* QR */,
-				5005F2B619465D5200BF3DAC /* Signup */,
+				5005F2B619465D5200BF3DAC /* Login and Sign up */,
 				42308B21193FBEE30022D3E7 /* MosaicLayout */,
 				42308B3B193FC1030022D3E7 /* AFNetworking */,
 				5005F2AD193EE7CD00BF3DAC /* TWTMenu */,
@@ -458,7 +461,7 @@
 			name = TWTMenu;
 			sourceTree = "<group>";
 		};
-		5005F2B619465D5200BF3DAC /* Signup */ = {
+		5005F2B619465D5200BF3DAC /* Login and Sign up */ = {
 			isa = PBXGroup;
 			children = (
 				5005F2B719467A1700BF3DAC /* SignUpViewController.h */,
@@ -467,8 +470,10 @@
 				426CEE4E194D2BDE00522DCF /* CULoginViewController.h */,
 				426CEE4F194D2BDE00522DCF /* CULoginViewController.m */,
 				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
+				425490771957D92B005A61B0 /* CUInputButton.h */,
+				425490781957D92B005A61B0 /* CUInputButton.m */,
 			);
-			name = Signup;
+			name = "Login and Sign up";
 			sourceTree = "<group>";
 		};
 		5005F2FF194968E300BF3DAC /* QR */ = {
@@ -633,6 +638,7 @@
 				5005F322194A554F00BF3DAC /* CUStoreItems.m in Sources */,
 				42308B4F193FC1030022D3E7 /* AFHTTPClient.m in Sources */,
 				50932A9F1957714900674269 /* CUSales.m in Sources */,
+				425490791957D92B005A61B0 /* CUInputButton.m in Sources */,
 				426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */,
 				5005F311194968E300BF3DAC /* bitstream.c in Sources */,
 				42308B54193FC1030022D3E7 /* AFPropertyListRequestOperation.m in Sources */,

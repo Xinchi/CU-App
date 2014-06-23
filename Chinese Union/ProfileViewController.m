@@ -33,6 +33,7 @@
 - (NSDateFormatter *)dateFormatter {
     if (_dateFormatter == nil) {
         _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     }
     return _dateFormatter;
 }
@@ -70,8 +71,9 @@
         self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         self.emailLabel.text    = [NSString stringWithFormat:@"%@", user.email];
         self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [self.dateFormatter stringFromDate:user.birthday]];
+        NSLog(@"User b day:%@", user.birthday);
         self.phoneLabel.text    = [NSString stringWithFormat:@"%@", user.phone];
-        self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID];
+        self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID ? user.wechatID : @"Not linked to WeChat"];
         
         if (user.profilePic) {
             NSData *picData = [user.profilePic getData];
