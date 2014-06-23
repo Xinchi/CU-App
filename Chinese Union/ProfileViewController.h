@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 //
 
-@interface ProfileViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface ProfileViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIActionSheetDelegate>
 
 - (IBAction)logOutButtonTapAction:(id)sender;
 
