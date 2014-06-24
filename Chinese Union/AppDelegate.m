@@ -47,7 +47,9 @@
     self.mainViewController = [[CUMainViewController alloc] initWithNibName:@"CUMainViewController" bundle:nil];
     
     // create a new side menu
-    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:[[UINavigationController alloc] initWithRootViewController:self.mainViewController]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+//    [nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:nav];
     
     
     //side menu controller configuration

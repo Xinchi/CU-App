@@ -12,8 +12,10 @@
 
 @interface CULoginViewController ()
 
+@property (weak, nonatomic) UIResponder *activeResponder;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
 
 @end
 
@@ -24,14 +26,16 @@
     [super viewDidLoad];
     
     self.title = @"Login";
-    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Line + Line 2"] style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+//    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
     self.navigationItem.leftBarButtonItem = exitButton;
+    
+    [self.view addGestureRecognizer:self.tapGR];
 }
 
 - (void)exitButtonPressed {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (IBAction)signUpButtonPressed:(id)sender {
     SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
@@ -59,6 +63,26 @@
         NSLog(@"Login Succeeded!");
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (IBAction)viewTapped:(id)sender {
+    [self.activeResponder resignFirstResponder];
+}
+
+#pragma mark - Text field delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeResponder = textField;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.userNameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    }
+    else if (textField == self.passwordTextField) {
+        [self loginButtonPressed:nil];
+    }
+    return YES;
 }
 
 @end

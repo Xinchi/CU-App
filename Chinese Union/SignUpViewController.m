@@ -9,12 +9,13 @@
 #import "SignUpViewController.h"
 #import "NSString+Additions.h"
 #import "User.h"
+#import "CUInputButton.h"
 
 @interface SignUpViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) UIEdgeInsets originalInsets;
-@property (weak, nonatomic) UITextField *activeTextField;
+@property (weak, nonatomic) UIResponder *activeResponder;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
@@ -24,23 +25,44 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmEmailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *weChatTextField;
+@property (weak, nonatomic) IBOutlet CUInputButton *pickBirthdayButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
+
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDate *birthday;
 
 @end
 
 @implementation SignUpViewController
 
+- (NSDateFormatter *)dateFormatter {
+    if (_dateFormatter == nil) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    }
+    return _dateFormatter;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"Sign Up";
-    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Line + Line 2"] style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+//    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(signUpButtonPressed:)];
     self.navigationItem.leftBarButtonItem = exitButton;
+    self.navigationItem.rightBarButtonItem = submitButton;
     NSLog(@"ScrollView content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
+    self.datePicker.maximumDate = [NSDate date];
+    self.pickBirthdayButton.inputView = self.datePicker;
+    
+    [self.view addGestureRecognizer:self.tapGR];
 }
 
 - (void)dealloc {
@@ -65,7 +87,7 @@
     user.wechatID = self.weChatTextField.text;
     user.firstName = self.firstNameTextField.text;
     user.lastName = self.lastNameTextField.text;
-    user.birthday = [NSDate date];
+    user.birthday = self.datePicker.date;
 //    user[@"memberID"] = @"";
 //    user[@""] = @"";
     
@@ -91,6 +113,23 @@
             [alert show];
         }
     }];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)pickBirthdayButtonPressed:(CUInputButton *)sender {
+    [sender becomeFirstResponder];
+    self.activeResponder = sender;
+}
+
+- (IBAction)dateValueChanged:(UIDatePicker *)sender {
+    NSString *title = [self.dateFormatter stringFromDate:sender.date];
+    [self.pickBirthdayButton setTitle:title forState:UIControlStateNormal];
+    self.birthday = sender.date;
+}
+
+- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
+    [self.activeResponder resignFirstResponder];
 }
 
 #pragma mark - Keyboard Events
@@ -162,7 +201,7 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.activeTextField = textField;
+    self.activeResponder = textField;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -170,7 +209,7 @@
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
-    [self.activeTextField resignFirstResponder];
+    [self.activeResponder resignFirstResponder];
     
     NSMutableArray *errorMsgs = [NSMutableArray array];
     
@@ -212,6 +251,10 @@
     
     if (!self.weChatTextField.text.length > 0) {
         [errorMsgs addObject:@"Please fill in WeChat ID"];
+    }
+    
+    if (!self.birthday) {
+        [errorMsgs addObject:@"Please pick your birthday"];
     }
     
     if (errorMsgs.count > 0) {
