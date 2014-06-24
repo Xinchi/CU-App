@@ -17,6 +17,7 @@
 #import "SignUpViewController.h"
 #import "CULoginViewController.h"
 #import "User.h"
+#import "CUStoreViewController.h"
 
 
 #define kDoubleColumnProbability 40
@@ -195,6 +196,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Did select item:%@", indexPath);
+    if (indexPath.row == 1) {
+        CUStoreViewController *storeVC = [[CUStoreViewController alloc] init];
+        [self.navigationController pushViewController:storeVC animated:YES];
+    }
 //    switch (indexPath.row) {
 //        case 0:
 //            [self performSegueWithIdentifier:@"eventSegue" sender:self];
