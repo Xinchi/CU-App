@@ -68,7 +68,18 @@
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+//    [self test];
     return YES;
+}
+
+- (void)test
+{
+    CUProducts *product1 = [CUProducts object];
+    product1.name = @"CU Cup";
+    product1.description = @"This is a CU 10 year anniversary cup";
+    product1.price = [NSNumber numberWithInt:10];
+
+    [product1 saveInBackground];
 }
 
 

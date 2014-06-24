@@ -14,6 +14,7 @@
 @dynamic name;
 @dynamic description;
 @dynamic image;
+@dynamic price;
 @dynamic price_non_member_male;
 @dynamic price_non_member_female;
 @dynamic price_member_male;

@@ -15,6 +15,7 @@
 @property (retain) NSString *name;
 @property (retain) NSString *description;
 @property (retain) PFFile *image;
+@property (retain) NSNumber *price;
 @property (retain) NSNumber *price_non_member_male;
 @property (retain) NSNumber *price_non_member_female;
 @property (retain) NSNumber *price_member_male;
