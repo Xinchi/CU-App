@@ -14,7 +14,7 @@
 #import "UIImage+MDQRCode.h"
 #import "CUMembers.h"
 #import "CUEvents.h"
-#import "CUStoreItems.h"
+#import "CUProducts.h"
 #import "User.h"
 
 @interface AppDelegate ()
@@ -101,7 +101,7 @@
 {
     [CUMembers registerSubclass];
     [CUEvents registerSubclass];
-    [CUStoreItems registerSubclass];
+    [CUProducts registerSubclass];
     [User registerSubclass];
 }
 @end

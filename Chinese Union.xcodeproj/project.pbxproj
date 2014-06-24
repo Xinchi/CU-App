@@ -70,7 +70,7 @@
 		5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F310194968E300BF3DAC /* UIImage+MDQRCode.m */; };
 		5005F31C194A534B00BF3DAC /* CUMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F31B194A534B00BF3DAC /* CUMembers.m */; };
 		5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F31E194A54A100BF3DAC /* CUEvents.m */; };
-		5005F322194A554F00BF3DAC /* CUStoreItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F321194A554F00BF3DAC /* CUStoreItems.m */; };
+		5005F322194A554F00BF3DAC /* CUProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F321194A554F00BF3DAC /* CUProducts.m */; };
 		5005F325194A587100BF3DAC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F324194A587100BF3DAC /* User.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
 		50932AA21957726100674269 /* CUTickets.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AA11957726100674269 /* CUTickets.m */; };
@@ -190,8 +190,8 @@
 		5005F31B194A534B00BF3DAC /* CUMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUMembers.m; sourceTree = "<group>"; };
 		5005F31D194A54A100BF3DAC /* CUEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEvents.h; sourceTree = "<group>"; };
 		5005F31E194A54A100BF3DAC /* CUEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEvents.m; sourceTree = "<group>"; };
-		5005F320194A554F00BF3DAC /* CUStoreItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUStoreItems.h; sourceTree = "<group>"; };
-		5005F321194A554F00BF3DAC /* CUStoreItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUStoreItems.m; sourceTree = "<group>"; };
+		5005F320194A554F00BF3DAC /* CUProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUProducts.h; sourceTree = "<group>"; };
+		5005F321194A554F00BF3DAC /* CUProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUProducts.m; sourceTree = "<group>"; };
 		5005F323194A587100BF3DAC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		5005F324194A587100BF3DAC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		50932A9D1957714900674269 /* CUSales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSales.h; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 				5005F31B194A534B00BF3DAC /* CUMembers.m */,
 				5005F31D194A54A100BF3DAC /* CUEvents.h */,
 				5005F31E194A54A100BF3DAC /* CUEvents.m */,
-				5005F320194A554F00BF3DAC /* CUStoreItems.h */,
-				5005F321194A554F00BF3DAC /* CUStoreItems.m */,
+				5005F320194A554F00BF3DAC /* CUProducts.h */,
+				5005F321194A554F00BF3DAC /* CUProducts.m */,
 				5005F323194A587100BF3DAC /* User.h */,
 				5005F324194A587100BF3DAC /* User.m */,
 				50932A9D1957714900674269 /* CUSales.h */,
@@ -630,7 +630,7 @@
 				42308B55193FC1030022D3E7 /* AFURLConnectionOperation.m in Sources */,
 				5005F316194968E300BF3DAC /* rscode.c in Sources */,
 				42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */,
-				5005F322194A554F00BF3DAC /* CUStoreItems.m in Sources */,
+				5005F322194A554F00BF3DAC /* CUProducts.m in Sources */,
 				42308B4F193FC1030022D3E7 /* AFHTTPClient.m in Sources */,
 				50932A9F1957714900674269 /* CUSales.m in Sources */,
 				426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */,

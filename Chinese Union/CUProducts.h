@@ -7,7 +7,7 @@
 //
 
 
-@interface CUStoreItems : PFObject<PFSubclassing>
+@interface CUProducts : PFObject<PFSubclassing>
 
 +(NSString *)parseClassName;
 
