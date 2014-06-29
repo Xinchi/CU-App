@@ -6,14 +6,15 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "CUStoreItems.h"
+#import "CUProducts.h"
 #import <Parse/PFObject+Subclass.h>
 
-@implementation CUStoreItems
+@implementation CUProducts
 
 @dynamic name;
 @dynamic description;
 @dynamic image;
+@dynamic price;
 @dynamic price_non_member_male;
 @dynamic price_non_member_female;
 @dynamic price_member_male;
@@ -21,6 +22,6 @@
 @dynamic quantity;
 
 + (NSString *)parseClassName {
-    return @"CUStoreItems";
+    return @"CUProducts";
 }
 @end

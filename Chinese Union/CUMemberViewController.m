@@ -1,18 +1,19 @@
 //
-//  CUStoreViewController.m
+//  CUMemberViewController.m
 //  Chinese Union
 //
-//  Created by wpliao on 6/23/14.
+//  Created by Max Gu on 6/29/14.
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "CUStoreViewController.h"
+#import "CUMemberViewController.h"
+#import "User.h"
 
-@interface CUStoreViewController ()
+@interface CUMemberViewController ()
 
 @end
 
-@implementation CUStoreViewController
+@implementation CUMemberViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,13 +28,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (bool)isAMember
+{
+    User *user = [User currentUser];
+    if(user.CUMemberID!=nil)
+    {
+        return true;
+    }
+    return false;
 }
 
 @end

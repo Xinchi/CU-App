@@ -1,13 +1,13 @@
 //
-//  CUStoreViewController.h
+//  CUMemberViewController.h
 //  Chinese Union
 //
-//  Created by wpliao on 6/23/14.
+//  Created by Max Gu on 6/29/14.
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface CUStoreViewController : UIViewController
+@interface CUMemberViewController : UIViewController
 
 @end
