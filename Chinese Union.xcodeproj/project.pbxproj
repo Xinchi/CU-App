@@ -28,6 +28,7 @@
 		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
+		42D3395A1960C75500F1CB8F /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D339591960C75500F1CB8F /* UIViewController+Additions.m */; };
 		5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F225193EAC1600BF3DAC /* Foundation.framework */; };
 		5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F227193EAC1600BF3DAC /* CoreGraphics.framework */; };
 		5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F229193EAC1600BF3DAC /* UIKit.framework */; };
@@ -171,6 +172,8 @@
 		426CEE50194D2BDE00522DCF /* CULoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CULoginViewController.xib; sourceTree = "<group>"; };
 		426CEE54194D459400522DCF /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		42D339581960C75500F1CB8F /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		42D339591960C75500F1CB8F /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		5005F222193EAC1600BF3DAC /* Chinese Union.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chinese Union.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5005F225193EAC1600BF3DAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5005F227193EAC1600BF3DAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -456,6 +459,8 @@
 			children = (
 				426CEE54194D459400522DCF /* NSString+Additions.h */,
 				426CEE55194D459400522DCF /* NSString+Additions.m */,
+				42D339581960C75500F1CB8F /* UIViewController+Additions.h */,
+				42D339591960C75500F1CB8F /* UIViewController+Additions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -516,7 +521,7 @@
 				42308B3B193FC1030022D3E7 /* AFNetworking */,
 				5005F2AD193EE7CD00BF3DAC /* TWTMenu */,
 				5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */,
-				5005F268193ED75B00BF3DAC /* Login */,
+				5005F268193ED75B00BF3DAC /* Profile */,
 				5005F234193EAC1600BF3DAC /* AppDelegate.h */,
 				5005F235193EAC1600BF3DAC /* AppDelegate.m */,
 				42308B33193FBF260022D3E7 /* CUMainViewController.h */,
@@ -560,7 +565,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5005F268193ED75B00BF3DAC /* Login */ = {
+		5005F268193ED75B00BF3DAC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				5005F279193EDD7500BF3DAC /* MyLogInViewController.h */,
@@ -571,7 +576,7 @@
 				5005F27E193EDD7500BF3DAC /* ProfileViewController.m */,
 				5005F27F193EDD7500BF3DAC /* ProfileViewController.xib */,
 			);
-			name = Login;
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */ = {
@@ -942,6 +947,7 @@
 				50932ADB195902AE00674269 /* PKCard.m in Sources */,
 				50932B14195902EB00674269 /* STPCard.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
+				42D3395A1960C75500F1CB8F /* UIViewController+Additions.m in Sources */,
 				42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */,
 				5005F2B3193EE7E200BF3DAC /* TWTMenuViewController.m in Sources */,
 				42308B36193FBF260022D3E7 /* CUMainViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "MySignUpViewController.h"
 #import "TWTSideMenuViewController/TWTSideMenuViewController.h"
 #import "User.h"
+#import "CUMemberViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ProfileViewController ()
@@ -101,6 +102,13 @@
 
 - (IBAction)logOutButtonTapAction:(id)sender {
     [self.actionSheet showInView:self.view];
+}
+
+- (IBAction)memberButtonPressed:(id)sender {
+    CUMemberViewController *controller = [[CUMemberViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:nav animated:YES completion:nil];
+//    [self.sideMenuViewController setMainViewController:controller animated:YES closeMenu:YES];
 }
 
 @end
