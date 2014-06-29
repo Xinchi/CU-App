@@ -115,6 +115,8 @@
 		50932B15195902EB00674269 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B0E195902EB00674269 /* STPToken.m */; };
 		50932B16195902EB00674269 /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B11195902EB00674269 /* Stripe.m */; };
 		50932B17195902EB00674269 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B13195902EB00674269 /* StripeError.m */; };
+		50932B761960B77000674269 /* CUMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B741960B77000674269 /* CUMemberViewController.m */; };
+		50932B771960B77000674269 /* CUMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50932B751960B77000674269 /* CUMemberViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,6 +307,9 @@
 		50932B11195902EB00674269 /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
 		50932B12195902EB00674269 /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
 		50932B13195902EB00674269 /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
+		50932B731960B77000674269 /* CUMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUMemberViewController.h; sourceTree = "<group>"; };
+		50932B741960B77000674269 /* CUMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUMemberViewController.m; sourceTree = "<group>"; };
+		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +505,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				50932B721960B74500674269 /* Member */,
 				4243BD8D1958FF2100E23603 /* Store */,
 				426CEE53194D458800522DCF /* Categories */,
 				426CEE45194D236100522DCF /* SLGlowingTextField */,
@@ -758,6 +764,16 @@
 			name = Stripe;
 			sourceTree = "<group>";
 		};
+		50932B721960B74500674269 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				50932B731960B77000674269 /* CUMemberViewController.h */,
+				50932B741960B77000674269 /* CUMemberViewController.m */,
+				50932B751960B77000674269 /* CUMemberViewController.xib */,
+			);
+			name = Member;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -837,6 +853,7 @@
 				50932AFB195902D300674269 /* cvc-amex@2x.png in Resources */,
 				50932B01195902D300674269 /* discover@2x.png in Resources */,
 				50932AFD195902D300674269 /* cvc@2x.png in Resources */,
+				50932B771960B77000674269 /* CUMemberViewController.xib in Resources */,
 				50932B07195902D300674269 /* placeholder@2x.png in Resources */,
 				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				50932AF9195902D300674269 /* amex@2x.png in Resources */,
@@ -910,6 +927,7 @@
 				5005F325194A587100BF3DAC /* User.m in Sources */,
 				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,
+				50932B761960B77000674269 /* CUMemberViewController.m in Sources */,
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
