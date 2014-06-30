@@ -19,4 +19,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)addSaveButton {
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = saveButton;
+}
+
 @end

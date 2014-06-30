@@ -11,6 +11,7 @@
 #import "User.h"
 #import "CUInputButton.h"
 #import "UIViewController+Additions.h"
+#import "NSDateFormatter+Additions.h"
 
 @interface SignUpViewController ()
 
@@ -30,20 +31,11 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
 
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDate *birthday;
 
 @end
 
 @implementation SignUpViewController
-
-- (NSDateFormatter *)dateFormatter {
-    if (_dateFormatter == nil) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    }
-    return _dateFormatter;
-}
 
 - (void)viewDidLoad
 {
@@ -120,7 +112,7 @@
 }
 
 - (IBAction)dateValueChanged:(UIDatePicker *)sender {
-    NSString *title = [self.dateFormatter stringFromDate:sender.date];
+    NSString *title = [[NSDateFormatter birthdayFormatter] stringFromDate:sender.date];
     [self.pickBirthdayButton setTitle:title forState:UIControlStateNormal];
     self.birthday = sender.date;
 }

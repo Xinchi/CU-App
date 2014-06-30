@@ -1,5 +1,5 @@
 //
-//  UIViewController+Additions.h
+//  CUProfilePicCell.h
 //  Chinese Union
 //
 //  Created by wpliao on 6/29/14.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (Additions)
-
-- (void)addExitButton;
-- (void)exitButtonPressed;
-- (void)addSaveButton;
+@interface CUProfilePicCell : UITableViewCell
 
 @end

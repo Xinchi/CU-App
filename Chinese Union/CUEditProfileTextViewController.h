@@ -1,5 +1,5 @@
 //
-//  UIViewController+Additions.h
+//  CUEditProfileTextViewController.h
 //  Chinese Union
 //
 //  Created by wpliao on 6/29/14.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (Additions)
+@interface CUEditProfileTextViewController : UIViewController
 
-- (void)addExitButton;
-- (void)exitButtonPressed;
-- (void)addSaveButton;
+@property (strong, nonatomic) NSString *text;
 
 @end
