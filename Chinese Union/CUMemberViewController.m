@@ -71,16 +71,17 @@
         if(!error){
             if(objects.count==1)
             {
+                CUMembers *member = (CUMembers *)objects[0];
                 NSLog(@"Member ID Found!");
-                if(((CUMembers *)objects[0]).uid !=nil)
+                if(member.uid !=nil)
                 {
                     NSLog(@"The Member ID has already been activated! ");
                     //handle the already-activated case
                 } else {
-                    self.user.CUMemberID = ((CUMembers *)objects[0]).objectId;
+                    self.user.CUMemberID = member.objectId;
                     [self.user saveInBackground];
-                    ((CUMembers *)objects[0]).uid = self.user.objectId;
-                    [(CUMembers *)objects[0] saveInBackground];
+                    member.uid = self.user.objectId;
+                    [member saveInBackground];
                 }
 
             }
