@@ -60,9 +60,38 @@
 }
 
 - (IBAction)activateButtonPressed:(id)sender {
+    NSLog(@"activateButtonPressed");
     NSString *memberID = self.memberIDTextField.text;
     
     // Do activation here
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
+    [query whereKey:@"objectId" equalTo:memberID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            if(objects.count==1)
+            {
+                NSLog(@"Member ID Found!");
+                if(((CUMembers *)objects[0]).uid !=nil)
+                {
+                    NSLog(@"The Member ID has already been activated! ");
+                    //handle the already-activated case
+                } else {
+                    self.user.CUMemberID = ((CUMembers *)objects[0]).objectId;
+                    [self.user saveInBackground];
+                    ((CUMembers *)objects[0]).uid = self.user.objectId;
+                    [(CUMembers *)objects[0] saveInBackground];
+                }
+
+            }
+            else {
+                NSLog(@"Invalid Member ID Entered! No matching found!");
+            }
+        }
+        else {
+            NSLog(@"Error: %@ %@",error,[error userInfo]);
+        }
+    }];
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
@@ -71,21 +100,7 @@
 - (IBAction)viewTapped:(id)sender {
     [self.memberIDTextField resignFirstResponder];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
-    [query whereKey:@"ID" equalTo:[self.memberIDTextField text]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(!error){
-            if(objects.count==1)
-            {
-                NSLog(@"Member ID Found!");
-                self.user.CUMemberID = ((CUMembers *)objects[0]).objectId;
-                ((CUMembers *)objects[0]).uid = self.user.objectId;
-            }
-        }
-        else {
-            NSLog(@"Error: %@ %@",error,[error userInfo]);
-        }
-    }];
+
 }
 
 @end
