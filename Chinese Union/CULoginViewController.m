@@ -38,16 +38,9 @@
     self.userNameTextField.layer.opacity = 0.9;
     self.passwordTextField.layer.opacity = 0.9;
     
-    [self customizeButton:self.fbButton];
-    [self customizeButton:self.twitterButton];
-    [self customizeButton:self.signupButton];
-}
-
-- (void)customizeButton:(UIButton *)button {
-    button.layer.cornerRadius = 12;
-    button.layer.borderWidth = 1;
-    button.layer.borderColor = [[UIColor whiteColor] CGColor];
-
+    [self addBorderToButton:self.fbButton];
+    [self addBorderToButton:self.twitterButton];
+    [self addBorderToButton:self.signupButton];
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
