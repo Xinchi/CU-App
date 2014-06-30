@@ -73,6 +73,7 @@
             {
                 NSLog(@"Member ID Found!");
                 self.user.CUMemberID = ((CUMembers *)objects[0]).objectId;
+                ((CUMembers *)objects[0]).uid = self.user.objectId;
             }
         }
         else {
