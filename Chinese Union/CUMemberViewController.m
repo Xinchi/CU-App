@@ -59,6 +59,12 @@
     return false;
 }
 
+- (IBAction)activateButtonPressed:(id)sender {
+    NSString *memberID = self.memberIDTextField.text;
+    
+    // Do activation here
+}
+
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
 }
 
