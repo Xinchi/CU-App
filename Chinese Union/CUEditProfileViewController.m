@@ -16,12 +16,34 @@
 
 NSString *picCellID = @"picCell";
 NSString *cellID = @"cell";
+NSString *takePhoto = @"Take Photo";
+NSString *choosePhoto = @"Choose Existing Photo";
 
-@interface CUEditProfileViewController ()
+@interface CUEditProfileViewController () <UIActionSheetDelegate>
+
+@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 @end
 
 @implementation CUEditProfileViewController
+
+- (UIActionSheet *)actionSheet {
+    if (_actionSheet == nil) {
+        _actionSheet = [[UIActionSheet alloc] init];
+        _actionSheet.delegate = self;
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            [_actionSheet addButtonWithTitle:takePhoto];
+        }
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            [_actionSheet addButtonWithTitle:choosePhoto];
+        }
+        
+        _actionSheet.cancelButtonIndex = [_actionSheet addButtonWithTitle:@"Cancel"];
+    }
+    return _actionSheet;
+}
 
 - (void)viewDidLoad
 {
@@ -65,6 +87,7 @@ NSString *cellID = @"cell";
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:picCellID forIndexPath:indexPath];
         cell.textLabel.text = @"Profile Picture";
+        cell.imageView.image = [UIImage imageNamed:@"BlackWidow"];
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
@@ -162,7 +185,10 @@ NSString *cellID = @"cell";
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
+        [self.actionSheet showInView:self.view];
+    }
+    else {
         User *user = [User currentUser];
         CUEditProfileTextViewController *detailViewController = [[CUEditProfileTextViewController alloc] init];
         
@@ -203,5 +229,33 @@ NSString *cellID = @"cell";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 80;
+    }
+    return 44;
+}
+
+#pragma mark - Action Sheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        return;
+    }
+    
+    UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+    
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:takePhoto] ) {
+        pickerC.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:
+                              UIImagePickerControllerSourceTypeCamera];
+    }
+    else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:choosePhoto]) {
+        pickerC.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:
+                              UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+    
+    [self presentViewController:pickerC animated:YES completion:nil];
+}
 
 @end
