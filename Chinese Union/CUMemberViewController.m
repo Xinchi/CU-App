@@ -9,9 +9,11 @@
 #import "CUMemberViewController.h"
 #import "User.h"
 #import "UIViewController+Additions.h"
+#import "CUMembers.h"
 
 @interface CUMemberViewController ()
 
+@property (retain) User *user;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *upperImageView;
@@ -25,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.user = [User currentUser];
     
     NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
     
@@ -49,8 +52,7 @@
 
 - (bool)isAMember
 {
-    User *user = [User currentUser];
-    if(user.CUMemberID != nil)
+    if(self.user.CUMemberID != nil)
     {
         return true;
     }
@@ -62,6 +64,21 @@
 
 - (IBAction)viewTapped:(id)sender {
     [self.memberIDTextField resignFirstResponder];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
+    [query whereKey:@"ID" equalTo:[self.memberIDTextField text]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            if(objects.count==1)
+            {
+                NSLog(@"Member ID Found!");
+                self.user.CUMemberID = ((CUMembers *)objects[0]).objectId;
+            }
+        }
+        else {
+            NSLog(@"Error: %@ %@",error,[error userInfo]);
+        }
+    }];
 }
 
 @end
