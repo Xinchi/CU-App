@@ -10,6 +10,8 @@
 #import "NSString+Additions.h"
 #import "User.h"
 #import "CUInputButton.h"
+#import "UIViewController+Additions.h"
+#import "NSDateFormatter+Additions.h"
 
 @interface SignUpViewController ()
 
@@ -29,30 +31,21 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
 
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDate *birthday;
 
 @end
 
 @implementation SignUpViewController
 
-- (NSDateFormatter *)dateFormatter {
-    if (_dateFormatter == nil) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    }
-    return _dateFormatter;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"Sign Up";
-    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Line + Line 2"] style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
-//    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
+    self.title = @"Sign Up";    
+
+    [self addExitButton];
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(signUpButtonPressed:)];
-    self.navigationItem.leftBarButtonItem = exitButton;
+    
     self.navigationItem.rightBarButtonItem = submitButton;
     NSLog(@"ScrollView content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
     
@@ -67,10 +60,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)exitButtonPressed {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doSignup {
@@ -123,7 +112,7 @@
 }
 
 - (IBAction)dateValueChanged:(UIDatePicker *)sender {
-    NSString *title = [self.dateFormatter stringFromDate:sender.date];
+    NSString *title = [[NSDateFormatter birthdayFormatter] stringFromDate:sender.date];
     [self.pickBirthdayButton setTitle:title forState:UIControlStateNormal];
     self.birthday = sender.date;
 }

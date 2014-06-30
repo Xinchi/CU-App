@@ -32,6 +32,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
 
+    [self customizedNavigation];
     [self registerPFSubclass];
     [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
                   clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
@@ -62,14 +63,18 @@
     // set the side menu controller as the root view controller
     self.window.rootViewController = self.sideMenuViewController;
     
-    
-    
 //    // Override point for customization after application launch.
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [self test];
     return YES;
+}
+
+- (void)customizedNavigation {
+    NSDictionary *attributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:18.0]};
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    //[[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 - (void)test

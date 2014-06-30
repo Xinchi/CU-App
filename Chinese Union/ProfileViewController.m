@@ -11,6 +11,9 @@
 #import "MySignUpViewController.h"
 #import "TWTSideMenuViewController/TWTSideMenuViewController.h"
 #import "User.h"
+#import "CUMemberViewController.h"
+#import "CUEditProfileViewController.h"
+#import "NSDateFormatter+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ProfileViewController ()
@@ -24,19 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicView;
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
 @implementation ProfileViewController
-
-- (NSDateFormatter *)dateFormatter {
-    if (_dateFormatter == nil) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    }
-    return _dateFormatter;
-}
 
 - (UIActionSheet *)actionSheet {
     if (_actionSheet == nil) {
@@ -70,7 +64,7 @@
         self.userNameLabel.text = [NSString stringWithFormat:@"%@", user.username];
         self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         self.emailLabel.text    = [NSString stringWithFormat:@"%@", user.email];
-        self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [self.dateFormatter stringFromDate:user.birthday]];
+        self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [[NSDateFormatter birthdayFormatter] stringFromDate:user.birthday]];
         NSLog(@"User b day:%@", user.birthday);
         self.phoneLabel.text    = [NSString stringWithFormat:@"%@", user.phone];
         self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID ? user.wechatID : @"Not linked to WeChat"];
@@ -101,6 +95,19 @@
 
 - (IBAction)logOutButtonTapAction:(id)sender {
     [self.actionSheet showInView:self.view];
+}
+
+- (IBAction)editButtonPressed:(id)sender {
+    CUEditProfileViewController *vc = [[CUEditProfileViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)memberButtonPressed:(id)sender {
+    CUMemberViewController *controller = [[CUMemberViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:nav animated:YES completion:nil];
+//    [self.sideMenuViewController setMainViewController:controller animated:YES closeMenu:YES];
 }
 
 @end

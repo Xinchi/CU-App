@@ -9,6 +9,7 @@
 #import "CULoginViewController.h"
 #import "SignUpViewController.h"
 #import "User.h"
+#import "UIViewController+Additions.h"
 
 @interface CULoginViewController ()
 
@@ -26,15 +27,10 @@
     [super viewDidLoad];
     
     self.title = @"Login";
-    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Line + Line 2"] style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
-//    UIBarButtonItem *exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleBordered target:self action:@selector(exitButtonPressed)];
-    self.navigationItem.leftBarButtonItem = exitButton;
+
+    [self addExitButton];
     
     [self.view addGestureRecognizer:self.tapGR];
-}
-
-- (void)exitButtonPressed {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
