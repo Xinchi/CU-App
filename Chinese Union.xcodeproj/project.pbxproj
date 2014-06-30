@@ -604,7 +604,6 @@
 		5005F268193ED75B00BF3DAC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				42D339771960EB3200F1CB8F /* Deprecated */,
 				5005F27D193EDD7500BF3DAC /* ProfileViewController.h */,
 				5005F27E193EDD7500BF3DAC /* ProfileViewController.m */,
 				5005F27F193EDD7500BF3DAC /* ProfileViewController.xib */,
@@ -647,6 +646,7 @@
 		5005F2B619465D5200BF3DAC /* Login and Sign up */ = {
 			isa = PBXGroup;
 			children = (
+				42D339771960EB3200F1CB8F /* Deprecated */,
 				5005F2B719467A1700BF3DAC /* SignUpViewController.h */,
 				5005F2B819467A1700BF3DAC /* SignUpViewController.m */,
 				5005F2B919467A1700BF3DAC /* SignUpViewController.xib */,
