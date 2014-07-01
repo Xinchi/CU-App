@@ -76,12 +76,17 @@
                 {
                     NSLog(@"The Member ID has already been activated! ");
                     //handle the already-activated case
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ooooops"
-                                                                    message:@"The Member ID has already been activated by some other user, please try with another Member ID."
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles: nil];
-                    [alert show];
+                    [PFCloud callFunctionInBackground:@"activationFailResponse" withParameters:@{} block:^(NSString *result, NSError *error){
+                        if(!error){
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ooooops"
+                                                                            message:result
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles: nil];
+                            [alert show];
+                        }
+                    }];
+                    
                 } else {
                     self.user.CUMemberID = member.objectId;
                     [self.user saveInBackground];
