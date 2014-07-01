@@ -24,4 +24,10 @@
     self.navigationItem.rightBarButtonItem = saveButton;
 }
 
+- (void)addBorderToButton:(UIButton *)button {
+    button.layer.cornerRadius = 12;
+    button.layer.borderWidth = 1;
+    button.layer.borderColor = [[UIColor whiteColor] CGColor];
+}
+
 @end

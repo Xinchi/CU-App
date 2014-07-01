@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
+@property (weak, nonatomic) IBOutlet UIButton *fbButton;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 @end
 
@@ -31,6 +34,13 @@
     [self addExitButton];
     
     [self.view addGestureRecognizer:self.tapGR];
+    
+    self.userNameTextField.layer.opacity = 0.9;
+    self.passwordTextField.layer.opacity = 0.9;
+    
+    [self addBorderToButton:self.fbButton];
+    [self addBorderToButton:self.twitterButton];
+    [self addBorderToButton:self.signupButton];
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
