@@ -56,6 +56,19 @@
     self.pickBirthdayButton.inputView = self.datePicker;
     
     [self.view addGestureRecognizer:self.tapGR];
+    
+    [self addBorderToButton:self.pickBirthdayButton];
+    
+    float opacity = 0.9;
+    self.userNameTextField.layer.opacity = opacity;
+    self.passwordTextField.layer.opacity = opacity;
+    self.confirmPasswordTextField.layer.opacity = opacity;
+    self.firstNameTextField.layer.opacity = opacity;
+    self.lastNameTextField.layer.opacity = opacity;
+    self.emailTextField.layer.opacity = opacity;
+    self.confirmEmailTextField.layer.opacity = opacity;
+    self.phoneTextField.layer.opacity = opacity;
+    self.weChatTextField.layer.opacity = opacity;
 }
 
 - (void)dealloc {
@@ -153,6 +166,41 @@
 
 #pragma mark - Text Field
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    UITextField *nextTextField = [self nextTextField:textField];
+    [nextTextField becomeFirstResponder];
+
+    if (nextTextField == nil) {
+        [self.activeResponder resignFirstResponder];
+    }
+    
+    return YES;
+}
+
+- (UITextField *)nextTextField:(UITextField *)textField {
+    static NSArray *array;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        array = @[self.userNameTextField,
+                  self.passwordTextField,
+                  self.confirmPasswordTextField,
+                  self.firstNameTextField,
+                  self.lastNameTextField,
+                  self.emailTextField,
+                  self.confirmEmailTextField,
+                  self.phoneTextField,
+                  self.weChatTextField];
+    });
+    
+    NSUInteger index = [array indexOfObject:textField];
+    NSUInteger nextIndex = index + 1;
+    if (nextIndex >= [array count]) {
+        return nil;
+    }
+    
+    return array[nextIndex];
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
@@ -194,6 +242,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"TextField:%@ did end editing", textField);
     textField.text = [textField.text cleanString];
 }
 

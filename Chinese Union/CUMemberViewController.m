@@ -9,9 +9,11 @@
 #import "CUMemberViewController.h"
 #import "User.h"
 #import "UIViewController+Additions.h"
+#import "CUMembers.h"
 
 @interface CUMemberViewController ()
 
+@property (retain) User *user;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *upperImageView;
@@ -25,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.user = [User currentUser];
     
     NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
     
@@ -49,8 +52,7 @@
 
 - (bool)isAMember
 {
-    User *user = [User currentUser];
-    if(user.CUMemberID != nil)
+    if(self.user.CUMemberID != nil)
     {
         return true;
     }
@@ -58,9 +60,39 @@
 }
 
 - (IBAction)activateButtonPressed:(id)sender {
+    NSLog(@"activateButtonPressed");
     NSString *memberID = self.memberIDTextField.text;
     
     // Do activation here
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
+    [query whereKey:@"objectId" equalTo:memberID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            if(objects.count==1)
+            {
+                CUMembers *member = (CUMembers *)objects[0];
+                NSLog(@"Member ID Found!");
+                if(member.uid !=nil)
+                {
+                    NSLog(@"The Member ID has already been activated! ");
+                    //handle the already-activated case
+                } else {
+                    self.user.CUMemberID = member.objectId;
+                    [self.user saveInBackground];
+                    member.uid = self.user.objectId;
+                    [member saveInBackground];
+                }
+
+            }
+            else {
+                NSLog(@"Invalid Member ID Entered! No matching found!");
+            }
+        }
+        else {
+            NSLog(@"Error: %@ %@",error,[error userInfo]);
+        }
+    }];
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
@@ -68,6 +100,8 @@
 
 - (IBAction)viewTapped:(id)sender {
     [self.memberIDTextField resignFirstResponder];
+    
+
 }
 
 @end

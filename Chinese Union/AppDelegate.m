@@ -67,7 +67,7 @@
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    [self test];
+//    [self test];
     return YES;
 }
 
@@ -79,18 +79,20 @@
 
 - (void)test
 {
-    User *user = [User currentUser];
-    if(user)
-    {
-        NSLog(@"CU member id = %@",user.CUMemberID);
-        if(user.CUMemberID !=nil)
-        {
-            NSLog(@"This is a CU Member");
-        }
-        else
-            NSLog(@"This is not a CU Member");
-    }
-    
+//    User *user = [User currentUser];
+//    if(user)
+//    {
+//        NSLog(@"CU member id = %@",user.CUMemberID);
+//        if(user.CUMemberID !=nil)
+//        {
+//            NSLog(@"This is a CU Member");
+//        }
+//        else
+//            NSLog(@"This is not a CU Member");
+//    }
+
+    CUMembers *cuMember = [CUMembers object];
+    [cuMember saveInBackground];
 }
 
 
