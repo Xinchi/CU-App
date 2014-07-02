@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420CDC2C196396D3001EED84 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2B196396D3001EED84 /* BugSense-iOS.framework */; };
+		420CDC2E19639A9C001EED84 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2D19639A9C001EED84 /* Appsee.framework */; };
+		420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2F19639AA8001EED84 /* AVFoundation.framework */; };
+		420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3119639AB9001EED84 /* CoreMedia.framework */; };
+		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
 		42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B24193FBEE30022D3E7 /* MosaicLayout.m */; };
 		42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B27193FBEE30022D3E7 /* MosaicData.m */; };
 		42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B2C193FBEE30022D3E7 /* MosaicCell.m */; };
@@ -140,6 +145,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420CDC2B196396D3001EED84 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../Developer/BugSense 3.6/BugSense-iOS.framework"; sourceTree = "<group>"; };
+		420CDC2D19639A9C001EED84 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Appsee.framework; path = ../../Developer/Appsee/Appsee.framework; sourceTree = "<group>"; };
+		420CDC2F19639AA8001EED84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		420CDC3119639AB9001EED84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		420CDC3319639AC2001EED84 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		42308B23193FBEE30022D3E7 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		42308B24193FBEE30022D3E7 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		42308B26193FBEE30022D3E7 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
@@ -343,6 +353,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */,
+				420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */,
+				5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */,
+				420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */,
+				420CDC2E19639A9C001EED84 /* Appsee.framework in Frameworks */,
+				420CDC2C196396D3001EED84 /* BugSense-iOS.framework in Frameworks */,
 				5005F25F193ECDA700BF3DAC /* MobileCoreServices.framework in Frameworks */,
 				5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */,
 				5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */,
@@ -351,7 +367,6 @@
 				5005F261193ECDAF00BF3DAC /* QuartzCore.framework in Frameworks */,
 				5005F25D193ECD9F00BF3DAC /* libz.dylib in Frameworks */,
 				5005F25B193ECD9500BF3DAC /* CoreLocation.framework in Frameworks */,
-				5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */,
 				5005F259193ECD7C00BF3DAC /* CFNetwork.framework in Frameworks */,
 				5005F257193ECD7400BF3DAC /* AudioToolbox.framework in Frameworks */,
 				5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */,
@@ -523,6 +538,11 @@
 		5005F224193EAC1600BF3DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				420CDC3319639AC2001EED84 /* CoreVideo.framework */,
+				420CDC3119639AB9001EED84 /* CoreMedia.framework */,
+				420CDC2F19639AA8001EED84 /* AVFoundation.framework */,
+				420CDC2D19639A9C001EED84 /* Appsee.framework */,
+				420CDC2B196396D3001EED84 /* BugSense-iOS.framework */,
 				5005F28C193EE09200BF3DAC /* Social.framework */,
 				5005F277193ED8C500BF3DAC /* FacebookSDK.framework */,
 				5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */,
@@ -1133,9 +1153,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/WeiPingLiao/Desktop/Developer/BugSense,
+					3.6,
+					/Users/WeiPingLiao/Desktop/Developer/Appsee,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";
@@ -1154,9 +1178,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/WeiPingLiao/Desktop/Developer/BugSense,
+					3.6,
+					/Users/WeiPingLiao/Desktop/Developer/Appsee,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";

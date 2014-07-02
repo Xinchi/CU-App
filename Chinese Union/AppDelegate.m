@@ -16,6 +16,8 @@
 #import "CUEvents.h"
 #import "CUProducts.h"
 #import "User.h"
+//#import <BugSense-iOS/BugSenseController.h>
+#import <Appsee/Appsee.h>
 
 @interface AppDelegate ()
 
@@ -29,6 +31,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //[BugSenseController sharedControllerWithBugSenseAPIKey:@"fdc41c40"];
+    [Appsee start:@"fa1fbc2f07994a42abf777db222bd85a"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
 
