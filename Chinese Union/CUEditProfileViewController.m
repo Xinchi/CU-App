@@ -13,6 +13,7 @@
 #import "User.h"
 #import "NSDateFormatter+Additions.h"
 #import "CUEditProfileTextViewController.h"
+#import "CUEditProfileBDViewController.h"
 
 NSString *picCellID = @"picCell";
 NSString *cellID = @"cell";
@@ -94,39 +95,39 @@ NSString *choosePhoto = @"Choose Existing Photo";
         
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"User Name";
+                cell.textLabel.text = NSLocalizedString(@"User Name", @"");
                 cell.detailTextLabel.text = user.username;
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 1:
-                cell.textLabel.text = @"First Name";
+                cell.textLabel.text = NSLocalizedString(@"First Name", @"");
                 cell.detailTextLabel.text = user.firstName;
                 break;
                 
             case 2:
-                cell.textLabel.text = @"Last Name";
+                cell.textLabel.text = NSLocalizedString(@"Last Name", @"");
                 cell.detailTextLabel.text = user.lastName;
                 break;
                 
             case 3:
-                cell.textLabel.text = @"Email";
+                cell.textLabel.text = NSLocalizedString(@"Email", @"");
                 cell.detailTextLabel.text = user.email;
                 break;
                 
             case 4:
-                cell.textLabel.text = @"Birthday";
+                cell.textLabel.text = NSLocalizedString(@"Birthday", @"");
                 cell.detailTextLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:user.birthday];
                 break;
                 
             case 5:
-                cell.textLabel.text = @"Phone";
+                cell.textLabel.text = NSLocalizedString(@"Phone", @"");
                 cell.detailTextLabel.text = user.phone;
                 break;
                 
             case 6:
-                cell.textLabel.text = @"WeChat";
+                cell.textLabel.text = NSLocalizedString(@"WeChat", @"");
                 cell.detailTextLabel.text = user.wechatID;
                 break;
                 
@@ -191,6 +192,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
     else {
         User *user = [User currentUser];
         CUEditProfileTextViewController *detailViewController = [[CUEditProfileTextViewController alloc] init];
+        CUEditProfileBDViewController *bdVC;
         
         switch (indexPath.row) {
             case 0:
@@ -199,26 +201,35 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 
             case 1:
                 detailViewController.text = user.firstName;
+                detailViewController.title = NSLocalizedString(@"First Name", @"");
                 break;
                 
             case 2:
                 detailViewController.text = user.lastName;
+                detailViewController.title = NSLocalizedString(@"Last Name", @"");
                 break;
                 
             case 3:
                 detailViewController.text = user.email;
+                detailViewController.title = NSLocalizedString(@"Email", @"");
                 break;
                 
             case 4:
+                bdVC = [[CUEditProfileBDViewController alloc] init];
+                bdVC.title = NSLocalizedString(@"Birthday", @"");
+                bdVC.birthday = user.birthday;
+                [self.navigationController pushViewController:bdVC animated:YES];
                 return;
                 break;
                 
             case 5:
                 detailViewController.text = user.phone;
+                detailViewController.title = NSLocalizedString(@"Phone", @"");
                 break;
                 
             case 6:
                 detailViewController.text = user.wechatID;
+                detailViewController.title = NSLocalizedString(@"WeChat", @"");
                 break;
                 
             default:

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420CDC2C196396D3001EED84 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2B196396D3001EED84 /* BugSense-iOS.framework */; };
-		420CDC2E19639A9C001EED84 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2D19639A9C001EED84 /* Appsee.framework */; };
 		420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2F19639AA8001EED84 /* AVFoundation.framework */; };
 		420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3119639AB9001EED84 /* CoreMedia.framework */; };
 		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
@@ -43,6 +41,9 @@
 		42D339711960E4D000F1CB8F /* NSDateFormatter+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D339701960E4D000F1CB8F /* NSDateFormatter+Additions.m */; };
 		42D339751960EA4200F1CB8F /* CUEditProfileTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */; };
 		42D339761960EA4200F1CB8F /* CUEditProfileTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */; };
+		42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */; };
+		42E313EE1963BFA700F5CFBC /* CUEditProfileBDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */; };
+		42E313F01963D6B000F5CFBC /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E313EF1963D6B000F5CFBC /* Appsee.framework */; };
 		5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F225193EAC1600BF3DAC /* Foundation.framework */; };
 		5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F227193EAC1600BF3DAC /* CoreGraphics.framework */; };
 		5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F229193EAC1600BF3DAC /* UIKit.framework */; };
@@ -207,6 +208,10 @@
 		42D339721960EA4200F1CB8F /* CUEditProfileTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileTextViewController.h; sourceTree = "<group>"; };
 		42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileTextViewController.m; sourceTree = "<group>"; };
 		42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileTextViewController.xib; sourceTree = "<group>"; };
+		42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileBDViewController.h; sourceTree = "<group>"; };
+		42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileBDViewController.m; sourceTree = "<group>"; };
+		42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileBDViewController.xib; sourceTree = "<group>"; };
+		42E313EF1963D6B000F5CFBC /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		5005F222193EAC1600BF3DAC /* Chinese Union.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chinese Union.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5005F225193EAC1600BF3DAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5005F227193EAC1600BF3DAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -357,10 +362,9 @@
 				420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */,
 				5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */,
 				420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */,
-				420CDC2E19639A9C001EED84 /* Appsee.framework in Frameworks */,
-				420CDC2C196396D3001EED84 /* BugSense-iOS.framework in Frameworks */,
 				5005F25F193ECDA700BF3DAC /* MobileCoreServices.framework in Frameworks */,
 				5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */,
+				42E313F01963D6B000F5CFBC /* Appsee.framework in Frameworks */,
 				5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */,
 				5005F265193ECDBC00BF3DAC /* StoreKit.framework in Frameworks */,
 				5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */,
@@ -538,6 +542,7 @@
 		5005F224193EAC1600BF3DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42E313EF1963D6B000F5CFBC /* Appsee.framework */,
 				420CDC3319639AC2001EED84 /* CoreVideo.framework */,
 				420CDC3119639AB9001EED84 /* CoreMedia.framework */,
 				420CDC2F19639AA8001EED84 /* AVFoundation.framework */,
@@ -639,6 +644,9 @@
 				42D339721960EA4200F1CB8F /* CUEditProfileTextViewController.h */,
 				42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */,
 				42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */,
+				42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */,
+				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
+				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -949,6 +957,7 @@
 				50932B02195902D300674269 /* jcb.png in Resources */,
 				50932B00195902D300674269 /* discover.png in Resources */,
 				5005F283193EDD7500BF3DAC /* ProfileViewController.xib in Resources */,
+				42E313EE1963BFA700F5CFBC /* CUEditProfileBDViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1019,7 @@
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */,
 				5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */,
 				50932ABE1959024B00674269 /* MBProgressHUD.m in Sources */,
 				50932AE3195902AE00674269 /* PKView.m in Sources */,
