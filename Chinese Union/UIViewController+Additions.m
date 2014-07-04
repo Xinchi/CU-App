@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+Additions.h"
+#import "MBProgressHUD.h"
 
 @implementation UIViewController (Additions)
 
@@ -20,8 +21,17 @@
 }
 
 - (void)addSaveButton {
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveButtonPressed)];
     self.navigationItem.rightBarButtonItem = saveButton;
+}
+
+- (void)saveButtonPressed {
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+        NSLog(@"saved!");
+    });
 }
 
 - (void)addBorderToButton:(UIButton *)button {

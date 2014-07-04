@@ -13,6 +13,7 @@
 - (void)addExitButton;
 - (void)exitButtonPressed;
 - (void)addSaveButton;
+- (void)saveButtonPressed;
 - (void)addBorderToButton:(UIButton *)button;
 
 @end
