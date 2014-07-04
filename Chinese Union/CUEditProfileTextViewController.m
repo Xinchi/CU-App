@@ -32,4 +32,9 @@
     [self.textField becomeFirstResponder];
 }
 
+- (void)saveButtonPressed {
+    [self.textField resignFirstResponder];
+    [super saveButtonPressed];
+}
+
 @end
