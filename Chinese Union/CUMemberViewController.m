@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UIViewController+Additions.h"
 #import "CUMembers.h"
+#import "NSString+Additions.h"
 
 @interface CUMemberViewController ()
 
@@ -62,6 +63,12 @@
 - (IBAction)activateButtonPressed:(id)sender {
     NSLog(@"activateButtonPressed");
     NSString *memberID = self.memberIDTextField.text;
+    
+    if (![memberID cleanString].length > 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:@"Please fill in member ID" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
     // Do activation here
     
