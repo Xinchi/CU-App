@@ -8,6 +8,7 @@
 
 #import "CUEditProfileTextViewController.h"
 #import "UIViewController+Additions.h"
+#import "MBProgressHUD.h"
 
 @interface CUEditProfileTextViewController ()
 
@@ -34,7 +35,28 @@
 
 - (void)saveButtonPressed {
     [self.textField resignFirstResponder];
-    [super saveButtonPressed];
+    
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    switch (self.option) {
+        case CUProfileEditFirstName:
+            break;
+            
+        case CUProfileEditLastName:
+            break;
+            
+        case CUProfileEditEmail:
+            break;
+            
+        case CUProfileEditPhone:
+            break;
+            
+        case CUProfileEditWeChat:
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

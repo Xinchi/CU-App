@@ -14,6 +14,7 @@
 #import "NSDateFormatter+Additions.h"
 #import "CUEditProfileTextViewController.h"
 #import "CUEditProfileBDViewController.h"
+#import "CUProfileEditOption.h"
 
 NSString *picCellID = @"picCell";
 NSString *cellID = @"cell";
@@ -202,16 +203,19 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 1:
                 detailViewController.text = user.firstName;
                 detailViewController.title = NSLocalizedString(@"First Name", @"");
+                detailViewController.option = CUProfileEditFirstName;
                 break;
                 
             case 2:
                 detailViewController.text = user.lastName;
                 detailViewController.title = NSLocalizedString(@"Last Name", @"");
+                detailViewController.option = CUProfileEditLastName;
                 break;
                 
             case 3:
                 detailViewController.text = user.email;
                 detailViewController.title = NSLocalizedString(@"Email", @"");
+                detailViewController.option = CUProfileEditEmail;
                 break;
                 
             case 4:
@@ -225,11 +229,13 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 5:
                 detailViewController.text = user.phone;
                 detailViewController.title = NSLocalizedString(@"Phone", @"");
+                detailViewController.option = CUProfileEditPhone;
                 break;
                 
             case 6:
                 detailViewController.text = user.wechatID;
                 detailViewController.title = NSLocalizedString(@"WeChat", @"");
+                detailViewController.option = CUProfileEditWeChat;
                 break;
                 
             default:
