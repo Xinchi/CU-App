@@ -208,6 +208,7 @@
 		42D339721960EA4200F1CB8F /* CUEditProfileTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileTextViewController.h; sourceTree = "<group>"; };
 		42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileTextViewController.m; sourceTree = "<group>"; };
 		42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileTextViewController.xib; sourceTree = "<group>"; };
+		42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUProfileEditOption.h; sourceTree = "<group>"; };
 		42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileBDViewController.h; sourceTree = "<group>"; };
 		42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileBDViewController.m; sourceTree = "<group>"; };
 		42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileBDViewController.xib; sourceTree = "<group>"; };
@@ -647,6 +648,7 @@
 				42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */,
 				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
 				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
+				42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */,
 			);
 			name = Profile;
 			sourceTree = "<group>";

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CUProfileEditOption.h"
 
 @interface CUEditProfileTextViewController : UIViewController
 
 @property (strong, nonatomic) NSString *text;
+@property (nonatomic) CUProfileEditOption option;
 
 @end
