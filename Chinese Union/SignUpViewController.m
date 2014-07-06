@@ -12,24 +12,74 @@
 #import "CUInputButton.h"
 #import "UIViewController+Additions.h"
 #import "NSDateFormatter+Additions.h"
+#import "SLGlowingTextField.h"
+
+@interface SLGlowingTextField (Valid)
+
+- (void)inValidate;
+- (void)validate;
+- (BOOL)validLength;
+- (BOOL)validString:(NSString *)string;
+- (BOOL)validEmailFormat;
+- (BOOL)checkCondition:(BOOL)condition;
+
+@end
+
+@implementation SLGlowingTextField (Valid)
+
+- (void)inValidate {
+    self.alwaysGlowing = YES;
+    self.glowingColor = [UIColor colorWithRed:1.000 green:0.180 blue:0.097 alpha:1.000];
+}
+
+- (void)validate {
+    self.alwaysGlowing = NO;
+    self.glowingColor = [UIColor colorWithRed:(82.f / 255.f) green:(168.f / 255.f) blue:(236.f / 255.f) alpha:0.8];
+}
+
+- (BOOL)validLength {
+    return [self checkCondition:[self.text cleanString].length > 0];
+}
+
+- (BOOL)validString:(NSString *)string {
+    return [self checkCondition:[self.text isEqualToString:string]];
+}
+
+- (BOOL)validEmailFormat {
+    return [self checkCondition:[self.text isEmailFormat]];
+}
+
+- (BOOL)checkCondition:(BOOL)condition {
+    if (!condition) {
+        [self inValidate];
+    }
+    else {
+        [self validate];
+    }
+    return condition;
+}
+
+@end
 
 @interface SignUpViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) UIEdgeInsets originalInsets;
 @property (weak, nonatomic) UIResponder *activeResponder;
-@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *confirmEmailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
-@property (weak, nonatomic) IBOutlet UITextField *weChatTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *confirmEmailTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *weChatTextField;
 @property (weak, nonatomic) IBOutlet CUInputButton *pickBirthdayButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
+
+@property (strong, nonatomic) NSArray *textFields;
 
 @property (strong, nonatomic) NSDate *birthday;
 
@@ -59,16 +109,20 @@
     
     [self addBorderToButton:self.pickBirthdayButton];
     
+    self.textFields = @[self.userNameTextField,
+                        self.passwordTextField,
+                        self.confirmPasswordTextField,
+                        self.firstNameTextField,
+                        self.lastNameTextField,
+                        self.emailTextField,
+                        self.confirmEmailTextField,
+                        self.phoneTextField,
+                        self.weChatTextField];
+    
     float opacity = 0.9;
-    self.userNameTextField.layer.opacity = opacity;
-    self.passwordTextField.layer.opacity = opacity;
-    self.confirmPasswordTextField.layer.opacity = opacity;
-    self.firstNameTextField.layer.opacity = opacity;
-    self.lastNameTextField.layer.opacity = opacity;
-    self.emailTextField.layer.opacity = opacity;
-    self.confirmEmailTextField.layer.opacity = opacity;
-    self.phoneTextField.layer.opacity = opacity;
-    self.weChatTextField.layer.opacity = opacity;
+    for (SLGlowingTextField *textfield in self.textFields) {
+        textfield.layer.opacity = opacity;
+    }
 }
 
 - (void)dealloc {
@@ -174,27 +228,13 @@
 }
 
 - (UITextField *)nextTextField:(UITextField *)textField {
-    static NSArray *array;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        array = @[self.userNameTextField,
-                  self.passwordTextField,
-                  self.confirmPasswordTextField,
-                  self.firstNameTextField,
-                  self.lastNameTextField,
-                  self.emailTextField,
-                  self.confirmEmailTextField,
-                  self.phoneTextField,
-                  self.weChatTextField];
-    });
-    
-    NSUInteger index = [array indexOfObject:textField];
+    NSUInteger index = [self.textFields indexOfObject:textField];
     NSUInteger nextIndex = index + 1;
-    if (nextIndex >= [array count]) {
+    if (nextIndex >= [self.textFields count]) {
         return nil;
     }
     
-    return array[nextIndex];
+    return self.textFields[nextIndex];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -207,7 +247,7 @@
         BOOL valid = [string isAlphaNumeric];
         
         if (!valid) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Cannot contain %@", string] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:[NSString stringWithFormat:@"Cannot contain %@", string] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
             [alert show];
         }
         
@@ -215,22 +255,6 @@
     }
     
     return YES;
-    
-//    if (YES) {
-//        NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
-//        NSLog(@"current string length: %d", textField.text.length);
-//        
-//        if ([string isAllDigits]) {
-//            return YES;
-//        }
-//        else if ([string isEqualToString:@" "] && range.length > 0) {
-//            // The character is space, but the action is deleting, thus return YES
-//            return YES;
-//        }
-//        else {
-//            return NO;
-//        }
-//    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -240,61 +264,136 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSLog(@"TextField:%@ did end editing", textField);
     textField.text = [textField.text cleanString];
+    [self validateTextField:textField];
 }
+
+- (NSString *)validateTextField:(SLGlowingTextField *)textField {
+    if (textField == self.userNameTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in user name", @"");
+        }
+    }
+    
+    if (textField == self.passwordTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in password", @"");
+        }
+    }
+    
+    if (textField == self.confirmPasswordTextField) {
+        if (![textField validString:self.passwordTextField.text]) {
+            return NSLocalizedString(@"Passwords are not the same", @"");
+        }
+    }
+
+    if (textField == self.firstNameTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in first name", @"");
+        }
+    }
+    
+    if (textField == self.lastNameTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in last name", @"");
+        }
+    }
+    
+    if (textField == self.emailTextField) {
+        if (![textField validEmailFormat]) {
+            return NSLocalizedString(@"Wrong email format", @"");
+        }
+    }
+    
+    if (textField == self.confirmEmailTextField) {
+        if (![textField validString:self.emailTextField.text]) {
+            return NSLocalizedString(@"Email addresses are not the same", @"");
+        }
+    }
+    
+    if (textField == self.phoneTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in phone number", @"");
+        }
+    }
+    
+    if (textField == self.weChatTextField) {
+        if (![textField validLength]) {
+            return NSLocalizedString(@"Please fill in WeChat ID", @"");
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)validateInputs {
+    NSMutableArray *errorMsgs = [NSMutableArray array];
+    
+    for (SLGlowingTextField *textfield in self.textFields) {
+        NSString *err = [self validateTextField:textfield];
+        if (err) {
+            [errorMsgs addObject:err];
+        }
+    }
+    
+    return [errorMsgs componentsJoinedByString:@"\n"];
+}
+
+//- (NSString *)validateInputs {
+//    NSMutableArray *errorMsgs = [NSMutableArray array];
+//    
+//    if (!self.userNameTextField.text.length > 0) {
+//        [errorMsgs addObject:@"Please fill in user name"];
+//    }
+//    
+//    if (!self.passwordTextField.text.length > 0) {
+//        [errorMsgs addObject:@"Please fill in password"];
+//    }
+//    
+//    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
+//        [errorMsgs addObject:@"Passwords are not the same"];
+//    }
+//    
+//    if (![self.firstNameTextField.text cleanString].length > 0) {
+//        [errorMsgs addObject:@"Please fill in first name"];
+//    }
+//    
+//    if (![self.lastNameTextField.text cleanString].length > 0) {
+//        [errorMsgs addObject:@"Please fill in last name"];
+//    }
+//    
+//    BOOL emailValid = [self.emailTextField.text isEmailFormat];
+//    
+//    if (!emailValid) {
+//        [errorMsgs addObject:@"Wrong email format"];
+//    }
+//    
+//    if (![self.emailTextField.text isEqualToString:self.confirmEmailTextField.text]) {
+//        [errorMsgs addObject:@"EMail addresses are not the same"];
+//    }
+//    
+//    if (!self.phoneTextField.text.length > 0) {
+//        [errorMsgs addObject:@"Please fill in phone number"];
+//    }
+//    
+//    if (!self.weChatTextField.text.length > 0) {
+//        [errorMsgs addObject:@"Please fill in WeChat ID"];
+//    }
+//    
+//    if (!self.birthday) {
+//        [errorMsgs addObject:@"Please pick your birthday"];
+//    }
+//    
+//    return [errorMsgs componentsJoinedByString:@"\n"];
+//}
 
 - (IBAction)signUpButtonPressed:(id)sender {
     [self.activeResponder resignFirstResponder];
     
-    NSMutableArray *errorMsgs = [NSMutableArray array];
+    NSString *errorMsgs = [self validateInputs];
     
-    if (!self.userNameTextField.text.length > 0) {
-        [errorMsgs addObject:@"Please fill in user name"];
-    }
-    
-    if (!self.passwordTextField.text.length > 0) {
-        [errorMsgs addObject:@"Please fill in password"];
-    }
-    
-    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-        [errorMsgs addObject:@"Passwords are not the same"];
-    }
-    
-    if (![self.firstNameTextField.text cleanString].length > 0) {
-        [errorMsgs addObject:@"Please fill in first name"];
-    }
-    
-    if (![self.lastNameTextField.text cleanString].length > 0) {
-        [errorMsgs addObject:@"Please fill in last name"];
-    }
-    
-    BOOL emailValid = [self.emailTextField.text isEmailFormat];
-    
-    if (!emailValid) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong Email Format" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
-        [errorMsgs addObject:@"Wrong email format"];
-    }
-
-    if (![self.emailTextField.text isEqualToString:self.confirmEmailTextField.text]) {
-        [errorMsgs addObject:@"EMail addresses are not the same"];
-    }
-    
-    if (!self.phoneTextField.text.length > 0) {
-        [errorMsgs addObject:@"Please fill in phone number"];
-    }
-    
-    if (!self.weChatTextField.text.length > 0) {
-        [errorMsgs addObject:@"Please fill in WeChat ID"];
-    }
-    
-    if (!self.birthday) {
-        [errorMsgs addObject:@"Please pick your birthday"];
-    }
-    
-    if (errorMsgs.count > 0) {
-        NSString *message = [errorMsgs componentsJoinedByString:@"\n"];
+    if (errorMsgs.length > 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:message
+                                                        message:errorMsgs
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
