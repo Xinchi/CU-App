@@ -9,6 +9,7 @@
 #import "CUEditProfileBDViewController.h"
 #import "NSDateFormatter+Additions.h"
 #import "UIViewController+Additions.h"
+#import "MBProgressHUD.h"
 
 @interface CUEditProfileBDViewController ()
 
@@ -33,6 +34,10 @@
 
 - (IBAction)dateChanged:(UIDatePicker *)sender {
     self.label.text = [[NSDateFormatter birthdayFormatter] stringFromDate:sender.date];
+}
+
+- (void)saveButtonPressed {
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 }
 
 @end
