@@ -11,14 +11,20 @@
 #import "UIViewController+Additions.h"
 #import "CUMembers.h"
 #import "NSString+Additions.h"
+#import "MBProgressHUD.h"
 
 @interface CUMemberViewController ()
 
 @property (retain) User *user;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
+@property (weak, nonatomic) IBOutlet UIView *memberView;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *upperImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *lowerImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *userPicImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memberIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expireDateLabel;
 
 @end
 
@@ -34,21 +40,32 @@
     
     self.title = @"Member";
     
-    [self addExitButton];    
-    
-    UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
-    UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);\
-    backgroundImage = [backgroundImage resizableImageWithCapInsets:backgroundInsets];
-
-    self.upperImageView.image = backgroundImage;
-    self.lowerImageView.image = backgroundImage;
-    
-//    self.notMemberView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_White"]];
+    [self addExitButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self updateMemberView];
+}
+
+- (void)updateMemberView {
     self.notMemberView.hidden = [self isAMember];
+    self.memberView.hidden    = ![self isAMember];
+    
+    if ([self isAMember]) {
+        self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
+        self.memberIDLabel.text = self.user.CUMemberID;
+//        self.expireDateLabel.text = self.user.
+    }
+    else {
+        UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
+        UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);
+        backgroundImage = [backgroundImage resizableImageWithCapInsets:backgroundInsets];
+        
+        self.upperImageView.image = backgroundImage;
+        self.lowerImageView.image = backgroundImage;
+    }
 }
 
 - (bool)isAMember
@@ -71,54 +88,62 @@
     }
     
     // Do activation here
+    [self.memberIDTextField resignFirstResponder];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     
     PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
     [query getObjectInBackgroundWithId:memberID block:^(PFObject *object, NSError *error) {
         if(!error){
-            if(object!=nil)
-            {
-                CUMembers *member = (CUMembers *)object;
-                
-                NSLog(@"Member ID Found!");
-                if(member.uid !=nil)
-                {
-                    NSLog(@"The Member ID has already been activated! ");
-                    //handle the already-activated case
-                    [PFCloud callFunctionInBackground:@"activationFailResponse" withParameters:@{} block:^(NSString *result, NSError *error){
-                        if(!error){
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ooooops"
-                                                                            message:result
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"OK"
-                                                                  otherButtonTitles: nil];
-                            [alert show];
-                        }
-                    }];
-                    
-                } else {
-                    self.user.CUMemberID = member.objectId;
-                    [self.user saveInBackground];
-                    member.uid = self.user.objectId;
-                    NSLog(@"Starting to save member uid");
-                    [member save];
-                    NSLog(@"Done saving member uid");
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
-                                                                    message:@"You have successfully activated your CU membership, thank you!"
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles: nil];
-                    [alert show];
-                }
 
+            CUMembers *member = (CUMembers *)object;
+        
+            NSLog(@"Member ID Found!");
+            if(member.uid !=nil)
+            {
+                NSLog(@"The Member ID has already been activated!");
+                //handle the already-activated case
+                [PFCloud callFunctionInBackground:@"activationFailResponse" withParameters:@{} block:^(NSString *result, NSError *error){
+                    if(!error){
+                        [self showAlertTitle:NSLocalizedString(@"Error", @"")
+                                         msg:result];
+                    }
+                }];
+                
+            } else {
+                self.user.CUMemberID = member.objectId;
+                [self.user saveInBackground];
+                member.uid = self.user.objectId;
+                [member saveInBackground];
+                [PFCloud callFunctionInBackground:@"activationSuccessResponse" withParameters:@{} block:^(NSString *result, NSError *error){
+                    if(!error){
+                        [self showAlertTitle:NSLocalizedString(@"Congratulations!", @"")
+                                 msg:result];
+                    }
+                }];
             }
-            else {
-                NSLog(@"Invalid Member ID Entered! No matching found!");
-            }
+
         }
         else {
-            NSLog(@"Error here: %@ %@",error,[error userInfo]);
+            NSLog(@"Invalid Member ID Entered! No matching found!");
+            [PFCloud callFunctionInBackground:@"invalidMemberId" withParameters:@{} block:^(NSString *result, NSError *error){
+                if(!error){
+                    [self showAlertTitle:NSLocalizedString(@"Error", @"")
+                                     msg:result];
+                }
+            }];
         }
+        [self updateMemberView];
     }];
+}
+
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
@@ -126,8 +151,6 @@
 
 - (IBAction)viewTapped:(id)sender {
     [self.memberIDTextField resignFirstResponder];
-    
-
 }
 
 @end
