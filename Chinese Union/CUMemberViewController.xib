@@ -6,10 +6,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CUMemberViewController">
             <connections>
+                <outlet property="expireDateLabel" destination="BcU-RJ-u4Z" id="PtB-5E-Z4c"/>
                 <outlet property="lowerImageView" destination="hJE-WT-rRw" id="Bnf-7B-LJE"/>
+                <outlet property="memberIDLabel" destination="1xf-04-ZPb" id="ytx-xY-h2Q"/>
                 <outlet property="memberIDTextField" destination="gjt-TI-Kj6" id="q62-11-nJz"/>
+                <outlet property="memberView" destination="TIi-CT-joW" id="1ci-Ql-Hjl"/>
                 <outlet property="notMemberView" destination="pi0-OF-Vyg" id="AfY-3b-Ja8"/>
                 <outlet property="upperImageView" destination="D14-uX-zgh" id="PLe-ve-QKM"/>
+                <outlet property="userNameLabel" destination="gf0-9z-RBI" id="Wxo-u7-cFV"/>
+                <outlet property="userPicImageView" destination="8ex-H0-m2D" id="5Sq-Xu-uis"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pi0-OF-Vyg">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi0-OF-Vyg">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -93,8 +98,47 @@
                         <outletCollection property="gestureRecognizers" destination="JuE-EQ-l02" appends="YES" id="8fS-5g-Kkq"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIi-CT-joW">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlackWidow" translatesAutoresizingMaskIntoConstraints="NO" id="8ex-H0-m2D">
+                            <rect key="frame" x="20" y="108" width="158" height="102"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-9z-RBI">
+                            <rect key="frame" x="186" y="108" width="114" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xf-04-ZPb">
+                            <rect key="frame" x="186" y="148" width="114" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-RJ-u4Z">
+                            <rect key="frame" x="186" y="189" width="114" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TIi-CT-joW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6C5-Sm-cJa"/>
+                <constraint firstAttribute="trailing" secondItem="pi0-OF-Vyg" secondAttribute="trailing" id="9WF-uv-mIn"/>
+                <constraint firstAttribute="trailing" secondItem="TIi-CT-joW" secondAttribute="trailing" id="J92-lu-Vde"/>
+                <constraint firstItem="TIi-CT-joW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kbb-qK-5Gg"/>
+                <constraint firstItem="pi0-OF-Vyg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sry-sR-hpj"/>
+                <constraint firstItem="pi0-OF-Vyg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Xog-6a-Xmc"/>
+                <constraint firstAttribute="bottom" secondItem="pi0-OF-Vyg" secondAttribute="bottom" id="iz2-bf-Tpe"/>
+                <constraint firstAttribute="bottom" secondItem="TIi-CT-joW" secondAttribute="bottom" id="zI1-n9-Zib"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -106,6 +150,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="BlackWidow" width="683" height="384"/>
         <image name="Line" width="295" height="1"/>
     </resources>
 </document>
