@@ -78,6 +78,7 @@
             if(object!=nil)
             {
                 CUMembers *member = (CUMembers *)object;
+                
                 NSLog(@"Member ID Found!");
                 if(member.uid !=nil)
                 {
@@ -98,7 +99,9 @@
                     self.user.CUMemberID = member.objectId;
                     [self.user saveInBackground];
                     member.uid = self.user.objectId;
-                    [member saveInBackground];
+                    NSLog(@"Starting to save member uid");
+                    [member save];
+                    NSLog(@"Done saving member uid");
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
                                                                     message:@"You have successfully activated your CU membership, thank you!"
                                                                    delegate:nil
@@ -113,7 +116,7 @@
             }
         }
         else {
-            NSLog(@"Error: %@ %@",error,[error userInfo]);
+            NSLog(@"Error here: %@ %@",error,[error userInfo]);
         }
     }];
 }
