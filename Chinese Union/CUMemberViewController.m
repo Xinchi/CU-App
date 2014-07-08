@@ -73,22 +73,38 @@
     // Do activation here
     
     PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
-    [query whereKey:@"objectId" equalTo:memberID];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [query getObjectInBackgroundWithId:memberID block:^(PFObject *object, NSError *error) {
         if(!error){
-            if(objects.count==1)
+            if(object!=nil)
             {
-                CUMembers *member = (CUMembers *)objects[0];
+                CUMembers *member = (CUMembers *)object;
                 NSLog(@"Member ID Found!");
                 if(member.uid !=nil)
                 {
                     NSLog(@"The Member ID has already been activated! ");
                     //handle the already-activated case
+                    [PFCloud callFunctionInBackground:@"activationFailResponse" withParameters:@{} block:^(NSString *result, NSError *error){
+                        if(!error){
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ooooops"
+                                                                            message:result
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles: nil];
+                            [alert show];
+                        }
+                    }];
+                    
                 } else {
                     self.user.CUMemberID = member.objectId;
                     [self.user saveInBackground];
                     member.uid = self.user.objectId;
                     [member saveInBackground];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
+                                                                    message:@"You have successfully activated your CU membership, thank you!"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles: nil];
+                    [alert show];
                 }
 
             }

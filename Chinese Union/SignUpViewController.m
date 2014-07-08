@@ -136,22 +136,18 @@
     
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
-    user.email = self.emailTextField.text;
-    
-    // other fields can be set just like with PFObject
-    user.phone = self.phoneTextField.text;
-    user.wechatID = self.weChatTextField.text;
     user.firstName = self.firstNameTextField.text;
     user.lastName = self.lastNameTextField.text;
+    user.email = self.emailTextField.text;
+    user.phone = self.phoneTextField.text;
+    user.wechatID = self.weChatTextField.text;
     user.birthday = self.datePicker.date;
-//    user[@"memberID"] = @"";
-//    user[@""] = @"";
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             if (succeeded) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Succeed"
-                                                                message:@"Sign up succeeded! Enjoy the app"
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
+                                                                message:@"Sign up is successful, welcome to Chinese Union! "
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles: nil];

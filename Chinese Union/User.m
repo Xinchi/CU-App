@@ -14,6 +14,7 @@
 @dynamic role;
 @dynamic firstName;
 @dynamic lastName;
+@dynamic gender;
 @dynamic CUMemberID;
 @dynamic wechatID;
 @dynamic birthday;

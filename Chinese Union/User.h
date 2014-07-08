@@ -14,6 +14,7 @@
 @property (retain) NSString *role;
 @property (retain) NSString *firstName;
 @property (retain) NSString *lastName;
+@property (retain) NSString *gender;
 @property (retain) NSString *CUMemberID;
 @property (retain) NSString *wechatID;
 @property (retain) NSDate *birthday;
