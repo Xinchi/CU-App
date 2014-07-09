@@ -12,6 +12,7 @@
 #import "CUMembers.h"
 #import "NSString+Additions.h"
 #import "MBProgressHUD.h"
+#import "QRGenerator.h"
 
 @interface CUMemberViewController ()
 
