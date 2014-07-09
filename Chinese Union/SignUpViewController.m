@@ -13,6 +13,7 @@
 #import "UIViewController+Additions.h"
 #import "NSDateFormatter+Additions.h"
 #import "SLGlowingTextField.h"
+#import "MBProgressHUD.h"
 
 @interface SLGlowingTextField (Valid)
 
@@ -131,6 +132,7 @@
 
 - (void)doSignup {
 
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     User *user = (User *)[User user];
 
     
@@ -143,26 +145,23 @@
     user.wechatID = self.weChatTextField.text;
     user.birthday = self.datePicker.date;
     
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             if (succeeded) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!"
-                                                                message:@"Sign up is successful, welcome to Chinese Union! "
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles: nil];
-                [alert show];
+                [PFCloud callFunctionInBackground:@"signupSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
+                    if(!error){
+                        [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                                         msg:result];
+                    }
+                }];
+
                 [self.delegate signUpViewController:self didSignUpUser:user];
             }
             // Hooray! Let them use the app now.
         } else {
             NSString *errorString = [error userInfo][@"error"];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:errorString
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles: nil];
-            [alert show];
+            [self showAlertTitle:NSLocalizedString(@"Error",@"") msg:errorString];
         }
     }];
 }
@@ -247,8 +246,7 @@
         BOOL valid = [string isAlphaNumeric];
         
         if (!valid) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:[NSString stringWithFormat:@"Cannot contain %@", string] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles: nil];
-            [alert show];
+            [self showAlertTitle: NSLocalizedString(@"Error", @"") msg:[NSString stringWithFormat:@"Cannot contain %@", string]];
         }
         
         return valid;
@@ -392,16 +390,22 @@
     NSString *errorMsgs = [self validateInputs];
     
     if (errorMsgs.length > 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:errorMsgs
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+
+        [self showAlertTitle: NSLocalizedString(@"Error", @"") msg:errorMsgs];
         return;
     }
     
     [self doSignup];
+}
+
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
 }
 
 @end

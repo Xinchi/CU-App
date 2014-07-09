@@ -99,7 +99,7 @@
 
     for(int i = 0;i<n;i++)
     {
-        PFACL *postACL = [PFACL ACLWithUser:[User currentUser]];
+        PFACL *postACL = [PFACL ACL];
         [postACL setPublicReadAccess:YES];
         CUMembers *cuMember = [CUMembers object];
         cuMember.ACL = postACL;
