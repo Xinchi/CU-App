@@ -10,6 +10,7 @@
 #import "SignUpViewController.h"
 #import "User.h"
 #import "UIViewController+Additions.h"
+#import "MBProgressHUD.h"
 
 @interface CULoginViewController ()
 
@@ -52,21 +53,33 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSError *error;
+    //show MB
+    
+    NSLog(@"Button Pressed!");
+    
     [User logInWithUsername:self.userNameTextField.text
                    password:self.passwordTextField.text
                       error:&error];
     
     if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:[error userInfo][@"error"]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-        [alert show];
+        [PFCloud callFunctionInBackground:@"loginFail" withParameters:@{} block:^(NSString *result, NSError *error){
+            if(!error){
+                [self showAlertTitle:NSLocalizedString(@"Error", @"")
+                                 msg:result];
+            }
+        }];
     }
     else {
         NSLog(@"Login Succeeded!");
+        [PFCloud callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
+            if(!error){
+                [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                                 msg:result];
+            }
+        }];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -89,6 +102,16 @@
         [self loginButtonPressed:nil];
     }
     return YES;
+}
+
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 @end

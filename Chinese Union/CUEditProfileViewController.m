@@ -264,10 +264,10 @@ NSString *choosePhoto = @"Choose Existing Photo";
     UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
     
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:takePhoto] ) {
-        pickerC.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:
-                              UIImagePickerControllerSourceTypeCamera];
+        pickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:choosePhoto]) {
+        pickerC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         pickerC.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:
                               UIImagePickerControllerSourceTypePhotoLibrary];
     }

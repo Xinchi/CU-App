@@ -133,6 +133,7 @@
 		50932B17195902EB00674269 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B13195902EB00674269 /* StripeError.m */; };
 		50932B761960B77000674269 /* CUMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B741960B77000674269 /* CUMemberViewController.m */; };
 		50932B771960B77000674269 /* CUMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50932B751960B77000674269 /* CUMemberViewController.xib */; };
+		50932B7A196D215C00674269 /* QRGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B79196D215C00674269 /* QRGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,6 +353,8 @@
 		50932B731960B77000674269 /* CUMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUMemberViewController.h; sourceTree = "<group>"; };
 		50932B741960B77000674269 /* CUMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUMemberViewController.m; sourceTree = "<group>"; };
 		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
+		50932B78196D215C00674269 /* QRGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRGenerator.h; sourceTree = "<group>"; };
+		50932B79196D215C00674269 /* QRGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,6 +698,8 @@
 				5005F300194968E300BF3DAC /* libqrencode */,
 				5005F30F194968E300BF3DAC /* UIImage+MDQRCode.h */,
 				5005F310194968E300BF3DAC /* UIImage+MDQRCode.m */,
+				50932B78196D215C00674269 /* QRGenerator.h */,
+				50932B79196D215C00674269 /* QRGenerator.m */,
 			);
 			path = QR;
 			sourceTree = "<group>";
@@ -901,6 +906,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ucsd.ChineseUnion;
 				TargetAttributes = {
+					5005F221193EAC1600BF3DAC = {
+						DevelopmentTeam = XBXPNW7EZC;
+					};
 					5005F23C193EAC1700BF3DAC = {
 						TestTargetID = 5005F221193EAC1600BF3DAC;
 					};
@@ -988,6 +996,7 @@
 				42D339751960EA4200F1CB8F /* CUEditProfileTextViewController.m in Sources */,
 				50932AE2195902AE00674269 /* PKUSAddressZip.m in Sources */,
 				50932AB61959013600674269 /* PFProductTableViewCell.m in Sources */,
+				50932B7A196D215C00674269 /* QRGenerator.m in Sources */,
 				42308B55193FC1030022D3E7 /* AFURLConnectionOperation.m in Sources */,
 				42D3396D1960DE7900F1CB8F /* CUProfilePicCell.m in Sources */,
 				5005F316194968E300BF3DAC /* rscode.c in Sources */,
@@ -1165,6 +1174,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1181,6 +1192,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1190,6 +1202,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1206,6 +1220,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

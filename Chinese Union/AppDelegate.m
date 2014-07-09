@@ -72,7 +72,8 @@
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    [self test];
+    NSInteger number= 3;
+    [self createMembers:number];
     return YES;
 }
 
@@ -82,7 +83,7 @@
     //[[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
-- (void)test
+- (void)createMembers: (NSInteger)n
 {
 //    User *user = [User currentUser];
 //    if(user)
@@ -96,8 +97,15 @@
 //            NSLog(@"This is not a CU Member");
 //    }
 
-    CUMembers *cuMember = [CUMembers object];
-    [cuMember saveInBackground];
+    for(int i = 0;i<n;i++)
+    {
+        PFACL *postACL = [PFACL ACL];
+        [postACL setPublicReadAccess:YES];
+        CUMembers *cuMember = [CUMembers object];
+        cuMember.ACL = postACL;
+        [cuMember saveInBackground];
+    }
+
 }
 
 

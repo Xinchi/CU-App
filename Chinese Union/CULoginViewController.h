@@ -10,8 +10,8 @@
 
 @protocol CUSignUpViewControllerDelegate;
 
+
 @interface CULoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) id<CUSignUpViewControllerDelegate> delegate;
-
 @end
