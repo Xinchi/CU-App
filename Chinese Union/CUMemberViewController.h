@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ProfileViewController.h"
 @interface CUMemberViewController : UIViewController
+
+@property ProfileViewController *profileVC;
 
 @end

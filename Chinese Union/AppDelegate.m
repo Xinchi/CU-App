@@ -72,8 +72,8 @@
 //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[SubclassConfigViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    NSInteger number= 3;
-    [self createMembers:number];
+//    NSInteger number= 10;
+//    [self createMembers:number];
     return YES;
 }
 
@@ -101,6 +101,7 @@
     {
         PFACL *postACL = [PFACL ACL];
         [postACL setPublicReadAccess:YES];
+        [postACL setPublicWriteAccess:YES];
         CUMembers *cuMember = [CUMembers object];
         cuMember.ACL = postACL;
         [cuMember saveInBackground];
