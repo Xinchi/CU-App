@@ -13,10 +13,12 @@
 #import "NSString+Additions.h"
 #import "MBProgressHUD.h"
 #import "QRGenerator.h"
+#import "MBProgressHUD.h"
 
 @interface CUMemberViewController ()
 
 @property (retain) User *user;
+@property CUMembers *cuMember;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
 @property (weak, nonatomic) IBOutlet UIView *memberView;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
@@ -35,9 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.user = [User currentUser];
-    
-    NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
+
     
     self.title = @"Member";
     
@@ -46,6 +46,32 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.user = [User currentUser];
+    
+    [self.user refresh];
+    if([self isAMember])
+    {
+        //get member object
+        PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
+        [query whereKey:@"uid" equalTo:self.user.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if(!error && [objects count]==1)
+            {
+                _cuMember = (CUMembers *)objects[0];
+                NSLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
+            }else if(error){
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }else
+            {
+                NSLog(@"Error !More than one member record has been found!");
+            }
+        }];
+
+    }
+    [MBProgressHUD hideAllHUDsForView:self.profileVC.view animated:YES];
+    NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
     
     [self updateMemberView];
 }
@@ -57,7 +83,15 @@
     if ([self isAMember]) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
         self.memberIDLabel.text = self.user.CUMemberID;
-//        self.expireDateLabel.text = self.user.
+        //formate the expire date - the date is not showing up on UI, don't know why, please check!
+        
+//        self.expireDateLabel.text =[NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
+//        NSString *expireDate = [NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        NSString *expireDate = [dateFormatter stringFromDate:_cuMember.expireDate];
+        self.expireDateLabel.text = expireDate;
+        NSLog(@"%@",expireDate);
     }
     else {
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
@@ -71,8 +105,10 @@
 
 - (bool)isAMember
 {
+
     if(self.user.CUMemberID != nil)
     {
+        NSLog(@"Member ID is ? = %@",self.user.CUMemberID);
         return true;
     }
     return false;
@@ -111,16 +147,36 @@
                 }];
                 
             } else {
-                self.user.CUMemberID = member.objectId;
-                [self.user saveInBackground];
-                member.uid = self.user.objectId;
-                [member saveInBackground];
+
+                //update expire date
+                [PFCloud callFunctionInBackground:@"getTime" withParameters:@{} block:^(NSDate *result, NSError *error){
+                    if(!error){
+                        NSDate *date = result;
+                        NSLog(@"Todays date is %@",date);
+                        NSDateComponents *components = [[NSDateComponents alloc] init];
+                        [PFCloud callFunctionInBackground:@"memberShipCycle" withParameters:@{} block:^(NSString *result, NSError *error){
+                            if(!error){
+                                components.month = [result integerValue];
+                                NSDate *expire = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
+                                NSLog(@"Expire date is %@", expire);
+                                member.expireDate = expire;
+                                self.user.CUMemberID = member.objectId;
+                                [self.user saveInBackground];
+                                member.uid = self.user.objectId;
+                                [member saveInBackground];
+                                [self updateMemberView];
+                            }
+                        }];
+                    }
+                }];
                 [PFCloud callFunctionInBackground:@"activationSuccessResponse" withParameters:@{} block:^(NSString *result, NSError *error){
                     if(!error){
                         [self showAlertTitle:NSLocalizedString(@"Congratulations!", @"")
                                  msg:result];
                     }
                 }];
+
+                
             }
 
         }

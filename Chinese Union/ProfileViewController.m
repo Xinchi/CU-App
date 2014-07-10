@@ -15,6 +15,7 @@
 #import "CUEditProfileViewController.h"
 #import "NSDateFormatter+Additions.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MBProgressHUD.h"
 
 @interface ProfileViewController ()
 
@@ -104,7 +105,9 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
+    controller.profileVC = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:nav animated:YES completion:nil];
 //    [self.sideMenuViewController setMainViewController:controller animated:YES closeMenu:YES];
