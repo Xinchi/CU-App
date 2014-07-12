@@ -14,6 +14,8 @@
 		421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */; };
 		421C0EF81971E84B008711BD /* CUEditProfileGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */; };
 		421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */; };
+		421C0EFF1971F2E1008711BD /* CUForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EFD1971F2E1008711BD /* CUForgotPasswordViewController.m */; };
+		421C0F001971F2E1008711BD /* CUForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EFE1971F2E1008711BD /* CUForgotPasswordViewController.xib */; };
 		42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B24193FBEE30022D3E7 /* MosaicLayout.m */; };
 		42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B27193FBEE30022D3E7 /* MosaicData.m */; };
 		42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B2C193FBEE30022D3E7 /* MosaicCell.m */; };
@@ -161,6 +163,9 @@
 		421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileGenderViewController.xib; sourceTree = "<group>"; };
 		421C0EF91971ED9A008711BD /* CUEditProfileBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileBaseViewController.h; sourceTree = "<group>"; };
 		421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileBaseViewController.m; sourceTree = "<group>"; };
+		421C0EFC1971F2E1008711BD /* CUForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUForgotPasswordViewController.h; sourceTree = "<group>"; };
+		421C0EFD1971F2E1008711BD /* CUForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUForgotPasswordViewController.m; sourceTree = "<group>"; };
+		421C0EFE1971F2E1008711BD /* CUForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		42308B23193FBEE30022D3E7 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		42308B24193FBEE30022D3E7 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		42308B26193FBEE30022D3E7 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
@@ -707,6 +712,9 @@
 				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
 				425490771957D92B005A61B0 /* CUInputButton.h */,
 				425490781957D92B005A61B0 /* CUInputButton.m */,
+				421C0EFC1971F2E1008711BD /* CUForgotPasswordViewController.h */,
+				421C0EFD1971F2E1008711BD /* CUForgotPasswordViewController.m */,
+				421C0EFE1971F2E1008711BD /* CUForgotPasswordViewController.xib */,
 			);
 			name = "Login and Sign up";
 			sourceTree = "<group>";
@@ -979,6 +987,7 @@
 				50932AFF195902D300674269 /* diners@2x.png in Resources */,
 				42D3396E1960DE7900F1CB8F /* CUProfilePicCell.xib in Resources */,
 				50932B08195902D300674269 /* visa.png in Resources */,
+				421C0F001971F2E1008711BD /* CUForgotPasswordViewController.xib in Resources */,
 				50932B05195902D300674269 /* mastercard@2x.png in Resources */,
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
 				5005F2BB19467A1700BF3DAC /* SignUpViewController.xib in Resources */,
@@ -1111,6 +1120,7 @@
 				42308B52193FC1030022D3E7 /* AFJSONRequestOperation.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 				421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */,
+				421C0EFF1971F2E1008711BD /* CUForgotPasswordViewController.m in Sources */,
 				50932AA21957726100674269 /* CUTickets.m in Sources */,
 				42308B3A193FC0670022D3E7 /* CustomDataSource.m in Sources */,
 				426CEE56194D459400522DCF /* NSString+Additions.m in Sources */,
