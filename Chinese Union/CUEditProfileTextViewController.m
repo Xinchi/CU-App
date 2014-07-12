@@ -36,10 +36,11 @@
 }
 
 - (void)saveButtonPressed {
-    [self.textField resignFirstResponder];
     
 //    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    [self.textField resignFirstResponder];
+
     User *user = [User currentUser];
     
     switch (self.option) {
@@ -69,13 +70,13 @@
     }
     [user save];
 //    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                      message:@"Updated successfully!"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles: nil];
-    [message show];
+//    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                                      message:@"Updated successfully!"
+//                                                   delegate:nil
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles: nil];
+//    [message show];
 }
 
 @end
