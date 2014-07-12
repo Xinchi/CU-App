@@ -12,6 +12,7 @@
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
+#import "CUForgotPasswordViewController.h"
 
 @interface CULoginViewController ()
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fbButton;
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 
 @end
 
@@ -43,6 +45,7 @@
     [self addBorderToButton:self.fbButton];
     [self addBorderToButton:self.twitterButton];
     [self addBorderToButton:self.signupButton];
+    [self addBorderToButton:self.forgotPasswordButton];
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
@@ -115,6 +118,11 @@
     [alert show];
 //    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+}
+
+- (IBAction)forgotPasswordButtonPressed:(UIButton *)sender {
+    CUForgotPasswordViewController *vc = [[CUForgotPasswordViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
