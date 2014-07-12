@@ -10,6 +10,8 @@
 		420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2F19639AA8001EED84 /* AVFoundation.framework */; };
 		420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3119639AB9001EED84 /* CoreMedia.framework */; };
 		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
+		421C0EF21971BD04008711BD /* CUEditGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EF01971BD04008711BD /* CUEditGenderViewController.m */; };
+		421C0EF31971BD04008711BD /* CUEditGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */; };
 		42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B24193FBEE30022D3E7 /* MosaicLayout.m */; };
 		42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B27193FBEE30022D3E7 /* MosaicData.m */; };
 		42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B2C193FBEE30022D3E7 /* MosaicCell.m */; };
@@ -152,6 +154,9 @@
 		420CDC2F19639AA8001EED84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		420CDC3119639AB9001EED84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		420CDC3319639AC2001EED84 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		421C0EEF1971BD04008711BD /* CUEditGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditGenderViewController.h; sourceTree = "<group>"; };
+		421C0EF01971BD04008711BD /* CUEditGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditGenderViewController.m; sourceTree = "<group>"; };
+		421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditGenderViewController.xib; sourceTree = "<group>"; };
 		42308B23193FBEE30022D3E7 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		42308B24193FBEE30022D3E7 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		42308B26193FBEE30022D3E7 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
@@ -652,6 +657,9 @@
 				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
 				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
 				42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */,
+				421C0EEF1971BD04008711BD /* CUEditGenderViewController.h */,
+				421C0EF01971BD04008711BD /* CUEditGenderViewController.m */,
+				421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -938,6 +946,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D3395F1960DBF300F1CB8F /* CUEditProfileViewController.xib in Resources */,
+				421C0EF31971BD04008711BD /* CUEditGenderViewController.xib in Resources */,
 				50932AFE195902D300674269 /* diners.png in Resources */,
 				50932AFB195902D300674269 /* cvc-amex@2x.png in Resources */,
 				50932B01195902D300674269 /* discover@2x.png in Resources */,
@@ -1023,6 +1032,7 @@
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
 				50932AB81959013600674269 /* PFProducts.m in Sources */,
 				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
+				421C0EF21971BD04008711BD /* CUEditGenderViewController.m in Sources */,
 				5005F325194A587100BF3DAC /* User.m in Sources */,
 				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,

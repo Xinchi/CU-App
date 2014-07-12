@@ -78,6 +78,7 @@
 @property (weak, nonatomic) IBOutlet SLGlowingTextField *weChatTextField;
 @property (weak, nonatomic) IBOutlet CUInputButton *pickBirthdayButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
 
 @property (strong, nonatomic) NSArray *textFields;
@@ -134,7 +135,6 @@
 
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     User *user = (User *)[User user];
-
     
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
@@ -143,8 +143,7 @@
     user.email = self.emailTextField.text;
     user.phone = self.phoneTextField.text;
     user.wechatID = self.weChatTextField.text;
-    user.birthday = self.datePicker.date;
-    
+    user.birthday = self.birthday;
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -240,9 +239,9 @@
     
     NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
 
-    if (textField == self.userNameTextField ||
+    if (textField == self.userNameTextField /*||
         textField == self.passwordTextField ||
-        textField == self.confirmPasswordTextField) {
+        textField == self.confirmPasswordTextField*/) {
         BOOL valid = [string isAlphaNumeric];
         
         if (!valid) {
@@ -331,6 +330,10 @@
         if (err) {
             [errorMsgs addObject:err];
         }
+    }
+    
+    if (self.birthday == nil) {
+        [errorMsgs addObject:NSLocalizedString(@"Please pick a birthday", @"")];
     }
     
     return [errorMsgs componentsJoinedByString:@"\n"];

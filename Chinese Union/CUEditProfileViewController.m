@@ -64,6 +64,12 @@ NSString *choosePhoto = @"Choose Existing Photo";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,7 +83,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
         return 1;
     }
     
-    return 7;
+    return 8;
 }
 
 
@@ -128,6 +134,11 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 6:
+                cell.textLabel.text = NSLocalizedString(@"Gener", @"");
+                cell.detailTextLabel.text = user.gender;
+                break;
+                
+            case 7:
                 cell.textLabel.text = NSLocalizedString(@"WeChat", @"");
                 cell.detailTextLabel.text = user.wechatID;
                 break;
@@ -233,6 +244,11 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 6:
+                detailViewController.text = user.gender;
+                detailViewController.title = NSLocalizedString(@"Gender", @"");
+                detailViewController.option = CUProfileEditGender;
+                
+            case 7:
                 detailViewController.text = user.wechatID;
                 detailViewController.title = NSLocalizedString(@"WeChat", @"");
                 detailViewController.option = CUProfileEditWeChat;

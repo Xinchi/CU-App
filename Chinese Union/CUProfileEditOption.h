@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, CUProfileEditOption) {
     CUProfileEditFirstName,
     CUProfileEditLastName,
     CUProfileEditEmail,
+    CUProfileEditGender,
     CUProfileEditPhone,
     CUProfileEditWeChat
 };
