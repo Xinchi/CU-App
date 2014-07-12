@@ -16,6 +16,7 @@
 #import "NSDateFormatter+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface ProfileViewController ()
 
@@ -60,6 +61,7 @@
     [super viewWillAppear:animated];
     
     User *user = [User currentUser];
+//    [user refresh];
     
     if (user) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@", user.username];
@@ -71,9 +73,18 @@
         self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID ? user.wechatID : @"Not linked to WeChat"];
         
         if (user.profilePic) {
-            NSData *picData = [user.profilePic getData];
-            UIImage *profileImage = [UIImage imageWithData:picData];
-            self.profilePicView.image = profileImage;
+            NSLog(@"User has profilePic!!");
+
+            PFFile *profilePic = user.profilePic;
+
+            [profilePic getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error){
+                if(!error)
+                {
+                    UIImage *proPic = [UIImage imageWithData:imageData];
+                    NSLog(@"Successfully retrieved profilePic!");
+                    self.profilePicView.image = proPic;
+                }
+            }];
         }
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
@@ -105,7 +116,8 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileVC = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];

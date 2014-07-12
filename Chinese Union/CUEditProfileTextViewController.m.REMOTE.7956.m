@@ -10,7 +10,6 @@
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
 #import "User.h"
-#import "NSString+Additions.h"
 #import "MRProgress.h"
 
 @interface CUEditProfileTextViewController ()
@@ -41,17 +40,7 @@
 //    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 //    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     [self.textField resignFirstResponder];
-    
-    if (![self isValidInput]) {
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")                                                      message:NSLocalizedString(@"Wrong format!", @"")
-                                                         delegate:nil
-                                                cancelButtonTitle:NSLocalizedString(@"OK", @"")
-                                                otherButtonTitles: nil];
-        [message show];
-        return;
-    }
-    
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+
     User *user = [User currentUser];
     
     switch (self.option) {
@@ -79,16 +68,7 @@
         default:
             break;
     }
-    
     [user save];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"")                                                      message:NSLocalizedString(@"Updated successfully!", @"")
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
-                                          otherButtonTitles: nil];
-    [message show];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 //    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
 //    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 //    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
@@ -97,18 +77,6 @@
 //                                          cancelButtonTitle:@"OK"
 //                                          otherButtonTitles: nil];
 //    [message show];
-}
-
-- (BOOL)isValidInput {
-    BOOL result = NO;
-    
-    result = ![self.textField.text hasNoContent];
-    
-    if (self.option == CUProfileEditEmail) {
-        result = [self.textField.text isEmailFormat];
-    }
-    
-    return result;
 }
 
 @end

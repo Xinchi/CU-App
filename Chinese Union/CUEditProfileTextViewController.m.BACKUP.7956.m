@@ -10,8 +10,11 @@
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+<<<<<<< HEAD
 #import "NSString+Additions.h"
+=======
 #import "MRProgress.h"
+>>>>>>> dev
 
 @interface CUEditProfileTextViewController ()
 
@@ -38,10 +41,7 @@
 
 - (void)saveButtonPressed {
     
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    [self.textField resignFirstResponder];
-    
+<<<<<<< HEAD
     if (![self isValidInput]) {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")                                                      message:NSLocalizedString(@"Wrong format!", @"")
                                                          delegate:nil
@@ -52,6 +52,12 @@
     }
     
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+=======
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    [self.textField resignFirstResponder];
+
+>>>>>>> dev
     User *user = [User currentUser];
     
     switch (self.option) {
@@ -81,6 +87,7 @@
     }
     
     [user save];
+<<<<<<< HEAD
     [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"")                                                      message:NSLocalizedString(@"Updated successfully!", @"")
                                                    delegate:nil
@@ -89,14 +96,6 @@
     [message show];
     
     [self.navigationController popViewControllerAnimated:YES];
-//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-//    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                                      message:@"Updated successfully!"
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles: nil];
-//    [message show];
 }
 
 - (BOOL)isValidInput {
@@ -109,6 +108,16 @@
     }
     
     return result;
+=======
+//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+//    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                                      message:@"Updated successfully!"
+//                                                   delegate:nil
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles: nil];
+//    [message show];
+>>>>>>> dev
 }
 
 @end

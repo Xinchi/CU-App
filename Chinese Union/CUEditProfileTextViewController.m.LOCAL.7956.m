@@ -11,7 +11,6 @@
 #import "MBProgressHUD.h"
 #import "User.h"
 #import "NSString+Additions.h"
-#import "MRProgress.h"
 
 @interface CUEditProfileTextViewController ()
 
@@ -37,9 +36,6 @@
 }
 
 - (void)saveButtonPressed {
-    
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     [self.textField resignFirstResponder];
     
     if (![self isValidInput]) {
@@ -89,14 +85,6 @@
     [message show];
     
     [self.navigationController popViewControllerAnimated:YES];
-//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-//    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                                      message:@"Updated successfully!"
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles: nil];
-//    [message show];
 }
 
 - (BOOL)isValidInput {

@@ -15,6 +15,9 @@
 #import "CUEditProfileTextViewController.h"
 #import "CUEditProfileBDViewController.h"
 #import "CUProfileEditOption.h"
+#import "User.h"
+#import "MRProgress.h"
+
 
 NSString *picCellID = @"picCell";
 NSString *cellID = @"cell";
@@ -278,7 +281,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
     }
     
     UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
-    
+    pickerC.delegate = self;
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:takePhoto] ) {
         pickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
@@ -290,5 +293,35 @@ NSString *choosePhoto = @"Choose Existing Photo";
     
     [self presentViewController:pickerC animated:YES completion:nil];
 }
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    User *user = [User currentUser];
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    NSData *imageData = UIImagePNGRepresentation(chosenImage);
+    PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
+    user.profilePic = image;
+
+//    MRProgressOverlayView *progress = [MRProgressOverlayView new];
+//    progress.mode = MRProgressOverlayViewModeDeterminateCircular;
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    
+    [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        // Handle success or failure here ...
+        if(succeeded)
+        {
+            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+        }
+    }progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+        
+    }];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    NSLog(@"Done picking image");
+}
+
 
 @end

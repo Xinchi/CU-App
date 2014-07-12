@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2773CD64DAD2446DB632FF8B /* libPods-Chinese Union.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6627D301FBE3450A9F9CC593 /* libPods-Chinese Union.a */; };
 		420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2F19639AA8001EED84 /* AVFoundation.framework */; };
 		420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3119639AB9001EED84 /* CoreMedia.framework */; };
 		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
-		421C0EF21971BD04008711BD /* CUEditGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EF01971BD04008711BD /* CUEditGenderViewController.m */; };
-		421C0EF31971BD04008711BD /* CUEditGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */; };
+		421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */; };
+		421C0EF81971E84B008711BD /* CUEditProfileGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */; };
 		42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B24193FBEE30022D3E7 /* MosaicLayout.m */; };
 		42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B27193FBEE30022D3E7 /* MosaicData.m */; };
 		42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B2C193FBEE30022D3E7 /* MosaicCell.m */; };
@@ -154,9 +155,9 @@
 		420CDC2F19639AA8001EED84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		420CDC3119639AB9001EED84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		420CDC3319639AC2001EED84 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		421C0EEF1971BD04008711BD /* CUEditGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditGenderViewController.h; sourceTree = "<group>"; };
-		421C0EF01971BD04008711BD /* CUEditGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditGenderViewController.m; sourceTree = "<group>"; };
-		421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditGenderViewController.xib; sourceTree = "<group>"; };
+		421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileGenderViewController.h; sourceTree = "<group>"; };
+		421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileGenderViewController.m; sourceTree = "<group>"; };
+		421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileGenderViewController.xib; sourceTree = "<group>"; };
 		42308B23193FBEE30022D3E7 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		42308B24193FBEE30022D3E7 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		42308B26193FBEE30022D3E7 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
@@ -360,6 +361,8 @@
 		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
 		50932B78196D215C00674269 /* QRGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRGenerator.h; sourceTree = "<group>"; };
 		50932B79196D215C00674269 /* QRGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRGenerator.m; sourceTree = "<group>"; };
+		6627D301FBE3450A9F9CC593 /* libPods-Chinese Union.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chinese Union.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1C125702F1468AAB7DD6F3 /* Pods-Chinese Union.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chinese Union.xcconfig"; path = "Pods/Pods-Chinese Union.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +389,7 @@
 				5005F255193ECD3A00BF3DAC /* Parse.framework in Frameworks */,
 				5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */,
 				5005F278193ED8C500BF3DAC /* FacebookSDK.framework in Frameworks */,
+				2773CD64DAD2446DB632FF8B /* libPods-Chinese Union.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +540,7 @@
 				5005F244193EAC1700BF3DAC /* Chinese UnionTests */,
 				5005F224193EAC1600BF3DAC /* Frameworks */,
 				5005F223193EAC1600BF3DAC /* Products */,
+				8C1C125702F1468AAB7DD6F3 /* Pods-Chinese Union.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -573,6 +578,7 @@
 				5005F227193EAC1600BF3DAC /* CoreGraphics.framework */,
 				5005F229193EAC1600BF3DAC /* UIKit.framework */,
 				5005F23E193EAC1700BF3DAC /* XCTest.framework */,
+				6627D301FBE3450A9F9CC593 /* libPods-Chinese Union.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -657,9 +663,9 @@
 				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
 				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
 				42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */,
-				421C0EEF1971BD04008711BD /* CUEditGenderViewController.h */,
-				421C0EF01971BD04008711BD /* CUEditGenderViewController.m */,
-				421C0EF11971BD04008711BD /* CUEditGenderViewController.xib */,
+				421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */,
+				421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */,
+				421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -874,9 +880,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5005F24E193EAC1700BF3DAC /* Build configuration list for PBXNativeTarget "Chinese Union" */;
 			buildPhases = (
+				8D253E0FE199465FA6F65743 /* Check Pods Manifest.lock */,
 				5005F21E193EAC1600BF3DAC /* Sources */,
 				5005F21F193EAC1600BF3DAC /* Frameworks */,
 				5005F220193EAC1600BF3DAC /* Resources */,
+				13B7630B84F34CF9BEF6AC6B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -946,7 +954,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D3395F1960DBF300F1CB8F /* CUEditProfileViewController.xib in Resources */,
-				421C0EF31971BD04008711BD /* CUEditGenderViewController.xib in Resources */,
 				50932AFE195902D300674269 /* diners.png in Resources */,
 				50932AFB195902D300674269 /* cvc-amex@2x.png in Resources */,
 				50932B01195902D300674269 /* discover@2x.png in Resources */,
@@ -971,6 +978,7 @@
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
 				5005F2BB19467A1700BF3DAC /* SignUpViewController.xib in Resources */,
 				50932B03195902D300674269 /* jcb@2x.png in Resources */,
+				421C0EF81971E84B008711BD /* CUEditProfileGenderViewController.xib in Resources */,
 				50932AFA195902D300674269 /* cvc-amex.png in Resources */,
 				50932AF8195902D300674269 /* amex.png in Resources */,
 				50932B02195902D300674269 /* jcb.png in Resources */,
@@ -989,6 +997,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13B7630B84F34CF9BEF6AC6B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Chinese Union-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D253E0FE199465FA6F65743 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5005F21E193EAC1600BF3DAC /* Sources */ = {
@@ -1032,7 +1073,6 @@
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
 				50932AB81959013600674269 /* PFProducts.m in Sources */,
 				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
-				421C0EF21971BD04008711BD /* CUEditGenderViewController.m in Sources */,
 				5005F325194A587100BF3DAC /* User.m in Sources */,
 				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,
@@ -1064,6 +1104,7 @@
 				42308B50193FC1030022D3E7 /* AFHTTPRequestOperation.m in Sources */,
 				42308B52193FC1030022D3E7 /* AFJSONRequestOperation.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
+				421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */,
 				50932AA21957726100674269 /* CUTickets.m in Sources */,
 				42308B3A193FC0670022D3E7 /* CustomDataSource.m in Sources */,
 				426CEE56194D459400522DCF /* NSString+Additions.m in Sources */,
@@ -1181,6 +1222,7 @@
 		};
 		5005F24F193EAC1700BF3DAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C1C125702F1468AAB7DD6F3 /* Pods-Chinese Union.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1209,6 +1251,7 @@
 		};
 		5005F250193EAC1700BF3DAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C1C125702F1468AAB7DD6F3 /* Pods-Chinese Union.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

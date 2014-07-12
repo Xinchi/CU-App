@@ -10,6 +10,7 @@
 #import "NSDateFormatter+Additions.h"
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface CUEditProfileBDViewController ()
 
@@ -37,7 +38,8 @@
 }
 
 - (void)saveButtonPressed {
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
 }
 
 @end
