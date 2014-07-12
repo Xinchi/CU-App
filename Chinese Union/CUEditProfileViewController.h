@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CUEditProfileViewController : UITableViewController
+@interface CUEditProfileViewController : UITableViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
