@@ -304,12 +304,6 @@ NSString *choosePhoto = @"Choose Existing Photo";
         // Update your progress spinner here. percentDone will be between 0 and 100.
         
     }];
-    
-    
-    
-    
-    
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     NSLog(@"Done picking image");
 }

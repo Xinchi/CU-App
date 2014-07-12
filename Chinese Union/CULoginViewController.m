@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface CULoginViewController ()
 
@@ -53,9 +54,11 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.activeResponder resignFirstResponder];
+
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     NSError *error;
-    //show MB
     
     NSLog(@"Button Pressed!");
     
@@ -77,10 +80,9 @@
             if(!error){
                 [self showAlertTitle:NSLocalizedString(@"Success!", @"")
                                  msg:result];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -111,7 +113,8 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
 @end
