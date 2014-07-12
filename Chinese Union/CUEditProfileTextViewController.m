@@ -10,6 +10,7 @@
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+#import "MRProgress.h"
 
 @interface CUEditProfileTextViewController ()
 
@@ -37,7 +38,8 @@
 - (void)saveButtonPressed {
     [self.textField resignFirstResponder];
     
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     User *user = [User currentUser];
     
     switch (self.option) {
@@ -66,7 +68,8 @@
             break;
     }
     [user save];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
                                                       message:@"Updated successfully!"
                                                    delegate:nil

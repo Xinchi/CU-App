@@ -16,6 +16,7 @@
 #import "NSDateFormatter+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface ProfileViewController ()
 
@@ -60,7 +61,7 @@
     [super viewWillAppear:animated];
     
     User *user = [User currentUser];
-    [user refresh];
+//    [user refresh];
     
     if (user) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@", user.username];
@@ -118,7 +119,8 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileVC = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];

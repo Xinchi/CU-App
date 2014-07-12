@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "QRGenerator.h"
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface CUMemberViewController ()
 
@@ -70,7 +71,8 @@
         }];
 
     }
-    [MBProgressHUD hideAllHUDsForView:self.profileVC.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.profileVC.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.profileVC.view animated:YES];
     NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
     
     [self updateMemberView];
@@ -126,8 +128,9 @@
     
     // Do activation here
     [self.memberIDTextField resignFirstResponder];
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+
     PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
     [query getObjectInBackgroundWithId:memberID block:^(PFObject *object, NSError *error) {
         if(!error){
@@ -200,7 +203,8 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {

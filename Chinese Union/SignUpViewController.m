@@ -14,6 +14,7 @@
 #import "NSDateFormatter+Additions.h"
 #import "SLGlowingTextField.h"
 #import "MBProgressHUD.h"
+#import "MRProgress.h"
 
 @interface SLGlowingTextField (Valid)
 
@@ -132,7 +133,8 @@
 
 - (void)doSignup {
 
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     User *user = (User *)[User user];
 
     
@@ -405,7 +407,8 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
 }
 
 @end
