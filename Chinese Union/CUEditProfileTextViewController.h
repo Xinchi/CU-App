@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CUProfileEditOption.h"
+#import "CUEditProfileBaseViewController.h"
 
-@interface CUEditProfileTextViewController : UIViewController
+@interface CUEditProfileTextViewController : CUEditProfileBaseViewController
 
 @property (strong, nonatomic) NSString *text;
 @property (nonatomic) CUProfileEditOption option;

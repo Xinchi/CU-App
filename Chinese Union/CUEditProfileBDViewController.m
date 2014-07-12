@@ -26,8 +26,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self addSaveButton];
-    
     self.label.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.birthday];
     self.datePicker.date = self.birthday;
     self.datePicker.maximumDate = [NSDate date];
@@ -39,7 +37,8 @@
 
 - (void)saveButtonPressed {
 //    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+//    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

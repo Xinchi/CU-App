@@ -27,7 +27,6 @@
     // Do any additional setup after loading the view from its nib.
     
     self.textField.text = self.text;
-    [self addSaveButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -37,9 +36,7 @@
 }
 
 - (void)saveButtonPressed {
-    
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+
     [self.textField resignFirstResponder];
     
     if (![self isValidInput]) {
@@ -51,7 +48,9 @@
         return;
     }
     
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+
     User *user = [User currentUser];
     
     switch (self.option) {
@@ -81,12 +80,14 @@
     }
     
     [user save];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"")                                                      message:NSLocalizedString(@"Updated successfully!", @"")
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
-                                          otherButtonTitles: nil];
-    [message show];
+    
+//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+    
+//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"")                                                      message:NSLocalizedString(@"Updated successfully!", @"")
+//                                                   delegate:nil
+//                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
+//                                          otherButtonTitles: nil];
+//    [message show];
     
     [self.navigationController popViewControllerAnimated:YES];
 //    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];

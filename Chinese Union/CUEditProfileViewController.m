@@ -17,7 +17,7 @@
 #import "CUProfileEditOption.h"
 #import "User.h"
 #import "MRProgress.h"
-
+#import "CUEditProfileGenderViewController.h"
 
 NSString *picCellID = @"picCell";
 NSString *cellID = @"cell";
@@ -206,8 +206,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
     }
     else {
         User *user = [User currentUser];
-        CUEditProfileTextViewController *detailViewController = [[CUEditProfileTextViewController alloc] init];
-        CUEditProfileBDViewController *bdVC;
+        CUEditProfileBaseViewController *vc;
         
         switch (indexPath.row) {
             case 0:
@@ -215,53 +214,57 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 1:
-                detailViewController.text = user.firstName;
-                detailViewController.title = NSLocalizedString(@"First Name", @"");
-                detailViewController.option = CUProfileEditFirstName;
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.firstName;
+                vc.title = NSLocalizedString(@"First Name", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditFirstName;
                 break;
                 
             case 2:
-                detailViewController.text = user.lastName;
-                detailViewController.title = NSLocalizedString(@"Last Name", @"");
-                detailViewController.option = CUProfileEditLastName;
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.lastName;
+                vc.title = NSLocalizedString(@"Last Name", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditLastName;
                 break;
                 
             case 3:
-                detailViewController.text = user.email;
-                detailViewController.title = NSLocalizedString(@"Email", @"");
-                detailViewController.option = CUProfileEditEmail;
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.email;
+                vc.title = NSLocalizedString(@"Email", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditEmail;
                 break;
                 
             case 4:
-                bdVC = [[CUEditProfileBDViewController alloc] init];
-                bdVC.title = NSLocalizedString(@"Birthday", @"");
-                bdVC.birthday = user.birthday;
-                [self.navigationController pushViewController:bdVC animated:YES];
-                return;
+                vc = [[CUEditProfileBDViewController alloc] init];
+                vc.title = NSLocalizedString(@"Birthday", @"");
+                ((CUEditProfileBDViewController *)vc).birthday = user.birthday;
                 break;
                 
             case 5:
-                detailViewController.text = user.phone;
-                detailViewController.title = NSLocalizedString(@"Phone", @"");
-                detailViewController.option = CUProfileEditPhone;
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.phone;
+                vc.title = NSLocalizedString(@"Phone", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditPhone;
                 break;
                 
             case 6:
-                detailViewController.text = user.gender;
-                detailViewController.title = NSLocalizedString(@"Gender", @"");
-                detailViewController.option = CUProfileEditGender;
+                vc = [[CUEditProfileGenderViewController alloc] init];
+                vc.title = NSLocalizedString(@"Gender", @"");
+                ((CUEditProfileGenderViewController *)vc).gender = CUProfileEditGenderFemale;
+                break;
                 
             case 7:
-                detailViewController.text = user.wechatID;
-                detailViewController.title = NSLocalizedString(@"WeChat", @"");
-                detailViewController.option = CUProfileEditWeChat;
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.wechatID;
+                vc.title = NSLocalizedString(@"WeChat", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditWeChat;
                 break;
                 
             default:
                 break;
         }
         
-        [self.navigationController pushViewController:detailViewController animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

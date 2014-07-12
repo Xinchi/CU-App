@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CUEditProfileBaseViewController.h"
 
-@interface CUEditProfileBDViewController : UIViewController
+@interface CUEditProfileBDViewController : CUEditProfileBaseViewController
 
 @property (strong, nonatomic) NSDate *birthday;
 

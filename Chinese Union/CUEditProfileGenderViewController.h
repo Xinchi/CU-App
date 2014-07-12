@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CUProfileEditOption.h"
+#import "CUEditProfileBaseViewController.h"
 
-@interface CUEditProfileGenderViewController : UIViewController
+@interface CUEditProfileGenderViewController : CUEditProfileBaseViewController
+
+@property (nonatomic) CUProfileEditGenderOption gender;
 
 @end

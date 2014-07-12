@@ -13,6 +13,7 @@
 		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
 		421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */; };
 		421C0EF81971E84B008711BD /* CUEditProfileGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */; };
+		421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */; };
 		42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B24193FBEE30022D3E7 /* MosaicLayout.m */; };
 		42308B2E193FBEE30022D3E7 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B27193FBEE30022D3E7 /* MosaicData.m */; };
 		42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B2C193FBEE30022D3E7 /* MosaicCell.m */; };
@@ -158,6 +159,8 @@
 		421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileGenderViewController.h; sourceTree = "<group>"; };
 		421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileGenderViewController.m; sourceTree = "<group>"; };
 		421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEditProfileGenderViewController.xib; sourceTree = "<group>"; };
+		421C0EF91971ED9A008711BD /* CUEditProfileBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileBaseViewController.h; sourceTree = "<group>"; };
+		421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEditProfileBaseViewController.m; sourceTree = "<group>"; };
 		42308B23193FBEE30022D3E7 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
 		42308B24193FBEE30022D3E7 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
 		42308B26193FBEE30022D3E7 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
@@ -666,6 +669,8 @@
 				421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */,
 				421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */,
 				421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */,
+				421C0EF91971ED9A008711BD /* CUEditProfileBaseViewController.h */,
+				421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				50932ADD195902AE00674269 /* PKCardCVCDelegate.m in Sources */,
 				5005F31C194A534B00BF3DAC /* CUMembers.m in Sources */,
 				50932ADF195902AE00674269 /* PKCardExpiryDelegate.m in Sources */,
+				421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */,
 				50932ADB195902AE00674269 /* PKCard.m in Sources */,
 				50932B14195902EB00674269 /* STPCard.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
