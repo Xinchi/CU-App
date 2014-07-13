@@ -263,17 +263,34 @@ NSString *choosePhoto = @"Choose Existing Photo";
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     user.profilePic = image;
 
-    MRProgressOverlayView *overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
-    overlay.mode = MRProgressOverlayViewModeDeterminateCircular;
+//    MRProgressOverlayView *overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading ... " mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
+//    overlay.mode = MRProgressOverlayViewModeDeterminateCircular;
     
+//    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES stopBlock:^(MRProgressOverlayView *progressOverlayView){
+//    }];
     [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         // Handle success or failure here ...
         if(succeeded)
         {
-            [user save];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+                if(succeeded)
+                {
+                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+                }
+                else
+                {
+                    NSLog(@"error = %@",error);
+                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCross animated:YES];
+                }
+                [self performSelector:@selector(dismissOverlay) withObject:self afterDelay:1.0];
+
+            }];
         }
-        NSLog(@"Save image error:%@", error);
-        [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+        else
+            NSLog(@"Save image error:%@", error);
+
     }progressBlock:^(int percentDone) {
         float ratio = (float)percentDone/100.0;
         [MRProgressOverlayView overlayForView:self.navigationController.view].progress = ratio;
@@ -283,5 +300,17 @@ NSString *choosePhoto = @"Choose Existing Photo";
     [self.tableView reloadData];
 }
 
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
+- (void) dismissOverlay
+{
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+}
 @end
