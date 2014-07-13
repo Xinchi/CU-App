@@ -10,9 +10,10 @@
 #import "SLGlowingTextField.h"
 #import "User.h"
 #import "MRProgress.h"
+#import "NSString+Additions.h"
 
 @interface CUForgotPasswordViewController ()
-@property (weak, nonatomic) IBOutlet SLGlowingTextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet SLGlowingTextField *textfield;
 
 @end
 
@@ -27,8 +28,16 @@
 }
 
 - (IBAction)retreivePasswordButtonPressed:(id)sender {
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    NSString *email = self.usernameTextField.text;
+    [self.textfield resignFirstResponder];
+    
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    NSString *email = self.textfield.text;
+    
+    if ([email hasNoContent]) {
+        [self showAlertTitle:NSLocalizedString(@"Error", @"") msg:@"Please enter your email"];
+        return;
+    }
+    
     PFQuery *query = [User query];
     [query whereKey:@"email" equalTo:email];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -39,10 +48,9 @@
                if(!error){
                    [self showAlertTitle:NSLocalizedString(@"Success!", @"")
                                     msg:result];
+                   [self.navigationController popViewControllerAnimated:YES];
                }
            }];
-
-           [self.navigationController popViewControllerAnimated:YES];
        }
        else{
            //popping out error message
@@ -66,7 +74,7 @@
                                           otherButtonTitles:nil];
     [alert show];
     
-    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
 }
 
 @end
