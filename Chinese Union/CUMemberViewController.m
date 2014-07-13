@@ -57,7 +57,6 @@
     
     if([self isAMember])
     {
-        [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
         
         //get member object
         PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
@@ -74,13 +73,18 @@
             {
                 NSLog(@"Error !More than one member record has been found!");
             }
-            [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+            [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
             
             [self updateMemberView];
         }];
     }
     
     [self updateMemberView];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
 }
 
 - (void)updateMemberView {

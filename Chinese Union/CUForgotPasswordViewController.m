@@ -8,6 +8,8 @@
 
 #import "CUForgotPasswordViewController.h"
 #import "SLGlowingTextField.h"
+#import "User.h"
+#import "MRProgress.h"
 
 @interface CUForgotPasswordViewController ()
 @property (weak, nonatomic) IBOutlet SLGlowingTextField *usernameTextField;
@@ -25,7 +27,46 @@
 }
 
 - (IBAction)retreivePasswordButtonPressed:(id)sender {
-    NSString *username = self.usernameTextField.text;
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    NSString *email = self.usernameTextField.text;
+    PFQuery *query = [User query];
+    [query whereKey:@"email" equalTo:email];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+       if(!error && [objects count]==1)
+       {
+           [User requestPasswordResetForEmail:email];
+           [PFCloud callFunctionInBackground:@"correctEmailForResettingPassword" withParameters:@{} block:^(NSString *result, NSError *error){
+               if(!error){
+                   [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                                    msg:result];
+               }
+           }];
+
+           [self.navigationController popViewControllerAnimated:YES];
+       }
+       else{
+           //popping out error message
+           [PFCloud callFunctionInBackground:@"incorrectEmailForResettingPassword" withParameters:@{} block:^(NSString *result, NSError *error){
+               if(!error){
+                   [self showAlertTitle:NSLocalizedString(@"Error", @"")
+                                    msg:result];
+               }
+           }];
+       }
+        
+    }];
+    
+}
+
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
 @end
