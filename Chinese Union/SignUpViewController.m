@@ -15,6 +15,7 @@
 #import "SLGlowingTextField.h"
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
+#import "CUProfileEditOption.h"
 
 @interface SLGlowingTextField (Valid)
 
@@ -150,9 +151,9 @@
     user.wechatID = self.weChatTextField.text;
     user.birthday = self.birthday;
     if(self.segmentControl.selectedSegmentIndex==0)
-        user.gender = @"male";
+        user.gender = kMale;
     else
-        user.gender = @"female";
+        user.gender = kFemale;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             if (succeeded) {
