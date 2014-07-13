@@ -97,7 +97,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == self.actionSheet.destructiveButtonIndex) {
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
         [User logOut];
+        [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
         [self.navigationController popViewControllerAnimated:YES];
         [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
     }
@@ -116,6 +118,7 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileViewController = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];

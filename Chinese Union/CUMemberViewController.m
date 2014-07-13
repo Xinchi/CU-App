@@ -73,15 +73,19 @@
             {
                 NSLog(@"Error !More than one member record has been found!");
             }
-            [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+            [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
             
-            [self updateMemberView];
+//            [self updateMemberView];
         }];
     }
-    
+//    [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
     [self updateMemberView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
+}
 - (void)updateMemberView {
     self.notMemberView.hidden = [self isAMember];
     self.memberView.hidden    = ![self isAMember];
@@ -120,6 +124,10 @@
     {
         NSLog(@"Member ID is ? = %@",self.user.CUMemberID);
         return true;
+    }
+    else
+    {
+        NSLog(@"Not a member!");
     }
     return false;
 }
