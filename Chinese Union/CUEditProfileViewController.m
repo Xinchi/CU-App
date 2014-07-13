@@ -263,12 +263,9 @@ NSString *choosePhoto = @"Choose Existing Photo";
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     user.profilePic = image;
 
-//    MRProgressOverlayView *overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+
     [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading ... " mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
-//    overlay.mode = MRProgressOverlayViewModeDeterminateCircular;
-    
-//    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES stopBlock:^(MRProgressOverlayView *progressOverlayView){
-//    }];
+
     [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         // Handle success or failure here ...
         if(succeeded)
@@ -284,12 +281,14 @@ NSString *choosePhoto = @"Choose Existing Photo";
                     NSLog(@"error = %@",error);
                     [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCross animated:YES];
                 }
-                [self performSelector:@selector(dismissOverlay) withObject:self afterDelay:1.0];
-
             }];
         }
         else
-            NSLog(@"Save image error:%@", error);
+        {
+            NSLog(@"error = %@",error);
+            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCross animated:YES];
+        }
+        [self performSelector:@selector(dismissOverlay) withObject:self afterDelay:1.0];
 
     }progressBlock:^(int percentDone) {
         float ratio = (float)percentDone/100.0;
