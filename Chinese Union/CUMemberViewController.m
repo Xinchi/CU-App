@@ -50,7 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     
     self.user = [User currentUser];
     
@@ -76,7 +76,7 @@
 
     }
     
-    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
     
     [self updateMemberView];
 }
