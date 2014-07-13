@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *memberIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expireDateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *QRcodeImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *memberCardBackgroundImageView;
 
 @end
 
@@ -50,13 +51,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
-    
     self.user = [User currentUser];
     
     [self.user refresh];
+    
     if([self isAMember])
     {
+        [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+        
         //get member object
         PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
         [query whereKey:@"uid" equalTo:self.user.objectId];
@@ -72,11 +74,11 @@
             {
                 NSLog(@"Error !More than one member record has been found!");
             }
+            [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+            
+            [self updateMemberView];
         }];
-
     }
-    
-    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
     
     [self updateMemberView];
 }
@@ -92,16 +94,15 @@
         NSData *imageData = [self.user.profilePic getData];
         UIImage *profileImage = [UIImage imageWithData:imageData];
         self.userPicImageView.image = profileImage;
-        //formate the expire date - the date is not showing up on UI, don't know why, please check!
+        self.userPicImageView.layer.cornerRadius = 8;
+        self.userPicImageView.layer.masksToBounds = YES;
+        self.userPicImageView.layer.borderWidth = 0;
         self.QRcodeImageView.image =  [QRGenerator QRImageWithSize:self.QRcodeImageView.frame.size.width  fillColor:[UIColor darkGrayColor]];;
         
-//        self.expireDateLabel.text =[NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
-//        NSString *expireDate = [NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-//        NSString *expireDate = [dateFormatter stringFromDate:_cuMember.expireDate];
-//        self.expireDateLabel.text = expireDate;
-//        NSLog(@"%@",expireDate);
+        UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
+        UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);
+        backgroundImage = [backgroundImage resizableImageWithCapInsets:backgroundInsets];
+        self.memberCardBackgroundImageView.image = backgroundImage;
     }
     else {
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];

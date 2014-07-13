@@ -81,6 +81,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (strong, nonatomic) NSArray *textFields;
 
@@ -99,8 +100,12 @@
     [self addExitButton];
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(signUpButtonPressed:)];
     
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.contentView.translatesAutoresizingMaskIntoConstraints = YES;
+//    self.scrollView.contentSize = CGSizeMake(320, 568);
+    NSLog(@"Content view size:%@", NSStringFromCGSize(self.scrollView.contentSize));
+    
     self.navigationItem.rightBarButtonItem = submitButton;
-    NSLog(@"ScrollView content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
@@ -127,6 +132,23 @@
         textfield.layer.opacity = opacity;
     }
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"Scroll view frame:%@", NSStringFromCGRect(self.scrollView.frame));
+    NSLog(@"Content view frame:%@", NSStringFromCGRect(self.contentView.frame));
+    NSLog(@"Scroll view content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
+//    self.scrollView.contentSize = CGSizeMake(320, 1000);
+    NSLog(@"Scroll view content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
+}
+//
+//- (void)viewWillLayoutSubviews {
+//    [super viewWillLayoutSubviews];
+//    
+//    self.scrollView.contentSize = CGSizeMake(320, 1000);
+//    NSLog(@"ScrollView content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
+//}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -194,13 +216,10 @@
     UIEdgeInsets contentInset = self.scrollView.contentInset;
     self.originalInsets = contentInset;
     contentInset.bottom = keyboardRect.size.height;
-    self.scrollView.contentInset = contentInset;
-    self.scrollView.scrollIndicatorInsets = contentInset;
-    CGSize newContentSize = self.scrollView.frame.size;
-//    newContentSize.height -= 50;
     NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     [UIView animateWithDuration:duration animations:^{
-        self.scrollView.contentSize = newContentSize;
+        self.scrollView.contentInset = contentInset;
+        self.scrollView.scrollIndicatorInsets = contentInset;
     }];
 }
 
@@ -210,7 +229,6 @@
     [UIView animateWithDuration:duration animations:^{
         self.scrollView.contentInset = self.originalInsets;
         self.scrollView.scrollIndicatorInsets = self.originalInsets;
-        self.scrollView.contentSize = CGSizeZero;
     }];
 }
 

@@ -11,6 +11,7 @@
 #import "UIViewController+Additions.h"
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
+#import "User.h"
 
 @interface CUEditProfileBDViewController ()
 
@@ -36,8 +37,9 @@
 }
 
 - (void)saveButtonPressed {
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
+    User *user = [User currentUser];
+    user.birthday = self.datePicker.date;
+    [user save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
