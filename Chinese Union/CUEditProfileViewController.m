@@ -59,12 +59,6 @@ NSString *choosePhoto = @"Choose Existing Photo";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CUProfilePicCell" bundle:nil] forCellReuseIdentifier:picCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"CUProfileTextCell" bundle:nil] forCellReuseIdentifier:cellID];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -98,7 +92,10 @@ NSString *choosePhoto = @"Choose Existing Photo";
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:picCellID forIndexPath:indexPath];
         cell.textLabel.text = @"Profile Picture";
-        cell.imageView.image = [UIImage imageNamed:@"BlackWidow"];
+        
+        NSData *imageData = [user.profilePic getData];
+        UIImage *profileImage = [UIImage imageWithData:imageData];
+        cell.imageView.image = profileImage;
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
@@ -137,7 +134,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 6:
-                cell.textLabel.text = NSLocalizedString(@"Gener", @"");
+                cell.textLabel.text = NSLocalizedString(@"Gender", @"");
                 cell.detailTextLabel.text = user.gender;
                 break;
                 
@@ -151,54 +148,11 @@ NSString *choosePhoto = @"Choose Existing Photo";
         }
     }
     
-    //cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -284,6 +238,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
     }
     
     UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+    pickerC.allowsEditing = YES;
     pickerC.delegate = self;
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:takePhoto] ) {
         pickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -308,22 +263,24 @@ NSString *choosePhoto = @"Choose Existing Photo";
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     user.profilePic = image;
 
-//    MRProgressOverlayView *progress = [MRProgressOverlayView new];
-//    progress.mode = MRProgressOverlayViewModeDeterminateCircular;
-    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    MRProgressOverlayView *overlay = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    overlay.mode = MRProgressOverlayViewModeDeterminateCircular;
     
     [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         // Handle success or failure here ...
         if(succeeded)
         {
-            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+            [user save];
         }
+        NSLog(@"Save image error:%@", error);
+        [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
     }progressBlock:^(int percentDone) {
-        // Update your progress spinner here. percentDone will be between 0 and 100.
-        
+        float ratio = (float)percentDone/100.0;
+        [MRProgressOverlayView overlayForView:self.navigationController.view].progress = ratio;
     }];
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    NSLog(@"Done picking image");
+    [self.tableView reloadData];
 }
 
 

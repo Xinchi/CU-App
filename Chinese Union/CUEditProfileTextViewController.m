@@ -47,9 +47,6 @@
         [message show];
         return;
     }
-    
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 
     User *user = [User currentUser];
     
@@ -81,23 +78,7 @@
     
     [user save];
     
-//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-    
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"")                                                      message:NSLocalizedString(@"Updated successfully!", @"")
-//                                                   delegate:nil
-//                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
-//                                          otherButtonTitles: nil];
-//    [message show];
-    
     [self.navigationController popViewControllerAnimated:YES];
-//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-//    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                                      message:@"Updated successfully!"
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles: nil];
-//    [message show];
 }
 
 - (BOOL)isValidInput {

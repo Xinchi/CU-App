@@ -10,6 +10,4 @@
 #import "ProfileViewController.h"
 @interface CUMemberViewController : UIViewController
 
-@property ProfileViewController *profileVC;
-
 @end

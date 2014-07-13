@@ -15,6 +15,8 @@
 #import "QRGenerator.h"
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
+#import "NSDateFormatter+Additions.h"
+#import "QRGenerator.h"
 
 @interface CUMemberViewController ()
 
@@ -29,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memberIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expireDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *QRcodeImageView;
 
 @end
 
@@ -39,7 +42,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    
     self.title = @"Member";
     
     [self addExitButton];
@@ -47,6 +49,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     
     self.user = [User currentUser];
     
@@ -71,9 +75,8 @@
         }];
 
     }
-//    [MBProgressHUD hideAllHUDsForView:self.profileVC.view animated:YES];
-    [MRProgressOverlayView dismissAllOverlaysForView:self.profileVC.view animated:YES];
-    NSLog(@"Member?%@", [self isAMember] ? @"YES" : @"NO");
+    
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
     
     [self updateMemberView];
 }
@@ -85,15 +88,20 @@
     if ([self isAMember]) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
         self.memberIDLabel.text = self.user.CUMemberID;
+        self.expireDateLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.cuMember.expireDate];
+        NSData *imageData = [self.user.profilePic getData];
+        UIImage *profileImage = [UIImage imageWithData:imageData];
+        self.userPicImageView.image = profileImage;
         //formate the expire date - the date is not showing up on UI, don't know why, please check!
+        self.QRcodeImageView.image =  [QRGenerator QRImageWithSize:self.QRcodeImageView.frame.size.width  fillColor:[UIColor darkGrayColor]];;
         
 //        self.expireDateLabel.text =[NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
 //        NSString *expireDate = [NSDateFormatter localizedStringFromDate:_cuMember.expireDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterFullStyle];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        NSString *expireDate = [dateFormatter stringFromDate:_cuMember.expireDate];
-        self.expireDateLabel.text = expireDate;
-        NSLog(@"%@",expireDate);
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//        NSString *expireDate = [dateFormatter stringFromDate:_cuMember.expireDate];
+//        self.expireDateLabel.text = expireDate;
+//        NSLog(@"%@",expireDate);
     }
     else {
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
