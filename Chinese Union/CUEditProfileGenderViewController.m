@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if (self.gender == CUProfileEditGenderMale) {
+    if ([self.gender isEqualToString:kMale]) {
         self.segmentedControl.selectedSegmentIndex = 0;
     }
     else
@@ -32,6 +32,13 @@
 }
 
 - (void)saveButtonPressed {
+    // Use kMale for male string and kFemale for female string
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        kMale;
+    }
+    else {
+        kFemale;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

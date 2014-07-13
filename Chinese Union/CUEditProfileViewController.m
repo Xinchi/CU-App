@@ -204,7 +204,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 6:
                 vc = [[CUEditProfileGenderViewController alloc] init];
                 vc.title = NSLocalizedString(@"Gender", @"");
-                ((CUEditProfileGenderViewController *)vc).gender = CUProfileEditGenderFemale;
+                ((CUEditProfileGenderViewController *)vc).gender = user.gender;
                 break;
                 
             case 7:

@@ -12,6 +12,6 @@
 
 @interface CUEditProfileGenderViewController : CUEditProfileBaseViewController
 
-@property (nonatomic) CUProfileEditGenderOption gender;
+@property (strong, nonatomic) NSString *gender;
 
 @end
