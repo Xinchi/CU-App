@@ -102,8 +102,6 @@
     
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints = YES;
-//    self.scrollView.contentSize = CGSizeMake(320, 568);
-    NSLog(@"Content view size:%@", NSStringFromCGSize(self.scrollView.contentSize));
     
     self.navigationItem.rightBarButtonItem = submitButton;
     
@@ -132,23 +130,6 @@
         textfield.layer.opacity = opacity;
     }
 }
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    NSLog(@"Scroll view frame:%@", NSStringFromCGRect(self.scrollView.frame));
-    NSLog(@"Content view frame:%@", NSStringFromCGRect(self.contentView.frame));
-    NSLog(@"Scroll view content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
-//    self.scrollView.contentSize = CGSizeMake(320, 1000);
-    NSLog(@"Scroll view content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
-}
-//
-//- (void)viewWillLayoutSubviews {
-//    [super viewWillLayoutSubviews];
-//    
-//    self.scrollView.contentSize = CGSizeMake(320, 1000);
-//    NSLog(@"ScrollView content size:%@", NSStringFromCGSize(self.scrollView.contentSize));
-//}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -256,8 +237,6 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
-    NSLog(@"text change in range: %@, with string: %@", NSStringFromRange(range), string);
 
     if (textField == self.userNameTextField /*||
         textField == self.passwordTextField ||
@@ -279,7 +258,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"TextField:%@ did end editing", textField);
     textField.text = [textField.text cleanString];
     [self validateTextField:textField];
 }
@@ -359,54 +337,6 @@
     return [errorMsgs componentsJoinedByString:@"\n"];
 }
 
-//- (NSString *)validateInputs {
-//    NSMutableArray *errorMsgs = [NSMutableArray array];
-//    
-//    if (!self.userNameTextField.text.length > 0) {
-//        [errorMsgs addObject:@"Please fill in user name"];
-//    }
-//    
-//    if (!self.passwordTextField.text.length > 0) {
-//        [errorMsgs addObject:@"Please fill in password"];
-//    }
-//    
-//    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-//        [errorMsgs addObject:@"Passwords are not the same"];
-//    }
-//    
-//    if (![self.firstNameTextField.text cleanString].length > 0) {
-//        [errorMsgs addObject:@"Please fill in first name"];
-//    }
-//    
-//    if (![self.lastNameTextField.text cleanString].length > 0) {
-//        [errorMsgs addObject:@"Please fill in last name"];
-//    }
-//    
-//    BOOL emailValid = [self.emailTextField.text isEmailFormat];
-//    
-//    if (!emailValid) {
-//        [errorMsgs addObject:@"Wrong email format"];
-//    }
-//    
-//    if (![self.emailTextField.text isEqualToString:self.confirmEmailTextField.text]) {
-//        [errorMsgs addObject:@"EMail addresses are not the same"];
-//    }
-//    
-//    if (!self.phoneTextField.text.length > 0) {
-//        [errorMsgs addObject:@"Please fill in phone number"];
-//    }
-//    
-//    if (!self.weChatTextField.text.length > 0) {
-//        [errorMsgs addObject:@"Please fill in WeChat ID"];
-//    }
-//    
-//    if (!self.birthday) {
-//        [errorMsgs addObject:@"Please pick your birthday"];
-//    }
-//    
-//    return [errorMsgs componentsJoinedByString:@"\n"];
-//}
-
 - (IBAction)signUpButtonPressed:(id)sender {
     [self.activeResponder resignFirstResponder];
     
@@ -428,7 +358,7 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-//    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+
     [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
 }
 
