@@ -89,7 +89,7 @@
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
-    NSLog(@"emailVerified = %hhd", user.emailVerified);
+    NSLog(@"emailVerified = %@", user.emailVerified ? @"YES" : @"NO");
     NSLog(@"objectId = %@", user.objectId);
 }
 
@@ -116,9 +116,7 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
-    controller.profileViewController = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:nav animated:YES completion:nil];
 }
