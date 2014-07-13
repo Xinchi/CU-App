@@ -117,6 +117,7 @@
 
 - (IBAction)memberButtonPressed:(id)sender {
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
+    controller.profileViewController = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:nav animated:YES completion:nil];
 }

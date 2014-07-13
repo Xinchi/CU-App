@@ -149,7 +149,10 @@
     user.phone = self.phoneTextField.text;
     user.wechatID = self.weChatTextField.text;
     user.birthday = self.birthday;
-    
+    if(self.segmentControl.selectedSegmentIndex==0)
+        user.gender = @"male";
+    else
+        user.gender = @"female";
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             if (succeeded) {
