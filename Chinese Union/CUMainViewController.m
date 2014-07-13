@@ -18,7 +18,8 @@
 #import "CULoginViewController.h"
 #import "User.h"
 #import "PFProductsViewController.h"
-
+#import "Reachability.h"
+#import "ReachabilityController.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -38,6 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //register reachability
+    Reachability * reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    [ReachabilityController registerForViewController:self];
+    
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     self.sideMenuViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];

@@ -8,6 +8,7 @@
 
 #import "CUEditProfileGenderViewController.h"
 #import "UIViewController+Additions.h"
+#import "User.h"
 
 @interface CUEditProfileGenderViewController ()
 
@@ -32,13 +33,15 @@
 }
 
 - (void)saveButtonPressed {
+    User *user = [User currentUser];
     // Use kMale for male string and kFemale for female string
     if (self.segmentedControl.selectedSegmentIndex == 0) {
-        kMale;
+        user.gender = kMale;
     }
     else {
-        kFemale;
+        user.gender = kFemale;
     }
+    [user save];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

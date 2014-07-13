@@ -17,6 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
+#import "ReachabilityController.h"
 
 @interface ProfileViewController ()
 
@@ -45,6 +46,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [ReachabilityController registerForViewController:self];
+    
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     
@@ -118,6 +122,7 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
+    [ReachabilityController checkConnectionStatusForViewController:self];
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileViewController = self;

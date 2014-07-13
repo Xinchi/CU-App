@@ -9,8 +9,8 @@
 #ifndef Chinese_Union_CUProfileEditOption_h
 #define Chinese_Union_CUProfileEditOption_h
 
-static NSString *kMale = @"Male";
-static NSString *kFemale = @"Female";
+static NSString *kMale = @"male";
+static NSString *kFemale = @"female";
 
 typedef NS_ENUM(NSInteger, CUProfileEditOption) {
     CUProfileEditFirstName,
