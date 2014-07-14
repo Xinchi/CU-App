@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
+//#import <BugSense-iOS/BugSenseController.h>
+#import <Appsee/Appsee.h>
+#import <ALAlertBanner/ALAlertBanner.h>
 #import "AppDelegate.h"
 #import "ProfileViewController.h"
 #import "TWTMenuViewController.h"
@@ -16,14 +19,16 @@
 #import "CUEvents.h"
 #import "CUProducts.h"
 #import "User.h"
-//#import <BugSense-iOS/BugSenseController.h>
-#import <Appsee/Appsee.h>
+#import "Reachability.h"
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) UIViewController *mainViewController;
-@property (nonatomic, strong) ProfileViewController *menuViewController;
+@property (nonatomic, strong) UIViewController          *mainViewController;
+@property (nonatomic, strong) ProfileViewController     *menuViewController;
 @property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
+@property (nonatomic, strong) Reachability              *reach;
+@property (nonatomic, strong) ALAlertBanner             *noConnectionBanner;
+@property (nonatomic, strong) ALAlertBanner             *hasConnectionBanner;
 
 @end
 
@@ -74,7 +79,52 @@
     [self.window makeKeyAndVisible];
 //    NSInteger number= 10;
 //    [self createMembers:number];
+    
+    [self addReachability];
+
     return YES;
+}
+
+- (void)addReachability {
+    self.reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    __weak AppDelegate *weakSelf = self;
+    
+    self.reach.reachableBlock = ^(Reachability * reachability)
+    {
+        MyLog(@"Internet connected!");
+        if (weakSelf.noConnectionBanner) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.noConnectionBanner hide];
+                weakSelf.noConnectionBanner = nil;
+                
+                weakSelf.hasConnectionBanner = [ALAlertBanner alertBannerForView:weakSelf.window
+                                                                           style:ALAlertBannerStyleSuccess
+                                                                        position:ALAlertBannerPositionBottom
+                                                                           title:NSLocalizedString(@"Internet connected!", @"")
+                                                                        subtitle:nil];
+                [weakSelf.hasConnectionBanner show];
+            });
+        }
+    };
+    
+    self.reach.unreachableBlock = ^(Reachability * reachability)
+    {
+        MyLog(@"Connection loss!");
+        if (!weakSelf.noConnectionBanner) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.noConnectionBanner = [ALAlertBanner alertBannerForView:weakSelf.window
+                                                              style:ALAlertBannerStyleWarning
+                                                           position:ALAlertBannerPositionBottom
+                                                              title:NSLocalizedString(@"Internet connection loss!", @"")
+                                                           subtitle:nil];
+                weakSelf.noConnectionBanner.secondsToShow = 0; // Always shows
+                [weakSelf.noConnectionBanner show];
+            });
+        }
+    };
+    
+    [self.reach startNotifier];
 }
 
 - (void)customizedNavigation {
@@ -88,13 +138,13 @@
 //    User *user = [User currentUser];
 //    if(user)
 //    {
-//        NSLog(@"CU member id = %@",user.CUMemberID);
+//        MyLog(@"CU member id = %@",user.CUMemberID);
 //        if(user.CUMemberID !=nil)
 //        {
-//            NSLog(@"This is a CU Member");
+//            MyLog(@"This is a CU Member");
 //        }
 //        else
-//            NSLog(@"This is not a CU Member");
+//            MyLog(@"This is not a CU Member");
 //    }
 
     for(int i = 0;i<n;i++)

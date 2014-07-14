@@ -263,7 +263,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     textField.text = [textField.text cleanString];
-    [self validateTextField:textField];
+    [self validateTextField:(SLGlowingTextField *)textField];
 }
 
 - (NSString *)validateTextField:(SLGlowingTextField *)textField {

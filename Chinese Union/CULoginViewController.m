@@ -52,7 +52,7 @@
     SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUpVC];
     signUpVC.delegate = self.delegate;
-    NSLog(@"Delegate:%@", signUpVC.delegate);
+    MyLog(@"Delegate:%@", signUpVC.delegate);
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -63,7 +63,7 @@
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     NSError *error;
     
-    NSLog(@"Button Pressed!");
+    MyLog(@"Button Pressed!");
     
     [User logInWithUsername:self.userNameTextField.text
                    password:self.passwordTextField.text
@@ -78,7 +78,7 @@
         }];
     }
     else {
-        NSLog(@"Login Succeeded!");
+        MyLog(@"Login Succeeded!");
         [PFCloud callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
             if(!error){
                 [self showAlertTitle:NSLocalizedString(@"Success!", @"")

@@ -16,3 +16,9 @@
     #import <Parse/Parse.h>
     #import "PFProducts.h"
 #endif
+
+#ifdef NDEBUG
+#define MyLog(...)
+#else
+#define MyLog NSLog
+#endif

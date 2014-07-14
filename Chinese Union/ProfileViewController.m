@@ -72,12 +72,12 @@
         self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         self.emailLabel.text    = [NSString stringWithFormat:@"%@", user.email];
         self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [[NSDateFormatter birthdayFormatter] stringFromDate:user.birthday]];
-        NSLog(@"User b day:%@", user.birthday);
+        MyLog(@"User b day:%@", user.birthday);
         self.phoneLabel.text    = [NSString stringWithFormat:@"%@", user.phone];
         self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID ? user.wechatID : @"Not linked to WeChat"];
         
         if (user.profilePic) {
-            NSLog(@"User has profilePic!!");
+            MyLog(@"User has profilePic!!");
 
             PFFile *profilePic = user.profilePic;
 
@@ -85,7 +85,7 @@
                 if(!error)
                 {
                     UIImage *proPic = [UIImage imageWithData:imageData];
-                    NSLog(@"Successfully retrieved profilePic!");
+                    MyLog(@"Successfully retrieved profilePic!");
                     self.profilePicView.image = proPic;
                 }
             }];
@@ -93,8 +93,8 @@
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
-    NSLog(@"emailVerified = %@", user.emailVerified ? @"YES" : @"NO");
-    NSLog(@"objectId = %@", user.objectId);
+    MyLog(@"emailVerified = %@", user.emailVerified ? @"YES" : @"NO");
+    MyLog(@"objectId = %@", user.objectId);
 }
 
 #pragma mark - UIActionSheet delegate

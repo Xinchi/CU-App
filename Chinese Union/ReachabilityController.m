@@ -25,7 +25,7 @@
 //            [MRProgressOverlayView showOverlayAddedTo:uiViewController.view title:@"No internet connection" mode:MRProgressOverlayViewModeCross animated:YES];
 //            [self performSelector:@selector(dismissOverlayWithController:) withObject:uiViewController afterDelay:1.0];
 //        });
-        NSLog(@"No internet!");
+        MyLog(@"No internet!");
     };
     
     [reach startNotifier];
@@ -41,7 +41,7 @@
 //            [self performSelector:@selector(dismissOverlayWithController:) withObject:VC afterDelay:1.0];
 //        });
 //    }
-        NSLog(@"No internet!");
+        MyLog(@"No internet!");
 }
 
 + (void) dismissOverlayWithController:(UIViewController *)VC

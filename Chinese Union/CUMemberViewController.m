@@ -78,13 +78,13 @@
             if(!error && [objects count]==1)
             {
                 _cuMember = (CUMembers *)objects[0];
-                NSLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
+                MyLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
             }else if(error){
                 // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                MyLog(@"Error: %@ %@", error, [error userInfo]);
             }else
             {
-                NSLog(@"Error !More than one member record has been found!");
+                MyLog(@"Error !More than one member record has been found!");
             }
 //            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -136,18 +136,18 @@
 
     if(self.user.CUMemberID != nil)
     {
-        NSLog(@"Member ID is ? = %@",self.user.CUMemberID);
+        MyLog(@"Member ID is ? = %@",self.user.CUMemberID);
         return true;
     }
     else
     {
-        NSLog(@"Not a member!");
+        MyLog(@"Not a member!");
     }
     return false;
 }
 
 - (IBAction)activateButtonPressed:(id)sender {
-    NSLog(@"activateButtonPressed");
+    MyLog(@"activateButtonPressed");
     NSString *memberID = self.memberIDTextField.text;
     
     if (![memberID cleanString].length > 0) {
@@ -167,10 +167,10 @@
 
             CUMembers *member = (CUMembers *)object;
         
-            NSLog(@"Member ID Found!");
+            MyLog(@"Member ID Found!");
             if(member.uid !=nil)
             {
-                NSLog(@"The Member ID has already been activated!");
+                MyLog(@"The Member ID has already been activated!");
                 //handle the already-activated case
                 [PFCloud callFunctionInBackground:@"activationFailResponse" withParameters:@{} block:^(NSString *result, NSError *error){
                     if(!error){
@@ -185,13 +185,13 @@
                 [PFCloud callFunctionInBackground:@"getTime" withParameters:@{} block:^(NSDate *result, NSError *error){
                     if(!error){
                         NSDate *date = result;
-                        NSLog(@"Todays date is %@",date);
+                        MyLog(@"Todays date is %@",date);
                         NSDateComponents *components = [[NSDateComponents alloc] init];
                         [PFCloud callFunctionInBackground:@"memberShipCycle" withParameters:@{} block:^(NSString *result, NSError *error){
                             if(!error){
                                 components.month = [result integerValue];
                                 NSDate *expire = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
-                                NSLog(@"Expire date is %@", expire);
+                                MyLog(@"Expire date is %@", expire);
                                 member.expireDate = expire;
                                 self.user.CUMemberID = member.objectId;
                                 [self.user saveInBackground];
@@ -214,7 +214,7 @@
 
         }
         else {
-            NSLog(@"Invalid Member ID Entered! No matching found!");
+            MyLog(@"Invalid Member ID Entered! No matching found!");
             [PFCloud callFunctionInBackground:@"invalidMemberId" withParameters:@{} block:^(NSString *result, NSError *error){
                 if(!error){
                     [self showAlertTitle:NSLocalizedString(@"Error", @"")

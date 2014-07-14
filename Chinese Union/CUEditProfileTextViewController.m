@@ -52,7 +52,7 @@
     
     switch (self.option) {
         case CUProfileEditFirstName:
-            NSLog(@"Editing first name");
+            MyLog(@"Editing first name");
             user.firstName = self.textField.text;
             break;
             

@@ -201,7 +201,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Did select item:%@", indexPath);
+    MyLog(@"Did select item:%@", indexPath);
     if (indexPath.row == 1) {
         PFProductsViewController *storeVC = [[PFProductsViewController alloc] init];
         [self.navigationController pushViewController:storeVC animated:YES];
@@ -264,12 +264,12 @@
 //
 //// Sent to the delegate when the log in attempt fails.
 //- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-//    NSLog(@"Failed to log in...");
+//    MyLog(@"Failed to log in...");
 //}
 //
 //// Sent to the delegate when the log in screen is dismissed.
 //- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    NSLog(@"User dismissed the logInViewController");
+//    MyLog(@"User dismissed the logInViewController");
 //}
 
 
@@ -318,12 +318,12 @@
 //
 //// Sent to the delegate when the log in attempt fails.
 //- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-//    NSLog(@"Failed to log in...");
+//    MyLog(@"Failed to log in...");
 //}
 //
 //// Sent to the delegate when the log in screen is dismissed.
 //- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    NSLog(@"User dismissed the logInViewController");
+//    MyLog(@"User dismissed the logInViewController");
 //}
 //
 //
@@ -355,12 +355,12 @@
 //
 //// Sent to the delegate when the sign up attempt fails.
 //- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-//    NSLog(@"Failed to sign up...");
+//    MyLog(@"Failed to sign up...");
 //}
 //
 //// Sent to the delegate when the sign up screen is dismissed.
 //- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-//    NSLog(@"User dismissed the signUpViewController");
+//    MyLog(@"User dismissed the signUpViewController");
 //}
 
 @end
