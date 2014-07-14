@@ -44,6 +44,8 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [hud setLabelText:@"Loading..."];
     hud.opacity = 0.5;
+    hud.dimBackground = YES;
+    
 //    hud.mode = MBProgressHUDModeDeterminate;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

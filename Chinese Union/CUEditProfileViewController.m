@@ -275,9 +275,11 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
                 if(succeeded)
                 {
-                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCheckmark animated:YES];
-//                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-//                    hud.mode = MBProgressHU
+//                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                    hud.mode = MBProgressHUDModeCustomView;
+                    hud.labelText = @"Picture uploading Completed";
+                    [hud hide:YES afterDelay:2];
                 }
                 else
                 {
