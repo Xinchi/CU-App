@@ -40,6 +40,11 @@
 
 - (void)viewDidLoad
 {
+//    [MRProgressOverlayView showOverlayAddedTo:self.view title:@"loading..." mode:MRProgressOverlayViewModeDeterminateCircular animated:NO];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setLabelText:@"Loading..."];
+    hud.opacity = 0.5;
+//    hud.mode = MBProgressHUDModeDeterminate;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
@@ -48,9 +53,15 @@
     [self addExitButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+
     self.user = [User currentUser];
     
     [self.user refresh];
@@ -73,7 +84,8 @@
             {
                 NSLog(@"Error !More than one member record has been found!");
             }
-            [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
+//            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
 //            [self updateMemberView];
         }];

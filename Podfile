@@ -3,6 +3,7 @@
 
 target "Chinese Union" do
 pod 'MRProgress'
+pod 'MBProgressHUD', '~> 0.8'
 end
 
 target "Chinese UnionTests" do

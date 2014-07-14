@@ -105,7 +105,6 @@
 		50932AB81959013600674269 /* PFProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AB01959013600674269 /* PFProducts.m */; };
 		50932AB91959013600674269 /* PFFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AB21959013600674269 /* PFFinishViewController.m */; };
 		50932ABA1959013600674269 /* PFCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AB41959013600674269 /* PFCheckoutViewController.m */; };
-		50932ABE1959024B00674269 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932ABD1959024B00674269 /* MBProgressHUD.m */; };
 		50932AC21959027E00674269 /* STPCheckoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AC11959027E00674269 /* STPCheckoutView.m */; };
 		50932ADA195902AE00674269 /* PKAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AC6195902AE00674269 /* PKAddressZip.m */; };
 		50932ADB195902AE00674269 /* PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AC8195902AE00674269 /* PKCard.m */; };
@@ -316,8 +315,6 @@
 		50932AB21959013600674269 /* PFFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFFinishViewController.m; sourceTree = "<group>"; };
 		50932AB31959013600674269 /* PFCheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCheckoutViewController.h; sourceTree = "<group>"; };
 		50932AB41959013600674269 /* PFCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFCheckoutViewController.m; sourceTree = "<group>"; };
-		50932ABC1959024B00674269 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		50932ABD1959024B00674269 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		50932AC01959027E00674269 /* STPCheckoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCheckoutView.h; sourceTree = "<group>"; };
 		50932AC11959027E00674269 /* STPCheckoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCheckoutView.m; sourceTree = "<group>"; };
 		50932AC5195902AE00674269 /* PKAddressZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAddressZip.h; sourceTree = "<group>"; };
@@ -495,7 +492,6 @@
 			children = (
 				50932AC31959028500674269 /* Vendor */,
 				50932ABF1959024F00674269 /* Checkout */,
-				50932ABB1959023B00674269 /* MBProgressHUD */,
 				50932AA91959013600674269 /* PFProductsViewController.h */,
 				50932AAA1959013600674269 /* PFProductsViewController.m */,
 				50932AAB1959013600674269 /* PFProductTableViewCell.h */,
@@ -783,15 +779,6 @@
 				505A4FA219730A74000B7CEF /* ReachabilityController.m */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		50932ABB1959023B00674269 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				50932ABC1959024B00674269 /* MBProgressHUD.h */,
-				50932ABD1959024B00674269 /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		50932ABF1959024F00674269 /* Checkout */ = {
@@ -1111,7 +1098,6 @@
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */,
 				5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */,
-				50932ABE1959024B00674269 /* MBProgressHUD.m in Sources */,
 				50932AE3195902AE00674269 /* PKView.m in Sources */,
 				5005F317194968E300BF3DAC /* split.c in Sources */,
 				42308B51193FC1030022D3E7 /* AFImageRequestOperation.m in Sources */,

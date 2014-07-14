@@ -17,6 +17,7 @@
 #import "CUProfileEditOption.h"
 #import "User.h"
 #import "MRProgress.h"
+#import "MBProgressHUD.h"
 #import "CUEditProfileGenderViewController.h"
 
 NSString *picCellID = @"picCell";
@@ -275,6 +276,8 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 if(succeeded)
                 {
                     [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+//                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//                    hud.mode = MBProgressHU
                 }
                 else
                 {

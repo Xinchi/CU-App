@@ -123,7 +123,7 @@
 
 - (IBAction)memberButtonPressed:(id)sender {
     [ReachabilityController checkConnectionStatusForViewController:self];
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileViewController = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];

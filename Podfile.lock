@@ -1,4 +1,5 @@
 PODS:
+  - MBProgressHUD (0.8)
   - MRProgress (0.5.1):
     - MRProgress/ActivityIndicator
     - MRProgress/Blur
@@ -32,9 +33,11 @@ PODS:
   - MRProgress/WeakProxy (0.5.1)
 
 DEPENDENCIES:
+  - MBProgressHUD (~> 0.8)
   - MRProgress
 
 SPEC CHECKSUMS:
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   MRProgress: 7853c177e7d79b90e6f0910561967ebcf3289eb1
 
 COCOAPODS: 0.33.1
