@@ -40,11 +40,11 @@
 
 - (void)viewDidLoad
 {
-//    [MRProgressOverlayView showOverlayAddedTo:self.view title:@"loading..." mode:MRProgressOverlayViewModeDeterminateCircular animated:NO];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [hud setLabelText:@"Loading..."];
-    hud.opacity = 0.5;
-    hud.dimBackground = YES;
+    [MRProgressOverlayView showOverlayAddedTo:self.view title:@"loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [hud setLabelText:@"Loading..."];
+//    hud.opacity = 0.5;
+//    hud.dimBackground = YES;
     
 //    hud.mode = MBProgressHUDModeDeterminate;
     [super viewDidLoad];
@@ -86,8 +86,8 @@
             {
                 NSLog(@"Error !More than one member record has been found!");
             }
-//            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
 //            [self updateMemberView];
         }];
