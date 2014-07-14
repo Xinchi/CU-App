@@ -279,14 +279,14 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 else
                 {
                     NSLog(@"error = %@",error);
-                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCross animated:YES];
+                    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Error" mode:MRProgressOverlayViewModeCross animated:YES];
                 }
             }];
         }
         else
         {
             NSLog(@"error = %@",error);
-            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Succeed" mode:MRProgressOverlayViewModeCross animated:YES];
+            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Error" mode:MRProgressOverlayViewModeCross animated:YES];
         }
         [self performSelector:@selector(dismissOverlay) withObject:self afterDelay:1.0];
 
