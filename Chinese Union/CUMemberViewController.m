@@ -92,8 +92,8 @@
 //            [self updateMemberView];
         }];
     }
-//    [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
     [self updateMemberView];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -129,6 +129,7 @@
         self.upperImageView.image = backgroundImage;
         self.lowerImageView.image = backgroundImage;
     }
+    MyLog(@"DONE WITH updateMemberView");
 }
 
 - (bool)isAMember
