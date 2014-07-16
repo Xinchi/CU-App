@@ -40,8 +40,13 @@
 {
     [super viewDidLoad];
     
+    //configure nav bar
+    
+    UIColor* color = [UIColor colorWithRed:216.0/255 green:58.0/255 blue:58.0/255 alpha:1.0];
+    
+    self.navigationController.navigationBar.barTintColor = color;
+    
     //register reachability
-    Reachability * reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     [ReachabilityController registerForViewController:self];
     
     
