@@ -121,7 +121,7 @@
 -(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
-    float retVal = 1.0;
+    float retVal = 1.5;
     
 //    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
 //    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
@@ -202,7 +202,7 @@
 //    }
 //    
 //    return retVal;
-    return 2;
+    return 3;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
