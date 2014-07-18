@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
 #import "CUForgotPasswordViewController.h"
+#import "User.h"
 
 @interface CULoginViewController ()
 
@@ -129,6 +130,19 @@
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
     MyLog(@"FB button!");
+    
+    NSArray *permissions = [NSArray arrayWithObjects:@"name", @"first_name", @"last_name",@"gender", @"email", @"user_birthday",nil];
+    
+    
+    [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
 }
 
 - (IBAction)twitterButtonPressed:(UIButton *)sender {
