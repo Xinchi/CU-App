@@ -120,9 +120,19 @@
     [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
+#pragma mark - IBActions
+
 - (IBAction)forgotPasswordButtonPressed:(UIButton *)sender {
     CUForgotPasswordViewController *vc = [[CUForgotPasswordViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)fbButtonPressed:(UIButton *)sender {
+    MyLog(@"FB button!");
+}
+
+- (IBAction)twitterButtonPressed:(UIButton *)sender {
+    MyLog(@"Twitter button!");
 }
 
 @end
