@@ -131,10 +131,12 @@
 - (IBAction)fbButtonPressed:(UIButton *)sender {
     MyLog(@"FB button!");
     
-    NSArray *permissions = [NSArray arrayWithObjects:@"name", @"first_name", @"last_name",@"gender", @"email", @"user_birthday",nil];
+    NSArray *permissions = [NSArray arrayWithObjects:@"basic_info", @"email", @"user_birthday",nil];
     
     
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+        if(error)
+            NSLog(@"Error: %@",error);
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
         } else if (user.isNew) {
