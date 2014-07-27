@@ -80,12 +80,15 @@
     [self.window makeKeyAndVisible];
 //    NSInteger number= 10;
 //    [self createMembers:number];
-    
+    [self test];
     [self addReachability];
 
     return YES;
 }
 
+- (void)test {
+
+}
 - (void)addReachability {
     self.reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     

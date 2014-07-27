@@ -71,23 +71,32 @@
                       error:&error];
     
     if (error) {
-        [PFCloud callFunctionInBackground:@"loginFail" withParameters:@{} block:^(NSString *result, NSError *error){
-            if(!error){
-                [self showAlertTitle:NSLocalizedString(@"Error", @"")
-                                 msg:result];
-            }
-        }];
+        [self loginFailedWithError:error];
     }
     else {
-        MyLog(@"Login Succeeded!");
-        [PFCloud callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
-            if(!error){
-                [self showAlertTitle:NSLocalizedString(@"Success!", @"")
-                                 msg:result];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }];
+        [self loginSucceeded];
     }
+}
+
+- (void) loginFailedWithError: (NSError *)error
+{
+    [PFCloud callFunctionInBackground:@"loginFail" withParameters:@{} block:^(NSString *result, NSError *error){
+        if(!error){
+            [self showAlertTitle:NSLocalizedString(@"Error", @"")
+                             msg:result];
+        }
+    }];
+}
+- (void) loginSucceeded
+{
+    MyLog(@"Login Succeeded!");
+    [PFCloud callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
+        if(!error){
+            [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                             msg:result];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 
 - (IBAction)viewTapped:(id)sender {
@@ -129,21 +138,92 @@
 }
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     MyLog(@"FB button!");
     
-    NSArray *permissions = [NSArray arrayWithObjects:@"basic_info", @"email", @"user_birthday",nil];
+    NSArray *permissions = [NSArray arrayWithObjects:@"public_profile",@"email", @"user_birthday",nil];
     
     
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
-        if(error)
-            NSLog(@"Error: %@",error);
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in through Facebook!");
-        } else {
-            NSLog(@"User logged in through Facebook!");
+        if(error){
+            MyLog(@"Error: %@",error);
         }
+        if (!user) {
+            MyLog(@"Uh oh. The user cancelled the Facebook login.");
+            [self showAlertTitle:@"Uh oh" msg:@"Login has been canceled"];
+        } else if (user.isNew) {
+            MyLog(@"User signed up and logged in through Facebook!");
+            //handle new user case
+            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                if (!error) {
+                    // Success! Include your code to handle the results here
+                    NSDictionary *userInfo = result;
+                    NSLog(@"user info: %@", [userInfo description]);
+                    //update user info
+                    [self createNewUserWithDictionary:result withUser:user];
+                } else {
+                    // An error occurred, we need to handle the error
+                    // See: https://developers.facebook.com/docs/ios/errors
+                }
+            }];
+        } else {
+            MyLog(@"User logged in through Facebook!");
+            [self loginSucceeded];
+            NSDictionary *params = [NSDictionary dictionaryWithObject:@"picture.type(large)" forKey:@"fields"];
+            
+            [FBRequestConnection startWithGraphPath:@"me"
+                                         parameters:params
+                                         HTTPMethod:@"GET"
+                                  completionHandler:^(
+                                                      FBRequestConnection *connection,
+                                                      id result,
+                                                      NSError *error
+                                                      ) {
+                                      /* handle the result */
+                                      if(error)
+                                      {
+                                          NSLog(@"Error in loading profile pic : %@",error);
+                                      }
+                                      MyLog(@"picture = %@", result);
+                                      NSURL *imageURL = [NSURL URLWithString:result];
+                                      NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                                      PFFile *imageFile = [PFFile fileWithData:imageData];
+                                      User *user = [User currentUser];
+                                      user.profilePic = imageFile;
+                                      [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                                          if(!error)
+                                          {
+                                              [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+                                          }
+                                      }];
+                                  }];
+        }
+    }];
+    
+    
+    
+}
+
+- (void) createNewUserWithDictionary:(NSDictionary *)userInfo withUser: (PFUser *)user
+{
+    User *currentUser = (User *)user;
+//    currentUser.objectId = userInfo[@"email"];
+    currentUser.username = userInfo[@"email"];
+    currentUser.firstName = userInfo[@"first_name"];
+    currentUser.lastName = userInfo[@"last_name"];
+    currentUser.email = userInfo[@"email"];
+    currentUser.gender = userInfo[@"gender"];
+    NSDateFormatter *formatter;
+    [formatter setDateFormat:@"MM'/'dd'/'yyyy"];
+    currentUser.birthday = [formatter dateFromString:userInfo[@"birthday"]];
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+       if(!error)
+       {
+           MyLog(@"Save new fb user successfully!");
+       }
+       else{
+           MyLog(@"Error !!! : %@",error);
+       }
     }];
 }
 
