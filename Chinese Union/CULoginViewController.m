@@ -168,6 +168,20 @@
                     // See: https://developers.facebook.com/docs/ios/errors
                 }
             }];
+            
+            // Check for publish permissions
+            [FBRequestConnection startWithGraphPath:@"/me/permissions"
+                                  completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                      if (!error){
+                                          NSDictionary *permissions= result;
+                                          MyLog(@"permissions = %@",permissions);
+                                      } else {
+                                          // There was an error, handle it
+                                          // See https://developers.facebook.com/docs/ios/errors/
+                                      }
+                                  }];
+            
+            
         }
     }];
     
