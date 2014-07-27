@@ -17,6 +17,7 @@
 #import "MRProgress.h"
 #import "NSDateFormatter+Additions.h"
 #import "QRGenerator.h"
+#import "PFProductsViewController.h"
 
 @interface CUMemberViewController ()
 
@@ -241,6 +242,10 @@
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
+    PFProductsViewController *storeVC = [[PFProductsViewController alloc] init];
+    storeVC.shouldAddExitButton = YES;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:storeVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)viewTapped:(id)sender {
