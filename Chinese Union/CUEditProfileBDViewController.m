@@ -27,8 +27,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.label.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.birthday];
-    self.datePicker.date = self.birthday;
+    NSString *dateString;
+    NSDate *date;
+    if (self.birthday) {
+        dateString = [[NSDateFormatter birthdayFormatter] stringFromDate:self.birthday];
+        date = self.birthday;
+    }
+    else {
+        dateString = NSLocalizedString(@"Select Birthday", @"");
+        date = [NSDate date];
+    }
+    
+    self.label.text = dateString;
+    self.datePicker.date = date;
     self.datePicker.maximumDate = [NSDate date];
 }
 
