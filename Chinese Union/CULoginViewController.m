@@ -151,7 +151,7 @@
         }
         if (!user) {
             MyLog(@"Uh oh. The user cancelled the Facebook login.");
-            [self showAlertTitle:@"Uh oh" msg:@"Login has been canceled"];
+            [self showAlertTitle:@"Login fail" msg:@"Please check Settings->Facebook and make sure the the toggle for Chinese Union is on"];
         } else {
             
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
