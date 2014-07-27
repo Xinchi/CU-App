@@ -9,6 +9,7 @@
 #import "PFProductsViewController.h"
 #import "PFShippingViewController.h"
 #import "CUProducts.h"
+#import "UIViewController+Additions.h"
 
 #define ROW_MARGIN 6.0f
 #define ROW_HEIGHT 173.0f
@@ -35,6 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = NSLocalizedString(@"Store", @"");
+    
     UIImage *poweredImage = [UIImage imageNamed:@"Powered.png"];
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake((self.tableView.frame.size.width - poweredImage.size.width)/2.0f, 0.0f, self.tableView.frame.size.width, poweredImage.size.height + ROW_MARGIN * 2.0f)];
     UIButton * poweredButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,7 +61,11 @@
     self.tableView.contentOffset = CGPointMake(0.0f, 0.0f);
     self.tableView.scrollEnabled = YES;
     self.pickerView.hidden = YES;    
-    [self.pickerView selectRow:0 inComponent:0 animated:NO];    
+    [self.pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    if (self.shouldAddExitButton) {
+        [self addExitButton];
+    }
 }
 
 

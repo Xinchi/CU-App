@@ -8,4 +8,7 @@
 @interface PFProductsViewController : PFQueryTableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 - (id)initWithStyle:(UITableViewStyle)style;
+
+@property (nonatomic) BOOL shouldAddExitButton;
+
 @end
