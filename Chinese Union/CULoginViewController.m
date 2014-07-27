@@ -184,9 +184,12 @@
     currentUser.lastName = userInfo[@"last_name"];
     currentUser.email = userInfo[@"email"];
     currentUser.gender = userInfo[@"gender"];
-    NSDateFormatter *formatter;
-    [formatter setDateFormat:@"MM'/'dd'/'yyyy"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    MyLog(@"User birthday = %@",userInfo[@"birthday"]);
     currentUser.birthday = [formatter dateFromString:userInfo[@"birthday"]];
+    MyLog(@"curretUser.birthday = %@",currentUser.birthday);
+    MyLog(@"formatter NSDate = %@",[formatter dateFromString:userInfo[@"birthday"]]);
     NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userInfo[@"id"]]];
     NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
     PFFile *imageFile = [PFFile fileWithData:imageData];
