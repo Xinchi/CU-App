@@ -138,7 +138,8 @@
 }
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
     
     NSArray *permissions = [NSArray arrayWithObjects:@"public_profile",@"email", @"user_birthday",nil];
@@ -151,52 +152,22 @@
         if (!user) {
             MyLog(@"Uh oh. The user cancelled the Facebook login.");
             [self showAlertTitle:@"Uh oh" msg:@"Login has been canceled"];
-        } else if (user.isNew) {
-            MyLog(@"User signed up and logged in through Facebook!");
-            //handle new user case
+        } else {
+            
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                 if (!error) {
                     // Success! Include your code to handle the results here
                     NSDictionary *userInfo = result;
                     NSLog(@"user info: %@", [userInfo description]);
                     //update user info
-                    [self createNewUserWithDictionary:result withUser:user];
+                    [self updateUserWithDictionary:result withUser:user newUser:user.isNew];
+                    
                 } else {
+                    MyLog(@"### ERROR: %@",error);
                     // An error occurred, we need to handle the error
                     // See: https://developers.facebook.com/docs/ios/errors
                 }
             }];
-        } else {
-            MyLog(@"User logged in through Facebook!");
-            [self loginSucceeded];
-            NSDictionary *params = [NSDictionary dictionaryWithObject:@"picture.type(large)" forKey:@"fields"];
-            
-            [FBRequestConnection startWithGraphPath:@"me"
-                                         parameters:params
-                                         HTTPMethod:@"GET"
-                                  completionHandler:^(
-                                                      FBRequestConnection *connection,
-                                                      id result,
-                                                      NSError *error
-                                                      ) {
-                                      /* handle the result */
-                                      if(error)
-                                      {
-                                          NSLog(@"Error in loading profile pic : %@",error);
-                                      }
-                                      MyLog(@"picture = %@", result);
-                                      NSURL *imageURL = [NSURL URLWithString:result];
-                                      NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                                      PFFile *imageFile = [PFFile fileWithData:imageData];
-                                      User *user = [User currentUser];
-                                      user.profilePic = imageFile;
-                                      [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                                          if(!error)
-                                          {
-                                              [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-                                          }
-                                      }];
-                                  }];
         }
     }];
     
@@ -204,11 +175,11 @@
     
 }
 
-- (void) createNewUserWithDictionary:(NSDictionary *)userInfo withUser: (PFUser *)user
+- (void) updateUserWithDictionary:(NSDictionary *)userInfo withUser: (PFUser *)user newUser:(BOOL)isNewUser
 {
     User *currentUser = (User *)user;
 //    currentUser.objectId = userInfo[@"email"];
-    currentUser.username = userInfo[@"email"];
+    currentUser.username = userInfo[@"first_name"];
     currentUser.firstName = userInfo[@"first_name"];
     currentUser.lastName = userInfo[@"last_name"];
     currentUser.email = userInfo[@"email"];
@@ -216,10 +187,27 @@
     NSDateFormatter *formatter;
     [formatter setDateFormat:@"MM'/'dd'/'yyyy"];
     currentUser.birthday = [formatter dateFromString:userInfo[@"birthday"]];
+    NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userInfo[@"id"]]];
+    NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    currentUser.profilePic = imageFile;
+    
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
        if(!error)
        {
-           MyLog(@"Save new fb user successfully!");
+           [self dismissViewControllerAnimated:YES completion:nil];
+
+           if(isNewUser)
+           {
+               MyLog(@"Save new fb user successfully!");
+               [self showAlertTitle:@"Welcome!" msg:@"New facebook user successfully registered, welcome to Chinese Union!"];
+           }
+           else
+           {
+               MyLog(@"Old fb user logged in!");
+               [self showAlertTitle:@"Welcome back!" msg:@"Good to see you again!"];
+           }
+           
        }
        else{
            MyLog(@"Error !!! : %@",error);
