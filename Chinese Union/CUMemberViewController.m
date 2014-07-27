@@ -52,6 +52,8 @@
 
     self.title = @"Member";
     
+    self.memberView.hidden = YES;
+    self.notMemberView.hidden = YES;
     [self addExitButton];
 }
 
@@ -89,7 +91,7 @@
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
 //            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
-//            [self updateMemberView];
+            [self updateMemberView];
         }];
     }
     [self updateMemberView];

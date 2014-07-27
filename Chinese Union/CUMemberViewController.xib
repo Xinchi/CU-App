@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi0-OF-Vyg">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi0-OF-Vyg">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -100,11 +100,11 @@
                         <outletCollection property="gestureRecognizers" destination="JuE-EQ-l02" appends="YES" id="8fS-5g-Kkq"/>
                     </connections>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIi-CT-joW">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIi-CT-joW">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FeG-qM-qMf">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FeG-qM-qMf">
                             <rect key="frame" x="20" y="80" width="280" height="157"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -130,9 +130,13 @@
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jO7-gh-fUo">
-                            <rect key="frame" x="70" y="257" width="180" height="180"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jO7-gh-fUo">
+                            <rect key="frame" x="60" y="285" width="200" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="OAf-zK-izm"/>
+                                <constraint firstAttribute="width" constant="200" id="uCq-8z-6Ow"/>
+                            </constraints>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chinese Union" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-Fc-hTt">
                             <rect key="frame" x="58" y="88" width="205" height="26"/>
@@ -140,8 +144,26 @@
                             <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="20"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttH-x3-NvS">
+                            <rect key="frame" x="80" y="245" width="160" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwO-b9-Dmb">
+                            <rect key="frame" x="80" y="493" width="160" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="iwO-b9-Dmb" secondAttribute="bottom" id="6IS-9H-oxg"/>
+                        <constraint firstItem="iwO-b9-Dmb" firstAttribute="height" secondItem="ttH-x3-NvS" secondAttribute="height" id="CtQ-3a-LF4"/>
+                        <constraint firstItem="ttH-x3-NvS" firstAttribute="top" secondItem="FeG-qM-qMf" secondAttribute="bottom" id="DbR-dJ-gaO"/>
+                        <constraint firstItem="jO7-gh-fUo" firstAttribute="top" secondItem="ttH-x3-NvS" secondAttribute="bottom" id="S6n-DT-C5P"/>
+                        <constraint firstItem="iwO-b9-Dmb" firstAttribute="top" secondItem="jO7-gh-fUo" secondAttribute="bottom" id="mmC-Py-ofw"/>
+                        <constraint firstAttribute="centerX" secondItem="jO7-gh-fUo" secondAttribute="centerX" id="qjZ-ls-NbC"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
