@@ -81,7 +81,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
         return 1;
     }
     
-    return 8;
+    return 9;
 }
 
 
@@ -100,6 +100,8 @@ NSString *choosePhoto = @"Choose Existing Photo";
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+//        cell.backgroundColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor blackColor];
         
         switch (indexPath.row) {
             case 0:
@@ -142,6 +144,15 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 7:
                 cell.textLabel.text = NSLocalizedString(@"WeChat", @"");
                 cell.detailTextLabel.text = user.wechatID;
+                break;
+                
+            case 8:
+                cell.textLabel.text = NSLocalizedString(@"Password", @"");
+                cell.detailTextLabel.text = nil;
+                cell.textLabel.textColor = [UIColor redColor];
+//                cell.layer.borderColor = [UIColor redColor].CGColor;
+//                cell.layer.borderWidth = 2;
+//                cell.backgroundColor = [UIColor redColor];
                 break;
                 
             default:
@@ -213,6 +224,13 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 ((CUEditProfileTextViewController *)vc).text = user.wechatID;
                 vc.title = NSLocalizedString(@"WeChat", @"");
                 ((CUEditProfileTextViewController *)vc).option = CUProfileEditWeChat;
+                break;
+                
+            case 8:
+                vc = [[CUEditProfileTextViewController alloc] init];
+                ((CUEditProfileTextViewController *)vc).text = user.wechatID;
+                vc.title = NSLocalizedString(@"Password", @"");
+                ((CUEditProfileTextViewController *)vc).option = CUProfileEditPassword;
                 break;
                 
             default:

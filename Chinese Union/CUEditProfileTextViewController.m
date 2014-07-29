@@ -26,7 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.textField.text = self.text;
+    if (self.option != CUProfileEditPassword) {
+        self.textField.text = self.text;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,6 +72,10 @@
             
         case CUProfileEditWeChat:
             user.wechatID = self.textField.text;
+            break;
+            
+        case CUProfileEditPassword:
+            user.password = self.textField.text;
             break;
             
         default:
