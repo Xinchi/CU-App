@@ -12,10 +12,15 @@
 #import "User.h"
 #import "NSString+Additions.h"
 #import "MRProgress.h"
+#import "SLGlowingTextField.h"
 
 @interface CUEditProfileTextViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *changePasswordTF;
+@property (weak, nonatomic) IBOutlet UITextField *confirmNewPasswordTF;
+
+- (BOOL)validateInputs;
 
 @end
 
@@ -28,6 +33,18 @@
     
     if (self.option != CUProfileEditPassword) {
         self.textField.text = self.text;
+    }
+    else {
+        self.textField.placeholder = NSLocalizedString(@"Enter old password", @"");
+        self.changePasswordTF.placeholder = NSLocalizedString(@"Enter new password", @"");
+        self.confirmNewPasswordTF.placeholder = NSLocalizedString(@"Confirm your password", @"");
+        
+        self.changePasswordTF.hidden = NO;
+        self.confirmNewPasswordTF.hidden = NO;
+        
+        self.textField.secureTextEntry = YES;
+        self.changePasswordTF.secureTextEntry = YES;
+        self.confirmNewPasswordTF.secureTextEntry = YES;
     }
 }
 
@@ -74,17 +91,49 @@
             user.wechatID = self.textField.text;
             break;
             
-        case CUProfileEditPassword:
-            user.password = self.textField.text;
-            break;
+//        case CUProfileEditPassword:
+//            BOOL valid = [self ]
+//            user.password = self.textField.text;
+//            break;
             
         default:
             break;
     }
     
+    if (self.option == CUProfileEditPassword) {
+        BOOL valid = [self validateInputs];
+        if (valid) {
+            user.password = self.changePasswordTF.text;
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
+                                                            message:NSLocalizedString(@"Incorrect password", @"")
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+    }
+    
     [user save];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)validateInputs {
+    User *user = [User currentUser];
+    
+    if (![self.textField.text isEqualToString:user.password]) {
+        MyLog(@"Password is %@", user.password);
+        return NO;
+    }
+
+    if (![self.changePasswordTF.text isEqualToString:self.confirmNewPasswordTF.text]) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (BOOL)isValidInput {
