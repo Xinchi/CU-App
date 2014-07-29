@@ -90,6 +90,9 @@
                 }
             }];
         }
+        else {
+            self.profilePicView.image = nil;
+        }
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
