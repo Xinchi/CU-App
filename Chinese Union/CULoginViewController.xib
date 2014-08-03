@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="fbButton" destination="a4x-S2-dSC" id="EI2-Dc-tts"/>
                 <outlet property="forgotPasswordButton" destination="DX1-8s-Bfb" id="awO-RH-4lz"/>
+                <outlet property="loginButton" destination="u2G-fU-sOV" id="QVp-5C-rVZ"/>
                 <outlet property="passwordTextField" destination="IhP-ny-5R2" id="T9D-Ib-f05"/>
                 <outlet property="signupButton" destination="qTp-fN-GYY" id="cb4-gB-kl9"/>
                 <outlet property="tapGR" destination="Sda-Be-vyn" id="4gt-Ld-5Zw"/>

@@ -45,6 +45,7 @@
 		42C1F927198EEADA0050A234 /* CUContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F925198EEADA0050A234 /* CUContactsViewController.xib */; };
 		42C1F92C198EEAF90050A234 /* CUEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92A198EEAF90050A234 /* CUEventViewController.m */; };
 		42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F92B198EEAF90050A234 /* CUEventViewController.xib */; };
+		42C1F930198EEE510050A234 /* SLGlowingTextField+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92F198EEE510050A234 /* SLGlowingTextField+Valid.m */; };
 		42D3395A1960C75500F1CB8F /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D339591960C75500F1CB8F /* UIViewController+Additions.m */; };
 		42D3395E1960DBF300F1CB8F /* CUEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D3395C1960DBF300F1CB8F /* CUEditProfileViewController.m */; };
 		42D3395F1960DBF300F1CB8F /* CUEditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D3395D1960DBF300F1CB8F /* CUEditProfileViewController.xib */; };
@@ -226,6 +227,8 @@
 		42C1F929198EEAF90050A234 /* CUEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewController.h; sourceTree = "<group>"; };
 		42C1F92A198EEAF90050A234 /* CUEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEventViewController.m; sourceTree = "<group>"; };
 		42C1F92B198EEAF90050A234 /* CUEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventViewController.xib; sourceTree = "<group>"; };
+		42C1F92E198EEE510050A234 /* SLGlowingTextField+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLGlowingTextField+Valid.h"; sourceTree = "<group>"; };
+		42C1F92F198EEE510050A234 /* SLGlowingTextField+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SLGlowingTextField+Valid.m"; sourceTree = "<group>"; };
 		42D339581960C75500F1CB8F /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		42D339591960C75500F1CB8F /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		42D3395B1960DBF300F1CB8F /* CUEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEditProfileViewController.h; sourceTree = "<group>"; };
@@ -533,6 +536,8 @@
 			children = (
 				426CEE46194D236F00522DCF /* SLGlowingTextField.h */,
 				426CEE47194D236F00522DCF /* SLGlowingTextField.m */,
+				42C1F92E198EEE510050A234 /* SLGlowingTextField+Valid.h */,
+				42C1F92F198EEE510050A234 /* SLGlowingTextField+Valid.m */,
 			);
 			name = SLGlowingTextField;
 			sourceTree = "<group>";
@@ -755,9 +760,9 @@
 				5005F2B919467A1700BF3DAC /* SignUpViewController.xib */,
 				426CEE4E194D2BDE00522DCF /* CULoginViewController.h */,
 				426CEE4F194D2BDE00522DCF /* CULoginViewController.m */,
+				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
 				5060D7AD197CED06005F2D3B /* FBDataManager.h */,
 				5060D7AE197CED06005F2D3B /* FBDataManager.m */,
-				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
 				425490771957D92B005A61B0 /* CUInputButton.h */,
 				425490781957D92B005A61B0 /* CUInputButton.m */,
 				421C0EFC1971F2E1008711BD /* CUForgotPasswordViewController.h */,
@@ -1105,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5005F2AC193EE58000BF3DAC /* TWTSideMenuViewController.m in Sources */,
+				42C1F930198EEE510050A234 /* SLGlowingTextField+Valid.m in Sources */,
 				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
 				426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
