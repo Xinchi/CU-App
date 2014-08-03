@@ -124,11 +124,15 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 3:
                 cell.textLabel.text = NSLocalizedString(@"Email", @"");
                 cell.detailTextLabel.text = user.email;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 4:
                 cell.textLabel.text = NSLocalizedString(@"Birthday", @"");
                 cell.detailTextLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:user.birthday];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 5:
@@ -139,6 +143,8 @@ NSString *choosePhoto = @"Choose Existing Photo";
             case 6:
                 cell.textLabel.text = NSLocalizedString(@"Gender", @"");
                 cell.detailTextLabel.text = user.gender;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 break;
                 
             case 7:
@@ -194,16 +200,18 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 3:
-                vc = [[CUEditProfileTextViewController alloc] init];
-                ((CUEditProfileTextViewController *)vc).text = user.email;
-                vc.title = NSLocalizedString(@"Email", @"");
-                ((CUEditProfileTextViewController *)vc).option = CUProfileEditEmail;
+                return;
+//                vc = [[CUEditProfileTextViewController alloc] init];
+//                ((CUEditProfileTextViewController *)vc).text = user.email;
+//                vc.title = NSLocalizedString(@"Email", @"");
+//                ((CUEditProfileTextViewController *)vc).option = CUProfileEditEmail;
                 break;
                 
             case 4:
-                vc = [[CUEditProfileBDViewController alloc] init];
-                vc.title = NSLocalizedString(@"Birthday", @"");
-                ((CUEditProfileBDViewController *)vc).birthday = user.birthday;
+                return;
+//                vc = [[CUEditProfileBDViewController alloc] init];
+//                vc.title = NSLocalizedString(@"Birthday", @"");
+//                ((CUEditProfileBDViewController *)vc).birthday = user.birthday;
                 break;
                 
             case 5:
@@ -214,9 +222,10 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 break;
                 
             case 6:
-                vc = [[CUEditProfileGenderViewController alloc] init];
-                vc.title = NSLocalizedString(@"Gender", @"");
-                ((CUEditProfileGenderViewController *)vc).gender = user.gender;
+                return;
+//                vc = [[CUEditProfileGenderViewController alloc] init];
+//                vc.title = NSLocalizedString(@"Gender", @"");
+//                ((CUEditProfileGenderViewController *)vc).gender = user.gender;
                 break;
                 
             case 7:
