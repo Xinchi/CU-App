@@ -6,6 +6,7 @@ pod 'MRProgress'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'ALAlertBanner', '~> 0.3.1'
 pod 'Facebook-iOS-SDK', '~> 3.13'
+pod 'ReactiveCocoa', '~> 2.3.1'
 end
 
 target "Chinese UnionTests" do

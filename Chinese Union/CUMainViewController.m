@@ -20,6 +20,10 @@
 #import "PFProductsViewController.h"
 #import "Reachability.h"
 #import "ReachabilityController.h"
+#import "CUEventViewController.h"
+#import "CUSoccerViewController.h"
+#import "CUBasketballViewController.h"
+#import "CUContactsViewController.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -39,24 +43,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //configure nav bar
-    
-//    UIColor* color = [UIColor colorWithRed:216.0/255 green:58.0/255 blue:58.0/255 alpha:1.0];
-//    
-//    self.navigationController.navigationBar.barTintColor = color;
-//    
-//    NSShadow *shadow = [[NSShadow alloc] init];
-//    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-//    shadow.shadowOffset = CGSizeMake(0, 1);
-//    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-//                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
-//                                                           shadow, NSShadowAttributeName,
-//                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
-    
+
     //register reachability
     [ReachabilityController registerForViewController:self];
-    
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     self.sideMenuViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
@@ -89,7 +78,6 @@
     else {
         self.navigationItem.leftBarButtonItem.title = @"Login";
     }
-    
 }
 
 #pragma mark - Button
@@ -214,39 +202,28 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MyLog(@"Did select item:%@", indexPath);
-    if (indexPath.row == 1) {
-        PFProductsViewController *storeVC = [[PFProductsViewController alloc] init];
-        [self.navigationController pushViewController:storeVC animated:YES];
+
+    UIViewController *VC;
+    
+    if (indexPath.row == 0) {
+        VC = [[CUEventViewController alloc] init];
     }
-//    switch (indexPath.row) {
-//        case 0:
-//            [self performSegueWithIdentifier:@"eventSegue" sender:self];
-//            break;
-//            
-//        case 1:
-//            [self performSegueWithIdentifier:@"storeSegue" sender:self];
-//            break;
-//            
-//        case 2:
-//            [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-//            break;
-//            
-//        case 3:
-//            [self performSegueWithIdentifier:@"soccerSegue" sender:self];
-//            break;
-//            
-//        case 4:
-//            [self performSegueWithIdentifier:@"basketballSegue" sender:self];
-//            break;
-//            
-//        case 5:
-//            [self performSegueWithIdentifier:@"contactSegue" sender:self];
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    else if (indexPath.row == 1) {
+        VC = [[PFProductsViewController alloc] init];
+    }
+    else if (indexPath.row == 3) {
+        VC = [[CUSoccerViewController alloc] init];
+    }
+    else if (indexPath.row == 4) {
+        VC = [[CUBasketballViewController alloc] init];
+    }
+    else if (indexPath.row == 5) {
+        VC = [[CUContactsViewController alloc] init];
+    }
+    
+    if (VC) {
+        [self.navigationController pushViewController:VC animated:YES];
+    }
 }
 
 #pragma mark - CTSingUpViewControllerDelegate
@@ -256,124 +233,5 @@
     [self updateButtonTitle];
 
 }
-//=======
-//#pragma mark - PFLogInViewControllerDelegate
-//
-//// Sent to the delegate to determine whether the log in request should be submitted to the server.
-//- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-//    if (username && password && username.length && password.length) {
-//        return YES;
-//    }
-//    
-//    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-//    return NO;
-//}
-//
-//// Sent to the delegate when a PFUser is logged in.
-//- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(User *)user {
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self updateButtonTitle];
-//}
-//
-//// Sent to the delegate when the log in attempt fails.
-//- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-//    MyLog(@"Failed to log in...");
-//}
-//
-//// Sent to the delegate when the log in screen is dismissed.
-//- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    MyLog(@"User dismissed the logInViewController");
-//}
-
-
-//#pragma mark - PFSignUpViewControllerDelegate
-//
-//// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-//- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-//    BOOL informationComplete = YES;
-//    for (id key in info) {
-//        NSString *field = [info objectForKey:key];
-//        if (!field || field.length == 0) {
-//            informationComplete = NO;
-//            break;
-//        }
-//    }
-//    
-//    if (!informationComplete) {
-//        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-//    }
-//    
-//    return informationComplete;
-//}
-//
-//// Sent to the delegate when a PFUser is signed up.
-//- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(User *)user {
-//>>>>>>> subclassing
-
-
-//#pragma mark - PFLogInViewControllerDelegate
-//
-//// Sent to the delegate to determine whether the log in request should be submitted to the server.
-//- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-//    if (username && password && username.length && password.length) {
-//        return YES;
-//    }
-//    
-//    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-//    return NO;
-//}
-//
-//// Sent to the delegate when a PFUser is logged in.
-//- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self updateButtonTitle];
-//}
-//
-//// Sent to the delegate when the log in attempt fails.
-//- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-//    MyLog(@"Failed to log in...");
-//}
-//
-//// Sent to the delegate when the log in screen is dismissed.
-//- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    MyLog(@"User dismissed the logInViewController");
-//}
-//
-//
-//#pragma mark - PFSignUpViewControllerDelegate
-//
-//// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-//- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-//    BOOL informationComplete = YES;
-//    for (id key in info) {
-//        NSString *field = [info objectForKey:key];
-//        if (!field || field.length == 0) {
-//            informationComplete = NO;
-//            break;
-//        }
-//    }
-//    
-//    if (!informationComplete) {
-//        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-//    }
-//    
-//    return informationComplete;
-//}
-//
-//// Sent to the delegate when a PFUser is signed up.
-//- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self updateButtonTitle];
-//}
-//
-//// Sent to the delegate when the sign up attempt fails.
-//- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-//    MyLog(@"Failed to sign up...");
-//}
-//
-//// Sent to the delegate when the sign up screen is dismissed.
-//- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-//    MyLog(@"User dismissed the signUpViewController");
-//}
 
 @end
