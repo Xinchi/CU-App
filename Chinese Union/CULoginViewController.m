@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -47,6 +48,13 @@
     [self addBorderToButton:self.twitterButton];
     [self addBorderToButton:self.signupButton];
     [self addBorderToButton:self.forgotPasswordButton];
+    
+//    RAC(self.loginButton, enabled) = [RACSignal
+//                                      combineLatest:@[self.userNameTextField.rac_textSignal,
+//                                                      self.passwordTextField.rac_textSignal]
+//                                                       reduce:^(NSString *username, NSString *password){
+//                                                           return @(username.length > 0 && password.length > 0);
+//    }];
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {

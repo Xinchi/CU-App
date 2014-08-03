@@ -13,7 +13,9 @@
 #import "NSString+Additions.h"
 
 @interface CUForgotPasswordViewController ()
+
 @property (weak, nonatomic) IBOutlet SLGlowingTextField *textfield;
+@property (weak, nonatomic) IBOutlet UIButton *retrieveButton;
 
 @end
 
@@ -25,6 +27,10 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"Retrieve password";
+    
+    RAC(self.retrieveButton, enabled) = [RACSignal combineLatest:@[self.textfield.rac_textSignal] reduce:^(NSString *email){
+        return @(email.length > 0);
+    }];
 }
 
 - (IBAction)retreivePasswordButtonPressed:(id)sender {

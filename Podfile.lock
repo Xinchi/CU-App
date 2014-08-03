@@ -1,6 +1,6 @@
 PODS:
   - ALAlertBanner (0.3.1)
-  - Bolts (1.1.0)
+  - Bolts (1.1.1)
   - Facebook-iOS-SDK (3.16.2):
     - Bolts
   - MBProgressHUD (0.8)
@@ -35,18 +35,27 @@ PODS:
   - MRProgress/Stopable (0.5.1):
     - MRProgress/Helper
   - MRProgress/WeakProxy (0.5.1)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
+    - ReactiveCocoa/Core
 
 DEPENDENCIES:
   - ALAlertBanner (~> 0.3.1)
   - Facebook-iOS-SDK (~> 3.13)
   - MBProgressHUD (~> 0.8)
   - MRProgress
+  - ReactiveCocoa (~> 2.3.1)
 
 SPEC CHECKSUMS:
   ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
-  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
   Facebook-iOS-SDK: 34eef640c2cc4c8618ba0f574ad2b290e07f1b4e
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   MRProgress: 7853c177e7d79b90e6f0910561967ebcf3289eb1
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
 
 COCOAPODS: 0.33.1
