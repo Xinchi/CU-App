@@ -20,6 +20,9 @@
 #import "CUProducts.h"
 #import "User.h"
 #import "Reachability.h"
+#import "CUBasketballPlayer.h"
+#import "CUSoccerPlayer.h"
+#import "CUPersonnel.h"
 
 @interface AppDelegate ()
 
@@ -87,7 +90,27 @@
 }
 
 - (void)test {
-
+    CUBasketballPlayer *basketballPlayer = [CUBasketballPlayer object];
+    basketballPlayer.name = @"Max";
+    basketballPlayer.college = @"Sixth";
+    basketballPlayer.year = @"Freshman";
+    basketballPlayer.major = @"CSE";
+    [basketballPlayer save];
+    
+    CUSoccerPlayer *soccerPlayer = [CUSoccerPlayer object];
+    soccerPlayer.name = @"Max";
+    soccerPlayer.college = @"Sixth";
+    soccerPlayer.year = @"Freshman";
+    soccerPlayer.major = @"CSE";
+    [soccerPlayer save];
+    
+    CUPersonnel *personnel = [CUPersonnel object];
+    personnel.name = @"Max";
+    personnel.college = @"Sixth";
+    personnel.year = @"Freshman";
+    personnel.major = @"CSE";
+    [personnel save];
+    
 }
 - (void)addReachability {
     self.reach = [Reachability reachabilityWithHostname:@"www.google.com"];
@@ -198,6 +221,9 @@
     [CUEvents registerSubclass];
     [CUProducts registerSubclass];
     [User registerSubclass];
+    [CUBasketballPlayer registerSubclass];
+    [CUSoccerPlayer registerSubclass];
+    [CUPersonnel registerSubclass];
 }
 
 - (BOOL)application:(UIApplication *)application
