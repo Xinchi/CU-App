@@ -133,4 +133,10 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
+- (IBAction)scannerButtonPressed:(UIButton *)sender {
+}
+
+- (IBAction)myQRCodePressed:(UIButton *)sender {
+}
+
 @end
