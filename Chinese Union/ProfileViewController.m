@@ -134,9 +134,28 @@
 }
 
 - (IBAction)scannerButtonPressed:(UIButton *)sender {
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    ZBarImageScanner *scanner = reader.scanner;
+    // TODO: (optional) additional reader configuration here
+    [scanner setSymbology: ZBAR_I25
+                   config: ZBAR_CFG_ENABLE
+                       to: 0];
+    // present and release the controller
+    [self presentViewController:reader animated:YES completion:nil];
 }
 
 - (IBAction)myQRCodePressed:(UIButton *)sender {
 }
+
+#pragma mark - ZBarReaderDelegate
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    MyLog(@"Finished reading QR code...");
+}
+
 
 @end
