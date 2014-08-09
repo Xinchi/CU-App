@@ -148,18 +148,7 @@
 }
 
 - (IBAction)myQRCodePressed:(UIButton *)sender {
-    User *user = [User currentUser];
-    if (![PFFacebookUtils isLinkedWithUser:user]) {
-        [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"Woohoo, user logged in with Facebook!");
-            }
-        }];
-    }
-    else
-    {
-        MyLog(@"User is linked with facebook!");
-    }
+
 }
 
 #pragma mark - ZBarReaderDelegate

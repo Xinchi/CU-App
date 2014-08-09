@@ -236,6 +236,10 @@
        }
        else{
            MyLog(@"Error !!! : %@",error);
+
+           NSString *errormsg = @"Something went wrong, probably the username has already been taken, please contact CU officer!";
+           
+           [self showAlertTitle:@"Opps" msg:errormsg];
        }
     }];
 }

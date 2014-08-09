@@ -81,7 +81,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
         return 1;
     }
     
-    return 9;
+    return 10;
 }
 
 
@@ -161,6 +161,18 @@ NSString *choosePhoto = @"Choose Existing Photo";
 //                cell.backgroundColor = [UIColor redColor];
                 break;
                 
+            case 9:
+                if (![PFFacebookUtils isLinkedWithUser:user])
+                {
+                    cell.textLabel.text = NSLocalizedString(@"Link with Facebook", @"");
+                }
+                else
+                {
+                    cell.textLabel.text = NSLocalizedString(@"Facebook account has been linked", @"");
+                }
+                cell.detailTextLabel.text = nil;
+                cell.textLabel.textColor = [UIColor blueColor];
+                
             default:
                 break;
         }
@@ -173,6 +185,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BOOL vcPresentable = true;
     if (indexPath.section == 0) {
         [self.actionSheet showInView:self.view];
     }
@@ -242,11 +255,51 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 ((CUEditProfileTextViewController *)vc).option = CUProfileEditPassword;
                 break;
                 
+            case 9:
+                [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+                vcPresentable = false;
+                if (![PFFacebookUtils isLinkedWithUser:user])
+                {
+                    NSLog(@"Before FB was not linked");
+                    [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Link Successful!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+                            
+                            [self.tableView reloadData];
+                            [self performSelector:@selector(dismissOverlay) withObject:nil afterDelay:1];
+                            ;
+                        }
+                        else {
+
+                            [self showAlertTitle:NSLocalizedString(@"Error",@"") msg:[[error userInfo] valueForKey:@"error"]];
+                        }
+                    }];
+
+                }else {
+                    NSLog(@"Before FB was linked");
+                    [user refresh];
+                    NSLog(@"currentUser id = %@",user.objectId);
+//                    [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
+//                        if(succeeded){
+//                            NSLog(@"Unlink successfully..");
+//                            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Unlink Successful!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+//                            [self.tableView reloadData];
+//                            [self performSelector:@selector(dismissOverlay) withObject:nil afterDelay:1];
+//                        }
+//                        else{
+//                            NSLog(@"Error : %@",error);
+//                        }
+//                    }];
+                }
+                
+                break;
             default:
                 break;
         }
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        if(vcPresentable)
+        {
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
@@ -332,6 +385,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
 }
 
 - (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    [MRProgressOverlayView dismissAllOverlaysForView:self.navigationController.view animated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:msg
                                                    delegate:nil
