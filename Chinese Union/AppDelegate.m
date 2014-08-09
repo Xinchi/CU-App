@@ -90,26 +90,6 @@
 }
 
 - (void)test {
-    CUBasketballPlayer *basketballPlayer = [CUBasketballPlayer object];
-    basketballPlayer.name = @"Max";
-    basketballPlayer.college = @"Sixth";
-    basketballPlayer.year = @"Freshman";
-    basketballPlayer.major = @"CSE";
-    [basketballPlayer save];
-    
-    CUSoccerPlayer *soccerPlayer = [CUSoccerPlayer object];
-    soccerPlayer.name = @"Max";
-    soccerPlayer.college = @"Sixth";
-    soccerPlayer.year = @"Freshman";
-    soccerPlayer.major = @"CSE";
-    [soccerPlayer save];
-    
-    CUPersonnel *personnel = [CUPersonnel object];
-    personnel.name = @"Max";
-    personnel.college = @"Sixth";
-    personnel.year = @"Freshman";
-    personnel.major = @"CSE";
-    [personnel save];
     
 }
 - (void)addReachability {

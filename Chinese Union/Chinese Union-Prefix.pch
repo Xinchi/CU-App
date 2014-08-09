@@ -16,10 +16,11 @@
     #import <Parse/Parse.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import "PFProducts.h"
+    #import "ZBarSDK.h"
 #endif
 
 #ifdef NDEBUG
-#define MyLog(...)
+#define MyLog NSLog
 #else
 #define MyLog NSLog
 #endif

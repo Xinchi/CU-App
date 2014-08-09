@@ -115,6 +115,7 @@
 #pragma mark - IBAction
 
 - (IBAction)logOutButtonTapAction:(id)sender {
+    NSLog(@"Logging out...");
     [self.actionSheet showInView:self.view];
 }
 
@@ -134,9 +135,68 @@
 }
 
 - (IBAction)scannerButtonPressed:(UIButton *)sender {
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    ZBarImageScanner *scanner = reader.scanner;
+    // TODO: (optional) additional reader configuration here
+    [scanner setSymbology: ZBAR_I25
+                   config: ZBAR_CFG_ENABLE
+                       to: 0];
+    // present and release the controller
+    [self presentViewController:reader animated:YES completion:nil];
 }
 
 - (IBAction)myQRCodePressed:(UIButton *)sender {
+    User *user = [User currentUser];
+    if (![PFFacebookUtils isLinkedWithUser:user]) {
+        [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"Woohoo, user logged in with Facebook!");
+            }
+        }];
+    }
+    else
+    {
+        MyLog(@"User is linked with facebook!");
+    }
 }
+
+#pragma mark - ZBarReaderDelegate
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    NSString *userId;
+    MyLog(@"Finished reading QR code...");
+    //Handle the data read in
+    id<NSFastEnumeration> results =
+    [info objectForKey: ZBarReaderControllerResults];
+    for(ZBarSymbol *symbol in results)
+    {
+        userId = symbol.data;
+        NSLog(@"FROM QR Scanning, userId = %@",userId);
+    }
+    PFQuery *query = [User query];
+    [query getObjectInBackgroundWithId:userId block:^(PFObject *user, NSError *error){
+        if(!error)
+        {
+            User *scannedUser = (User *)user;
+            /**
+             * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
+             * Modal view is preferred here for the User Profile, if you agree with that
+             */
+            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+        }else {
+            NSLog(@"Error = %@",error);
+        }
+
+    }];
+    
+    
+    [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

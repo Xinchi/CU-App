@@ -153,6 +153,7 @@
 		50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C1B198EBA0E00647814 /* CUBasketballPlayer.m */; };
 		50E64C25198EFB4500647814 /* CUSoccerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C24198EFB4500647814 /* CUSoccerPlayer.m */; };
 		50E64C28198EFBA400647814 /* CUPersonnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C27198EFBA400647814 /* CUPersonnel.m */; };
+		50E64C2A198F0ADF00647814 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E64C29198F0ADF00647814 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,6 +404,7 @@
 		50E64C24198EFB4500647814 /* CUSoccerPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSoccerPlayer.m; sourceTree = "<group>"; };
 		50E64C26198EFBA400647814 /* CUPersonnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPersonnel.h; sourceTree = "<group>"; };
 		50E64C27198EFBA400647814 /* CUPersonnel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPersonnel.m; sourceTree = "<group>"; };
+		50E64C29198F0ADF00647814 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		6627D301FBE3450A9F9CC593 /* libPods-Chinese Union.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Chinese Union.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1C125702F1468AAB7DD6F3 /* Pods-Chinese Union.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chinese Union.xcconfig"; path = "Pods/Pods-Chinese Union.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -412,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E64C2A198F0ADF00647814 /* libiconv.dylib in Frameworks */,
 				420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */,
 				420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */,
 				5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */,
@@ -624,6 +627,7 @@
 		5005F224193EAC1600BF3DAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50E64C29198F0ADF00647814 /* libiconv.dylib */,
 				42E313EF1963D6B000F5CFBC /* Appsee.framework */,
 				420CDC3319639AC2001EED84 /* CoreVideo.framework */,
 				420CDC3119639AB9001EED84 /* CoreMedia.framework */,
