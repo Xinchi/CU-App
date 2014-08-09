@@ -262,6 +262,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
                 {
                     NSLog(@"Before FB was not linked");
                     [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
+                        
                         if (succeeded) {
                             [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Link Successful!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
                             
@@ -273,6 +274,9 @@ NSString *choosePhoto = @"Choose Existing Photo";
 
                             [self showAlertTitle:NSLocalizedString(@"Error",@"") msg:[[error userInfo] valueForKey:@"error"]];
                         }
+                        
+                        NSIndexPath *selectedIndexpath = [self.tableView indexPathForSelectedRow];
+                        [self.tableView deselectRowAtIndexPath:selectedIndexpath animated:YES];
                     }];
 
                 }else {
