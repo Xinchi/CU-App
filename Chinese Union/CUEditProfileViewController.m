@@ -46,7 +46,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
             [_actionSheet addButtonWithTitle:choosePhoto];
         }
         
-        _actionSheet.cancelButtonIndex = [_actionSheet addButtonWithTitle:@"Cancel"];
+        _actionSheet.cancelButtonIndex = [_actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
     }
     return _actionSheet;
 }
@@ -393,7 +393,7 @@ NSString *choosePhoto = @"Choose Existing Photo";
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:msg
                                                    delegate:nil
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
                                           otherButtonTitles:nil];
     [alert show];
 }

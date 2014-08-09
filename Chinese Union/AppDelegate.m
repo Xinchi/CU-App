@@ -24,6 +24,10 @@
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
 
+#if DEBUG
+#import "FLEXManager.h"
+#endif
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) UIViewController          *mainViewController;
@@ -85,6 +89,10 @@
 //    [self createMembers:number];
     [self test];
     [self addReachability];
+    
+#if DEBUG
+    [[FLEXManager sharedManager] showExplorer];
+#endif
 
     return YES;
 }
