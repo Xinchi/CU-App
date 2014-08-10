@@ -33,16 +33,15 @@
 		42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */; };
 		42308B59193FC14A0022D3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 42308B58193FC14A0022D3E7 /* data.json */; };
 		425490791957D92B005A61B0 /* CUInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 425490781957D92B005A61B0 /* CUInputButton.m */; };
+		42682DBF1996BCD60001BCB5 /* CUTeamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */; };
+		42682DC01996BCD60001BCB5 /* CUTeamTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */; };
+		42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */; };
+		42682DC71996C0810001BCB5 /* CUContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */; };
 		426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE47194D236F00522DCF /* SLGlowingTextField.m */; };
 		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
-		42C1F91C198EEAAD0050A234 /* CUSoccerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F91A198EEAAD0050A234 /* CUSoccerViewController.m */; };
-		42C1F91D198EEAAD0050A234 /* CUSoccerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F91B198EEAAD0050A234 /* CUSoccerViewController.xib */; };
-		42C1F921198EEACA0050A234 /* CUBasketballViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F91F198EEACA0050A234 /* CUBasketballViewController.m */; };
-		42C1F922198EEACA0050A234 /* CUBasketballViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F920198EEACA0050A234 /* CUBasketballViewController.xib */; };
-		42C1F926198EEADA0050A234 /* CUContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F924198EEADA0050A234 /* CUContactsViewController.m */; };
-		42C1F927198EEADA0050A234 /* CUContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F925198EEADA0050A234 /* CUContactsViewController.xib */; };
+		42BCDC1919970120009326CE /* CUContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC1819970120009326CE /* CUContactListViewModel.m */; };
 		42C1F92C198EEAF90050A234 /* CUEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92A198EEAF90050A234 /* CUEventViewController.m */; };
 		42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F92B198EEAF90050A234 /* CUEventViewController.xib */; };
 		42C1F930198EEE510050A234 /* SLGlowingTextField+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92F198EEE510050A234 /* SLGlowingTextField+Valid.m */; };
@@ -212,6 +211,12 @@
 		42308B58193FC14A0022D3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		425490771957D92B005A61B0 /* CUInputButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUInputButton.h; sourceTree = "<group>"; };
 		425490781957D92B005A61B0 /* CUInputButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUInputButton.m; sourceTree = "<group>"; };
+		42682DBC1996BCD60001BCB5 /* CUTeamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTeamTableViewController.h; sourceTree = "<group>"; };
+		42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTeamTableViewController.m; sourceTree = "<group>"; };
+		42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUTeamTableViewController.xib; sourceTree = "<group>"; };
+		42682DC31996C0810001BCB5 /* CUContactListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactListTableViewCell.h; sourceTree = "<group>"; };
+		42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactListTableViewCell.m; sourceTree = "<group>"; };
+		42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUContactListTableViewCell.xib; sourceTree = "<group>"; };
 		426CEE46194D236F00522DCF /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
 		426CEE47194D236F00522DCF /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
 		426CEE4E194D2BDE00522DCF /* CULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CULoginViewController.h; sourceTree = "<group>"; };
@@ -219,15 +224,8 @@
 		426CEE50194D2BDE00522DCF /* CULoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CULoginViewController.xib; sourceTree = "<group>"; };
 		426CEE54194D459400522DCF /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
-		42C1F919198EEAAD0050A234 /* CUSoccerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSoccerViewController.h; sourceTree = "<group>"; };
-		42C1F91A198EEAAD0050A234 /* CUSoccerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSoccerViewController.m; sourceTree = "<group>"; };
-		42C1F91B198EEAAD0050A234 /* CUSoccerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUSoccerViewController.xib; sourceTree = "<group>"; };
-		42C1F91E198EEACA0050A234 /* CUBasketballViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUBasketballViewController.h; sourceTree = "<group>"; };
-		42C1F91F198EEACA0050A234 /* CUBasketballViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUBasketballViewController.m; sourceTree = "<group>"; };
-		42C1F920198EEACA0050A234 /* CUBasketballViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUBasketballViewController.xib; sourceTree = "<group>"; };
-		42C1F923198EEADA0050A234 /* CUContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactsViewController.h; sourceTree = "<group>"; };
-		42C1F924198EEADA0050A234 /* CUContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactsViewController.m; sourceTree = "<group>"; };
-		42C1F925198EEADA0050A234 /* CUContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUContactsViewController.xib; sourceTree = "<group>"; };
+		42BCDC1719970120009326CE /* CUContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactListViewModel.h; sourceTree = "<group>"; };
+		42BCDC1819970120009326CE /* CUContactListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactListViewModel.m; sourceTree = "<group>"; };
 		42C1F929198EEAF90050A234 /* CUEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewController.h; sourceTree = "<group>"; };
 		42C1F92A198EEAF90050A234 /* CUEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEventViewController.m; sourceTree = "<group>"; };
 		42C1F92B198EEAF90050A234 /* CUEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventViewController.xib; sourceTree = "<group>"; };
@@ -570,15 +568,14 @@
 		42C1F918198EEA3D0050A234 /* Static pages */ = {
 			isa = PBXGroup;
 			children = (
-				42C1F919198EEAAD0050A234 /* CUSoccerViewController.h */,
-				42C1F91A198EEAAD0050A234 /* CUSoccerViewController.m */,
-				42C1F91B198EEAAD0050A234 /* CUSoccerViewController.xib */,
-				42C1F91E198EEACA0050A234 /* CUBasketballViewController.h */,
-				42C1F91F198EEACA0050A234 /* CUBasketballViewController.m */,
-				42C1F920198EEACA0050A234 /* CUBasketballViewController.xib */,
-				42C1F923198EEADA0050A234 /* CUContactsViewController.h */,
-				42C1F924198EEADA0050A234 /* CUContactsViewController.m */,
-				42C1F925198EEADA0050A234 /* CUContactsViewController.xib */,
+				42682DBC1996BCD60001BCB5 /* CUTeamTableViewController.h */,
+				42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */,
+				42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */,
+				42682DC31996C0810001BCB5 /* CUContactListTableViewCell.h */,
+				42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */,
+				42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */,
+				42BCDC1719970120009326CE /* CUContactListViewModel.h */,
+				42BCDC1819970120009326CE /* CUContactListViewModel.m */,
 			);
 			name = "Static pages";
 			sourceTree = "<group>";
@@ -1047,11 +1044,11 @@
 				42D339661960DD5A00F1CB8F /* CUProfileTextCell.xib in Resources */,
 				50932AFD195902D300674269 /* cvc@2x.png in Resources */,
 				50932B771960B77000674269 /* CUMemberViewController.xib in Resources */,
-				42C1F922198EEACA0050A234 /* CUBasketballViewController.xib in Resources */,
 				50932B07195902D300674269 /* placeholder@2x.png in Resources */,
 				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				50932AF9195902D300674269 /* amex@2x.png in Resources */,
 				42308B59193FC14A0022D3E7 /* data.json in Resources */,
+				42682DC01996BCD60001BCB5 /* CUTeamTableViewController.xib in Resources */,
 				42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */,
 				50932B04195902D300674269 /* mastercard.png in Resources */,
 				42308B37193FBF260022D3E7 /* CUMainViewController.xib in Resources */,
@@ -1061,7 +1058,6 @@
 				50932AFC195902D300674269 /* cvc.png in Resources */,
 				50932B09195902D300674269 /* visa@2x.png in Resources */,
 				50932AFF195902D300674269 /* diners@2x.png in Resources */,
-				42C1F91D198EEAAD0050A234 /* CUSoccerViewController.xib in Resources */,
 				42D3396E1960DE7900F1CB8F /* CUProfilePicCell.xib in Resources */,
 				50932B08195902D300674269 /* visa.png in Resources */,
 				421C0F001971F2E1008711BD /* CUForgotPasswordViewController.xib in Resources */,
@@ -1075,8 +1071,8 @@
 				50932B02195902D300674269 /* jcb.png in Resources */,
 				50932B00195902D300674269 /* discover.png in Resources */,
 				5005F283193EDD7500BF3DAC /* ProfileViewController.xib in Resources */,
+				42682DC71996C0810001BCB5 /* CUContactListTableViewCell.xib in Resources */,
 				42E313EE1963BFA700F5CFBC /* CUEditProfileBDViewController.xib in Resources */,
-				42C1F927198EEADA0050A234 /* CUContactsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,7 +1148,6 @@
 				50932AC21959027E00674269 /* STPCheckoutView.m in Sources */,
 				50932ADC195902AE00674269 /* PKCardCVC.m in Sources */,
 				50932A9F1957714900674269 /* CUSales.m in Sources */,
-				42C1F91C198EEAAD0050A234 /* CUSoccerViewController.m in Sources */,
 				50932B15195902EB00674269 /* STPToken.m in Sources */,
 				425490791957D92B005A61B0 /* CUInputButton.m in Sources */,
 				42D3395E1960DBF300F1CB8F /* CUEditProfileViewController.m in Sources */,
@@ -1160,6 +1155,7 @@
 				5005F311194968E300BF3DAC /* bitstream.c in Sources */,
 				42308B54193FC1030022D3E7 /* AFPropertyListRequestOperation.m in Sources */,
 				42D339651960DD5A00F1CB8F /* CUProfileTextCell.m in Sources */,
+				42BCDC1919970120009326CE /* CUContactListViewModel.m in Sources */,
 				5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */,
 				50932ABA1959013600674269 /* PFCheckoutViewController.m in Sources */,
 				50932AE1195902AE00674269 /* PKCardNumberDelegate.m in Sources */,
@@ -1181,14 +1177,12 @@
 				5005F317194968E300BF3DAC /* split.c in Sources */,
 				42308B51193FC1030022D3E7 /* AFImageRequestOperation.m in Sources */,
 				50932ADD195902AE00674269 /* PKCardCVCDelegate.m in Sources */,
-				42C1F921198EEACA0050A234 /* CUBasketballViewController.m in Sources */,
 				5060D7AF197CED06005F2D3B /* FBDataManager.m in Sources */,
 				5005F31C194A534B00BF3DAC /* CUMembers.m in Sources */,
 				50932ADF195902AE00674269 /* PKCardExpiryDelegate.m in Sources */,
 				421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */,
 				50932ADB195902AE00674269 /* PKCard.m in Sources */,
 				50932B14195902EB00674269 /* STPCard.m in Sources */,
-				42C1F926198EEADA0050A234 /* CUContactsViewController.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
 				42D3395A1960C75500F1CB8F /* UIViewController+Additions.m in Sources */,
 				42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */,
@@ -1197,12 +1191,14 @@
 				42308B36193FBF260022D3E7 /* CUMainViewController.m in Sources */,
 				5005F2B2193EE7E200BF3DAC /* TWTMainViewController.m in Sources */,
 				50932B17195902EB00674269 /* StripeError.m in Sources */,
+				42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */,
 				50932B16195902EB00674269 /* Stripe.m in Sources */,
 				5005F2BA19467A1700BF3DAC /* SignUpViewController.m in Sources */,
 				50932AB91959013600674269 /* PFFinishViewController.m in Sources */,
 				50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */,
 				42308B50193FC1030022D3E7 /* AFHTTPRequestOperation.m in Sources */,
 				50E64C28198EFBA400647814 /* CUPersonnel.m in Sources */,
+				42682DBF1996BCD60001BCB5 /* CUTeamTableViewController.m in Sources */,
 				42308B52193FC1030022D3E7 /* AFJSONRequestOperation.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 				421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */,
