@@ -10,6 +10,7 @@
 #import "CUContactListTableViewCell.h"
 #import "CUPersonnel.h"
 #import "CUContactListViewModel.h"
+#import "MRProgress.h"
 
 static NSString * const cellID = @"cell";
 
@@ -43,6 +44,20 @@ static NSString * const cellID = @"cell";
 {
     [RACObserve(self.viewModel, contacts) subscribeNext:^(id x) {
         [self.tableView reloadData];
+    }];
+    
+    @weakify(self);
+    [[self.viewModel.getNewContactsCommand.executing
+      deliverOn:[RACScheduler mainThreadScheduler]]
+     subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        BOOL executing = [x boolValue];
+        if (executing) {
+            [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+        }
+        else {
+            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+        }
     }];
 }
 

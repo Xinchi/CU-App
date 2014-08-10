@@ -13,7 +13,6 @@
 #import "NSString+Additions.h"
 #import "MBProgressHUD.h"
 #import "QRGenerator.h"
-#import "MBProgressHUD.h"
 #import "MRProgress.h"
 #import "NSDateFormatter+Additions.h"
 #import "QRGenerator.h"
@@ -101,6 +100,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
 }
 - (void)updateMemberView {
