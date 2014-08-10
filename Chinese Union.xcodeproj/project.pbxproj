@@ -108,6 +108,8 @@
 		505A4FA019730273000B7CEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4F9F19730273000B7CEF /* Reachability.m */; };
 		505A4FA319730A74000B7CEF /* ReachabilityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4FA219730A74000B7CEF /* ReachabilityController.m */; };
 		5060D7AF197CED06005F2D3B /* FBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060D7AE197CED06005F2D3B /* FBDataManager.m */; };
+		508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845701997F5C900FF3D44 /* ServiceCallManager.m */; };
+		508845771998180700FF3D44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845761998180700FF3D44 /* Constants.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
 		50932AA21957726100674269 /* CUTickets.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AA11957726100674269 /* CUTickets.m */; };
 		50932AB51959013600674269 /* PFProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932AAA1959013600674269 /* PFProductsViewController.m */; };
@@ -333,6 +335,10 @@
 		505A4FA219730A74000B7CEF /* ReachabilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ReachabilityController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5060D7AD197CED06005F2D3B /* FBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDataManager.h; sourceTree = "<group>"; };
 		5060D7AE197CED06005F2D3B /* FBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDataManager.m; sourceTree = "<group>"; };
+		5088456F1997F5C900FF3D44 /* ServiceCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCallManager.h; sourceTree = "<group>"; };
+		508845701997F5C900FF3D44 /* ServiceCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCallManager.m; sourceTree = "<group>"; };
+		508845751998180700FF3D44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		508845761998180700FF3D44 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		50932A9D1957714900674269 /* CUSales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSales.h; sourceTree = "<group>"; };
 		50932A9E1957714900674269 /* CUSales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSales.m; sourceTree = "<group>"; };
 		50932AA01957726100674269 /* CUTickets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTickets.h; sourceTree = "<group>"; };
@@ -688,6 +694,8 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				50884572199802C600FF3D44 /* Constants */,
+				5088456E1997F5A600FF3D44 /* ServiceCall */,
 				42C1F928198EEAEA0050A234 /* Event */,
 				42C1F918198EEA3D0050A234 /* Static pages */,
 				505A4F9D19730269000B7CEF /* Reachability */,
@@ -870,6 +878,24 @@
 				505A4FA219730A74000B7CEF /* ReachabilityController.m */,
 			);
 			name = Reachability;
+			sourceTree = "<group>";
+		};
+		5088456E1997F5A600FF3D44 /* ServiceCall */ = {
+			isa = PBXGroup;
+			children = (
+				5088456F1997F5C900FF3D44 /* ServiceCallManager.h */,
+				508845701997F5C900FF3D44 /* ServiceCallManager.m */,
+			);
+			name = ServiceCall;
+			sourceTree = "<group>";
+		};
+		50884572199802C600FF3D44 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				508845751998180700FF3D44 /* Constants.h */,
+				508845761998180700FF3D44 /* Constants.m */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		50932ABF1959024F00674269 /* Checkout */ = {
@@ -1217,6 +1243,7 @@
 				50932B17195902EB00674269 /* StripeError.m in Sources */,
 				42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */,
 				50932B16195902EB00674269 /* Stripe.m in Sources */,
+				508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */,
 				5005F2BA19467A1700BF3DAC /* SignUpViewController.m in Sources */,
 				50932AB91959013600674269 /* PFFinishViewController.m in Sources */,
 				50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */,
@@ -1232,6 +1259,7 @@
 				50932AA21957726100674269 /* CUTickets.m in Sources */,
 				42308B3A193FC0670022D3E7 /* CustomDataSource.m in Sources */,
 				426CEE56194D459400522DCF /* NSString+Additions.m in Sources */,
+				508845771998180700FF3D44 /* Constants.m in Sources */,
 				50932AE0195902AE00674269 /* PKCardNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

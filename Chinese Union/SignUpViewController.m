@@ -17,6 +17,7 @@
 #import "MRProgress.h"
 #import "CUProfileEditOption.h"
 #import "SLGlowingTextField+Valid.h"
+#import "ServiceCallManager.h"
 
 @interface SignUpViewController ()
 
@@ -108,22 +109,24 @@
         user.gender = kMale;
     else
         user.gender = kFemale;
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            if (succeeded) {
-                [PFCloud callFunctionInBackground:@"signupSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
-                    if(!error){
-                        [self showAlertTitle:NSLocalizedString(@"Success!", @"")
-                                         msg:result];
-                    }
-                }];
 
-                [self.delegate signUpViewController:self didSignUpUser:user];
-            }
-            // Hooray! Let them use the app now.
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            [self showAlertTitle:NSLocalizedString(@"Error",@"") msg:errorString];
+    [ServiceCallManager signUpInBackgroundWithUser:user WithBlock:^(BOOL succeeded, NSError *error) {
+        if(!error) {
+            [ServiceCallManager callFunctionInBackground:CloudFunctionSignupSuccess withParameters:@{} block:^(NSString *result, NSError *error){
+                if(!error){
+                    [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                                     msg:result];
+                }
+                else {
+                    [self showAlertTitle:NSLocalizedString(@"Success!", @"")
+                                     msg:@"Signup successfull! Caution: parseNotificationCall failed, please contact Max Gu (xig015@eng.ucsd.edu) immediately for this issue"];
+                }
+            }];
+            [self.delegate signUpViewController:self didSignUpUser:user];
+
+        }
+        else {
+            NSLog(@"Hey weiping, the error message needs to be printed out is : %@",[error userInfo][@"error"]);
         }
     }];
 }

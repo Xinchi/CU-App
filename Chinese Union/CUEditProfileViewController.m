@@ -283,17 +283,17 @@ NSString *choosePhoto = @"Choose Existing Photo";
                     NSLog(@"Before FB was linked");
                     [user refresh];
                     NSLog(@"currentUser id = %@",user.objectId);
-//                    [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
-//                        if(succeeded){
-//                            NSLog(@"Unlink successfully..");
-//                            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Unlink Successful!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
-//                            [self.tableView reloadData];
-//                            [self performSelector:@selector(dismissOverlay) withObject:nil afterDelay:1];
-//                        }
-//                        else{
-//                            NSLog(@"Error : %@",error);
-//                        }
-//                    }];
+                    [PFFacebookUtils unlinkUserInBackground:user block:^(BOOL succeeded, NSError *error) {
+                        if(succeeded){
+                            NSLog(@"Unlink successfully..");
+                            [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Unlink Successful!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+                            [self.tableView reloadData];
+                            [self performSelector:@selector(dismissOverlay) withObject:nil afterDelay:1];
+                        }
+                        else{
+                            NSLog(@"Error : %@",error);
+                        }
+                    }];
                 }
                 
                 break;

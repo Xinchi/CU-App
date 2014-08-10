@@ -14,6 +14,7 @@
 #import "MRProgress.h"
 #import "CUForgotPasswordViewController.h"
 #import "User.h"
+#import "ServiceCallManager.h"
 
 @interface CULoginViewController ()
 
@@ -67,28 +68,20 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     [self.activeResponder resignFirstResponder];
-
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    NSError *error;
-    
-    MyLog(@"Button Pressed!");
-    
-    [User logInWithUsername:self.userNameTextField.text
-                   password:self.passwordTextField.text
-                      error:&error];
-    
-    if (error) {
-        [self loginFailedWithError:error];
-    }
-    else {
-        [self loginSucceeded];
-    }
+    [ServiceCallManager logInWithUsernameInBackground:self.userNameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error){
+        if(error) {
+            [self loginFailedWithError:error];
+        }
+        else {
+            [self loginSucceeded];
+        }
+    }];
 }
 
 - (void) loginFailedWithError: (NSError *)error
 {
-    [PFCloud callFunctionInBackground:@"loginFail" withParameters:@{} block:^(NSString *result, NSError *error){
+    [ServiceCallManager callFunctionInBackground:@"loginFail" withParameters:@{} block:^(NSString *result, NSError *error){
         if(!error){
             [self showAlertTitle:NSLocalizedString(@"Error", @"")
                              msg:result];
@@ -98,7 +91,7 @@
 - (void) loginSucceeded
 {
     MyLog(@"Login Succeeded!");
-    [PFCloud callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
+    [ServiceCallManager callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
         if(!error){
             [self showAlertTitle:NSLocalizedString(@"Success!", @"")
                              msg:result];
@@ -146,6 +139,7 @@
 }
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
+    BOOL syncFromFBAllowedByUser = YES;
 //    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
@@ -167,8 +161,15 @@
                     // Success! Include your code to handle the results here
                     NSDictionary *userInfo = result;
                     NSLog(@"user info: %@", [userInfo description]);
-                    //update user info
-                    [self updateUserWithDictionary:result withUser:user newUser:user.isNew];
+                    //
+                    if(syncFromFBAllowedByUser)
+                    {
+                        [self updateUserWithDictionary:result withUser:user newUser:user.isNew];
+                    }
+                    else
+                    {
+                        [self showAlertTitle:@"Welcome back!" msg:@"Info not synced from facebook!"];
+                    }
                     
                 } else {
                     MyLog(@"### ERROR: %@",error);
@@ -201,7 +202,7 @@
 {
     User *currentUser = (User *)user;
 //    currentUser.objectId = userInfo[@"email"];
-    currentUser.username = userInfo[@"first_name"];
+//    currentUser.username = userInfo[@"first_name"];
     currentUser.firstName = userInfo[@"first_name"];
     currentUser.lastName = userInfo[@"last_name"];
     currentUser.email = userInfo[@"email"];
@@ -217,7 +218,7 @@
     PFFile *imageFile = [PFFile fileWithData:imageData];
     currentUser.profilePic = imageFile;
     
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+    [ServiceCallManager updateUserInfoWithUser:currentUser WithBlock:^(BOOL succeeded, NSError *error){
        if(!error)
        {
            [self dismissViewControllerAnimated:YES completion:nil];
@@ -237,9 +238,8 @@
        else{
            MyLog(@"Error !!! : %@",error);
 
-           NSString *errormsg = @"Something went wrong, probably the username has already been taken, please contact CU officer!";
            
-           [self showAlertTitle:@"Opps" msg:errormsg];
+           [self showAlertTitle:@"Opps" msg:[error userInfo][@"error"]];
        }
     }];
 }
