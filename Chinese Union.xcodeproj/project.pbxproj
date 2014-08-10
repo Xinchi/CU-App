@@ -42,6 +42,9 @@
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
 		42BCDC1919970120009326CE /* CUContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC1819970120009326CE /* CUContactListViewModel.m */; };
+		42BCDC1D19971076009326CE /* CUFullProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC1B19971076009326CE /* CUFullProfileViewController.m */; };
+		42BCDC1E19971076009326CE /* CUFullProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BCDC1C19971076009326CE /* CUFullProfileViewController.xib */; };
+		42BCDC211997129D009326CE /* CUFullProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC201997129D009326CE /* CUFullProfileViewModel.m */; };
 		42C1F92C198EEAF90050A234 /* CUEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92A198EEAF90050A234 /* CUEventViewController.m */; };
 		42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C1F92B198EEAF90050A234 /* CUEventViewController.xib */; };
 		42C1F930198EEE510050A234 /* SLGlowingTextField+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C1F92F198EEE510050A234 /* SLGlowingTextField+Valid.m */; };
@@ -226,6 +229,11 @@
 		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		42BCDC1719970120009326CE /* CUContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactListViewModel.h; sourceTree = "<group>"; };
 		42BCDC1819970120009326CE /* CUContactListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactListViewModel.m; sourceTree = "<group>"; };
+		42BCDC1A19971076009326CE /* CUFullProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUFullProfileViewController.h; sourceTree = "<group>"; };
+		42BCDC1B19971076009326CE /* CUFullProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUFullProfileViewController.m; sourceTree = "<group>"; };
+		42BCDC1C19971076009326CE /* CUFullProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUFullProfileViewController.xib; sourceTree = "<group>"; };
+		42BCDC1F1997129D009326CE /* CUFullProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUFullProfileViewModel.h; sourceTree = "<group>"; };
+		42BCDC201997129D009326CE /* CUFullProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUFullProfileViewModel.m; sourceTree = "<group>"; };
 		42C1F929198EEAF90050A234 /* CUEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewController.h; sourceTree = "<group>"; };
 		42C1F92A198EEAF90050A234 /* CUEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEventViewController.m; sourceTree = "<group>"; };
 		42C1F92B198EEAF90050A234 /* CUEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventViewController.xib; sourceTree = "<group>"; };
@@ -565,6 +573,34 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		42BCDC22199712B2009326CE /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				42D3395B1960DBF300F1CB8F /* CUEditProfileViewController.h */,
+				42D3395C1960DBF300F1CB8F /* CUEditProfileViewController.m */,
+				42D3395D1960DBF300F1CB8F /* CUEditProfileViewController.xib */,
+				42D339621960DD5A00F1CB8F /* CUProfileTextCell.h */,
+				42D339631960DD5A00F1CB8F /* CUProfileTextCell.m */,
+				42D339641960DD5A00F1CB8F /* CUProfileTextCell.xib */,
+				42D3396A1960DE7900F1CB8F /* CUProfilePicCell.h */,
+				42D3396B1960DE7900F1CB8F /* CUProfilePicCell.m */,
+				42D3396C1960DE7900F1CB8F /* CUProfilePicCell.xib */,
+				42D339721960EA4200F1CB8F /* CUEditProfileTextViewController.h */,
+				42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */,
+				42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */,
+				42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */,
+				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
+				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
+				42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */,
+				421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */,
+				421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */,
+				421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */,
+				421C0EF91971ED9A008711BD /* CUEditProfileBaseViewController.h */,
+				421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
 		42C1F918198EEA3D0050A234 /* Static pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,8 +701,8 @@
 				42308B21193FBEE30022D3E7 /* MosaicLayout */,
 				42308B3B193FC1030022D3E7 /* AFNetworking */,
 				5005F2AD193EE7CD00BF3DAC /* TWTMenu */,
-				5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */,
 				5005F268193ED75B00BF3DAC /* Profile */,
+				5005F2A9193EE58000BF3DAC /* TWTSideMenuViewController */,
 				5005F234193EAC1600BF3DAC /* AppDelegate.h */,
 				5005F235193EAC1600BF3DAC /* AppDelegate.m */,
 				42308B33193FBF260022D3E7 /* CUMainViewController.h */,
@@ -713,30 +749,15 @@
 		5005F268193ED75B00BF3DAC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				42BCDC22199712B2009326CE /* Edit */,
 				5005F27D193EDD7500BF3DAC /* ProfileViewController.h */,
 				5005F27E193EDD7500BF3DAC /* ProfileViewController.m */,
 				5005F27F193EDD7500BF3DAC /* ProfileViewController.xib */,
-				42D3395B1960DBF300F1CB8F /* CUEditProfileViewController.h */,
-				42D3395C1960DBF300F1CB8F /* CUEditProfileViewController.m */,
-				42D3395D1960DBF300F1CB8F /* CUEditProfileViewController.xib */,
-				42D339621960DD5A00F1CB8F /* CUProfileTextCell.h */,
-				42D339631960DD5A00F1CB8F /* CUProfileTextCell.m */,
-				42D339641960DD5A00F1CB8F /* CUProfileTextCell.xib */,
-				42D3396A1960DE7900F1CB8F /* CUProfilePicCell.h */,
-				42D3396B1960DE7900F1CB8F /* CUProfilePicCell.m */,
-				42D3396C1960DE7900F1CB8F /* CUProfilePicCell.xib */,
-				42D339721960EA4200F1CB8F /* CUEditProfileTextViewController.h */,
-				42D339731960EA4200F1CB8F /* CUEditProfileTextViewController.m */,
-				42D339741960EA4200F1CB8F /* CUEditProfileTextViewController.xib */,
-				42E313EA1963BFA700F5CFBC /* CUEditProfileBDViewController.h */,
-				42E313EB1963BFA700F5CFBC /* CUEditProfileBDViewController.m */,
-				42E313EC1963BFA700F5CFBC /* CUEditProfileBDViewController.xib */,
-				42D9DB2B1969EC4700720C31 /* CUProfileEditOption.h */,
-				421C0EF41971E84B008711BD /* CUEditProfileGenderViewController.h */,
-				421C0EF51971E84B008711BD /* CUEditProfileGenderViewController.m */,
-				421C0EF61971E84B008711BD /* CUEditProfileGenderViewController.xib */,
-				421C0EF91971ED9A008711BD /* CUEditProfileBaseViewController.h */,
-				421C0EFA1971ED9A008711BD /* CUEditProfileBaseViewController.m */,
+				42BCDC1A19971076009326CE /* CUFullProfileViewController.h */,
+				42BCDC1B19971076009326CE /* CUFullProfileViewController.m */,
+				42BCDC1C19971076009326CE /* CUFullProfileViewController.xib */,
+				42BCDC1F1997129D009326CE /* CUFullProfileViewModel.h */,
+				42BCDC201997129D009326CE /* CUFullProfileViewModel.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1052,6 +1073,7 @@
 				42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */,
 				50932B04195902D300674269 /* mastercard.png in Resources */,
 				42308B37193FBF260022D3E7 /* CUMainViewController.xib in Resources */,
+				42BCDC1E19971076009326CE /* CUFullProfileViewController.xib in Resources */,
 				42D339761960EA4200F1CB8F /* CUEditProfileTextViewController.xib in Resources */,
 				50932B06195902D300674269 /* placeholder.png in Resources */,
 				5005F230193EAC1600BF3DAC /* InfoPlist.strings in Resources */,
@@ -1171,6 +1193,7 @@
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				42BCDC1D19971076009326CE /* CUFullProfileViewController.m in Sources */,
 				42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */,
 				5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */,
 				50932AE3195902AE00674269 /* PKView.m in Sources */,
@@ -1179,6 +1202,7 @@
 				50932ADD195902AE00674269 /* PKCardCVCDelegate.m in Sources */,
 				5060D7AF197CED06005F2D3B /* FBDataManager.m in Sources */,
 				5005F31C194A534B00BF3DAC /* CUMembers.m in Sources */,
+				42BCDC211997129D009326CE /* CUFullProfileViewModel.m in Sources */,
 				50932ADF195902AE00674269 /* PKCardExpiryDelegate.m in Sources */,
 				421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */,
 				50932ADB195902AE00674269 /* PKCard.m in Sources */,

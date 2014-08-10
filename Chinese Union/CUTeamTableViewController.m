@@ -11,6 +11,7 @@
 #import "CUPersonnel.h"
 #import "CUContactListViewModel.h"
 #import "MRProgress.h"
+#import "CUFullProfileViewController.h"
 
 static NSString * const cellID = @"cell";
 
@@ -150,7 +151,7 @@ static NSString * const cellID = @"cell";
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -158,13 +159,15 @@ static NSString * const cellID = @"cell";
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    CUFullProfileViewController *detailViewController = [[CUFullProfileViewController alloc] initWithNibName:@"CUFullProfileViewController" bundle:nil];
     
     // Pass the selected object to the new view controller.
+    CUPersonnel *person = self.viewModel.contacts[indexPath.row];
+    detailViewController.person = person;
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-*/
+
 
 @end
