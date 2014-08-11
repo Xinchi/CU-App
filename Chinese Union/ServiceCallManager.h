@@ -23,4 +23,10 @@ typedef void (^CompletionBlock)(id, NSError*);
                                 block:(PFUserResultBlock)block;
 
 + (void)updateUserInfoWithUser: (User *)user WithBlock: (PFBooleanResultBlock)block;
+
++ (BOOL)checkIfUsernameExisted: (NSString *)username;
+
++ (BOOL)checkIfEmailExisted: (NSString *)email;
+
+
 @end

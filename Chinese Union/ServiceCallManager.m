@@ -53,4 +53,24 @@
         block(succeeded, error);
     }];
 }
+
++ (BOOL)checkIfUsernameExisted: (NSString *)username
+{
+    PFQuery *query = [User query];
+    [query whereKey:@"username" equalTo:username];
+    NSArray *users = [query findObjects];
+    if([users count]>0)
+        return YES;
+    return NO;
+}
+
++ (BOOL)checkIfEmailExisted: (NSString *)email
+{
+    PFQuery *query = [User query];
+    [query whereKey:@"email" equalTo:email];
+    NSArray *users = [query findObjects];
+    if([users count]>0)
+        return YES;
+    return NO;
+}
 @end

@@ -202,7 +202,25 @@
 {
     User *currentUser = (User *)user;
 //    currentUser.objectId = userInfo[@"email"];
-//    currentUser.username = userInfo[@"first_name"];
+    if(isNewUser)
+    {
+        currentUser.username = userInfo[@"first_name"];
+        
+        //check if email existed already
+        
+        if([ServiceCallManager checkIfEmailExisted:userInfo[@"email"]])
+        {
+            [self showAlertTitle:@"Error" msg:@"The email has been registered before.  Please log in using that account"];
+            return;
+        }
+        //check if username existed already
+        if([ServiceCallManager checkIfUsernameExisted:userInfo[@"first_name"]])
+        {
+            [self showAlertTitle:@"Error" msg:@"The username has been registered before.  Please log in using that account"];
+            return;
+        }
+
+    }
     currentUser.firstName = userInfo[@"first_name"];
     currentUser.lastName = userInfo[@"last_name"];
     currentUser.email = userInfo[@"email"];
@@ -218,6 +236,7 @@
     PFFile *imageFile = [PFFile fileWithData:imageData];
     currentUser.profilePic = imageFile;
     
+    NSLog(@"About to updateSerInfoWithUser");
     [ServiceCallManager updateUserInfoWithUser:currentUser WithBlock:^(BOOL succeeded, NSError *error){
        if(!error)
        {
