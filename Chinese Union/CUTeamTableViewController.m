@@ -38,6 +38,7 @@ static NSString * const cellID = @"cell";
          forCellReuseIdentifier:cellID];
     
     self.viewModel = [CUContactListViewModel new];
+    self.viewModel.contactType = self.contactType;
     [self bindViewModel];
 }
 
@@ -104,12 +105,31 @@ static NSString * const cellID = @"cell";
     CUContactListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
+    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
+        cell.profilePicImageView.image = x;
+    }];
     cell.nameLabel.text = person.name;
     cell.collegeLabel.text = person.college;
     cell.schoolYearLabel.text = person.year;
     cell.majorLabel.text = person.major;
     
     return cell;
+}
+
+- (RACSignal *)getProfilePicSignalForPerson:(CUPersonnel *)person
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [person.profilePic getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                [subscriber sendNext:[UIImage imageWithData:data]];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
 }
 
 #pragma mark - Table view delegate

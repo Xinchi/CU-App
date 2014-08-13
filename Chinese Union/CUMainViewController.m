@@ -212,13 +212,17 @@
     else if (indexPath.row == 3) {
         VC = [[CUTeamTableViewController alloc] init];
         VC.title = NSLocalizedString(@"Soccer Team", @"");
+        ((CUTeamTableViewController *)VC).contactType = SOCCER;
     }
     else if (indexPath.row == 4) {
         VC = [[CUTeamTableViewController alloc] init];
         VC.title = NSLocalizedString(@"Basketball Team", @"");
+        ((CUTeamTableViewController *)VC).contactType = BASKETBALL;
     }
     else if (indexPath.row == 5) {
         VC = [[CUTeamTableViewController alloc] init];
+        VC.title = NSLocalizedString(@"Contacts", @"");
+        ((CUTeamTableViewController *)VC).contactType = PERSONNEL;
     }
     
     if (VC) {

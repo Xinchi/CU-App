@@ -7,9 +7,11 @@
 //
 
 #import "RVMViewModel.h"
+#import "Constants.h"
 
 @interface CUContactListViewModel : RVMViewModel
 
+@property (nonatomic) FigureType contactType;
 @property (strong, nonatomic) NSArray *contacts;
 @property (strong, nonatomic) RACCommand *getNewContactsCommand;
 

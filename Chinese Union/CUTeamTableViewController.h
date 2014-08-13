@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Constants.h"
 
 @interface CUTeamTableViewController : UITableViewController
+
+@property (nonatomic) FigureType contactType;
 
 @end
