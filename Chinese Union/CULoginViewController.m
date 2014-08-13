@@ -157,6 +157,7 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
 #pragma mark - IBActions
@@ -168,7 +169,7 @@
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
     BOOL syncFromFBAllowedByUser = YES;
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+
     [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
     
@@ -217,13 +218,8 @@
                                           // See https://developers.facebook.com/docs/ios/errors/
                                       }
                                   }];
-            
-            
         }
     }];
-    
-    
-    
 }
 
 - (void) updateUserWithDictionary:(NSDictionary *)userInfo withUser: (PFUser *)user newUser:(BOOL)isNewUser
