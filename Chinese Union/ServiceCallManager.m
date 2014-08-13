@@ -84,7 +84,7 @@
 }
 
 
-+ (void)getAllFigureWithType:(id)type WithBlock:(PFArrayResultBlock)block
++ (void)getAllFigureWithType:(FigureType)type WithBlock:(PFArrayResultBlock)block
 {
     PFQuery *query;
     if(type == BASKETBALL)
