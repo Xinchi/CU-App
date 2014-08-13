@@ -10,6 +10,21 @@
 
 @interface Constants : NSObject
 extern NSString* const CloudFunctionSignupSuccess;
+extern NSString* const BATCH1011;
+extern NSString* const BATCH1112;
+extern NSString* const BATCH1213;
+extern NSString* const BATCH1314;
 
+
+#ifndef Constants_h
+#define Constants_h
+
+typedef enum {
+    BASKETBALL,
+    SOCCER,
+    PERSONNEL,
+} FigureType;
+
+#endif
 
 @end

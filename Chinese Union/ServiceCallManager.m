@@ -8,6 +8,9 @@
 
 #import "ServiceCallManager.h"
 #import "User.h"
+#import "CUBasketballPlayer.h"
+#import "CUSoccerPlayer.h"
+#import "CUPersonnel.h"
 
 @implementation ServiceCallManager
 
@@ -73,4 +76,36 @@
         return YES;
     return NO;
 }
+
++ (NSArray *)getAllTheBatches
+{
+    NSArray *batches = [NSArray arrayWithObjects:BATCH1011,BATCH1112,BATCH1213,BATCH1314,nil];
+    return batches;
+}
+
+
++ (void)getAllFigureWithType:(id)type WithBlock:(PFArrayResultBlock)block
+{
+    PFQuery *query;
+    if(type == BASKETBALL)
+    {
+        query = [CUBasketballPlayer query];
+    }
+    else if(type == SOCCER)
+    {
+        query = [CUSoccerPlayer query];
+    }
+    else if(type == PERSONNEL)
+    {
+        query = [CUPersonnel query];
+    }else {
+        [NSException raise:@"Invalid Figure Type" format:@"type of %@ is invalid",type];
+    }
+    query.limit = 1000;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        block(objects, error);
+    }];
+    
+}
+
 @end

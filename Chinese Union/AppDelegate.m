@@ -23,6 +23,7 @@
 #import "CUBasketballPlayer.h"
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
+#import "ServiceCallManager.h"
 
 #if DEBUG
 #import "FLEXManager.h"
@@ -98,7 +99,7 @@
 }
 
 - (void)test {
-    
+
 }
 - (void)addReachability {
     self.reach = [Reachability reachabilityWithHostname:@"www.google.com"];

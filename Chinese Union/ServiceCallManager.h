@@ -28,5 +28,14 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (BOOL)checkIfEmailExisted: (NSString *)email;
 
+/**
+ * This function returns an NSArray pointer.  Cast the object to CUBasketballPlayer type to get all the relaven
+ *fields.  Same for the Soccer player, contacts.
+ */
++ (void)getAllFigureWithType:(id)type WithBlock:(PFArrayResultBlock)block;
+
+
+
++ (NSArray *)getAllTheBatches;
 
 @end

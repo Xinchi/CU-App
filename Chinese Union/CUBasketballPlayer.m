@@ -15,6 +15,7 @@
 @dynamic major;
 @dynamic college;
 @dynamic year;
+@dynamic profilePic;
 + (NSString *)parseClassName {
 
     return NSStringFromClass([self class]);

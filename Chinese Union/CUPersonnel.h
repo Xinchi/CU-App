@@ -16,5 +16,6 @@
 @property (retain) NSString *major;
 @property (retain) NSString *college;
 @property (retain) NSString *year;
+@property (retain) PFFile *profilePic;
 
 @end
