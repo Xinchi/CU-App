@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+@class User;
 
 @interface CUPersonnel : PFObject<PFSubclassing>
 
@@ -18,5 +19,8 @@
 @property (retain) NSString *year;
 @property (retain) NSString *role;
 @property (retain) PFFile *profilePic;
+//remmeber to do a null check on associatedPerson.  It can be null
+@property (retain) User *associatedPerson;
+
 
 @end

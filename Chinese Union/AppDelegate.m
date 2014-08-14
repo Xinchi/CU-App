@@ -99,6 +99,21 @@
 }
 
 - (void)test {
+    PFQuery* query = [CUSoccerPlayer query];
+    [query getObjectInBackgroundWithId:@"ddaT7sWzZE" block:^(PFObject *object, NSError  *error){
+        if(!error)
+        {
+            CUSoccerPlayer *player = (CUSoccerPlayer *)object;
+            User *associatedPlayer = player.associatedPerson;
+            [associatedPlayer fetchIfNeededInBackgroundWithBlock:^(PFObject* object, NSError *error){
+               if(!error)
+               {
+                   MyLog(@"associatedPlayer name = %@",associatedPlayer.objectId);
+               }
+            }];
+            
+        }
+    }];
 
 }
 - (void)addReachability {

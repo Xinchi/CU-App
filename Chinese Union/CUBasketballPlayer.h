@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
+@class User;
 @interface CUBasketballPlayer: PFObject<PFSubclassing>
 
 
@@ -16,5 +17,7 @@
 @property (retain) NSString *college;
 @property (retain) NSString *year;
 @property (retain) PFFile *profilePic;
+//remmeber to do a null check on associatedPerson.  It can be null
+@property (retain) User *associatedPerson;
 
 @end

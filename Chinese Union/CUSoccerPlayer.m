@@ -7,6 +7,7 @@
 //
 
 #import "CUSoccerPlayer.h"
+#import "User.h"
 #import <Parse/PFObject+Subclass.h>
 
 @implementation CUSoccerPlayer
@@ -16,6 +17,8 @@
 @dynamic college;
 @dynamic year;
 @dynamic profilePic;
+@dynamic associatedPerson;
+
 + (NSString *)parseClassName {
     
     return NSStringFromClass([self class]);

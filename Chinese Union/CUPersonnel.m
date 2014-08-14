@@ -7,6 +7,7 @@
 //
 
 #import "CUPersonnel.h"
+#import "User.h"
 #import <Parse/PFObject+Subclass.h>
 
 @implementation CUPersonnel
@@ -17,6 +18,8 @@
 @dynamic year;
 @dynamic role;
 @dynamic profilePic;
+@dynamic associatedPerson;
+
 + (NSString *)parseClassName {
     
     return NSStringFromClass([self class]);

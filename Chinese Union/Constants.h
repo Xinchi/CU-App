@@ -38,6 +38,14 @@ extern NSString* const FB_USER_GENDER;
 extern NSString* const FB_USER_PROFILE_IMAGE_BASE_URL;
 
 
+//PFObject subclass
+extern NSString* const CUBASKETBALLPLAYER_CLASS;
+extern NSString* const CUSOCCERPLAYER_CLASS;
+
+//Other configurations
+extern NSString* const CU_IMAGE_FIELD_KEY;
+
+
 #ifndef Constants_h
 #define Constants_h
 
