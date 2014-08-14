@@ -11,6 +11,7 @@
 #import "CUBasketballPlayer.h"
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
+#import "CUEvents.h"
 
 @implementation ServiceCallManager
 
@@ -84,7 +85,7 @@
 }
 
 
-+ (void)getAllFigureWithType:(FigureType)type WithBlock:(PFArrayResultBlock)block
++ (void)getAllObjectsWithType:(ObjectType)type WithBlock:(PFArrayResultBlock)block
 {
     PFQuery *query;
     if(type == BASKETBALL)
@@ -98,8 +99,13 @@
     else if(type == PERSONNEL)
     {
         query = [CUPersonnel query];
-    }else {
-        [NSException raise:@"Invalid Figure Type" format:@"type of %@ is invalid",type];
+    }
+    else if(type == EVENT)
+    {
+        query = [CUEvents query];
+    }
+    else {
+        [NSException raise:@"Invalid Figure Type" format:@"type of %d is invalid",type];
     }
     query.limit = 1000;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

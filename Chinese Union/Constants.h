@@ -23,7 +23,8 @@ typedef enum {
     BASKETBALL,
     SOCCER,
     PERSONNEL,
-} FigureType;
+    EVENT
+} ObjectType;
 
 #endif
 

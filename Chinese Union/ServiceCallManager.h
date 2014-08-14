@@ -32,7 +32,7 @@ typedef void (^CompletionBlock)(id, NSError*);
  * This function returns an NSArray pointer.  Cast the object to desired type to get all the relaven
  *fields. 
  */
-+ (void)getAllFigureWithType:(FigureType)type WithBlock:(PFArrayResultBlock)block;
++ (void)getAllObjectsWithType:(ObjectType)type WithBlock:(PFArrayResultBlock)block;
 
 
 
