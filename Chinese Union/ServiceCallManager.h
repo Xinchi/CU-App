@@ -30,11 +30,10 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 /**
  * This function returns an NSArray pointer.  Cast the object to desired type to get all the relaven
- *fields. 
+ *fields.   Put batch as nil if no batch query is needed.
  */
-+ (void)getAllObjectsWithType:(ObjectType)type WithBlock:(PFArrayResultBlock)block;
 
-
++ (void)getObjectsWithType:(ObjectType)type WithBatch:(NSString *)batch WithBlock:(PFArrayResultBlock)block;
 
 + (NSArray *)getAllTheBatches;
 

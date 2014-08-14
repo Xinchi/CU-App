@@ -46,16 +46,16 @@
 //        person.major = @"computer science";
 //        
 //        NSArray *result = @[person, person, person, person, person, person, person];
-        [ServiceCallManager getAllFigureWithType:self.contactType
-                                       WithBlock:^(NSArray *objects, NSError *error) {
-                                           if (error) {
-                                               [subscriber sendError:error];
-                                           }
-                                           else {
-                                               [subscriber sendNext:objects];
-                                               [subscriber sendCompleted];
-                                           }
-                                       }];        
+
+        [ServiceCallManager getObjectsWithType:self.contactType WithBatch:nil WithBlock:^(NSArray *objects, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                [subscriber sendNext:objects];
+                [subscriber sendCompleted];
+            }
+        }];
         return nil;
     }] delay:3.0f];
 }

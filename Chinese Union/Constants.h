@@ -15,6 +15,10 @@ extern NSString* const BATCH1112;
 extern NSString* const BATCH1213;
 extern NSString* const BATCH1314;
 
+//All the parse database fields
+extern NSString* const BATCH_FIELD;
+extern NSString* const USERNAME_FIELD;
+extern NSString* const EMAIL_FIELD;
 
 #ifndef Constants_h
 #define Constants_h

@@ -11,7 +11,7 @@
 
 @interface CUContactListViewModel : RVMViewModel
 
-@property (nonatomic) FigureType contactType;
+@property (nonatomic) ObjectType contactType;
 @property (strong, nonatomic) NSArray *contacts;
 @property (strong, nonatomic) RACCommand *getNewContactsCommand;
 

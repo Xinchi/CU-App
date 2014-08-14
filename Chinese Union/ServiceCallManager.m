@@ -61,7 +61,7 @@
 + (BOOL)checkIfUsernameExisted: (NSString *)username
 {
     PFQuery *query = [User query];
-    [query whereKey:@"username" equalTo:username];
+    [query whereKey:USERNAME_FIELD equalTo:username];
     NSArray *users = [query findObjects];
     if([users count]>0)
         return YES;
@@ -71,7 +71,7 @@
 + (BOOL)checkIfEmailExisted: (NSString *)email
 {
     PFQuery *query = [User query];
-    [query whereKey:@"email" equalTo:email];
+    [query whereKey:EMAIL_FIELD equalTo:email];
     NSArray *users = [query findObjects];
     if([users count]>0)
         return YES;
@@ -85,7 +85,7 @@
 }
 
 
-+ (void)getAllObjectsWithType:(ObjectType)type WithBlock:(PFArrayResultBlock)block
++ (void)getObjectsWithType:(ObjectType)type WithBatch:(NSString *)batch WithBlock:(PFArrayResultBlock)block
 {
     PFQuery *query;
     if(type == BASKETBALL)
@@ -107,11 +107,15 @@
     else {
         [NSException raise:@"Invalid Figure Type" format:@"type of %d is invalid",type];
     }
+    if(batch!=nil)
+    {
+        [query whereKey:BATCH_FIELD equalTo:batch];
+    }
     query.limit = 1000;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects, error);
     }];
-    
 }
+
 
 @end

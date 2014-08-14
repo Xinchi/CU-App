@@ -11,6 +11,6 @@
 
 @interface CUTeamTableViewController : UITableViewController
 
-@property (nonatomic) FigureType contactType;
+@property (nonatomic) ObjectType contactType;
 
 @end
