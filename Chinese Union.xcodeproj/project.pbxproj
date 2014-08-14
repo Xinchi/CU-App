@@ -107,7 +107,6 @@
 		5005F325194A587100BF3DAC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F324194A587100BF3DAC /* User.m */; };
 		505A4FA019730273000B7CEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4F9F19730273000B7CEF /* Reachability.m */; };
 		505A4FA319730A74000B7CEF /* ReachabilityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4FA219730A74000B7CEF /* ReachabilityController.m */; };
-		5060D7AF197CED06005F2D3B /* FBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060D7AE197CED06005F2D3B /* FBDataManager.m */; };
 		508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845701997F5C900FF3D44 /* ServiceCallManager.m */; };
 		508845771998180700FF3D44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845761998180700FF3D44 /* Constants.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
@@ -333,8 +332,6 @@
 		505A4F9F19730273000B7CEF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Reachability.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		505A4FA119730A74000B7CEF /* ReachabilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityController.h; sourceTree = "<group>"; };
 		505A4FA219730A74000B7CEF /* ReachabilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ReachabilityController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		5060D7AD197CED06005F2D3B /* FBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDataManager.h; sourceTree = "<group>"; };
-		5060D7AE197CED06005F2D3B /* FBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDataManager.m; sourceTree = "<group>"; };
 		5088456F1997F5C900FF3D44 /* ServiceCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCallManager.h; sourceTree = "<group>"; };
 		508845701997F5C900FF3D44 /* ServiceCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCallManager.m; sourceTree = "<group>"; };
 		508845751998180700FF3D44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -800,8 +797,6 @@
 				426CEE4E194D2BDE00522DCF /* CULoginViewController.h */,
 				426CEE4F194D2BDE00522DCF /* CULoginViewController.m */,
 				426CEE50194D2BDE00522DCF /* CULoginViewController.xib */,
-				5060D7AD197CED06005F2D3B /* FBDataManager.h */,
-				5060D7AE197CED06005F2D3B /* FBDataManager.m */,
 				425490771957D92B005A61B0 /* CUInputButton.h */,
 				425490781957D92B005A61B0 /* CUInputButton.m */,
 				421C0EFC1971F2E1008711BD /* CUForgotPasswordViewController.h */,
@@ -1226,7 +1221,6 @@
 				5005F317194968E300BF3DAC /* split.c in Sources */,
 				42308B51193FC1030022D3E7 /* AFImageRequestOperation.m in Sources */,
 				50932ADD195902AE00674269 /* PKCardCVCDelegate.m in Sources */,
-				5060D7AF197CED06005F2D3B /* FBDataManager.m in Sources */,
 				5005F31C194A534B00BF3DAC /* CUMembers.m in Sources */,
 				42BCDC211997129D009326CE /* CUFullProfileViewModel.m in Sources */,
 				50932ADF195902AE00674269 /* PKCardExpiryDelegate.m in Sources */,

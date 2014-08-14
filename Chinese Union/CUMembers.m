@@ -16,7 +16,7 @@
 @dynamic expireDate;
 
 + (NSString *)parseClassName {
-    return @"CUMembers";
+    return NSStringFromClass([self class]);
 }
 
 @end

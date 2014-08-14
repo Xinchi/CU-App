@@ -19,7 +19,7 @@
 @dynamic pid;
 
 + (NSString *)parseClassName {
-    return @"CUEvents";
+    return NSStringFromClass([self class]);
 }
 
 @end

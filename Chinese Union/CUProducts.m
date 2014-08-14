@@ -22,6 +22,6 @@
 @dynamic quantity;
 
 + (NSString *)parseClassName {
-    return @"CUProducts";
+    return NSStringFromClass([self class]);
 }
 @end

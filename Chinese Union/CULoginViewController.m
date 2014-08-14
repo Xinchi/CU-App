@@ -15,6 +15,7 @@
 #import "CUForgotPasswordViewController.h"
 #import "User.h"
 #import "ServiceCallManager.h"
+#import "Constants.h"
 
 @interface CULoginViewController ()
 
@@ -173,7 +174,7 @@
     [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
     
-    NSArray *permissions = [NSArray arrayWithObjects:@"public_profile",@"email", @"user_birthday",nil];
+    NSArray *permissions = [NSArray arrayWithObjects:PUBLIC_PROFILE,EMAIL, USER_BIRTHDAY,nil];
     
     
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
@@ -245,17 +246,17 @@
         }
 
     }
-    currentUser.firstName = userInfo[@"first_name"];
-    currentUser.lastName = userInfo[@"last_name"];
-    currentUser.email = userInfo[@"email"];
-    currentUser.gender = userInfo[@"gender"];
+    currentUser.firstName = userInfo[FB_USER_FIRST_NAME];
+    currentUser.lastName = userInfo[FB_USER_LAST_NAME];
+    currentUser.email = userInfo[FB_USER_EMAIL];
+    currentUser.gender = userInfo[FB_USER_GENDER];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
-    MyLog(@"User birthday = %@",userInfo[@"birthday"]);
-    currentUser.birthday = [formatter dateFromString:userInfo[@"birthday"]];
+    MyLog(@"User birthday = %@",userInfo[FB_USER_BIRTHDAY]);
+    currentUser.birthday = [formatter dateFromString:userInfo[FB_USER_BIRTHDAY]];
     MyLog(@"curretUser.birthday = %@",currentUser.birthday);
     MyLog(@"formatter NSDate = %@",[formatter dateFromString:userInfo[@"birthday"]]);
-    NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userInfo[@"id"]]];
+    NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:FB_USER_PROFILE_IMAGE_BASE_URL, userInfo[FB_USER_ID]]];
     NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
     PFFile *imageFile = [PFFile fileWithData:imageData];
     currentUser.profilePic = imageFile;

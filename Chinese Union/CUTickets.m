@@ -17,7 +17,7 @@
 @dynamic expire;
 
 + (NSString *)parseClassName {
-    return @"CUTickets";
+    return NSStringFromClass([self class]);
 }
 
 @end

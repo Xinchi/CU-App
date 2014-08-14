@@ -18,6 +18,6 @@
 @dynamic tickets_id;
 
 + (NSString *)parseClassName {
-    return @"CUSales";
+    return NSStringFromClass([self class]);
 }
 @end
