@@ -49,7 +49,6 @@
     
     [ReachabilityController registerForViewController:self];
     
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     
     self.profilePicView.layer.cornerRadius = 8;

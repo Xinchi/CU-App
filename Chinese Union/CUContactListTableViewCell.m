@@ -13,6 +13,9 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.profilePicImageView.layer.cornerRadius = 8;
+    self.profilePicImageView.layer.masksToBounds = YES;
+    self.profilePicImageView.layer.borderWidth = 0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

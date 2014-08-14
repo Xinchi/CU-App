@@ -38,6 +38,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     
+    self.profilePicImageView.image = nil;
     self.profilePicImageView.layer.cornerRadius = 8;
     self.profilePicImageView.layer.masksToBounds = YES;
     self.profilePicImageView.layer.borderWidth = 0;
@@ -55,6 +56,21 @@
     RAC(self.collegeLabel, text) = RACObserve(self.viewModel.person, college);
     RAC(self.yearLabel, text) = RACObserve(self.viewModel.person, year);
     RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
+    RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.viewModel.active = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.viewModel.active = NO;
 }
 
 - (void)didReceiveMemoryWarning

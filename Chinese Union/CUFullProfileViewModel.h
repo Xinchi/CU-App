@@ -14,5 +14,6 @@
 - (instancetype)initWithPerson:(id)person;
 
 @property (strong, nonatomic) CUPersonnel *person;
+@property (strong, nonatomic) UIImage *profilePic;
 
 @end

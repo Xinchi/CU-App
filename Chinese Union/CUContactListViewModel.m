@@ -8,6 +8,7 @@
 
 #import "CUContactListViewModel.h"
 #import "CUPersonnel.h"
+#import "ServiceCallManager.h"
 
 @implementation CUContactListViewModel
 
@@ -38,16 +39,23 @@
 
 - (RACSignal *)getNewContactsSignal {
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        CUPersonnel *person = [CUPersonnel new];
-        person.name = @"Wei Ping Liao";
-        person.college = @"unknown";
-        person.year = @"grad student";
-        person.major = @"computer science";
-        
-        NSArray *result = @[person, person, person, person, person, person, person];
-        [subscriber sendNext:result];
-        [subscriber sendCompleted];
-        
+//        CUPersonnel *person = [CUPersonnel new];
+//        person.name = @"Wei Ping Liao";
+//        person.college = @"unknown";
+//        person.year = @"grad student";
+//        person.major = @"computer science";
+//        
+//        NSArray *result = @[person, person, person, person, person, person, person];
+        [ServiceCallManager getAllFigureWithType:self.contactType
+                                       WithBlock:^(NSArray *objects, NSError *error) {
+                                           if (error) {
+                                               [subscriber sendError:error];
+                                           }
+                                           else {
+                                               [subscriber sendNext:objects];
+                                               [subscriber sendCompleted];
+                                           }
+                                       }];        
         return nil;
     }] delay:3.0f];
 }

@@ -38,6 +38,7 @@ static NSString * const cellID = @"cell";
          forCellReuseIdentifier:cellID];
     
     self.viewModel = [CUContactListViewModel new];
+    self.viewModel.contactType = self.contactType;
     [self bindViewModel];
 }
 
@@ -104,6 +105,9 @@ static NSString * const cellID = @"cell";
     CUContactListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
+    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
+        cell.profilePicImageView.image = x;
+    }];
     cell.nameLabel.text = person.name;
     cell.collegeLabel.text = person.college;
     cell.schoolYearLabel.text = person.year;
@@ -112,45 +116,21 @@ static NSString * const cellID = @"cell";
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (RACSignal *)getProfilePicSignalForPerson:(CUPersonnel *)person
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [person.profilePic getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                [subscriber sendNext:[UIImage imageWithData:data]];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Table view delegate
 

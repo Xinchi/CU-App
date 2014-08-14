@@ -50,12 +50,35 @@
     [self addBorderToButton:self.signupButton];
     [self addBorderToButton:self.forgotPasswordButton];
     
-//    RAC(self.loginButton, enabled) = [RACSignal
-//                                      combineLatest:@[self.userNameTextField.rac_textSignal,
-//                                                      self.passwordTextField.rac_textSignal]
-//                                                       reduce:^(NSString *username, NSString *password){
-//                                                           return @(username.length > 0 && password.length > 0);
-//    }];
+    [self bindViewModel];
+}
+
+- (void)bindViewModel
+{
+    RACSignal *loginEnabledSignal = [RACSignal
+                                     combineLatest:@[self.userNameTextField.rac_textSignal,
+                                                     self.passwordTextField.rac_textSignal]
+                                     reduce:^(NSString *username, NSString *password){
+                                         return @(username.length > 0 && password.length > 0);
+                                     }];
+    
+    RACSignal *loginSignal = [self loginSignal];
+    loginSignal = [[[[loginSignal initially:^{
+        [self.activeResponder resignFirstResponder];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    }] doCompleted:^{
+        [self loginSucceeded];
+    }] doError:^(NSError *error) {
+        [self loginFailedWithError:error];
+    }] finally:^{
+        [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+    }];
+    
+    RACCommand *loginCommand = [[RACCommand alloc] initWithEnabled:loginEnabledSignal signalBlock:^RACSignal *(id input) {
+        return loginSignal;
+    }];
+    
+    self.loginButton.rac_command = loginCommand;
 }
 
 - (IBAction)signUpButtonPressed:(id)sender {
@@ -66,16 +89,22 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (IBAction)loginButtonPressed:(id)sender {
-    [self.activeResponder resignFirstResponder];
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    [ServiceCallManager logInWithUsernameInBackground:self.userNameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error){
-        if(error) {
-            [self loginFailedWithError:error];
-        }
-        else {
-            [self loginSucceeded];
-        }
+- (RACSignal *)loginSignal
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [ServiceCallManager
+         logInWithUsernameInBackground:self.userNameTextField.text
+         password:self.passwordTextField.text
+         block:^(PFUser *user, NSError *error){
+             if (error) {
+                 [subscriber sendError:error];
+             }
+             else {
+                 [subscriber sendNext:user];
+                 [subscriber sendCompleted];
+             }
+        }];
+        return nil;
     }];
 }
 
@@ -88,6 +117,7 @@
         }
     }];
 }
+
 - (void) loginSucceeded
 {
     MyLog(@"Login Succeeded!");
@@ -115,7 +145,7 @@
         [self.passwordTextField becomeFirstResponder];
     }
     else if (textField == self.passwordTextField) {
-        [self loginButtonPressed:nil];
+        [self.loginButton.rac_command execute:nil];
     }
     return YES;
 }
@@ -127,7 +157,6 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
 
@@ -140,7 +169,7 @@
 
 - (IBAction)fbButtonPressed:(UIButton *)sender {
     BOOL syncFromFBAllowedByUser = YES;
-//    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+
     [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
     
@@ -189,13 +218,8 @@
                                           // See https://developers.facebook.com/docs/ios/errors/
                                       }
                                   }];
-            
-            
         }
     }];
-    
-    
-    
 }
 
 - (void) updateUserWithDictionary:(NSDictionary *)userInfo withUser: (PFUser *)user newUser:(BOOL)isNewUser
