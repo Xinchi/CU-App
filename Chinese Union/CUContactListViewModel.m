@@ -38,7 +38,7 @@
 }
 
 - (RACSignal *)getNewContactsSignal {
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 //        CUPersonnel *person = [CUPersonnel new];
 //        person.name = @"Wei Ping Liao";
 //        person.college = @"unknown";
@@ -57,7 +57,7 @@
             }
         }];
         return nil;
-    }] delay:3.0f];
+    }];
 }
 
 @end
