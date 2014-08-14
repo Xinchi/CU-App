@@ -37,4 +37,9 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (NSArray *)getAllTheBatches;
 
+/**
+ * Highly dangerous method, use with extra caution
+ */
++ (void)logOutAndDeleteCurrentUserAccountWithBlock: (PFBooleanResultBlock)block;
+
 @end

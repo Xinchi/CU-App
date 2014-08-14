@@ -177,11 +177,14 @@
     NSArray *permissions = [NSArray arrayWithObjects:PUBLIC_PROFILE,EMAIL, USER_BIRTHDAY,nil];
     
     
+     
+    
     [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+        
+        
         if(error){
             MyLog(@"Error: %@",error);
-        }
-        if (!user) {
+        }else if (!user) {
             MyLog(@"Uh oh. The user cancelled the Facebook login.");
             [self showAlertTitle:@"Login fail" msg:@"Please check Settings->Facebook and make sure the the toggle for Chinese Union is on"];
         } else {
@@ -229,20 +232,32 @@
 //    currentUser.objectId = userInfo[@"email"];
     if(isNewUser)
     {
-        currentUser.username = userInfo[@"first_name"];
+        currentUser.username = userInfo[FB_USER_EMAIL];
         
         //check if email existed already
         
-        if([ServiceCallManager checkIfEmailExisted:userInfo[@"email"]])
+        if([ServiceCallManager checkIfEmailExisted:userInfo[FB_USER_EMAIL]])
         {
-            [self showAlertTitle:@"Error" msg:@"The email has been registered before.  Please log in using that account"];
-            return;
+            [ServiceCallManager logOutAndDeleteCurrentUserAccountWithBlock:^(BOOL succeeded, NSError *error) {
+                if(succeeded) {
+                    [self showAlertTitle:@"Error" msg:@"The email has been registered before.  Please log in using that account"];
+                    return;
+                }else {
+                    MyLog(@"error calling logOutAndDeleteCurrentUserAccountWithBlock = %@",[error userInfo][@"error]"]);
+                }
+            }];
         }
         //check if username existed already
-        if([ServiceCallManager checkIfUsernameExisted:userInfo[@"first_name"]])
+        if([ServiceCallManager checkIfUsernameExisted:userInfo[FB_USER_FIRST_NAME]])
         {
-            [self showAlertTitle:@"Error" msg:@"The username has been registered before.  Please log in using that account"];
-            return;
+            [ServiceCallManager logOutAndDeleteCurrentUserAccountWithBlock:^(BOOL succeeded, NSError *error) {
+                if(succeeded) {
+                    [self showAlertTitle:@"Error" msg:@"The username has been registered before.  Please log in using that account"];
+                    return;
+                }else {
+                    MyLog(@"error calling logOutAndDeleteCurrentUserAccountWithBlock = %@",[error userInfo][@"error]"]);
+                }
+            }];
         }
 
     }
@@ -280,13 +295,20 @@
            
        }
        else{
-           MyLog(@"Error !!! : %@",error);
-
+           NSError *updateUserInfoError = error;
+           MyLog(@"Error !!! : %@",updateUserInfoError);
+           [ServiceCallManager logOutAndDeleteCurrentUserAccountWithBlock:^(BOOL succeeded, NSError *error) {
+               if(succeeded) {
+                   [self showAlertTitle:@"Opps" msg:[updateUserInfoError userInfo][@"error"]];
+               }else {
+                   MyLog(@"error calling logOutAndDeleteCurrentUserAccountWithBlock = %@",[error userInfo][@"error]"]);
+               }
+           }];
            
-           [self showAlertTitle:@"Opps" msg:[error userInfo][@"error"]];
        }
     }];
 }
+
 
 - (IBAction)twitterButtonPressed:(UIButton *)sender {
     MyLog(@"Twitter button!");

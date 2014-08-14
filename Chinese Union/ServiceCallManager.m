@@ -117,5 +117,26 @@
     }];
 }
 
++ (void)logOutAndDeleteCurrentUserAccountWithBlock: (PFBooleanResultBlock)block
+{
+    MyLog(@"---logOutAndDeleteCurrentUserAccount---");
+    User *accountToBeDeleted = [User currentUser];
+    [accountToBeDeleted refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(!error)
+        {
+            [accountToBeDeleted deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if(!error) {
+                    [User logOut];
+                    block(succeeded,error);
+                }else {
+                    block(NO,error);
+                }
+            }];
+        }else {
+            block(NO,error);
+        }
+    }];
+}
+
 
 @end
