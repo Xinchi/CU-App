@@ -263,6 +263,7 @@ static NSTimeInterval const kDefaultSwapAnimationClosedDuration = 0.35;
         [self.mainViewController viewWillAppear:YES];
         self.menuViewController.view.transform = [self closeTransformForMenuView];
         self.containerView.transform = CGAffineTransformIdentity;
+        [self.mainViewController viewDidAppear:YES];
     };
     
     void (^closeCompleteBlock)(BOOL) = ^(BOOL finished) {
