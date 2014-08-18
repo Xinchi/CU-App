@@ -146,10 +146,6 @@
 		50932B07195902D300674269 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50932AF5195902D300674269 /* placeholder@2x.png */; };
 		50932B08195902D300674269 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 50932AF6195902D300674269 /* visa.png */; };
 		50932B09195902D300674269 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50932AF7195902D300674269 /* visa@2x.png */; };
-		50932B14195902EB00674269 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B0C195902EB00674269 /* STPCard.m */; };
-		50932B15195902EB00674269 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B0E195902EB00674269 /* STPToken.m */; };
-		50932B16195902EB00674269 /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B11195902EB00674269 /* Stripe.m */; };
-		50932B17195902EB00674269 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B13195902EB00674269 /* StripeError.m */; };
 		50932B761960B77000674269 /* CUMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B741960B77000674269 /* CUMemberViewController.m */; };
 		50932B771960B77000674269 /* CUMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50932B751960B77000674269 /* CUMemberViewController.xib */; };
 		50932B7A196D215C00674269 /* QRGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B79196D215C00674269 /* QRGenerator.m */; };
@@ -393,15 +389,6 @@
 		50932AF5195902D300674269 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		50932AF6195902D300674269 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
 		50932AF7195902D300674269 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
-		50932B0B195902EB00674269 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
-		50932B0C195902EB00674269 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
-		50932B0D195902EB00674269 /* STPToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
-		50932B0E195902EB00674269 /* STPToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPToken.m; sourceTree = "<group>"; };
-		50932B0F195902EB00674269 /* Stripe-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Stripe-Prefix.pch"; sourceTree = "<group>"; };
-		50932B10195902EB00674269 /* Stripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stripe.h; sourceTree = "<group>"; };
-		50932B11195902EB00674269 /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
-		50932B12195902EB00674269 /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
-		50932B13195902EB00674269 /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
 		50932B731960B77000674269 /* CUMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUMemberViewController.h; sourceTree = "<group>"; };
 		50932B741960B77000674269 /* CUMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CUMemberViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
@@ -905,7 +892,6 @@
 		50932AC31959028500674269 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				50932B0A195902E100674269 /* Stripe */,
 				50932AC41959028B00674269 /* PaymentKit */,
 			);
 			name = Vendor;
@@ -971,22 +957,6 @@
 				50932AF7195902D300674269 /* visa@2x.png */,
 			);
 			name = Cards;
-			sourceTree = "<group>";
-		};
-		50932B0A195902E100674269 /* Stripe */ = {
-			isa = PBXGroup;
-			children = (
-				50932B0B195902EB00674269 /* STPCard.h */,
-				50932B0C195902EB00674269 /* STPCard.m */,
-				50932B0D195902EB00674269 /* STPToken.h */,
-				50932B0E195902EB00674269 /* STPToken.m */,
-				50932B0F195902EB00674269 /* Stripe-Prefix.pch */,
-				50932B10195902EB00674269 /* Stripe.h */,
-				50932B11195902EB00674269 /* Stripe.m */,
-				50932B12195902EB00674269 /* StripeError.h */,
-				50932B13195902EB00674269 /* StripeError.m */,
-			);
-			name = Stripe;
 			sourceTree = "<group>";
 		};
 		50932B721960B74500674269 /* Member */ = {
@@ -1191,7 +1161,6 @@
 				50932AC21959027E00674269 /* STPCheckoutView.m in Sources */,
 				50932ADC195902AE00674269 /* PKCardCVC.m in Sources */,
 				50932A9F1957714900674269 /* CUSales.m in Sources */,
-				50932B15195902EB00674269 /* STPToken.m in Sources */,
 				425490791957D92B005A61B0 /* CUInputButton.m in Sources */,
 				42D3395E1960DBF300F1CB8F /* CUEditProfileViewController.m in Sources */,
 				426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */,
@@ -1226,7 +1195,6 @@
 				50932ADF195902AE00674269 /* PKCardExpiryDelegate.m in Sources */,
 				421C0EFB1971ED9A008711BD /* CUEditProfileBaseViewController.m in Sources */,
 				50932ADB195902AE00674269 /* PKCard.m in Sources */,
-				50932B14195902EB00674269 /* STPCard.m in Sources */,
 				5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */,
 				42D3395A1960C75500F1CB8F /* UIViewController+Additions.m in Sources */,
 				42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */,
@@ -1234,9 +1202,7 @@
 				50E64C25198EFB4500647814 /* CUSoccerPlayer.m in Sources */,
 				42308B36193FBF260022D3E7 /* CUMainViewController.m in Sources */,
 				5005F2B2193EE7E200BF3DAC /* TWTMainViewController.m in Sources */,
-				50932B17195902EB00674269 /* StripeError.m in Sources */,
 				42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */,
-				50932B16195902EB00674269 /* Stripe.m in Sources */,
 				508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */,
 				5005F2BA19467A1700BF3DAC /* SignUpViewController.m in Sources */,
 				50932AB91959013600674269 /* PFFinishViewController.m in Sources */,
