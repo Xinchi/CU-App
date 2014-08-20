@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "CUTeamTableViewController.h"
+#import "CUContactTableViewController.h"
 #import "CUContactListTableViewCell.h"
 #import "CUPersonnel.h"
 #import "CUContactListViewModel.h"
@@ -15,13 +15,13 @@
 
 static NSString * const cellID = @"cell";
 
-@interface CUTeamTableViewController ()
+@interface CUContactTableViewController ()
 
 @property (strong, nonatomic) CUContactListViewModel *viewModel;
 
 @end
 
-@implementation CUTeamTableViewController
+@implementation CUContactTableViewController
 
 - (void)viewDidLoad
 {
@@ -105,13 +105,17 @@ static NSString * const cellID = @"cell";
     CUContactListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
-    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
-        cell.profilePicImageView.image = x;
-    }];
     cell.nameLabel.text = person.name;
     cell.collegeLabel.text = person.college;
     cell.schoolYearLabel.text = person.year;
     cell.majorLabel.text = person.major;
+    cell.profilePicImageView.image = nil;
+    
+    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
+        MyLog(@"image get! %@",cell);
+        cell.profilePicImageView.image = x;
+    }];
+    
     
     return cell;
 }
@@ -143,7 +147,7 @@ static NSString * const cellID = @"cell";
     
     // Pass the selected object to the new view controller.
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
-    detailViewController.person = person;
+    detailViewController.person = person.associatedPerson;
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];

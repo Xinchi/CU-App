@@ -13,9 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *collegeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *yearLabel;
-@property (weak, nonatomic) IBOutlet UILabel *majorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
 @property (strong, nonatomic) CUFullProfileViewModel *viewModel;
 
 @end
@@ -43,19 +41,18 @@
     self.profilePicImageView.layer.masksToBounds = YES;
     self.profilePicImageView.layer.borderWidth = 0;
     
-    self.title = self.person.name;
+    self.title = [NSString stringWithFormat:@"%@ %@", self.person.firstName, self.person.lastName];
     
-    self.viewModel = [CUFullProfileViewModel new];
-    self.viewModel.person = self.person;
+    self.viewModel = [[CUFullProfileViewModel alloc] initWithPerson:self.person];
     [self bindViewModel];
 }
 
 - (void)bindViewModel
 {
-    RAC(self.nameLabel, text) = RACObserve(self.viewModel.person, name);
-    RAC(self.collegeLabel, text) = RACObserve(self.viewModel.person, college);
-    RAC(self.yearLabel, text) = RACObserve(self.viewModel.person, year);
-    RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
+    RAC(self.nameLabel, text) = RACObserve(self.viewModel, name);
+    RAC(self.wechatLabel, text) = RACObserve(self.viewModel, wechatId);
+//    RAC(self.yearLabel, text) = RACObserve(self.viewModel.person, year);
+//    RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
     RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
 }
 

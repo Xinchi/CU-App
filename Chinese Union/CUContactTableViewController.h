@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 
-@interface CUTeamTableViewController : UITableViewController
+@interface CUContactTableViewController : UITableViewController
 
 @property (nonatomic) ObjectType contactType;
 

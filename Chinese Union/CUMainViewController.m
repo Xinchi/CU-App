@@ -21,7 +21,7 @@
 #import "Reachability.h"
 #import "ReachabilityController.h"
 #import "CUEventViewController.h"
-#import "CUTeamTableViewController.h"
+#import "CUContactTableViewController.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -210,19 +210,19 @@
         VC = [[PFProductsViewController alloc] init];
     }
     else if (indexPath.row == 3) {
-        VC = [[CUTeamTableViewController alloc] init];
+        VC = [[CUContactTableViewController alloc] init];
         VC.title = NSLocalizedString(@"Soccer Team", @"");
-        ((CUTeamTableViewController *)VC).contactType = SOCCER;
+        ((CUContactTableViewController *)VC).contactType = SOCCER;
     }
     else if (indexPath.row == 4) {
-        VC = [[CUTeamTableViewController alloc] init];
+        VC = [[CUContactTableViewController alloc] init];
         VC.title = NSLocalizedString(@"Basketball Team", @"");
-        ((CUTeamTableViewController *)VC).contactType = BASKETBALL;
+        ((CUContactTableViewController *)VC).contactType = BASKETBALL;
     }
     else if (indexPath.row == 5) {
-        VC = [[CUTeamTableViewController alloc] init];
+        VC = [[CUContactTableViewController alloc] init];
         VC.title = NSLocalizedString(@"Contacts", @"");
-        ((CUTeamTableViewController *)VC).contactType = PERSONNEL;
+        ((CUContactTableViewController *)VC).contactType = PERSONNEL;
     }
     
     if (VC) {

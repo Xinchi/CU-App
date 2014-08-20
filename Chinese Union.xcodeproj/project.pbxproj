@@ -33,8 +33,8 @@
 		42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 42308B4E193FC1030022D3E7 /* UIImageView+AFNetworking.m */; };
 		42308B59193FC14A0022D3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 42308B58193FC14A0022D3E7 /* data.json */; };
 		425490791957D92B005A61B0 /* CUInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 425490781957D92B005A61B0 /* CUInputButton.m */; };
-		42682DBF1996BCD60001BCB5 /* CUTeamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */; };
-		42682DC01996BCD60001BCB5 /* CUTeamTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */; };
+		42682DBF1996BCD60001BCB5 /* CUContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DBD1996BCD60001BCB5 /* CUContactTableViewController.m */; };
+		42682DC01996BCD60001BCB5 /* CUContactTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */; };
 		42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */; };
 		42682DC71996C0810001BCB5 /* CUContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */; };
 		426CEE48194D236F00522DCF /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE47194D236F00522DCF /* SLGlowingTextField.m */; };
@@ -215,9 +215,9 @@
 		42308B58193FC14A0022D3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		425490771957D92B005A61B0 /* CUInputButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUInputButton.h; sourceTree = "<group>"; };
 		425490781957D92B005A61B0 /* CUInputButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUInputButton.m; sourceTree = "<group>"; };
-		42682DBC1996BCD60001BCB5 /* CUTeamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTeamTableViewController.h; sourceTree = "<group>"; };
-		42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTeamTableViewController.m; sourceTree = "<group>"; };
-		42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUTeamTableViewController.xib; sourceTree = "<group>"; };
+		42682DBC1996BCD60001BCB5 /* CUContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactTableViewController.h; sourceTree = "<group>"; };
+		42682DBD1996BCD60001BCB5 /* CUContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactTableViewController.m; sourceTree = "<group>"; };
+		42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUContactTableViewController.xib; sourceTree = "<group>"; };
 		42682DC31996C0810001BCB5 /* CUContactListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactListTableViewCell.h; sourceTree = "<group>"; };
 		42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactListTableViewCell.m; sourceTree = "<group>"; };
 		42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUContactListTableViewCell.xib; sourceTree = "<group>"; };
@@ -607,9 +607,9 @@
 		42C1F918198EEA3D0050A234 /* Static pages */ = {
 			isa = PBXGroup;
 			children = (
-				42682DBC1996BCD60001BCB5 /* CUTeamTableViewController.h */,
-				42682DBD1996BCD60001BCB5 /* CUTeamTableViewController.m */,
-				42682DBE1996BCD60001BCB5 /* CUTeamTableViewController.xib */,
+				42682DBC1996BCD60001BCB5 /* CUContactTableViewController.h */,
+				42682DBD1996BCD60001BCB5 /* CUContactTableViewController.m */,
+				42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */,
 				42682DC31996C0810001BCB5 /* CUContactListTableViewCell.h */,
 				42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */,
 				42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */,
@@ -1090,7 +1090,7 @@
 				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				50932AF9195902D300674269 /* amex@2x.png in Resources */,
 				42308B59193FC14A0022D3E7 /* data.json in Resources */,
-				42682DC01996BCD60001BCB5 /* CUTeamTableViewController.xib in Resources */,
+				42682DC01996BCD60001BCB5 /* CUContactTableViewController.xib in Resources */,
 				42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */,
 				50932B04195902D300674269 /* mastercard.png in Resources */,
 				42308B37193FBF260022D3E7 /* CUMainViewController.xib in Resources */,
@@ -1243,7 +1243,7 @@
 				50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */,
 				42308B50193FC1030022D3E7 /* AFHTTPRequestOperation.m in Sources */,
 				50E64C28198EFBA400647814 /* CUPersonnel.m in Sources */,
-				42682DBF1996BCD60001BCB5 /* CUTeamTableViewController.m in Sources */,
+				42682DBF1996BCD60001BCB5 /* CUContactTableViewController.m in Sources */,
 				42308B52193FC1030022D3E7 /* AFJSONRequestOperation.m in Sources */,
 				5005F232193EAC1600BF3DAC /* main.m in Sources */,
 				421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */,

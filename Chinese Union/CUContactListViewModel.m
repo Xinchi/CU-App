@@ -28,7 +28,7 @@
     }];
     
     [[self.getNewContactsCommand execute:nil] subscribeNext:^(NSArray *contacts) {
-        MyLog(@"Downloaded");
+        MyLog(@"Downloaded %@", contacts);
         self.contacts = contacts;
     }];
     
