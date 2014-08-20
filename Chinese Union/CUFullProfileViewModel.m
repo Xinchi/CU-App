@@ -27,10 +27,11 @@
 
 - (void)initialize
 {
-    RACSignal *signal = [self.didBecomeActiveSignal then:^RACSignal *{
-        return [self getProfilePicSignal];
-    }];
-    signal = [self forwardSignalWhileActive:signal];
+//    RACSignal *signal = [self.didBecomeActiveSignal then:^RACSignal *{
+//        return [self getProfilePicSignal];
+//    }];
+//    signal = [self forwardSignalWhileActive:signal];
+    RACSignal *signal = [self getProfilePicSignal];
     
     @weakify(self);
     [signal subscribeNext:^(UIImage *x) {

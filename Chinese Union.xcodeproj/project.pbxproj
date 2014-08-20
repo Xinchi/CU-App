@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2773CD64DAD2446DB632FF8B /* libPods-Chinese Union.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6627D301FBE3450A9F9CC593 /* libPods-Chinese Union.a */; };
+		42079EF619A47B5A0054EF14 /* CUYearSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42079EF419A47B5A0054EF14 /* CUYearSelectionTableViewController.m */; };
+		42079EF719A47B5A0054EF14 /* CUYearSelectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42079EF519A47B5A0054EF14 /* CUYearSelectionTableViewController.xib */; };
+		42079EFA19A47C6D0054EF14 /* CUYearSelectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42079EF919A47C6D0054EF14 /* CUYearSelectionViewModel.m */; };
+		42079F0419A4842F0054EF14 /* CUYearSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42079F0219A4842F0054EF14 /* CUYearSelectionTableViewCell.xib */; };
+		42079F0519A4858F0054EF14 /* CUYearSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42079F0119A4842F0054EF14 /* CUYearSelectionTableViewCell.m */; };
 		420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC2F19639AA8001EED84 /* AVFoundation.framework */; };
 		420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3119639AB9001EED84 /* CoreMedia.framework */; };
 		420CDC3419639AC2001EED84 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420CDC3319639AC2001EED84 /* CoreVideo.framework */; };
@@ -170,6 +175,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42079EF319A47B5A0054EF14 /* CUYearSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUYearSelectionTableViewController.h; sourceTree = "<group>"; };
+		42079EF419A47B5A0054EF14 /* CUYearSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUYearSelectionTableViewController.m; sourceTree = "<group>"; };
+		42079EF519A47B5A0054EF14 /* CUYearSelectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUYearSelectionTableViewController.xib; sourceTree = "<group>"; };
+		42079EF819A47C6D0054EF14 /* CUYearSelectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUYearSelectionViewModel.h; sourceTree = "<group>"; };
+		42079EF919A47C6D0054EF14 /* CUYearSelectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUYearSelectionViewModel.m; sourceTree = "<group>"; };
+		42079F0019A4842F0054EF14 /* CUYearSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUYearSelectionTableViewCell.h; sourceTree = "<group>"; };
+		42079F0119A4842F0054EF14 /* CUYearSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUYearSelectionTableViewCell.m; sourceTree = "<group>"; };
+		42079F0219A4842F0054EF14 /* CUYearSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUYearSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		420CDC2F19639AA8001EED84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		420CDC3119639AB9001EED84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		420CDC3319639AC2001EED84 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -615,6 +628,14 @@
 				42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */,
 				42BCDC1719970120009326CE /* CUContactListViewModel.h */,
 				42BCDC1819970120009326CE /* CUContactListViewModel.m */,
+				42079EF319A47B5A0054EF14 /* CUYearSelectionTableViewController.h */,
+				42079EF419A47B5A0054EF14 /* CUYearSelectionTableViewController.m */,
+				42079EF519A47B5A0054EF14 /* CUYearSelectionTableViewController.xib */,
+				42079EF819A47C6D0054EF14 /* CUYearSelectionViewModel.h */,
+				42079EF919A47C6D0054EF14 /* CUYearSelectionViewModel.m */,
+				42079F0019A4842F0054EF14 /* CUYearSelectionTableViewCell.h */,
+				42079F0119A4842F0054EF14 /* CUYearSelectionTableViewCell.m */,
+				42079F0219A4842F0054EF14 /* CUYearSelectionTableViewCell.xib */,
 			);
 			name = "Static pages";
 			sourceTree = "<group>";
@@ -1087,6 +1108,7 @@
 				50932AFD195902D300674269 /* cvc@2x.png in Resources */,
 				50932B771960B77000674269 /* CUMemberViewController.xib in Resources */,
 				50932B07195902D300674269 /* placeholder@2x.png in Resources */,
+				42079F0419A4842F0054EF14 /* CUYearSelectionTableViewCell.xib in Resources */,
 				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				50932AF9195902D300674269 /* amex@2x.png in Resources */,
 				42308B59193FC14A0022D3E7 /* data.json in Resources */,
@@ -1106,6 +1128,7 @@
 				421C0F001971F2E1008711BD /* CUForgotPasswordViewController.xib in Resources */,
 				50932B05195902D300674269 /* mastercard@2x.png in Resources */,
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
+				42079EF719A47B5A0054EF14 /* CUYearSelectionTableViewController.xib in Resources */,
 				5005F2BB19467A1700BF3DAC /* SignUpViewController.xib in Resources */,
 				50932B03195902D300674269 /* jcb@2x.png in Resources */,
 				421C0EF81971E84B008711BD /* CUEditProfileGenderViewController.xib in Resources */,
@@ -1202,6 +1225,8 @@
 				5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */,
 				50932ABA1959013600674269 /* PFCheckoutViewController.m in Sources */,
 				50932AE1195902AE00674269 /* PKCardNumberDelegate.m in Sources */,
+				42079EF619A47B5A0054EF14 /* CUYearSelectionTableViewController.m in Sources */,
+				42079EFA19A47C6D0054EF14 /* CUYearSelectionViewModel.m in Sources */,
 				50932ADE195902AE00674269 /* PKCardExpiry.m in Sources */,
 				42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */,
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
@@ -1213,6 +1238,7 @@
 				50932B761960B77000674269 /* CUMemberViewController.m in Sources */,
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
+				42079F0519A4858F0054EF14 /* CUYearSelectionTableViewCell.m in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				42BCDC1D19971076009326CE /* CUFullProfileViewController.m in Sources */,
 				42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */,
@@ -1378,9 +1404,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/WeiPingLiao/Desktop/Developer/BugSense,
-					3.6,
-					/Users/WeiPingLiao/Desktop/Developer/Appsee,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";
@@ -1407,9 +1430,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/WeiPingLiao/Desktop/Developer/BugSense,
-					3.6,
-					/Users/WeiPingLiao/Desktop/Developer/Appsee,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chinese Union/Chinese Union-Prefix.pch";

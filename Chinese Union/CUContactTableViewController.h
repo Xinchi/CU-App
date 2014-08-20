@@ -12,5 +12,6 @@
 @interface CUContactTableViewController : UITableViewController
 
 @property (nonatomic) ObjectType contactType;
+@property (strong, nonatomic) NSString *batch;
 
 @end

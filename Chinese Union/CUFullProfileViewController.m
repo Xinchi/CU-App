@@ -56,20 +56,6 @@
     RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.viewModel.active = YES;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    self.viewModel.active = NO;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

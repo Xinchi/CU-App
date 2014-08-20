@@ -27,18 +27,28 @@ static NSString * const cellID = @"cell";
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    switch (self.contactType) {
+        case BASKETBALL:
+            self.title = NSLocalizedString(@"Basketball", @"");
+            break;
+            
+        case SOCCER:
+            self.title = NSLocalizedString(@"Soccer", @"");
+            break;
+            
+        case PERSONNEL:
+            self.title = NSLocalizedString(@"Contacts", @"");
+            break;
+            
+        default:
+            break;
+    }
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CUContactListTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:cellID];
     
-    self.viewModel = [CUContactListViewModel new];
-    self.viewModel.contactType = self.contactType;
+    self.viewModel = [[CUContactListViewModel alloc] initWithContactType:self.contactType batch:self.batch];
     [self bindViewModel];
 }
 
