@@ -11,7 +11,8 @@
 
 @interface CUContactListViewModel : RVMViewModel
 
-@property (nonatomic) ObjectType contactType;
+- (instancetype)initWithContactType:(ObjectType)type batch:(NSString *)batch;
+
 @property (strong, nonatomic) NSArray *contacts;
 @property (strong, nonatomic) RACCommand *getNewContactsCommand;
 

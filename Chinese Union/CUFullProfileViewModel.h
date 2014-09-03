@@ -7,13 +7,14 @@
 //
 
 #import "RVMViewModel.h"
-#import "CUPersonnel.h"
+#import "User.h"
 
 @interface CUFullProfileViewModel : RVMViewModel
 
 - (instancetype)initWithPerson:(id)person;
 
-@property (strong, nonatomic) CUPersonnel *person;
 @property (strong, nonatomic) UIImage *profilePic;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *wechatId;
 
 @end

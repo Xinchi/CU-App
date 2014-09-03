@@ -20,10 +20,10 @@
 #import "MBProgressHUD.h"
 #import "CUEditProfileGenderViewController.h"
 
-NSString *picCellID = @"picCell";
-NSString *cellID = @"cell";
-NSString *takePhoto = @"Take Photo";
-NSString *choosePhoto = @"Choose Existing Photo";
+static NSString * const picCellID = @"picCell";
+static NSString * const cellID = @"cell";
+static NSString * const takePhoto = @"Take Photo";
+static NSString * const choosePhoto = @"Choose Existing Photo";
 
 @interface CUEditProfileViewController () <UIActionSheetDelegate>
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "CUTeamTableViewController.h"
+#import "CUContactTableViewController.h"
 #import "CUContactListTableViewCell.h"
 #import "CUPersonnel.h"
 #import "CUContactListViewModel.h"
@@ -15,30 +15,40 @@
 
 static NSString * const cellID = @"cell";
 
-@interface CUTeamTableViewController ()
+@interface CUContactTableViewController ()
 
 @property (strong, nonatomic) CUContactListViewModel *viewModel;
 
 @end
 
-@implementation CUTeamTableViewController
+@implementation CUContactTableViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    switch (self.contactType) {
+        case BASKETBALL:
+            self.title = NSLocalizedString(@"Basketball", @"");
+            break;
+            
+        case SOCCER:
+            self.title = NSLocalizedString(@"Soccer", @"");
+            break;
+            
+        case PERSONNEL:
+            self.title = NSLocalizedString(@"Contacts", @"");
+            break;
+            
+        default:
+            break;
+    }
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CUContactListTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:cellID];
     
-    self.viewModel = [CUContactListViewModel new];
-    self.viewModel.contactType = self.contactType;
+    self.viewModel = [[CUContactListViewModel alloc] initWithContactType:self.contactType batch:self.batch];
     [self bindViewModel];
 }
 
@@ -105,13 +115,17 @@ static NSString * const cellID = @"cell";
     CUContactListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
-    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
-        cell.profilePicImageView.image = x;
-    }];
     cell.nameLabel.text = person.name;
     cell.collegeLabel.text = person.college;
     cell.schoolYearLabel.text = person.year;
     cell.majorLabel.text = person.major;
+    cell.profilePicImageView.image = nil;
+    
+    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
+        MyLog(@"image get! %@",cell);
+        cell.profilePicImageView.image = x;
+    }];
+    
     
     return cell;
 }
@@ -143,7 +157,7 @@ static NSString * const cellID = @"cell";
     
     // Pass the selected object to the new view controller.
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
-    detailViewController.person = person;
+    detailViewController.person = person.associatedPerson;
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CUPersonnel.h"
+#import "User.h"
 
 @interface CUFullProfileViewController : UIViewController
 
-@property (strong, nonatomic) CUPersonnel *person;
+@property (strong, nonatomic) User *person;
 
 @end

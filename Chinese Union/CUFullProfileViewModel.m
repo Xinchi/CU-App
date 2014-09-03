@@ -10,6 +10,8 @@
 
 @interface CUFullProfileViewModel ()
 
+@property (strong, nonatomic) User *person;
+
 @end
 
 @implementation CUFullProfileViewModel
@@ -25,13 +27,20 @@
 
 - (void)initialize
 {
-    RACSignal *signal = [self.didBecomeActiveSignal then:^RACSignal *{
-        return [self getProfilePicSignal];
-    }];
-    signal = [self forwardSignalWhileActive:signal];
+//    RACSignal *signal = [self.didBecomeActiveSignal then:^RACSignal *{
+//        return [self getProfilePicSignal];
+//    }];
+//    signal = [self forwardSignalWhileActive:signal];
+    RACSignal *signal = [self getProfilePicSignal];
+    
+    @weakify(self);
     [signal subscribeNext:^(UIImage *x) {
+        @strongify(self);
         self.profilePic = x;
     }];
+    
+    self.name = [NSString stringWithFormat:@"%@ %@", self.person.firstName, self.person.lastName];
+    self.wechatId = self.person.wechatID;
 }
 
 - (RACSignal *)getProfilePicSignal
