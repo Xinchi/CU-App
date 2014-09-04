@@ -1,6 +1,6 @@
 PODS:
   - ALAlertBanner (0.3.1)
-  - Bolts (1.1.1)
+  - Bolts (1.1.2)
   - Facebook-iOS-SDK (3.16.2):
     - Bolts
   - FLEX (1.1.0)
@@ -60,6 +60,7 @@ DEPENDENCIES:
   - FLEX (~> 1.1.0)
   - MBProgressHUD (~> 0.8)
   - MRProgress
+  - PaymentKit
   - ReactiveCocoa (~> 2.3.1)
   - ReactiveViewModel (~> 0.2)
   - SAMCategories (~> 0.5.2)
@@ -69,7 +70,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
-  Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
+  Bolts: 2635e8698a630774689441047f3465d78c48d485
   Facebook-iOS-SDK: 34eef640c2cc4c8618ba0f574ad2b290e07f1b4e
   FLEX: fa5e81b7b25ba64afe4fad14deb27d4b95efd75e
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
