@@ -140,6 +140,10 @@
 		5078486A19B869810036BC7A /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5078484E19B869810036BC7A /* placeholder@2x.png */; };
 		5078486B19B869810036BC7A /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 5078484F19B869810036BC7A /* visa.png */; };
 		5078486C19B869810036BC7A /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5078485019B869810036BC7A /* visa@2x.png */; };
+		5078487719B86B410036BC7A /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078486F19B86B410036BC7A /* STPCard.m */; };
+		5078487819B86B410036BC7A /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487119B86B410036BC7A /* STPToken.m */; };
+		5078487919B86B410036BC7A /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487419B86B410036BC7A /* Stripe.m */; };
+		5078487A19B86B410036BC7A /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487619B86B410036BC7A /* StripeError.m */; };
 		508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845701997F5C900FF3D44 /* ServiceCallManager.m */; };
 		508845771998180700FF3D44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845761998180700FF3D44 /* Constants.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
@@ -380,6 +384,15 @@
 		5078484E19B869810036BC7A /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		5078484F19B869810036BC7A /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
 		5078485019B869810036BC7A /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
+		5078486E19B86B410036BC7A /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
+		5078486F19B86B410036BC7A /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
+		5078487019B86B410036BC7A /* STPToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
+		5078487119B86B410036BC7A /* STPToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPToken.m; sourceTree = "<group>"; };
+		5078487219B86B410036BC7A /* Stripe-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Stripe-Prefix.pch"; sourceTree = "<group>"; };
+		5078487319B86B410036BC7A /* Stripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stripe.h; sourceTree = "<group>"; };
+		5078487419B86B410036BC7A /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
+		5078487519B86B410036BC7A /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
+		5078487619B86B410036BC7A /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
 		5088456F1997F5C900FF3D44 /* ServiceCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCallManager.h; sourceTree = "<group>"; };
 		508845701997F5C900FF3D44 /* ServiceCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCallManager.m; sourceTree = "<group>"; };
 		508845751998180700FF3D44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -534,6 +547,7 @@
 		4243BD8D1958FF2100E23603 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				5078486D19B86B410036BC7A /* Stripe */,
 				5078482719B869810036BC7A /* PaymentKit */,
 				50932ABF1959024F00674269 /* Checkout */,
 				50932AA91959013600674269 /* PFProductsViewController.h */,
@@ -945,6 +959,22 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		5078486D19B86B410036BC7A /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				5078486E19B86B410036BC7A /* STPCard.h */,
+				5078486F19B86B410036BC7A /* STPCard.m */,
+				5078487019B86B410036BC7A /* STPToken.h */,
+				5078487119B86B410036BC7A /* STPToken.m */,
+				5078487219B86B410036BC7A /* Stripe-Prefix.pch */,
+				5078487319B86B410036BC7A /* Stripe.h */,
+				5078487419B86B410036BC7A /* Stripe.m */,
+				5078487519B86B410036BC7A /* StripeError.h */,
+				5078487619B86B410036BC7A /* StripeError.m */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
 		5088456E1997F5A600FF3D44 /* ServiceCall */ = {
 			isa = PBXGroup;
 			children = (
@@ -1157,6 +1187,7 @@
 				42C1F930198EEE510050A234 /* SLGlowingTextField+Valid.m in Sources */,
 				5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */,
 				426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */,
+				5078487819B86B410036BC7A /* STPToken.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
 				50932AB71959013600674269 /* PFShippingViewController.m in Sources */,
 				5078485219B869810036BC7A /* PKCard.m in Sources */,
@@ -1189,6 +1220,7 @@
 				42079EF619A47B5A0054EF14 /* CUYearSelectionTableViewController.m in Sources */,
 				42079EFA19A47C6D0054EF14 /* CUYearSelectionViewModel.m in Sources */,
 				5078485919B869810036BC7A /* PKUSAddressZip.m in Sources */,
+				5078487A19B86B410036BC7A /* StripeError.m in Sources */,
 				42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */,
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
 				50932AB81959013600674269 /* PFProducts.m in Sources */,
@@ -1197,6 +1229,7 @@
 				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,
 				5078485119B869810036BC7A /* PKAddressZip.m in Sources */,
+				5078487919B86B410036BC7A /* Stripe.m in Sources */,
 				50932B761960B77000674269 /* CUMemberViewController.m in Sources */,
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
@@ -1205,6 +1238,7 @@
 				42BCDC1D19971076009326CE /* CUFullProfileViewController.m in Sources */,
 				5078485419B869810036BC7A /* PKCardCVCDelegate.m in Sources */,
 				42E313ED1963BFA700F5CFBC /* CUEditProfileBDViewController.m in Sources */,
+				5078487719B86B410036BC7A /* STPCard.m in Sources */,
 				5005F318194968E300BF3DAC /* UIImage+MDQRCode.m in Sources */,
 				5005F317194968E300BF3DAC /* split.c in Sources */,
 				42308B51193FC1030022D3E7 /* AFImageRequestOperation.m in Sources */,
