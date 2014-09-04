@@ -20,6 +20,6 @@
 @property (retain) NSNumber *price_non_member_female;
 @property (retain) NSNumber *price_member_male;
 @property (retain) NSNumber *price_member_female;
-@property NSInteger quantity;
+@property NSInteger quantityAvailable;
 
 @end

@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Chinese Union": {
+            "applicationId": "TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI", 
+            "masterKey": "dLOXJntf3t2VlE7VuZLLuxjR27RvkylxIbyQeXgI"
+        }, 
+        "_default": {
+            "link": "Chinese Union"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

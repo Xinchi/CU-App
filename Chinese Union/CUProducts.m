@@ -19,7 +19,7 @@
 @dynamic price_non_member_female;
 @dynamic price_member_male;
 @dynamic price_member_female;
-@dynamic quantity;
+@dynamic quantityAvailable;
 
 + (NSString *)parseClassName {
     return NSStringFromClass([self class]);
