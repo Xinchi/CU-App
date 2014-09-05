@@ -4,6 +4,7 @@
 #import <Foundation/Foundation.h>
 @class PFObject;
 @class PFUser;
+@class User;
 
 // Version
 #define PARSE_VERSION @"1.2.19"
@@ -153,6 +154,7 @@ typedef void (^PFArrayResultBlock)(NSArray *objects, NSError *error);
 typedef void (^PFObjectResultBlock)(PFObject *object, NSError *error);
 typedef void (^PFSetResultBlock)(NSSet *channels, NSError *error);
 typedef void (^PFUserResultBlock)(PFUser *user, NSError *error);
+typedef void (^CUUserResultBlock)(User *user, NSError *error);
 typedef void (^PFDataResultBlock)(NSData *data, NSError *error);
 typedef void (^PFDataStreamResultBlock)(NSInputStream *stream, NSError *error);
 typedef void (^PFStringResultBlock)(NSString *string, NSError *error);

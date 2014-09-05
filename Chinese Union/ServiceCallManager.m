@@ -26,7 +26,19 @@
     return sharedInstance;
 }
 
-
++ (User *)getCurrentUser
+{
+    User *user = [User currentUser];
+    [user refresh];
+    return user;
+}
++ (void)getCurrentUserWithBlock:(CUUserResultBlock)block
+{
+    User *user = [User currentUser];
+    [user refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        block((User *)object, error);
+    }];
+}
 
 + (void)callFunctionInBackground:(NSString *)function withParameters:(NSDictionary *)parameters block:(PFIdResultBlock)block
 {

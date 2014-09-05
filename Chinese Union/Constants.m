@@ -31,5 +31,6 @@ NSString* const FB_USER_PROFILE_IMAGE_BASE_URL = @"https://graph.facebook.com/%@
 NSString* const CUBASKETBALLPLAYER_CLASS = @"CUBasketballPlayer";
 NSString* const CUSOCCERPLAYER_CLASS = @"CUSocckerPlayer";
 NSString* const CU_IMAGE_FIELD_KEY = @"profilePic";
+NSString* const CUMemberObjectID = @"oVPBv4Aqqu";
 
 @end

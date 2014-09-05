@@ -14,6 +14,10 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (ServiceCallManager *)manager;
 
++ (User *)getCurrentUser;
+
++ (void)getCurrentUserWithBlock:(CUUserResultBlock)block;
+
 + (void)signUpInBackgroundWithUser: (User *)user WithBlock:(PFBooleanResultBlock)block;
 
 + (void)callFunctionInBackground:(NSString *)function withParameters:(NSDictionary *)parameters block:(PFIdResultBlock)block;

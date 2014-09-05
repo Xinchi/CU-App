@@ -44,7 +44,7 @@ extern NSString* const CUSOCCERPLAYER_CLASS;
 
 //Other configurations
 extern NSString* const CU_IMAGE_FIELD_KEY;
-
+extern NSString* const CUMemberObjectID;
 
 #ifndef Constants_h
 #define Constants_h

@@ -10,6 +10,11 @@
 #import "PFShippingViewController.h"
 #import "CUProducts.h"
 #import "UIViewController+Additions.h"
+#import "Constants.h"
+#import "User.h"
+#import "ServiceCallManager.h"
+#import "MRProgress.h"
+
 
 #define ROW_MARGIN 6.0f
 #define ROW_HEIGHT 173.0f
@@ -37,16 +42,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Store", @"");
+    self.title = NSLocalizedString(@"CU Store", @"");
     
-    UIImage *poweredImage = [UIImage imageNamed:@"Powered.png"];
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake((self.tableView.frame.size.width - poweredImage.size.width)/2.0f, 0.0f, self.tableView.frame.size.width, poweredImage.size.height + ROW_MARGIN * 2.0f)];
-    UIButton * poweredButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [poweredButton setImage:poweredImage forState:UIControlStateNormal];
-    [poweredButton addTarget:self action:@selector(openBrowser:) forControlEvents:UIControlEventTouchUpInside];
-    poweredButton.frame = CGRectMake(0.0f, -4.0f, poweredImage.size.width, poweredImage.size.height + 20.0f);
-    [footer addSubview:poweredButton];
-    self.tableView.tableFooterView = footer;
+//    UIImage *poweredImage = [UIImage imageNamed:@"Powered.png"];
+//    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake((self.tableView.frame.size.width - poweredImage.size.width)/2.0f, 0.0f, self.tableView.frame.size.width, poweredImage.size.height + ROW_MARGIN * 2.0f)];
+//    UIButton * poweredButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [poweredButton setImage:poweredImage forState:UIControlStateNormal];
+//    [poweredButton addTarget:self action:@selector(openBrowser:) forControlEvents:UIControlEventTouchUpInside];
+//    poweredButton.frame = CGRectMake(0.0f, -4.0f, poweredImage.size.width, poweredImage.size.height + 20.0f);
+//    [footer addSubview:poweredButton];
+//    self.tableView.tableFooterView = footer;
 
     self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, PICKER_HEIGHT)];
     self.pickerView.showsSelectionIndicator = YES;
@@ -148,6 +153,23 @@
 #pragma mark - Event handlers
 
 - (void)next:(UIButton *)button {
+    MyLog(@"next UIButton pressed");
+    //check if the product is CUMember
+    CUProducts *product = self.objects[button.tag];
+    if([product.objectId isEqualToString:CUMemberObjectID])
+    {
+        MyLog(@"This product is CU Member! check if the user is a member already");
+        [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Checking" mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+        User *user = [ServiceCallManager getCurrentUser];
+        if(user.CUMemberID != nil)
+        {
+            MyLog(@"This user is already a member! Purchasing request rejected");
+            [self showAlertTitle:@"Error" msg:@"You are already a member, please don't purchase again"];
+            return;
+        }
+        
+        
+    }
     UIButton *sizeButton = (UIButton *)[self.tableView viewWithTag:(button.tag + SIZE_BUTTON_TAG_OFFSET)];
     NSString *size = sizeButton ? [sizeButton titleForState:UIControlStateNormal] : nil;
     
@@ -192,5 +214,17 @@
 - (void)openBrowser:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.parse.com/store"]];
 }
+
+- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+}
+
 
 @end
