@@ -121,7 +121,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
   // asynchronous code consistent. This is not required.
   Parse.Promise.as().then(function() {
     // Find the item to purchase.
-    var itemQuery = new Parse.Query('Item');
+    var itemQuery = new Parse.Query('CUProducts');
     itemQuery.equalTo('name', request.params.itemName);
 
     // Find the resuts. We handle the error here so our

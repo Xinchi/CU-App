@@ -80,7 +80,8 @@
     [buyButton setBackgroundImage:[orderPressedImage resizableImageWithCapInsets:insets] forState:UIControlStateHighlighted];
     buyButton.frame = CGRectMake(self.view.frame.size.width - 52.0f - 5.0f, 5.0f, 52.0f, orderImage.size.height);
     [buyButton addTarget:self action:@selector(buy:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buyButton];
+//    [self.view addSubview:buyButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:buyButton];
     
     UIImage *creditCardImage = [UIImage imageNamed:@"CreditCardBg.png"];
     UIImageView *creditCardView = [[UIImageView alloc] initWithImage:creditCardImage];
@@ -98,7 +99,7 @@
     creditCardLabel.frame = CGRectMake(25.0f, 115.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
     [self.view addSubview:creditCardLabel];
     
-    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake(15.0f, 165.0f, 290.0f, 55.0f) andKey:[[NSBundle mainBundle] infoDictionary][@"STRIPE_PUBLISHABLE_KEY"]];
+    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake(15.0f, 165.0f, 290.0f, 55.0f) andKey:@"pk_test_ASG5k9xvfxs21LjSgaKeBIX1"];
     self.checkoutView.delegate = self;
     [self.view addSubview:self.checkoutView];
     

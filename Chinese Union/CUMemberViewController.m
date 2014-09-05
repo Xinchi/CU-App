@@ -139,6 +139,7 @@
 - (bool)isAMember
 {
 
+    [self.user refresh];
     if(self.user.CUMemberID != nil)
     {
         MyLog(@"Member ID is ? = %@",self.user.CUMemberID);

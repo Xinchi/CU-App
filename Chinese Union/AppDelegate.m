@@ -44,6 +44,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Setup
+    [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
+                  clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
+    
     //[BugSenseController sharedControllerWithBugSenseAPIKey:@"fdc41c40"];
     [Appsee start:@"fa1fbc2f07994a42abf777db222bd85a"];
     
@@ -52,8 +56,7 @@
 
     [self customizedNavigation];
     [self registerPFSubclass];
-    [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
-                  clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
+
     [PFFacebookUtils initializeFacebook];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
