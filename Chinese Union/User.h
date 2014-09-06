@@ -7,7 +7,7 @@
 //
 
 #import <Parse/Parse.h>
-
+@class CUMembers;
 @interface User : PFUser<PFSubclassing>
 
 @property (retain) NSString *objectId;
@@ -15,7 +15,7 @@
 @property (retain) NSString *firstName;
 @property (retain) NSString *lastName;
 @property (retain) NSString *gender;
-@property (retain) NSString *CUMemberID;
+@property (retain) CUMembers *cuMember;
 @property (retain) NSString *wechatID;
 @property (retain) NSDate *birthday;
 @property (retain) NSString *phone;

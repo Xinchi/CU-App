@@ -11,7 +11,7 @@
 
 @implementation CUMembers
 
-@dynamic uid;
+@dynamic memberUser;
 @dynamic activatedDate;
 @dynamic expireDate;
 

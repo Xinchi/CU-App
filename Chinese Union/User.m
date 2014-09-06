@@ -15,7 +15,7 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic gender;
-@dynamic CUMemberID;
+@dynamic cuMember;
 @dynamic wechatID;
 @dynamic birthday;
 @dynamic phone;

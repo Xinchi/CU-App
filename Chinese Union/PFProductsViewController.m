@@ -161,7 +161,7 @@
         MyLog(@"This product is CU Member! check if the user is a member already");
         [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Checking" mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
         User *user = [ServiceCallManager getCurrentUser];
-        if(user.CUMemberID != nil)
+        if(user.cuMember != nil)
         {
             MyLog(@"This user is already a member! Purchasing request rejected");
             [self showAlertTitle:@"Error" msg:@"You are already a member, please don't purchase again"];

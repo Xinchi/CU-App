@@ -32,6 +32,10 @@ Parse.Cloud.define("getTime",function(request, response) {
   response.success(new Date());
 });
 
+Parse.Cloud.define("getMembershipExpireDate", function(request, response){
+  response.success(new Date("October 1, 2015 00:00:00"))
+});
+
 Parse.Cloud.define("memberShipCycle", function(request, response) {
   response.success(CuMemberCycle);
 });
@@ -202,7 +206,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
       // details of their credit card (last 4 digits) and we can then find the payment
       // on Stripe's dashboard to confirm which order to rectify. 
       return Parse.Promise.error('A critical error has occurred with your order. Please ' + 
-                                 'contact store@parse.com at your earliest convinience. ');
+                                 'contact CU Staff at your earliest convinience. ');
     });
 
   }).then(function(order) {

@@ -32,5 +32,8 @@ NSString* const CUBASKETBALLPLAYER_CLASS = @"CUBasketballPlayer";
 NSString* const CUSOCCERPLAYER_CLASS = @"CUSocckerPlayer";
 NSString* const CU_IMAGE_FIELD_KEY = @"profilePic";
 NSString* const CUMemberObjectID = @"oVPBv4Aqqu";
+BOOL const STATIC_MEMBERSHIP_ENDING_DATE = YES;
+NSString* const CloudFunctionGetCurrentDate = @"getTime";
+NSString* const CloudFunctionGetStaticMembershipExpirationDate = @"getMembershipExpireDate";
 
 @end

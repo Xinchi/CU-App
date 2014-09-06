@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
-extern NSString* const CloudFunctionSignupSuccess;
 extern NSString* const BATCH1011;
 extern NSString* const BATCH1112;
 extern NSString* const BATCH1213;
@@ -42,9 +41,14 @@ extern NSString* const FB_USER_PROFILE_IMAGE_BASE_URL;
 extern NSString* const CUBASKETBALLPLAYER_CLASS;
 extern NSString* const CUSOCCERPLAYER_CLASS;
 
+//PFCloud function
+extern NSString* const CloudFunctionSignupSuccess;
+extern NSString* const CloudFunctionGetCurrentDate;
+extern NSString* const CloudFunctionGetStaticMembershipExpirationDate;
 //Other configurations
 extern NSString* const CU_IMAGE_FIELD_KEY;
 extern NSString* const CUMemberObjectID;
+extern BOOL const STATIC_MEMBERSHIP_ENDING_DATE;
 
 #ifndef Constants_h
 #define Constants_h

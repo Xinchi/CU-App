@@ -713,6 +713,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5078487B19BB87860036BC7A /* Config */,
 				50884572199802C600FF3D44 /* Constants */,
 				5088456E1997F5A600FF3D44 /* ServiceCall */,
 				42C1F928198EEAEA0050A234 /* Event */,
@@ -973,6 +974,13 @@
 				5078487619B86B410036BC7A /* StripeError.m */,
 			);
 			path = Stripe;
+			sourceTree = "<group>";
+		};
+		5078487B19BB87860036BC7A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		5088456E1997F5A600FF3D44 /* ServiceCall */ = {

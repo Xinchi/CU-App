@@ -17,6 +17,8 @@
 #import "NSDateFormatter+Additions.h"
 #import "QRGenerator.h"
 #import "PFProductsViewController.h"
+#import "Constants.h"
+#import "ServiceCallManager.h"
 
 @interface CUMemberViewController ()
 
@@ -66,33 +68,33 @@
     [super viewDidAppear:animated];
     
 
-    self.user = [User currentUser];
-    
-    [self.user refresh];
+    self.user = [ServiceCallManager getCurrentUser];
     
     if([self isAMember])
     {
         
         //get member object
-        PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
-        [query whereKey:@"uid" equalTo:self.user.objectId];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if(!error && [objects count]==1)
-            {
-                _cuMember = (CUMembers *)objects[0];
-                MyLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
-            }else if(error){
-                // Log details of the failure
-                MyLog(@"Error: %@ %@", error, [error userInfo]);
-            }else
-            {
-                MyLog(@"Error !More than one member record has been found!");
-            }
-            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
-//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-            
-            [self updateMemberView];
-        }];
+//        PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
+//        [query whereKey:@"uid" equalTo:self.user.objectId];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            if(!error && [objects count]==1)
+//            {
+//                _cuMember = (CUMembers *)objects[0];
+//                MyLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
+//            }else if(error){
+//                // Log details of the failure
+//                MyLog(@"Error: %@ %@", error, [error userInfo]);
+//            }else
+//            {
+//                MyLog(@"Error !More than one member record has been found!");
+//            }
+//            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
+////            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            
+//            [self updateMemberView];
+//        }];
+        
+        
     }
     [self updateMemberView];
     [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
@@ -110,7 +112,8 @@
     
     if ([self isAMember]) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
-        self.memberIDLabel.text = self.user.CUMemberID;
+        self.memberIDLabel.text = self.user.cuMember.objectId;
+        MyLog(@"Membership Expire Date = %@",self.cuMember.expireDate);
         self.expireDateLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.cuMember.expireDate];
         NSData *imageData = [self.user.profilePic getData];
         UIImage *profileImage = [UIImage imageWithData:imageData];
@@ -140,9 +143,9 @@
 {
 
     [self.user refresh];
-    if(self.user.CUMemberID != nil)
+    if(self.user.cuMember != nil)
     {
-        MyLog(@"Member ID is ? = %@",self.user.CUMemberID);
+        MyLog(@"Member ID is ? = %@",self.user.cuMember.objectId);
         return true;
     }
     else
@@ -174,7 +177,7 @@
             CUMembers *member = (CUMembers *)object;
         
             MyLog(@"Member ID Found!");
-            if(member.uid !=nil)
+            if(member.memberUser !=nil)
             {
                 MyLog(@"The Member ID has already been activated!");
                 //handle the already-activated case
@@ -188,26 +191,43 @@
             } else {
 
                 //update expire date
-                [PFCloud callFunctionInBackground:@"getTime" withParameters:@{} block:^(NSDate *result, NSError *error){
-                    if(!error){
-                        NSDate *date = result;
-                        MyLog(@"Todays date is %@",date);
-                        NSDateComponents *components = [[NSDateComponents alloc] init];
-                        [PFCloud callFunctionInBackground:@"memberShipCycle" withParameters:@{} block:^(NSString *result, NSError *error){
-                            if(!error){
-                                components.month = [result integerValue];
-                                NSDate *expire = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
-                                MyLog(@"Expire date is %@", expire);
-                                member.expireDate = expire;
-                                self.user.CUMemberID = member.objectId;
-                                [self.user saveInBackground];
-                                member.uid = self.user.objectId;
-                                [member saveInBackground];
-                                [self updateMemberView];
-                            }
-                        }];
-                    }
-                }];
+                if(!STATIC_MEMBERSHIP_ENDING_DATE)
+                {
+                    [PFCloud callFunctionInBackground:CloudFunctionGetCurrentDate withParameters:@{} block:^(NSDate *result, NSError *error){
+                        if(!error){
+                            NSDate *date = result;
+                            MyLog(@"Todays date is %@",date);
+                            NSDateComponents *components = [[NSDateComponents alloc] init];
+                            [PFCloud callFunctionInBackground:@"memberShipCycle" withParameters:@{} block:^(NSString *result, NSError *error){
+                                if(!error){
+                                    components.month = [result integerValue];
+                                    NSDate *expire = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
+                                    MyLog(@"Expire date is %@", expire);
+                                    member.expireDate = expire;
+                                    self.user.cuMember = member;
+                                    [self.user saveInBackground];
+                                    member.memberUser = self.user;
+                                    [member saveInBackground];
+                                    [self updateMemberView];
+                                }
+                            }];
+                        }
+                    }];
+                } else {
+                    [PFCloud callFunctionInBackground:CloudFunctionGetStaticMembershipExpirationDate withParameters:@{} block:^(NSDate *result, NSError *error){
+                        if(!error){
+                            NSDate *expire = result;
+                            member.expireDate = expire;
+                            self.user.cuMember = member;
+                            [self.user saveInBackground];
+                            member.memberUser = [ServiceCallManager getCurrentUser];
+                            MyLog(@"Current member user id = %@", member.memberUser.objectId);
+                            [member saveInBackground];
+                            [self updateMemberView];
+                        }
+                    }];
+                }
+
                 [PFCloud callFunctionInBackground:@"activationSuccessResponse" withParameters:@{} block:^(NSString *result, NSError *error){
                     if(!error){
                         [self showAlertTitle:NSLocalizedString(@"Congratulations!", @"")
