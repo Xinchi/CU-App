@@ -193,9 +193,8 @@
                 //update expire date
                 if(!STATIC_MEMBERSHIP_ENDING_DATE)
                 {
-                    [PFCloud callFunctionInBackground:CloudFunctionGetCurrentDate withParameters:@{} block:^(NSDate *result, NSError *error){
+                    [ServiceCallManager getCurrentDateWithBlock:^(NSDate *date, NSError *error) {
                         if(!error){
-                            NSDate *date = result;
                             MyLog(@"Todays date is %@",date);
                             NSDateComponents *components = [[NSDateComponents alloc] init];
                             [PFCloud callFunctionInBackground:@"memberShipCycle" withParameters:@{} block:^(NSString *result, NSError *error){
