@@ -167,7 +167,9 @@
             [self showAlertTitle:@"Error" msg:@"You are already a member, please don't purchase again"];
             return;
         }
-        
+        else {
+            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+        }
         
     }
     UIButton *sizeButton = (UIButton *)[self.tableView viewWithTag:(button.tag + SIZE_BUTTON_TAG_OFFSET)];
