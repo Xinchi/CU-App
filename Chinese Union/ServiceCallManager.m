@@ -39,6 +39,14 @@
     return user;
 }
 
++(void)getUserWithObjectId:(NSString *)userObjectId WithBlock:(CUUserResultBlock)block
+{
+    PFQuery *query = [User query];
+    [query getObjectInBackgroundWithId:userObjectId block:^(PFObject *user, NSError *error){
+        block((User *)user, error);
+    }];
+}
+
 + (void)checkIfTheUserIsAMemberWithBlock:(PFBooleanResultBlock)block
 {
     [self getCurrentUserWithBlock:^(User *user, NSError *error) {

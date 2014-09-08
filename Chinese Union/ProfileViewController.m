@@ -18,6 +18,8 @@
 #import "MBProgressHUD.h"
 #import "MRProgress.h"
 #import "ReachabilityController.h"
+#import "ServiceCallManager.h"
+#import "OverlayManager.h"
 
 @interface ProfileViewController ()
 
@@ -166,20 +168,20 @@
         userId = symbol.data;
         NSLog(@"FROM QR Scanning, userId = %@",userId);
     }
-    PFQuery *query = [User query];
-    [query getObjectInBackgroundWithId:userId block:^(PFObject *user, NSError *error){
-        if(!error)
-        {
-            User *scannedUser = (User *)user;
+    
+    [ServiceCallManager getUserWithObjectId:userId WithBlock:^(User *user, NSError *error) {
+        if(!error){
             /**
-             * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
-             * Modal view is preferred here for the User Profile, if you agree with that
-             */
+            * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
+            * Modal view is preferred here for the User Profile, if you agree with that
+            */
+            
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-        }else {
-            NSLog(@"Error = %@",error);
+            
+        } else {
+            MyLog(@"Error = %@",error);
+            [OverlayManager showAlertTitle:@"Error" msg:[error description] onView:self.view];
         }
-
     }];
     
     

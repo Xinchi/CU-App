@@ -19,7 +19,10 @@ typedef void (^CompletionBlock)(id, NSError*);
 + (User *)getCurrentUser;
 
 + (void)checkIfTheUserIsAMemberWithBlock:(PFBooleanResultBlock)block;
+
 + (void)getCurrentUserWithBlock:(CUUserResultBlock)block;
+
++(void)getUserWithObjectId:(NSString *)userObjectId WithBlock:(CUUserResultBlock)block;
 
 + (void)signUpInBackgroundWithUser: (User *)user WithBlock:(PFBooleanResultBlock)block;
 

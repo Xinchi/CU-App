@@ -33,7 +33,6 @@
 
 +(void) checkConnectionStatusForViewController: (UIViewController *)VC
 {
-    Reachability *reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 //    if(reach.currentReachabilityStatus==NotReachable)
 //    {
 //        dispatch_async(dispatch_get_main_queue(), ^{
