@@ -87,7 +87,6 @@ NSString * const bigCellID = @"bigCellID";
     else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-        cell.backgroundView
     }
     
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
