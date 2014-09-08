@@ -17,6 +17,7 @@
 @dynamic duration;
 @dynamic venue;
 @dynamic product;
+@dynamic image;
 
 + (NSString *)parseClassName {
     return NSStringFromClass([self class]);

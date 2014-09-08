@@ -190,15 +190,15 @@ typedef enum {
     CGFloat x = -10.0f;
     CGFloat y;
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backButtonImage = [UIImage imageNamed:@"ButtonBack"];
-    UIImage *backButtonPressedImage = [UIImage imageNamed:@"ButtonBackPressed"];
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
-    backButton.frame = CGRectMake(x, x, backButtonImage.size.width + 30.0f, backButtonImage.size.height + 30.0f);
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:backButton];
-    x += backButtonImage.size.width + 15.0f;
+//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    UIImage *backButtonImage = [UIImage imageNamed:@"ButtonBack"];
+//    UIImage *backButtonPressedImage = [UIImage imageNamed:@"ButtonBackPressed"];
+//    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+//    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
+//    backButton.frame = CGRectMake(x, x, backButtonImage.size.width + 30.0f, backButtonImage.size.height + 30.0f);
+//    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+//    [headerView addSubview:backButton];
+//    x += backButtonImage.size.width + 15.0f;
     
     PFImageView *productImageView = [[PFImageView alloc] init];
     productImageView.file = self.product[@"image"];
