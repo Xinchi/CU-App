@@ -7,32 +7,65 @@
 //
 
 #import "CUEventViewController.h"
+#import "CUEventViewModel.h"
+#import "CUEventItemViewModel.h"
+#import "CUEventItemTableViewCell.h"
 
-@interface CUEventViewController ()
+NSString * const cellID = @"cellID";
+
+@interface CUEventViewController () <UITableViewDataSource, UITabBarDelegate>
+
+@property (strong, nonatomic) CUEventViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation CUEventViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"Events";
+    
+    self.viewModel = [CUEventViewModel new];
+    [self bindViewModel];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"CUEventItemTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    
+    [self.viewModel.getEventsCommand execute:nil];
 }
+
+- (void)bindViewModel
+{
+    @weakify(self);
+    [RACObserve(self.viewModel, eventItemViewModels) subscribeNext:^(id x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.viewModel.eventItemViewModels count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CUEventItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+    [cell bindViewModel:viewModel];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
 
 @end

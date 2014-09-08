@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, "6.0"
 
-target "Chinese Union" do
+#target "Chinese Union" do
 pod 'MRProgress'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'ALAlertBanner', '~> 0.3.1'
@@ -15,9 +15,17 @@ pod 'SAMCategories', '~> 0.5.2'
 # pod 'SDWebImage-ProgressView', '~> 0.4.0'
 # pod 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
 # pod 'UIImageView+SDWebImage_M13ProgressSuite', '~> 0.1.0'
-end
+#end
 
-target "Chinese UnionTests" do
+target "Chinese UnionTests", :exclusive => true do
+    
+pod 'Specta',      '~> 0.2.1'
+pod 'Expecta',     '~> 0.2.3'   # expecta matchers
+pod 'OCMock', '~> 3.1.1'
+# pod 'OCHamcrest',  '~> 3.0.0'   # hamcrest matchers
+pod 'OCMockito',   '~> 1.3.0'   # OCMock
+# pod 'LRMocky',     '~> 0.9.1'   # LRMocky
+# pod 'FBSnapshotTestCase', '~> 1.1'
 
 end
 
