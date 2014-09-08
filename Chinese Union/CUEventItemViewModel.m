@@ -13,17 +13,19 @@
 
 @interface CUEventItemViewModel ()
 
+@property (weak, nonatomic) CUTimeManager *manager;
 @property (strong, nonatomic) CUEvents *event;
 
 @end
 
 @implementation CUEventItemViewModel
 
-- (id)initWithEvent:(CUEvents *)event
+- (id)initWithEvent:(CUEvents *)event timeManager:(CUTimeManager *)manager
 {
     self = [super init];
     if (self) {
         self.event = event;
+        self.manager = manager;
         [self initialize];
     }
     return self;
@@ -36,7 +38,7 @@
     self.duration = self.event.duration;
     
     @weakify(self);
-    [RACObserve([CUTimeManager sharedInstance], referenceDate) subscribeNext:^(id x) {
+    [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {
         @strongify(self);
         [self updateTimeToEventAndUnitReferenceDate:x];
     }];

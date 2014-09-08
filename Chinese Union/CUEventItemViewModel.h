@@ -9,10 +9,11 @@
 #import "RVMViewModel.h"
 
 @class CUEvents;
+@class CUTimeManager;
 
 @interface CUEventItemViewModel : RVMViewModel
 
-- (id)initWithEvent:(CUEvents *)event;
+- (id)initWithEvent:(CUEvents *)event timeManager:(CUTimeManager *)manager;
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;

@@ -33,7 +33,7 @@
         @strongify(self);
         NSMutableArray *array = [NSMutableArray array];
         for (CUEvents *event in x) {
-            CUEventItemViewModel *model = [[CUEventItemViewModel alloc] initWithEvent:event];
+            CUEventItemViewModel *model = [[CUEventItemViewModel alloc] initWithEvent:event timeManager:[CUTimeManager sharedInstance]];
             [array addObject:model];
         }
         self.eventItemViewModels = [array copy];
