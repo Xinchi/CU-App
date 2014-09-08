@@ -11,5 +11,6 @@
 @interface NSDateFormatter (Additions)
 
 + (NSDateFormatter *)birthdayFormatter;
++ (NSDateFormatter *)eventDateFormatter;
 
 @end

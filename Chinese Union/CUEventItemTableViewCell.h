@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFPaperTableViewCell.h"
 
 @class CUEventItemViewModel;
 
-@interface CUEventItemTableViewCell : UITableViewCell
+@interface CUEventItemTableViewCell : BFPaperTableViewCell
 
 - (void)bindViewModel:(CUEventItemViewModel *)viewModel;
 
