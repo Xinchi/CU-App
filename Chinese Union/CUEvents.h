@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-
+@class CUProducts;
 @interface CUEvents : PFObject<PFSubclassing>
 +(NSString *)parseClassName;
 
@@ -15,6 +15,6 @@
 @property(retain) NSString *venue;
 @property(retain) NSDate *start;
 @property(retain) NSString *duration;
-@property(retain) NSString *pid;
+@property(retain) CUProducts *product;
 
 @end

@@ -16,7 +16,7 @@
 @dynamic start;
 @dynamic duration;
 @dynamic venue;
-@dynamic pid;
+@dynamic product;
 
 + (NSString *)parseClassName {
     return NSStringFromClass([self class]);
