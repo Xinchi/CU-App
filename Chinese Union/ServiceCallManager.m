@@ -38,6 +38,14 @@
     [user refresh];
     return user;
 }
+
++ (void)checkIfTheUserIsAMemberWithBlock:(PFBooleanResultBlock)block
+{
+    [self getCurrentUserWithBlock:^(User *user, NSError *error) {
+        block(user.cuMember!=nil, error);
+    }];
+}
+
 + (void)getCurrentUserWithBlock:(CUUserResultBlock)block
 {
     User *user = [User currentUser];

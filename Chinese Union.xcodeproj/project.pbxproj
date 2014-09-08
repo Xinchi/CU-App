@@ -154,6 +154,7 @@
 		5078487819B86B410036BC7A /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487119B86B410036BC7A /* STPToken.m */; };
 		5078487919B86B410036BC7A /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487419B86B410036BC7A /* Stripe.m */; };
 		5078487A19B86B410036BC7A /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487619B86B410036BC7A /* StripeError.m */; };
+		5078487F19BE2B530036BC7A /* OverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487E19BE2B530036BC7A /* OverlayManager.m */; };
 		508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845701997F5C900FF3D44 /* ServiceCallManager.m */; };
 		508845771998180700FF3D44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845761998180700FF3D44 /* Constants.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
@@ -417,6 +418,8 @@
 		5078487419B86B410036BC7A /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
 		5078487519B86B410036BC7A /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
 		5078487619B86B410036BC7A /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
+		5078487D19BE2B530036BC7A /* OverlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayManager.h; sourceTree = "<group>"; };
+		5078487E19BE2B530036BC7A /* OverlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayManager.m; sourceTree = "<group>"; };
 		5088456F1997F5C900FF3D44 /* ServiceCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCallManager.h; sourceTree = "<group>"; };
 		508845701997F5C900FF3D44 /* ServiceCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCallManager.m; sourceTree = "<group>"; };
 		508845751998180700FF3D44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -760,6 +763,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				5078487C19BE2B280036BC7A /* Common */,
 				5078487B19BB87860036BC7A /* Config */,
 				50884572199802C600FF3D44 /* Constants */,
 				5088456E1997F5A600FF3D44 /* ServiceCall */,
@@ -1031,6 +1035,15 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
+		5078487C19BE2B280036BC7A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5078487D19BE2B530036BC7A /* OverlayManager.h */,
+				5078487E19BE2B530036BC7A /* OverlayManager.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		5088456E1997F5A600FF3D44 /* ServiceCall */ = {
 			isa = PBXGroup;
 			children = (
@@ -1280,6 +1293,7 @@
 				5078487819B86B410036BC7A /* STPToken.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
 				50932AB71959013600674269 /* PFShippingViewController.m in Sources */,
+				5078487F19BE2B530036BC7A /* OverlayManager.m in Sources */,
 				5078485219B869810036BC7A /* PKCard.m in Sources */,
 				5005F236193EAC1600BF3DAC /* AppDelegate.m in Sources */,
 				5005F313194968E300BF3DAC /* qrencode.c in Sources */,

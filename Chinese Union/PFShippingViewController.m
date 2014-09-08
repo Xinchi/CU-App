@@ -8,6 +8,9 @@
 #import "PFProducts.h"
 #import "PFCheckoutViewController.h"
 #import "PFShippingViewController.h"
+#import "ServiceCallManager.h"
+#import "MRProgress.h"
+#import "OverlayManager.h"
 
 #define TEXT_FIELD_TAG_OFFSET 1000
 #define NUM_TEXT_FIELD 5
@@ -73,6 +76,24 @@ typedef enum {
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
     tapGestureRecognizer.cancelsTouchesInView = NO;
+    
+    //check if the product is CUMember
+    
+    if([self.product.objectId isEqualToString:CUMemberObjectID])
+    {
+        [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Checking" mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
+
+        [ServiceCallManager checkIfTheUserIsAMemberWithBlock:^(BOOL isAMember, NSError *error) {
+            if(isAMember)
+            {
+                MyLog(@"This user is already a member! Purchasing request rejected");
+                [OverlayManager showAlertTitle:@"Ohhh" msg:@"You are already a member, and you don't want to purchase this again : )" onView:self.view];
+            }
+            else {
+                [OverlayManager dismissAllOverlayViewForView:self.view];
+            }
+        }];
+    }
 }
 
 
@@ -291,13 +312,13 @@ typedef enum {
     checkoutButton.frame = CGRectMake((self.tableView.frame.size.width - 195.0)/2.0f, y, 195.0f, checkoutImage.size.height);
     [footer addSubview:checkoutButton];
     
-    UIImage *poweredImage = [UIImage imageNamed:@"Powered.png"];
-    UIButton * poweredButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [poweredButton setImage:poweredImage forState:UIControlStateNormal];
-    [poweredButton addTarget:self action:@selector(openBrowser:) forControlEvents:UIControlEventTouchUpInside];
-    poweredButton.frame = CGRectMake((self.tableView.frame.size.width - poweredImage.size.width)/2.0f, footer.frame.size.height - 20.0f - poweredImage.size.height, poweredImage.size.width, poweredImage.size.height + 20.0f);
-    [footer addSubview:poweredButton];
-    
+//    UIImage *poweredImage = [UIImage imageNamed:@"Powered.png"];
+//    UIButton * poweredButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [poweredButton setImage:poweredImage forState:UIControlStateNormal];
+//    [poweredButton addTarget:self action:@selector(openBrowser:) forControlEvents:UIControlEventTouchUpInside];
+//    poweredButton.frame = CGRectMake((self.tableView.frame.size.width - poweredImage.size.width)/2.0f, footer.frame.size.height - 20.0f - poweredImage.size.height, poweredImage.size.width, poweredImage.size.height + 20.0f);
+//    [footer addSubview:poweredButton];
+//    
     self.tableView.tableFooterView = footer;
 }
 

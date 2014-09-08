@@ -13,7 +13,6 @@
 #import "Constants.h"
 #import "User.h"
 #import "ServiceCallManager.h"
-#import "MRProgress.h"
 
 
 #define ROW_MARGIN 6.0f
@@ -154,24 +153,6 @@
 
 - (void)next:(UIButton *)button {
     MyLog(@"next UIButton pressed");
-    //check if the product is CUMember
-    CUProducts *product = self.objects[button.tag];
-    if([product.objectId isEqualToString:CUMemberObjectID])
-    {
-        MyLog(@"This product is CU Member! check if the user is a member already");
-        [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Checking" mode:MRProgressOverlayViewModeIndeterminateSmall animated:YES];
-        User *user = [ServiceCallManager getCurrentUser];
-        if(user.cuMember != nil)
-        {
-            MyLog(@"This user is already a member! Purchasing request rejected");
-            [self showAlertTitle:@"Error" msg:@"You are already a member, please don't purchase again"];
-            return;
-        }
-        else {
-            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-        }
-        
-    }
     UIButton *sizeButton = (UIButton *)[self.tableView viewWithTag:(button.tag + SIZE_BUTTON_TAG_OFFSET)];
     NSString *size = sizeButton ? [sizeButton titleForState:UIControlStateNormal] : nil;
     
@@ -217,16 +198,6 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.parse.com/store"]];
 }
 
-- (void)showAlertTitle:(NSString *)title msg:(NSString *)msg {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:msg
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-    
-    [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-}
 
 
 @end
