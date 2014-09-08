@@ -14,6 +14,8 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (ServiceCallManager *)manager;
 
++ (void)getCurrentDateWithBlock: (CUDateResultBlock)block;
+
 + (User *)getCurrentUser;
 
 + (void)getCurrentUserWithBlock:(CUUserResultBlock)block;

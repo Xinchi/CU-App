@@ -26,6 +26,12 @@
     return sharedInstance;
 }
 
++ (void)getCurrentDateWithBlock: (CUDateResultBlock)block
+{
+    [PFCloud callFunctionInBackground:CloudFunctionGetCurrentDate withParameters:@{} block:^(id object, NSError *error) {
+        block((NSDate *)object, error);
+    }];
+}
 + (User *)getCurrentUser
 {
     User *user = [User currentUser];
