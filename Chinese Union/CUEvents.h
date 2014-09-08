@@ -15,6 +15,7 @@
 @property(retain) NSString *venue;
 @property(retain) NSDate *start;
 @property(retain) NSString *duration;
+@property(retain) PFFile *image;
 @property(retain) CUProducts *product;
 
 @end
