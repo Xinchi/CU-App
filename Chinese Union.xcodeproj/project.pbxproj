@@ -39,6 +39,7 @@
 		42308B59193FC14A0022D3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 42308B58193FC14A0022D3E7 /* data.json */; };
 		425490791957D92B005A61B0 /* CUInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 425490781957D92B005A61B0 /* CUInputButton.m */; };
 		4267107919BD376900965EB5 /* CUTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4267107819BD376900965EB5 /* CUTimeManager.m */; };
+		4267107E19BD721000965EB5 /* CUEventItemBigTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4267107C19BD721000965EB5 /* CUEventItemBigTableViewCell.xib */; };
 		42682DBF1996BCD60001BCB5 /* CUContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DBD1996BCD60001BCB5 /* CUContactTableViewController.m */; };
 		42682DC01996BCD60001BCB5 /* CUContactTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */; };
 		42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */; };
@@ -242,6 +243,7 @@
 		425490781957D92B005A61B0 /* CUInputButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUInputButton.m; sourceTree = "<group>"; };
 		4267107719BD376900965EB5 /* CUTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTimeManager.h; sourceTree = "<group>"; };
 		4267107819BD376900965EB5 /* CUTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTimeManager.m; sourceTree = "<group>"; };
+		4267107C19BD721000965EB5 /* CUEventItemBigTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventItemBigTableViewCell.xib; sourceTree = "<group>"; };
 		42682DBC1996BCD60001BCB5 /* CUContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactTableViewController.h; sourceTree = "<group>"; };
 		42682DBD1996BCD60001BCB5 /* CUContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactTableViewController.m; sourceTree = "<group>"; };
 		42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUContactTableViewController.xib; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				4294F81E19BD1C9E001E911C /* CUEventItemTableViewCell.h */,
 				4294F81F19BD1C9E001E911C /* CUEventItemTableViewCell.m */,
 				4294F82019BD1C9E001E911C /* CUEventItemTableViewCell.xib */,
+				4267107C19BD721000965EB5 /* CUEventItemBigTableViewCell.xib */,
 				4267107719BD376900965EB5 /* CUTimeManager.h */,
 				4267107819BD376900965EB5 /* CUTimeManager.m */,
 			);
@@ -1182,6 +1185,7 @@
 				5005F238193EAC1700BF3DAC /* Images.xcassets in Resources */,
 				42079EF719A47B5A0054EF14 /* CUYearSelectionTableViewController.xib in Resources */,
 				5078485B19B869810036BC7A /* amex.png in Resources */,
+				4267107E19BD721000965EB5 /* CUEventItemBigTableViewCell.xib in Resources */,
 				5005F2BB19467A1700BF3DAC /* SignUpViewController.xib in Resources */,
 				4294F82219BD1C9E001E911C /* CUEventItemTableViewCell.xib in Resources */,
 				5078485D19B869810036BC7A /* cvc-amex.png in Resources */,

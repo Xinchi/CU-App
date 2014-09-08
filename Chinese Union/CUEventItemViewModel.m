@@ -36,6 +36,7 @@
     self.name = self.event.name;
     self.description = self.event.description;
     self.duration = self.event.duration;
+    self.eventDate = self.event.start;
     
     @weakify(self);
     [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {
@@ -46,7 +47,7 @@
 
 - (void)updateTimeToEventAndUnitReferenceDate:(NSDate *)date
 {
-    MyLog(@"date %@", date);
+    //MyLog(@"date %@", date);
     NSDictionary *dict = [date differenceToDate:self.event.start];
     self.timeToEvent = dict[CUDateDifferenceValueKey];
     self.timeUnit = dict[CUDateDifferenceStringKey];

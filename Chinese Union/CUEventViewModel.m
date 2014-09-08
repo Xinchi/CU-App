@@ -118,7 +118,7 @@
                                                 options:0];
         event7.duration = @"2 hours";
         
-        [subscriber sendNext:@[event1, event2, event3, event4, event5, event6, event7]];
+        [subscriber sendNext:@[event7, event2, event1, event3, event4, event5, event6, event7]];
         [subscriber sendCompleted];
         
         return nil;

@@ -21,4 +21,16 @@
     return formatter;
 }
 
++ (NSDateFormatter *)eventDateFormatter
+{
+    static NSDateFormatter *formatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd EEE";
+    });
+    
+    return formatter;
+}
+
 @end

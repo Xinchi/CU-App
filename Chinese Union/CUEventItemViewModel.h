@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSString *duration;
 @property (strong, nonatomic) NSNumber *timeToEvent;
 @property (strong, nonatomic) NSString *timeUnit;
+@property (strong, nonatomic) NSDate   *eventDate;
 
 @end
