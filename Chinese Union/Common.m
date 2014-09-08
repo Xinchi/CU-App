@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 
-#import "OverlayManager.h"
+#import "Common.h"
 #import "MRProgress.h"
 
-@implementation OverlayManager
+@implementation Common
 + (void)dismissAllOverlayViewForView: (UIView *)view
 {
     [MRProgressOverlayView dismissAllOverlaysForView:view animated:YES];
@@ -24,6 +24,11 @@
     [alert show];
     
     [MRProgressOverlayView dismissAllOverlaysForView:view animated:YES];
+}
+
++ (NSString *)getUsefulErrorMessage: (NSError *)error
+{
+    return [error userInfo][@"error]"];
 }
 
 

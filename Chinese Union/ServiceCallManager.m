@@ -12,6 +12,7 @@
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
 #import "CUEvents.h"
+#import "Constants.h"
 
 @implementation ServiceCallManager
 
@@ -146,6 +147,20 @@
         [query whereKey:BATCH_FIELD equalTo:batch];
     }
     query.limit = 1000;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        block(objects, error);
+    }];
+}
+
++ (void)getEventsWithSortingOrder: (SortOrder)order WithBlock:(PFArrayResultBlock)block
+{
+    PFQuery *query;
+    if(order == ASCENDING)
+    {
+        [query orderByAscending:CUEVENT_START_DATE];
+    } else if (order == DESCENDING) {
+        [query orderByDescending:CUEVENT_START_DATE];
+    }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects, error);
     }];

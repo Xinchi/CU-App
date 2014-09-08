@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OverlayManager : NSObject
+@interface Common : NSObject
 
 + (void)dismissAllOverlayViewForView: (UIView *)view;
 
 + (void)showAlertTitle:(NSString *)title msg:(NSString *)msg onView:(UIView *)view;
-    
+
++ (NSString *)getUsefulErrorMessage: (NSError *)error;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 typedef void (^CompletionBlock)(id, NSError*);
 
 @class User;
@@ -43,6 +44,8 @@ typedef void (^CompletionBlock)(id, NSError*);
  * fields.   Put batch as nil if no batch query is needed.
  */
 + (void)getObjectsWithType:(ObjectType)type WithBatch:(NSString *)batch WithBlock:(PFArrayResultBlock)block;
+
++ (void)getEventsWithSortingOrder: (SortOrder)order WithBlock:(PFArrayResultBlock)block;
 
 + (NSArray *)getAllTheBatches;
 

@@ -10,7 +10,7 @@
 #import "PFShippingViewController.h"
 #import "ServiceCallManager.h"
 #import "MRProgress.h"
-#import "OverlayManager.h"
+#import "Common.h"
 
 #define TEXT_FIELD_TAG_OFFSET 1000
 #define NUM_TEXT_FIELD 5
@@ -87,10 +87,10 @@ typedef enum {
             if(isAMember)
             {
                 MyLog(@"This user is already a member! Purchasing request rejected");
-                [OverlayManager showAlertTitle:@"Ohhh" msg:@"You are already a member, and you don't want to purchase this again : )" onView:self.view];
+                [Common showAlertTitle:@"Ohhh" msg:@"You are already a member, and you don't want to purchase this again : )" onView:self.view];
             }
             else {
-                [OverlayManager dismissAllOverlayViewForView:self.view];
+                [Common dismissAllOverlayViewForView:self.view];
             }
         }];
     }

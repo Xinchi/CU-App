@@ -19,7 +19,7 @@
 #import "MRProgress.h"
 #import "ReachabilityController.h"
 #import "ServiceCallManager.h"
-#import "OverlayManager.h"
+#import "Common.h"
 
 @interface ProfileViewController ()
 
@@ -180,7 +180,7 @@
             
         } else {
             MyLog(@"Error = %@",error);
-            [OverlayManager showAlertTitle:@"Error" msg:[error description] onView:self.view];
+            [Common showAlertTitle:@"Error" msg:[error description] onView:self.view];
         }
     }];
     

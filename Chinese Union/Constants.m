@@ -19,6 +19,7 @@ NSString* const BATCH_FIELD = @"batch";
 NSString* const USERNAME_FIELD = @"username";
 NSString* const EMAIL_FIELD = @"email";
 NSString* const PUBLIC_PROFILE = @"public_profile";
+NSString* const CUEVENT_START_DATE = @"start";
 NSString* const EMAIL = @"email";
 NSString* const USER_BIRTHDAY = @"user_birthday";
 NSString* const FB_USER_ID = @"id";
