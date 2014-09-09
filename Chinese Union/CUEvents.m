@@ -12,7 +12,7 @@
 @implementation CUEvents
 
 @dynamic name;
-@dynamic description;
+@dynamic eventDetail;
 @dynamic start;
 @dynamic duration;
 @dynamic venue;

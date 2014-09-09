@@ -11,7 +11,7 @@
 +(NSString *)parseClassName;
 
 @property(retain) NSString *name;
-@property(retain) NSString *description;
+@property(retain) NSString *eventDetail;
 @property(retain) NSString *venue;
 @property(retain) NSDate *start;
 @property(retain) NSString *duration;
