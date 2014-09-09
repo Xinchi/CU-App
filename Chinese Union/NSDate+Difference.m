@@ -10,6 +10,7 @@
 
 NSString * const CUDateDifferenceValueKey = @"value";
 NSString * const CUDateDifferenceStringKey = @"string";
+NSString * const CUDateDifferenceUnitKey = @"unit";
 
 @implementation NSDate (Difference)
 
@@ -25,6 +26,7 @@ NSString * const CUDateDifferenceStringKey = @"string";
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:@"Expired" forKey:CUDateDifferenceStringKey];
+    [dict setValue:@(CUDateUnitExpired) forKey:CUDateDifferenceUnitKey];
     
     if (components.day > 0)
     {
@@ -38,6 +40,7 @@ NSString * const CUDateDifferenceStringKey = @"string";
         }
         
         [dict setValue:@(components.day) forKey:CUDateDifferenceValueKey];
+        [dict setValue:@(CUDateUnitDay) forKey:CUDateDifferenceUnitKey];
     }
     else if (components.hour > 0)
     {
@@ -51,6 +54,7 @@ NSString * const CUDateDifferenceStringKey = @"string";
         }
         
         [dict setValue:@(components.hour) forKey:CUDateDifferenceValueKey];
+        [dict setValue:@(CUDateUnitHour) forKey:CUDateDifferenceUnitKey];
     }
     else if (components.minute > 0)
     {
@@ -61,6 +65,7 @@ NSString * const CUDateDifferenceStringKey = @"string";
         else
         {
             [dict setValue:@"mins" forKey:CUDateDifferenceStringKey];
+            [dict setValue:@(CUDateUnitMin) forKey:CUDateDifferenceUnitKey];
         }
         
         [dict setValue:@(components.minute) forKey:CUDateDifferenceValueKey];
@@ -68,6 +73,7 @@ NSString * const CUDateDifferenceStringKey = @"string";
     else if (components.second > 0)
     {
         [dict setValue:@"Less than a min" forKey:CUDateDifferenceStringKey];
+        [dict setValue:@(CUDateUnitSecond) forKey:CUDateDifferenceUnitKey];
     }
     
     return [dict copy];

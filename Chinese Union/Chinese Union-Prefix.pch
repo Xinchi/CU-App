@@ -19,6 +19,7 @@
     #import "PFProducts.h"
     #import "ZBarSDK.h"
     #import "Constants.h"
+    #import "PureLayout.h"
 #endif
 
 #ifdef NDEBUG

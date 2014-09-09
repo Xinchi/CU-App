@@ -11,6 +11,7 @@
 #import "CUEventItemViewModel.h"
 #import "CUEventItemTableViewCell.h"
 #import "UIColor+BFPaperColors.h"
+#import "CUEventDetailViewController.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -115,6 +116,12 @@ NSString * const bigCellID = @"bigCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CUEventItemTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    CUEventDetailViewController *vc = [[CUEventDetailViewController alloc] initWithNibName:@"CUEventDetailViewController" bundle:nil];
+    vc.viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+    vc.cellColor = cell.tapCircleColor;
+    [self.navigationController pushViewController:vc animated:YES];
+    
     NSUInteger randomIndex = arc4random() % [self.colors count];
     cell.tapCircleColor = self.colors[randomIndex];
     cell.backgroundFadeColor = self.colors[randomIndex];

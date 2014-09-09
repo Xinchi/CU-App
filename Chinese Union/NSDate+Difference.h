@@ -10,6 +10,16 @@
 
 extern NSString * const CUDateDifferenceValueKey;
 extern NSString * const CUDateDifferenceStringKey;
+extern NSString * const CUDateDifferenceUnitKey;
+
+typedef NS_ENUM(NSUInteger, CUDateUnit)
+{
+    CUDateUnitDay = 0,
+    CUDateUnitHour,
+    CUDateUnitMin,
+    CUDateUnitSecond,
+    CUDateUnitExpired
+};
 
 @interface NSDate (Difference)
 

@@ -34,7 +34,7 @@
 - (void)initialize
 {
     self.name = self.event.name;
-    self.description = self.event.description;
+    self.eventDescription = self.event.description;
     self.duration = self.event.duration;
     self.eventDate = self.event.start;
     
@@ -51,6 +51,33 @@
     NSDictionary *dict = [date differenceToDate:self.event.start];
     self.timeToEvent = dict[CUDateDifferenceValueKey];
     self.timeUnit = dict[CUDateDifferenceStringKey];
+    
+    CUDateUnit unit = [dict[CUDateDifferenceUnitKey] unsignedIntegerValue];
+    
+    switch (unit) {
+        case CUDateUnitDay:
+            self.timeUnitColor = [UIColor colorWithRed:0.301 green:0.753 blue:0.576 alpha:1.000];
+            break;
+            
+        case CUDateUnitHour:
+            self.timeUnitColor = [UIColor colorWithRed:0.753 green:0.572 blue:0.315 alpha:1.000];
+            break;
+            
+        case CUDateUnitMin:
+            self.timeUnitColor = [UIColor colorWithRed:1.000 green:0.333 blue:0.730 alpha:1.000];
+            break;
+            
+        case CUDateUnitSecond:
+            self.timeUnitColor = [UIColor redColor];
+            break;
+            
+        case CUDateUnitExpired:
+            self.timeUnitColor = [UIColor colorWithWhite:0.341 alpha:1.000];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

@@ -16,10 +16,11 @@
 - (id)initWithEvent:(CUEvents *)event timeManager:(CUTimeManager *)manager;
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *eventDescription;
 @property (strong, nonatomic) NSString *duration;
 @property (strong, nonatomic) NSNumber *timeToEvent;
 @property (strong, nonatomic) NSString *timeUnit;
 @property (strong, nonatomic) NSDate   *eventDate;
+@property (strong, nonatomic) UIColor  *timeUnitColor;
 
 @end
