@@ -17,6 +17,7 @@
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import "RACEXTScope.h"
     #import "PFProducts.h"
+    #import <ParseFacebookUtils/PFFacebookUtils.h>
     #import "ZBarSDK.h"
     #import "Constants.h"
     #import "PureLayout.h"

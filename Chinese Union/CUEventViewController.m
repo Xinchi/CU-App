@@ -130,7 +130,7 @@ NSString * const bigCellID = @"bigCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CUEventItemTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    CUEventItemTableViewCell *cell = (CUEventItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     CUEventDetailViewController *vc = [[CUEventDetailViewController alloc] initWithNibName:@"CUEventDetailViewController" bundle:nil];
     vc.viewModel = self.viewModel.eventItemViewModels[indexPath.row];

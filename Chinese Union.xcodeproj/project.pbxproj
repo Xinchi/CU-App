@@ -51,7 +51,6 @@
 		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
-		4294F81119BCFD54001E911C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F254193ECD3A00BF3DAC /* Parse.framework */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -92,7 +91,6 @@
 		5005F240193EAC1700BF3DAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F225193EAC1600BF3DAC /* Foundation.framework */; };
 		5005F241193EAC1700BF3DAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F229193EAC1600BF3DAC /* UIKit.framework */; };
 		5005F249193EAC1700BF3DAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5005F247193EAC1700BF3DAC /* InfoPlist.strings */; };
-		5005F255193ECD3A00BF3DAC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F254193ECD3A00BF3DAC /* Parse.framework */; };
 		5005F257193ECD7400BF3DAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F256193ECD7400BF3DAC /* AudioToolbox.framework */; };
 		5005F259193ECD7C00BF3DAC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F258193ECD7C00BF3DAC /* CFNetwork.framework */; };
 		5005F25B193ECD9500BF3DAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25A193ECD9500BF3DAC /* CoreLocation.framework */; };
@@ -173,6 +171,8 @@
 		50932B761960B77000674269 /* CUMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B741960B77000674269 /* CUMemberViewController.m */; };
 		50932B771960B77000674269 /* CUMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50932B751960B77000674269 /* CUMemberViewController.xib */; };
 		50932B7A196D215C00674269 /* QRGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B79196D215C00674269 /* QRGenerator.m */; };
+		50B26A0619BEF45B001CB6C4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B26A0519BEF45B001CB6C4 /* Parse.framework */; };
+		50B26A0819BEF543001CB6C4 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B26A0719BEF543001CB6C4 /* ParseFacebookUtils.framework */; };
 		50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C1B198EBA0E00647814 /* CUBasketballPlayer.m */; };
 		50E64C25198EFB4500647814 /* CUSoccerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C24198EFB4500647814 /* CUSoccerPlayer.m */; };
 		50E64C28198EFBA400647814 /* CUPersonnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C27198EFBA400647814 /* CUPersonnel.m */; };
@@ -325,7 +325,6 @@
 		5005F23E193EAC1700BF3DAC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5005F246193EAC1700BF3DAC /* Chinese UnionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Chinese UnionTests-Info.plist"; sourceTree = "<group>"; };
 		5005F248193EAC1700BF3DAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5005F254193ECD3A00BF3DAC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5005F256193ECD7400BF3DAC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5005F258193ECD7C00BF3DAC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5005F25A193ECD9500BF3DAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -457,6 +456,8 @@
 		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
 		50932B78196D215C00674269 /* QRGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRGenerator.h; sourceTree = "<group>"; };
 		50932B79196D215C00674269 /* QRGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRGenerator.m; sourceTree = "<group>"; };
+		50B26A0519BEF45B001CB6C4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		50B26A0719BEF543001CB6C4 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		50E64C1A198EBA0E00647814 /* CUBasketballPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUBasketballPlayer.h; sourceTree = "<group>"; };
 		50E64C1B198EBA0E00647814 /* CUBasketballPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUBasketballPlayer.m; sourceTree = "<group>"; };
 		50E64C23198EFB4500647814 /* CUSoccerPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSoccerPlayer.h; sourceTree = "<group>"; };
@@ -490,10 +491,11 @@
 				5005F261193ECDAF00BF3DAC /* QuartzCore.framework in Frameworks */,
 				5005F25D193ECD9F00BF3DAC /* libz.dylib in Frameworks */,
 				5005F25B193ECD9500BF3DAC /* CoreLocation.framework in Frameworks */,
+				50B26A0819BEF543001CB6C4 /* ParseFacebookUtils.framework in Frameworks */,
+				50B26A0619BEF45B001CB6C4 /* Parse.framework in Frameworks */,
 				5005F259193ECD7C00BF3DAC /* CFNetwork.framework in Frameworks */,
 				5005F257193ECD7400BF3DAC /* AudioToolbox.framework in Frameworks */,
 				5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */,
-				5005F255193ECD3A00BF3DAC /* Parse.framework in Frameworks */,
 				5005F226193EAC1600BF3DAC /* Foundation.framework in Frameworks */,
 				9A1554B774FD4195AB427D8D /* libPods.a in Frameworks */,
 			);
@@ -509,7 +511,6 @@
 				5005F240193EAC1700BF3DAC /* Foundation.framework in Frameworks */,
 				4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */,
 				2F245877423B48F0946F9730 /* libPods-Chinese UnionTests.a in Frameworks */,
-				4294F81119BCFD54001E911C /* Parse.framework in Frameworks */,
 				4294F81419BCFDB8001E911C /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,6 +751,8 @@
 			isa = PBXGroup;
 			children = (
 				50E64C29198F0ADF00647814 /* libiconv.dylib */,
+				50B26A0719BEF543001CB6C4 /* ParseFacebookUtils.framework */,
+				50B26A0519BEF45B001CB6C4 /* Parse.framework */,
 				42E313EF1963D6B000F5CFBC /* Appsee.framework */,
 				420CDC3319639AC2001EED84 /* CoreVideo.framework */,
 				420CDC3119639AB9001EED84 /* CoreMedia.framework */,
@@ -764,7 +767,6 @@
 				5005F25A193ECD9500BF3DAC /* CoreLocation.framework */,
 				5005F258193ECD7C00BF3DAC /* CFNetwork.framework */,
 				5005F256193ECD7400BF3DAC /* AudioToolbox.framework */,
-				5005F254193ECD3A00BF3DAC /* Parse.framework */,
 				5005F225193EAC1600BF3DAC /* Foundation.framework */,
 				5005F227193EAC1600BF3DAC /* CoreGraphics.framework */,
 				5005F229193EAC1600BF3DAC /* UIKit.framework */,

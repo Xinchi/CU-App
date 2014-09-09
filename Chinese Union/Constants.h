@@ -5,7 +5,7 @@
 //  Created by Max Gu on 8/10/14.
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
-
+@class User;
 #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
@@ -50,6 +50,9 @@ extern NSString* const CloudFunctionGetStaticMembershipExpirationDate;
 extern NSString* const CU_IMAGE_FIELD_KEY;
 extern NSString* const CUMemberObjectID;
 extern BOOL const STATIC_MEMBERSHIP_ENDING_DATE;
+
+typedef void (^CUUserResultBlock)(User *user, NSError *error);
+typedef void (^CUDateResultBlock)(NSDate *date, NSError *error);
 
 #ifndef Constants_h
 #define Constants_h
