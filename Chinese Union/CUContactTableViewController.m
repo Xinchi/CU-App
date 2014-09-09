@@ -62,7 +62,7 @@ static NSString * const cellID = @"cell";
     
     [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getNewContactsCommand.errors, nil];
     
-    [[self.viewModel.getNewContactsCommand.executing
+    [[[self.viewModel.getNewContactsCommand.executing skip:1]
       deliverOn:[RACScheduler mainThreadScheduler]]
      subscribeNext:^(NSNumber *x) {
         @strongify(self);

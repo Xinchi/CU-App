@@ -72,7 +72,7 @@ NSString * const bigCellID = @"bigCellID";
     self.refreshControl.rac_command = self.viewModel.getEventsCommand;
     [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getEventsCommand.errors, nil];
     
-    [[self.viewModel.getEventsCommand.executing
+    [[[self.viewModel.getEventsCommand.executing skip:1]
       deliverOn:[RACScheduler mainThreadScheduler]]
      subscribeNext:^(NSNumber *x) {
          @strongify(self);

@@ -44,7 +44,7 @@ static NSString * const cellId = @"cellId";
     
     [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getYearCommand.errors, nil];
     
-    [[self.viewModel.getYearCommand.executing
+    [[[self.viewModel.getYearCommand.executing skip:1]
       deliverOn:[RACScheduler mainThreadScheduler]]
      subscribeNext:^(NSNumber *x) {
          @strongify(self);
