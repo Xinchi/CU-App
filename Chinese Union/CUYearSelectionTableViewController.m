@@ -42,6 +42,8 @@ static NSString * const cellId = @"cellId";
         [self.tableView reloadData];
     }];
     
+    [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getYearCommand.errors, nil];
+    
     [[self.viewModel.getYearCommand.executing
       deliverOn:[RACScheduler mainThreadScheduler]]
      subscribeNext:^(NSNumber *x) {

@@ -54,11 +54,14 @@ static NSString * const cellID = @"cell";
 
 - (void)bindViewModel
 {
-    [RACObserve(self.viewModel, contacts) subscribeNext:^(id x) {
+    @weakify(self);
+    [RACObserve(self.viewModel, contacts) subscribeNext:^(NSArray *x) {
+        @strongify(self);
         [self.tableView reloadData];
     }];
     
-    @weakify(self);
+    [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getNewContactsCommand.errors, nil];
+    
     [[self.viewModel.getNewContactsCommand.executing
       deliverOn:[RACScheduler mainThreadScheduler]]
      subscribeNext:^(NSNumber *x) {
@@ -69,6 +72,13 @@ static NSString * const cellID = @"cell";
         }
         else {
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+            
+            if ([self.viewModel.contacts count] == 0) {
+                [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"No content!", @"") mode:MRProgressOverlayViewModeCross animated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+            }
         }
     }];
 }

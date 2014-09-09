@@ -12,6 +12,7 @@
 #import "CUEventItemTableViewCell.h"
 #import "UIColor+BFPaperColors.h"
 #import "CUEventDetailViewController.h"
+#import "MRProgress.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -69,6 +70,20 @@ NSString * const bigCellID = @"bigCellID";
     }];
     
     self.refreshControl.rac_command = self.viewModel.getEventsCommand;
+    [self rac_liftSelector:@selector(sam_displayError:) withSignals:self.viewModel.getEventsCommand.errors, nil];
+    
+    [[self.viewModel.getEventsCommand.executing
+      deliverOn:[RACScheduler mainThreadScheduler]]
+     subscribeNext:^(NSNumber *x) {
+         @strongify(self);
+         BOOL executing = [x boolValue];
+         if (executing) {
+             [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+         }
+         else {
+             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+         }
+     }];
 }
 
 #pragma mark - UITableViewDataSource

@@ -10,6 +10,7 @@
 #import "CUEventItemViewModel.h"
 #import "CUEvents.h"
 #import "CUTimeManager.h"
+#import "ServiceCallManager.h"
 
 @implementation CUEventViewModel
 
@@ -43,86 +44,104 @@
 - (RACSignal *)getEventsSignal
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSDate *today = [CUTimeManager sharedInstance].referenceDate;
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        
-        NSDateComponents *components;
-        
-        components = [[NSDateComponents alloc] init];
-        components.hour = -1;
-        CUEvents *event1 = [[CUEvents alloc] init];
-        event1.name = @"Event 1";
-        event1.description = @"expired";
-        event1.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event1.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.hour = 1;
-        CUEvents *event2 = [[CUEvents alloc] init];
-        event2.name = @"Event 2";
-        event2.description = @"1 hour after";
-        event2.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event2.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.hour = 2;
-        CUEvents *event3 = [[CUEvents alloc] init];
-        event3.name = @"Event 3";
-        event3.description = @"2 hours after";
-        event3.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event3.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.day = 1;
-        CUEvents *event4 = [[CUEvents alloc] init];
-        event4.name = @"Event 4";
-        event4.description = @"1 day after";
-        event4.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event4.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.day = 2;
-        CUEvents *event5 = [[CUEvents alloc] init];
-        event5.name = @"Event 5";
-        event5.description = @"2 days after";
-        event5.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event5.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.minute = 30;
-        CUEvents *event6 = [[CUEvents alloc] init];
-        event6.name = @"Event 6";
-        event6.description = @"2 days after";
-        event6.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event6.duration = @"2 hours";
-        
-        components = [[NSDateComponents alloc] init];
-        components.second = 30;
-        CUEvents *event7 = [[CUEvents alloc] init];
-        event7.name = @"Event 7";
-        event7.description = @"2 days after";
-        event7.start = [calendar dateByAddingComponents:components
-                                                 toDate:today
-                                                options:0];
-        event7.duration = @"2 hours";
-        
-        [subscriber sendNext:@[event2, event1, event3, event4, event5, event6, event7]];
-        [subscriber sendCompleted];
-        
+        [ServiceCallManager getEventsWithSortingOrder:ASCENDING
+                                            WithBlock:^(NSArray *objects, NSError *error) {
+                                                if (error) {
+                                                    [subscriber sendError:error];
+                                                }
+                                                else
+                                                {
+                                                    [subscriber sendNext:objects];
+                                                    [subscriber sendCompleted];
+                                                }
+                                            }];
         return nil;
     }];
 }
+
+//- (RACSignal *)getEventsSignal
+//{
+//    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//        NSDate *today = [CUTimeManager sharedInstance].referenceDate;
+//        NSCalendar *calendar = [NSCalendar currentCalendar];
+//        
+//        NSDateComponents *components;
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.hour = -1;
+//        CUEvents *event1 = [[CUEvents alloc] init];
+//        event1.name = @"Event 1 qwjioqwjejwqoeijwqoie";
+//        event1.description = @"expired";
+//        event1.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event1.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.hour = 1;
+//        CUEvents *event2 = [[CUEvents alloc] init];
+//        event2.name = @"Event 2 qwjioqwjejwqoeijwqoie";
+//        event2.description = @"1 hour after";
+//        event2.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event2.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.hour = 2;
+//        CUEvents *event3 = [[CUEvents alloc] init];
+//        event3.name = @"Event 3 qwjioqwjejwqoeijwqoie";
+//        event3.description = @"2 hours after";
+//        event3.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event3.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.day = 1;
+//        CUEvents *event4 = [[CUEvents alloc] init];
+//        event4.name = @"Event 4 qwjioqwjejwqoeijwqoie";
+//        event4.description = @"1 day after";
+//        event4.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event4.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.day = 2;
+//        CUEvents *event5 = [[CUEvents alloc] init];
+//        event5.name = @"Event 5 qwjioqwjejwqoeijwqoie";
+//        event5.description = @"2 days after";
+//        event5.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event5.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.minute = 30;
+//        CUEvents *event6 = [[CUEvents alloc] init];
+//        event6.name = @"Event 6 qwjioqwjejwqoeijwqoie";
+//        event6.description = @"2 days after";
+//        event6.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event6.duration = @"2 hours";
+//        
+//        components = [[NSDateComponents alloc] init];
+//        components.second = 30;
+//        CUEvents *event7 = [[CUEvents alloc] init];
+//        event7.name = @"Event 7 qwjioqwjejwqoeijwqoie";
+//        event7.description = @"2 days after";
+//        event7.start = [calendar dateByAddingComponents:components
+//                                                 toDate:today
+//                                                options:0];
+//        event7.duration = @"2 hours";
+//        
+//        [subscriber sendNext:@[event2, event1, event3, event4, event5, event6, event7]];
+//        [subscriber sendCompleted];
+//        
+//        return nil;
+//    }];
+//}
 
 @end
