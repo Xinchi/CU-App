@@ -12,6 +12,7 @@
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
 #import "CUEvents.h"
+#import "Constants.h"
 
 @implementation ServiceCallManager
 
@@ -38,6 +39,22 @@
     [user refresh];
     return user;
 }
+
++(void)getUserWithObjectId:(NSString *)userObjectId WithBlock:(CUUserResultBlock)block
+{
+    PFQuery *query = [User query];
+    [query getObjectInBackgroundWithId:userObjectId block:^(PFObject *user, NSError *error){
+        block((User *)user, error);
+    }];
+}
+
++ (void)checkIfTheUserIsAMemberWithBlock:(PFBooleanResultBlock)block
+{
+    [self getCurrentUserWithBlock:^(User *user, NSError *error) {
+        block(user.cuMember!=nil, error);
+    }];
+}
+
 + (void)getCurrentUserWithBlock:(CUUserResultBlock)block
 {
     User *user = [User currentUser];
@@ -130,6 +147,20 @@
         [query whereKey:BATCH_FIELD equalTo:batch];
     }
     query.limit = 1000;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        block(objects, error);
+    }];
+}
+
++ (void)getEventsWithSortingOrder: (SortOrder)order WithBlock:(PFArrayResultBlock)block
+{
+    PFQuery *query;
+    if(order == ASCENDING)
+    {
+        [query orderByAscending:CUEVENT_START_DATE];
+    } else if (order == DESCENDING) {
+        [query orderByDescending:CUEVENT_START_DATE];
+    }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects, error);
     }];

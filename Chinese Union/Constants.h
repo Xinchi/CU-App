@@ -18,6 +18,7 @@ extern NSString* const BATCH1314;
 extern NSString* const BATCH_FIELD;
 extern NSString* const USERNAME_FIELD;
 extern NSString* const EMAIL_FIELD;
+extern NSString* const CUEVENT_START_DATE;
 
 
 //The facebook permission fields
@@ -59,6 +60,11 @@ typedef enum {
     PERSONNEL,
     EVENT
 } ObjectType;
+
+typedef enum {
+    ASCENDING,
+    DESCENDING
+} SortOrder;
 
 #endif
 
