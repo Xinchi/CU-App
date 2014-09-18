@@ -199,6 +199,37 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     // order and mark it as 'charged'.
     order.set('stripePaymentId', purchase.id);
     order.set('charged', true);
+    if(request.params.itemName == "Membership") {
+
+      // Update the membership 
+      var currentUser = Parse.User.current();
+      var CUMembers = Parse.Object.extend("CUMembers");
+      var cuMember = new CUMembers();
+      cuMember.set('memberUserID', currentUser.objectId);
+      cuMember.set('memberUser', currentUser);
+      cuMember.set('expireDate', new Date("October 1, 2015 00:00:00"));
+
+      cuMember.save(null, {
+        success: function(cuMember) {
+          console.log('New CUMembers object saved successfully');
+        },
+        error: function(cuMember, error) {
+          console.log('Failed to save a new CUMembers object');
+        }
+      });
+
+      //update the user it self
+      currentUser.set("cuMember", cuMember);
+      currentUser.save(null, {
+        success: function(currentUser) {
+          console.log('Current user cuMember field updated successfully');
+        },
+        error: function(cuMember, error) {
+          console.log('Failed to update the cuMember field in currentUser');
+        }
+      });
+    }
+
 
     // Save updated order
     return order.save().then(null, function(error) {

@@ -8,6 +8,9 @@
 #import "MBProgressHUD.h"
 #import "PFCheckoutViewController.h"
 #import "PFFinishViewController.h"
+#import "ServiceCallManager.h"
+#import "User.h"
+#import "Common.h"
 
 @interface PFCheckoutViewController ()
 
@@ -117,6 +120,18 @@
 - (void)buy:(id)sender {
     self.hud.labelText = NSLocalizedString(@"Authorizing...", @"Authorizing...");
     [self.hud show:YES];
+    
+    if([self.product[@"name"] isEqualToString:@"Membership"])
+    {
+        User *currentUser = [ServiceCallManager getCurrentUser];
+        if(currentUser.cuMember != nil)
+        {
+            [Common showAlertTitle:@"Error" msg:@"You are already a CU Member, please don't purchase membership again : )" onView:self.view];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            return;
+        }
+    }
+
     
     [self.checkoutView createToken:^(STPToken *token, NSError *error) {
         if (error) {
