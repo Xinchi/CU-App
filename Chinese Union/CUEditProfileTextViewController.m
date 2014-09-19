@@ -13,6 +13,8 @@
 #import "NSString+Additions.h"
 #import "MRProgress.h"
 #import "SLGlowingTextField.h"
+#import "ServiceCallManager.h"
+#import "Common.h"
 
 @interface CUEditProfileTextViewController ()
 
@@ -101,17 +103,26 @@
     }
     
     if (self.option == CUProfileEditPassword) {
+        [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
         BOOL valid = [self validateInputs];
         if (valid) {
             user.password = self.changePasswordTF.text;
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if(succeeded) {
+                    [Common showAlertTitle:@"Success" msg:@"Password has been changed successfully!" onView:self.navigationController.view];
+                } else {
+                    [Common showAlertTitle:@"Error" msg:[Common getUsefulErrorMessage:error] onView:self.navigationController.view];
+                }
+            }];
         }
         else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
-                                                            message:NSLocalizedString(@"Incorrect password", @"")
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
+//                                                            message:NSLocalizedString(@"Incorrect password", @"")
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"OK"
+//                                                  otherButtonTitles:nil];
+//            [alert show];
+            MyLog(@"Password change unsuccessful");
             return;
         }
     }
@@ -122,14 +133,16 @@
 }
 
 - (BOOL)validateInputs {
-    User *user = [User currentUser];
-    
-    if (![self.textField.text isEqualToString:user.password]) {
-        MyLog(@"Password is %@", user.password);
-        return NO;
-    }
-
-    if (![self.changePasswordTF.text isEqualToString:self.confirmNewPasswordTF.text]) {
+    if ([ServiceCallManager VerifyPasswordWithPassword:self.textField.text])
+    {
+        // Password is valid
+        if (![self.changePasswordTF.text isEqualToString:self.confirmNewPasswordTF.text]) {
+            [Common showAlertTitle:@"Error" msg:@"The 2 passwords don't match" onView:self.navigationController.view];
+            return NO;
+        }
+    } else {
+        // Password is not valid
+        [Common dismissAllOverlayViewForView:self.navigationController.view];
         return NO;
     }
     

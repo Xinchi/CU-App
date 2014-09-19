@@ -187,5 +187,16 @@
     }];
 }
 
++ (BOOL)VerifyPasswordWithPassword: (NSString*)password
+{
+    User *user = [self getCurrentUser];
+    if([PFUser logInWithUsername:user.username password:password] != nil)
+    {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

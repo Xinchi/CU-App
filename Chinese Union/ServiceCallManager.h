@@ -39,6 +39,7 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (BOOL)checkIfEmailExisted: (NSString *)email;
 
++ (BOOL)VerifyPasswordWithPassword: (NSString*)password;
 /**
  * This function returns an NSArray pointer.  Cast the object to desired type to get all the relavent
  * fields.   Put batch as nil if no batch query is needed.
