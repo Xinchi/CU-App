@@ -55,4 +55,7 @@ typedef void (^CompletionBlock)(id, NSError*);
  */
 + (void)logOutAndDeleteCurrentUserAccountWithBlock: (PFBooleanResultBlock)block;
 
++ (PFObject *) fecthForObject: (PFObject *)object;
+
+
 @end

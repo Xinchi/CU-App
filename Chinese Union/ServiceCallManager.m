@@ -115,7 +115,7 @@
 
 + (NSArray *)getAllTheBatches
 {
-    NSArray *batches = [NSArray arrayWithObjects:BATCH1011,BATCH1112,BATCH1213,BATCH1314,nil];
+    NSArray *batches = [NSArray arrayWithObjects:BATCH1213,BATCH1314,nil];
     return batches;
 }
 
@@ -196,6 +196,12 @@
     } else {
         return NO;
     }
+}
+
++ (PFObject *) fecthForObject: (PFObject *)object
+{
+    [object fetch];
+    return object;
 }
 
 

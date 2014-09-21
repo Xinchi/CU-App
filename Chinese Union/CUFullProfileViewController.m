@@ -8,6 +8,7 @@
 
 #import "CUFullProfileViewController.h"
 #import "CUFullProfileViewModel.h"
+#import "ServiceCallManager.h"
 
 @interface CUFullProfileViewController ()
 
@@ -41,6 +42,8 @@
     self.profilePicImageView.layer.masksToBounds = YES;
     self.profilePicImageView.layer.borderWidth = 0;
     
+    //we need to pull the person info first
+    self.person = (User *)[ServiceCallManager fecthForObject:self.person];
     self.title = [NSString stringWithFormat:@"%@ %@", self.person.firstName, self.person.lastName];
     
     self.viewModel = [[CUFullProfileViewModel alloc] initWithPerson:self.person];
@@ -54,6 +57,8 @@
 //    RAC(self.yearLabel, text) = RACObserve(self.viewModel.person, year);
 //    RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
     RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
+    // TODO: More info needs to be displayed here.  (email, phone, gender, and QR Code)
+    
 }
 
 - (void)didReceiveMemoryWarning

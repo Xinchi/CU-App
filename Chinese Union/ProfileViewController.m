@@ -173,7 +173,7 @@
         if(!error){
             /**
             * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
-            * Modal view is preferred here for the User Profile, if you agree with that
+            * Modal view is preferred here for the User Profile, if you agree with that.  Maybe CUFullProfileViewController can be reused here
             */
             
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
