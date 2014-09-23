@@ -11,7 +11,8 @@
 #import "MosaicLayout.h"
 #import "MosaicData.h"
 #import "MosaicLayout/Views/MosaicCell.h"
-#import "TWTSideMenuViewController.h"
+//#import "TWTSideMenuViewController.h"
+#import "RESideMenu.h"
 #import "MySignUpViewController.h"
 #import "MyLogInViewController.h"
 #import "SignUpViewController.h"
@@ -84,7 +85,8 @@
 - (void)openButtonPressed
 {
     if([User currentUser])
-        [self.sideMenuViewController openMenuAnimated:YES completion:nil];
+//        [self.sideMenuViewController openMenuAnimated:YES completion:nil];
+        [self.sideMenuViewController presentLeftMenuViewController];
     else{
 //        // Customize the Log In View Controller
 //        MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];

@@ -15,7 +15,7 @@
 @dynamic eventDetail;
 @dynamic start;
 @dynamic duration;
-@dynamic venue;
+@dynamic location;
 @dynamic product;
 @dynamic image;
 

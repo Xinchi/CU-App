@@ -54,6 +54,7 @@ PODS:
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.2):
     - ReactiveCocoa (~> 2.1)
+  - RESideMenu (4.0.7)
   - SAMCategories (0.5.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - PureLayout (~> 1.1.0)
   - ReactiveCocoa (~> 2.3.1)
   - ReactiveViewModel (~> 0.2)
+  - RESideMenu (~> 4.0.7)
   - SAMCategories (~> 0.5.2)
   - SDWebImage (~> 3.7.1)
   - Specta (~> 0.2.1)
@@ -97,6 +99,7 @@ SPEC CHECKSUMS:
   PureLayout: c8960fa0f3b40d849d5e177d699d0148faa63b63
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
+  RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
   SAMCategories: dc26f9dc67d371d22f391ee2173bc607a887912e
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a

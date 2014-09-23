@@ -135,10 +135,6 @@
     {
         query = [CUPersonnel query];
     }
-    else if(type == EVENT)
-    {
-        query = [CUEvents query];
-    }
     else {
         [NSException raise:@"Invalid Figure Type" format:@"type of %d is invalid",type];
     }
@@ -154,7 +150,7 @@
 
 + (void)getEventsWithSortingOrder: (SortOrder)order WithBlock:(PFArrayResultBlock)block
 {
-    PFQuery *query;
+    PFQuery *query = [CUEvents query];
     if(order == ASCENDING)
     {
         [query orderByAscending:CUEVENT_START_DATE];

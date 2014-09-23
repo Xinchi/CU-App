@@ -12,7 +12,7 @@
 
 @property(retain) NSString *name;
 @property(retain) NSString *eventDetail;
-@property(retain) NSString *venue;
+@property(retain) NSString *location;
 @property(retain) NSDate *start;
 @property(retain) NSString *duration;
 @property(retain) PFFile *image;

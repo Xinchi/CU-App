@@ -9,7 +9,8 @@
 #import "ProfileViewController.h"
 #import "MyLogInViewController.h"
 #import "MySignUpViewController.h"
-#import "TWTSideMenuViewController/TWTSideMenuViewController.h"
+//#import "TWTSideMenuViewController/TWTSideMenuViewController.h"
+#import "RESideMenu.h"
 #import "User.h"
 #import "CUMemberViewController.h"
 #import "CUEditProfileViewController.h"
@@ -109,7 +110,8 @@
         [User logOut];
         [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
         [self.navigationController popViewControllerAnimated:YES];
-        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+//        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+        [self.sideMenuViewController hideMenuViewController];
     }
 }
 

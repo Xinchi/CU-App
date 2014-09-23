@@ -11,8 +11,6 @@
 #import <ALAlertBanner/ALAlertBanner.h>
 #import "AppDelegate.h"
 #import "ProfileViewController.h"
-#import "TWTMenuViewController.h"
-#import "TWTMainViewController.h"
 #import "CUMainViewController.h"
 #import "UIImage+MDQRCode.h"
 #import "CUMembers.h"
@@ -24,7 +22,7 @@
 #import "CUSoccerPlayer.h"
 #import "CUPersonnel.h"
 #import "ServiceCallManager.h"
-
+#import "RESideMenu.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -33,7 +31,7 @@
 
 @property (nonatomic, strong) UIViewController          *mainViewController;
 @property (nonatomic, strong) ProfileViewController     *menuViewController;
-@property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
+@property (nonatomic, strong) RESideMenu *sideMenuViewController;
 @property (nonatomic, strong) Reachability              *reach;
 @property (nonatomic, strong) ALAlertBanner             *noConnectionBanner;
 @property (nonatomic, strong) ALAlertBanner             *hasConnectionBanner;
@@ -72,15 +70,15 @@
     // create a new side menu
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 //    [nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
-    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:nav];
+//    self.sideMenuViewController = [[RESideMenu alloc] initWithMenuViewController:self.menuViewController mainViewController:nav];
+    self.sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav leftMenuViewController:self.menuViewController rightMenuViewController:nil];
     
     
     //side menu controller configuration
-    self.sideMenuViewController.shadowColor = [UIColor blackColor];
-    self.sideMenuViewController.edgeOffset = (UIOffset) { .horizontal = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 18.0f : 0.0f };
-    self.sideMenuViewController.zoomScale = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 0.5634f : 0.85f;
-    self.sideMenuViewController.delegate = self;
-    self.window.rootViewController = self.sideMenuViewController;
+//    self.sideMenuViewController.shadowColor = [UIColor blackColor];
+//    self.sideMenuViewController.edgeOffset = (UIOffset) { .horizontal = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 18.0f : 0.0f };
+//    self.sideMenuViewController.zoomScale = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 0.5634f : 0.85f;
+//    self.sideMenuViewController.delegate = self;
     
     // set the side menu controller as the root view controller
     self.window.rootViewController = self.sideMenuViewController;
