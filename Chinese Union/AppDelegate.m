@@ -150,7 +150,7 @@
                 weakSelf.noConnectionBanner = [ALAlertBanner alertBannerForView:weakSelf.window
                                                               style:ALAlertBannerStyleWarning
                                                            position:ALAlertBannerPositionBottom
-                                                              title:NSLocalizedString(@"Internet connection loss!", @"")
+                                                              title:NSLocalizedString(@"Internet connection lost!", @"")
                                                            subtitle:nil];
                 weakSelf.noConnectionBanner.secondsToShow = 0; // Always shows
                 [weakSelf.noConnectionBanner show];
