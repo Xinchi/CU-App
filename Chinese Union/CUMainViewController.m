@@ -116,7 +116,7 @@
 -(float)collectionView:(UICollectionView *)collectionView relativeHeightForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
-    float retVal = 1.5;
+    float retVal = 1.0;
     
 //    NSMutableArray *elements = [(CustomDataSource *)self.collectionView.dataSource elements];
 //    MosaicData *aMosaicModule = [elements objectAtIndex:indexPath.row];
@@ -197,7 +197,7 @@
 //    }
 //    
 //    return retVal;
-    return 3;
+    return 2;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,15 +210,15 @@
     else if (indexPath.row == 1) {
         VC = [[PFProductsViewController alloc] init];
     }
-    else if (indexPath.row == 3) {
+    else if (indexPath.row == 2) {
         VC = [[CUYearSelectionTableViewController alloc] init];
         ((CUYearSelectionTableViewController *)VC).contactType = SOCCER;
     }
-    else if (indexPath.row == 4) {
+    else if (indexPath.row == 3) {
         VC = [[CUYearSelectionTableViewController alloc] init];
         ((CUYearSelectionTableViewController *)VC).contactType = BASKETBALL;
     }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 4) {
         VC = [[CUYearSelectionTableViewController alloc] init];
         ((CUYearSelectionTableViewController *)VC).contactType = PERSONNEL;
     }

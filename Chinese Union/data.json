@@ -9,10 +9,6 @@
  "title": "Store"
  },
  {
- "imageFilename": "calendar",
- "title": "Calendar"
- },
- {
  "imageFilename": "soccer",
  "title": "Soccer Team"
  },
@@ -23,18 +19,6 @@
  {
  "imageFilename": "contacts",
  "title": "Contacts"
- },
- {
- "imageFilename": "videos",
- "title": "Videos"
- },
- {
- "imageFilename": "yelp",
- "title": "Yelp"
- },
- {
- "imageFilename": "photo",
- "title": "Photo Sharing"
  }
  ]
 
