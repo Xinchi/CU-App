@@ -94,7 +94,7 @@ var Stripe = require('stripe');
 Stripe.initialize('sk_test_nAt6j3GrlrxLxoYKZr7KU1zq');
 
 var Mailgun = require('mailgun');
-Mailgun.initialize("", "");
+Mailgun.initialize('ucsdcu.com', 'key-5ddpmzp-a-kg5v58c7t9gv02pdw2ecs1');
 
 /*
  * Purchase an item from the Parse Store using the Stripe
@@ -246,6 +246,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     // We're done, so let's send an email to the user.
 
     // Generate the email body string.
+    order.fetch();
     var body = "We've received and processed your order for the following item: \n\n" +
                "Item: " + request.params.itemName + "\n";
 
@@ -262,17 +263,17 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
             "\nWe will send your item as soon as possible. " + 
             "Let us know if you have any questions!\n\n" +
             "Thank you,\n" +
-            "The Parse Team";
+            "UCSD Chinese Union";
 
     // Send the email.
     return Mailgun.sendEmail({
       to: request.params.email,
-      from: 'store@parse.com',
-      subject: 'Your order for a Parse ' + request.params.itemName + ' was successful!',
+      from: 'ucsandiegochineseunion@gmail.com',
+      subject: 'Your order for a Parse ' + request.params.itemName + ' was successful!  Order ID : ' + order.id ,
       text: body
     }).then(null, function(error) {
       return Parse.Promise.error('Your purchase was successful, but we were not able to ' +
-                                 'send you an email. Contact us at store@parse.com if ' +
+                                 'send you an email. Contact us at ucsandiegochineseunion@gmail.com if ' +
                                  'you have any questions.');
     });
 
