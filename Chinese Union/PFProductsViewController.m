@@ -15,7 +15,7 @@
 #import "ServiceCallManager.h"
 
 
-#define ROW_MARGIN 6.0f
+#define ROW_MARGIN 3.0f
 #define ROW_HEIGHT 173.0f
 #define PICKER_HEIGHT 216.0f
 #define SIZE_BUTTON_TAG_OFFSET 1000
@@ -153,6 +153,13 @@
 
 - (void)next:(UIButton *)button {
     MyLog(@"next UIButton pressed");
+    // Prevent user from purchasing if he hasn't logged in
+    if(![User currentUser])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error") message:NSLocalizedString(@"Please log in first", @"Please log in first") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
     UIButton *sizeButton = (UIButton *)[self.tableView viewWithTag:(button.tag + SIZE_BUTTON_TAG_OFFSET)];
     NSString *size = sizeButton ? [sizeButton titleForState:UIControlStateNormal] : nil;
     

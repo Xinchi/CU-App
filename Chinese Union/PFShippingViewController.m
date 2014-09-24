@@ -54,6 +54,7 @@ typedef enum {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self.product = product;
         self.size = size;
+        
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Shipping"];
         self.tableView.backgroundView = nil;
         self.tableView.backgroundColor = [UIColor colorWithRed:249.0f/255.0 green:252.0f/255.0f blue:253.0f/255.0f alpha:1.0f];
@@ -211,15 +212,15 @@ typedef enum {
     CGFloat x = -10.0f;
     CGFloat y;
     
-//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    UIImage *backButtonImage = [UIImage imageNamed:@"ButtonBack"];
-//    UIImage *backButtonPressedImage = [UIImage imageNamed:@"ButtonBackPressed"];
-//    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-//    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
-//    backButton.frame = CGRectMake(x, x, backButtonImage.size.width + 30.0f, backButtonImage.size.height + 30.0f);
-//    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *backButtonImage = [UIImage imageNamed:@"ButtonBack"];
+    UIImage *backButtonPressedImage = [UIImage imageNamed:@"ButtonBackPressed"];
+    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
+    backButton.frame = CGRectMake(x, x, backButtonImage.size.width + 30.0f, backButtonImage.size.height + 30.0f);
+    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
 //    [headerView addSubview:backButton];
-//    x += backButtonImage.size.width + 15.0f;
+    x += backButtonImage.size.width + 15.0f;
     
     PFImageView *productImageView = [[PFImageView alloc] init];
     productImageView.file = self.product[@"image"];
