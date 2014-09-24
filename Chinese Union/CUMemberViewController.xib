@@ -113,7 +113,7 @@
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-RJ-u4Z">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcU-RJ-u4Z">
                             <rect key="frame" x="170" y="240" width="123" height="21"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                             <nil key="highlightedColor"/>
@@ -163,6 +163,7 @@
                         <constraint firstItem="FeG-qM-qMf" firstAttribute="top" secondItem="TIi-CT-joW" secondAttribute="top" constant="80" id="83J-vP-y9J"/>
                         <constraint firstItem="iwO-b9-Dmb" firstAttribute="height" secondItem="ttH-x3-NvS" secondAttribute="height" id="CtQ-3a-LF4"/>
                         <constraint firstItem="ttH-x3-NvS" firstAttribute="top" secondItem="FeG-qM-qMf" secondAttribute="bottom" id="DbR-dJ-gaO"/>
+                        <constraint firstItem="FeG-qM-qMf" firstAttribute="bottom" secondItem="BcU-RJ-u4Z" secondAttribute="bottom" constant="17" id="LbN-OF-j0W"/>
                         <constraint firstItem="jO7-gh-fUo" firstAttribute="top" secondItem="ttH-x3-NvS" secondAttribute="bottom" id="S6n-DT-C5P"/>
                         <constraint firstAttribute="trailing" secondItem="FeG-qM-qMf" secondAttribute="trailing" constant="20" id="gje-Jd-lVh"/>
                         <constraint firstItem="FeG-qM-qMf" firstAttribute="leading" secondItem="TIi-CT-joW" secondAttribute="leading" constant="20" id="mOb-UK-9Kx"/>
