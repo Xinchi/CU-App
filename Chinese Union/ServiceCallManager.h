@@ -57,5 +57,7 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (PFObject *) fecthForObject: (PFObject *)object;
 
++ (void)getAllPurchaseHistoryWithSortingOrder: (SortOrder)order WithBlock: (PFArrayResultBlock)block;
+
 
 @end

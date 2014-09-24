@@ -13,6 +13,7 @@
 #import "CUPersonnel.h"
 #import "CUEvents.h"
 #import "Constants.h"
+#import "Order.h"
 
 @implementation ServiceCallManager
 
@@ -198,6 +199,22 @@
 {
     [object fetch];
     return object;
+}
+
++ (void)getAllPurchaseHistoryWithSortingOrder: (SortOrder)order WithBlock: (PFArrayResultBlock)block
+{
+    PFQuery *query = [Order query];
+    [query whereKey:ORDERS_CUSTOMER equalTo:[self getCurrentUser]];
+    if(order == ASCENDING)
+    {
+        [query orderByAscending:CREATION_DATE];
+    } else if (order == DESCENDING) {
+        [query orderByDescending:CREATION_DATE];
+    }
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        block(objects, error);
+    }];
 }
 
 

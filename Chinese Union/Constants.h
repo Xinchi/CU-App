@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 @class User;
+@class Orders;
 #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
@@ -19,6 +20,8 @@ extern NSString* const BATCH_FIELD;
 extern NSString* const USERNAME_FIELD;
 extern NSString* const EMAIL_FIELD;
 extern NSString* const CUEVENT_START_DATE;
+extern NSString* const ORDERS_CUSTOMER;
+extern NSString* const CREATION_DATE;
 
 
 //The facebook permission fields

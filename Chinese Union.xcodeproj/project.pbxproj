@@ -119,6 +119,7 @@
 		5005F31F194A54A100BF3DAC /* CUEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F31E194A54A100BF3DAC /* CUEvents.m */; };
 		5005F322194A554F00BF3DAC /* CUProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F321194A554F00BF3DAC /* CUProducts.m */; };
 		5005F325194A587100BF3DAC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F324194A587100BF3DAC /* User.m */; };
+		500CC31919D2A46000B14995 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 500CC31719D2A46000B14995 /* Order.m */; };
 		50413DD519D20FAE0009315D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50413DD319D20FAE0009315D /* Parse.framework */; };
 		50413DD619D20FAE0009315D /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50413DD419D20FAE0009315D /* ParseFacebookUtils.framework */; };
 		505A4FA019730273000B7CEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4F9F19730273000B7CEF /* Reachability.m */; };
@@ -366,6 +367,8 @@
 		5005F321194A554F00BF3DAC /* CUProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUProducts.m; sourceTree = "<group>"; };
 		5005F323194A587100BF3DAC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		5005F324194A587100BF3DAC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		500CC31719D2A46000B14995 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		500CC31819D2A46000B14995 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		50413DD319D20FAE0009315D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		50413DD419D20FAE0009315D /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		505A4F9E19730273000B7CEF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -922,6 +925,8 @@
 				50E64C24198EFB4500647814 /* CUSoccerPlayer.m */,
 				50E64C26198EFBA400647814 /* CUPersonnel.h */,
 				50E64C27198EFBA400647814 /* CUPersonnel.m */,
+				500CC31819D2A46000B14995 /* Order.h */,
+				500CC31719D2A46000B14995 /* Order.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -1348,6 +1353,7 @@
 				42308B56193FC1030022D3E7 /* AFXMLRequestOperation.m in Sources */,
 				50E64C25198EFB4500647814 /* CUSoccerPlayer.m in Sources */,
 				42308B36193FBF260022D3E7 /* CUMainViewController.m in Sources */,
+				500CC31919D2A46000B14995 /* Order.m in Sources */,
 				42682DC61996C0810001BCB5 /* CUContactListTableViewCell.m in Sources */,
 				508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */,
 				5005F2BA19467A1700BF3DAC /* SignUpViewController.m in Sources */,

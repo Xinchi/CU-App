@@ -163,7 +163,9 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
 
     // We have items left! Let's create our order item before 
     // charging the credit card (just to be safe).
+    var currentUser = Parse.User.current();
     order = new Parse.Object('Order');
+    order.set('customer', currentUser);
     order.set('name', request.params.name);
     order.set('email', request.params.email);
     order.set('address', request.params.address);

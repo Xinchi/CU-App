@@ -23,6 +23,8 @@
 #import "CUPersonnel.h"
 #import "ServiceCallManager.h"
 #import "RESideMenu.h"
+#import "Common.h"
+#import "Order.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -100,21 +102,32 @@
 }
 
 - (void)test {
-    PFQuery* query = [CUSoccerPlayer query];
-    [query getObjectInBackgroundWithId:@"ddaT7sWzZE" block:^(PFObject *object, NSError  *error){
-        if(!error)
-        {
-            CUSoccerPlayer *player = (CUSoccerPlayer *)object;
-            User *associatedPlayer = player.associatedPerson;
-            [associatedPlayer fetchIfNeededInBackgroundWithBlock:^(PFObject* object, NSError *error){
-               if(!error)
-               {
-                   MyLog(@"associatedPlayer name = %@",associatedPlayer.objectId);
-               }
-            }];
-            
-        }
-    }];
+//    [ServiceCallManager getAllPurchaseHistoryWithBlock:^(NSArray *objects, NSError *error) {
+//        if(!error)
+//        {
+//            MyLog(@"getAllPurchaseHistoryWithBlock is successful and no error has been returned");
+//            MyLog(@"array size = %lu", (unsigned long)[objects count]);
+//            for(id object in objects){
+//                Order *order = (Order *)object;
+//                MyLog(@"Order id = %@ and the order item is %@", order.objectId, order.product);
+//            }
+//        } else {
+//            NSString *msg = [Common getUsefulErrorMessage:error];
+//            MyLog(@"%@",msg);
+//        }
+//        
+//    }];
+//    PFQuery *query = [Orders query];
+//    [query getObjectInBackgroundWithId:@"6O2F8hYgvu" block:^(PFObject *object, NSError *error) {
+//        if(!error)
+//        {
+//            Orders *order = (Orders *)object;
+//            [order.customer fetch];
+//            MyLog(@"customer id = %@", order.customer.objectId);
+//        } else {
+//            MyLog(@"%@",[Common getUsefulErrorMessage:error]);
+//        }
+//    }];
 
 }
 - (void)addReachability {
@@ -122,7 +135,7 @@
     
     __weak AppDelegate *weakSelf = self;
     
-    self.reach.reachableBlock = ^(Reachability * reachability)
+    self.reach.reachableBlock = ^(Reachability *reachability)
     {
         MyLog(@"Internet connected!");
         if (weakSelf.noConnectionBanner) {
@@ -229,6 +242,7 @@
     [CUBasketballPlayer registerSubclass];
     [CUSoccerPlayer registerSubclass];
     [CUPersonnel registerSubclass];
+    [Order registerSubclass];
 }
 
 - (BOOL)application:(UIApplication *)application
