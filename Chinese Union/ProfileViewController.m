@@ -20,6 +20,8 @@
 #import "ReachabilityController.h"
 #import "ServiceCallManager.h"
 #import "Common.h"
+#import "CUFullProfileViewController.h"
+#import "UIViewController+Additions.h"
 
 @interface ProfileViewController ()
 
@@ -175,6 +177,16 @@
             */
             
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+            
+            CUFullProfileViewController *detailViewController = [[CUFullProfileViewController alloc] initWithNibName:@"CUFullProfileViewController" bundle:nil];
+            detailViewController.person = user;
+            [detailViewController addExitButton];
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+            
+            [self presentViewController:nav
+                               animated:YES
+                             completion:NULL];
             
         } else {
             MyLog(@"Error = %@",error);
