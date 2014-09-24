@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet SLGlowingTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet SLGlowingTextField *weChatTextField;
 @property (weak, nonatomic) IBOutlet CUInputButton *pickBirthdayButton;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGR;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -135,6 +135,7 @@
 
 - (IBAction)pickBirthdayButtonPressed:(CUInputButton *)sender {
     [sender becomeFirstResponder];
+    MyLog(@"Input view: %@", sender.inputView);
     self.activeResponder = sender;
 }
 
