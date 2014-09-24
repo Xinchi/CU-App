@@ -131,11 +131,12 @@ static NSString * const cellID = @"cell";
     cell.majorLabel.text = person.major;
     cell.profilePicImageView.image = nil;
     
-    [[self getProfilePicSignalForPerson:person] subscribeNext:^(UIImage *x) {
-        MyLog(@"image get! %@",cell);
-        cell.profilePicImageView.image = x;
-    }];
-    
+    [[[self getProfilePicSignalForPerson:person]
+      takeUntil:[cell rac_prepareForReuseSignal]]
+     subscribeNext:^(UIImage *x) {
+         MyLog(@"image get! %@",cell);
+         cell.profilePicImageView.image = x;
+     }];
     
     return cell;
 }
