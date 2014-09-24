@@ -130,6 +130,13 @@ static NSString * const cellID = @"cell";
     cell.schoolYearLabel.text = person.year;
     cell.majorLabel.text = person.major;
     cell.profilePicImageView.image = nil;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    if (person.associatedPerson != nil) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    }
     
     [[[self getProfilePicSignalForPerson:person]
       takeUntil:[cell rac_prepareForReuseSignal]]
@@ -168,10 +175,12 @@ static NSString * const cellID = @"cell";
     
     // Pass the selected object to the new view controller.
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
-    detailViewController.person = person.associatedPerson;
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if (person.associatedPerson != nil) {
+        detailViewController.person = person.associatedPerson;
+        
+        // Push the view controller.
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
 }
 
 
