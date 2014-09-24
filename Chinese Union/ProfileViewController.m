@@ -76,6 +76,7 @@
         MyLog(@"User b day:%@", user.birthday);
         self.phoneLabel.text    = [NSString stringWithFormat:@"%@", user.phone];
         self.wechatLabel.text   = [NSString stringWithFormat:@"%@", user.wechatID ? user.wechatID : @"Not linked to WeChat"];
+        self.profilePicView.image = nil;
         
         if (user.profilePic) {
             MyLog(@"User has profilePic!!");
@@ -90,9 +91,6 @@
                     self.profilePicView.image = proPic;
                 }
             }];
-        }
-        else {
-            self.profilePicView.image = nil;
         }
     } else {
         self.userNameLabel.text = NSLocalizedString(@"Not logged in", nil);
