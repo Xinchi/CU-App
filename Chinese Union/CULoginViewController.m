@@ -16,6 +16,7 @@
 #import "User.h"
 #import "ServiceCallManager.h"
 #import "Constants.h"
+#import "FBCallBack.h"
 
 @interface CULoginViewController ()
 
@@ -124,9 +125,12 @@
     MyLog(@"Login Succeeded!");
     [ServiceCallManager callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
         if(!error){
+
+            
             [self showAlertTitle:NSLocalizedString(@"Success!", @"")
                              msg:result];
             [self dismissViewControllerAnimated:YES completion:nil];
+
         }
     }];
 }
@@ -174,7 +178,7 @@
     [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Logging in..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     MyLog(@"FB button!");
     
-    NSArray *permissions = [NSArray arrayWithObjects:PUBLIC_PROFILE,EMAIL, USER_BIRTHDAY,nil];
+    NSArray *permissions = [NSArray arrayWithObjects:PUBLIC_PROFILE,EMAIL, USER_BIRTHDAY,USER_FRIENDS, nil];
     
     
      
@@ -190,10 +194,22 @@
         } else {
             
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                FBCallBack *fbCallBack;
                 if (!error) {
                     // Success! Include your code to handle the results here
                     NSDictionary *userInfo = result;
                     NSLog(@"user info: %@", [userInfo description]);
+                    
+                    // Subscribe to private push channel
+                    User *user = [User currentUser];
+                    if (user) {
+                        NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", [user objectId]];
+                        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPAPInstallationUserKey];
+                        [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kPAPInstallationChannelsKey];
+                        [[PFInstallation currentInstallation] saveEventually];
+                        [user setObject:privateChannelName forKey:kPAPUserPrivateChannelKey];
+                    }
+                    
                     //
                     if(syncFromFBAllowedByUser)
                     {
@@ -204,10 +220,16 @@
                         [self showAlertTitle:@"Welcome back!" msg:@"Info not synced from facebook!"];
                     }
                     
+                    
+                    //FBCallBackToRefreshFriendsList/Get FB ID
+                    MyLog(@"About to call fbCallBack");
+                    [fbCallBack FBrequestdidLoad:result];
+                    
                 } else {
                     MyLog(@"### ERROR: %@",error);
                     // An error occurred, we need to handle the error
                     // See: https://developers.facebook.com/docs/ios/errors
+                    [fbCallBack FBrequestDidFailWithError:error];
                 }
             }];
             
@@ -221,7 +243,17 @@
                                           // There was an error, handle it
                                           // See https://developers.facebook.com/docs/ios/errors/
                                       }
-                                  }];
+            }];
+            [FBRequestConnection startWithGraphPath:@"me/friends" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                FBCallBack *fbCallBack;
+                if (!error) {
+                    NSDictionary *permissions= result;
+                    MyLog(@"friends = %@",permissions);
+                    [fbCallBack FBrequestdidLoad:result];
+                } else {
+                    [fbCallBack FBrequestDidFailWithError:error];
+                }
+            }];
         }
     }];
 }
@@ -265,6 +297,7 @@
     currentUser.lastName = userInfo[FB_USER_LAST_NAME];
     currentUser.email = userInfo[FB_USER_EMAIL];
     currentUser.gender = userInfo[FB_USER_GENDER];
+    currentUser.facebookId = userInfo[FB_USER_ID];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
     MyLog(@"User birthday = %@",userInfo[FB_USER_BIRTHDAY]);
@@ -275,6 +308,8 @@
     NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
     PFFile *imageFile = [PFFile fileWithData:imageData];
     currentUser.profilePic = imageFile;
+    currentUser.profilePictureMedium = imageFile;
+    currentUser.profilePictureSmall = imageFile;
     
     NSLog(@"About to updateSerInfoWithUser");
     [ServiceCallManager updateUserInfoWithUser:currentUser WithBlock:^(BOOL succeeded, NSError *error){

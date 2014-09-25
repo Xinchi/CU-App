@@ -24,6 +24,11 @@
 #import "CUEventViewController.h"
 #import "CUContactTableViewController.h"
 #import "CUYearSelectionTableViewController.h"
+#import "PAPTabBarController.h"
+#import "PAPHomeViewController.h"
+#import "PAPActivityFeedViewController.h"
+#import "Common.h"
+
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -35,10 +40,15 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) CustomDataSource *dataSource;
+@property (nonatomic, strong) PAPHomeViewController *homeViewController;
+@property (nonatomic, strong) PAPActivityFeedViewController *activityViewController;
 
 @end
 
 @implementation CUMainViewController
+
+@synthesize tabBarController;
+@synthesize homeViewController;
 
 - (void)viewDidLoad
 {
@@ -207,7 +217,14 @@
     UIViewController *VC;
     
     if (indexPath.row == 0) {
-        VC = [[CUEventViewController alloc] init];
+        if(![User currentUser])
+        {
+            [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.navigationController.view];
+            return;
+        }
+        [self configureTabBar];
+//        VC = [[CUEventViewController alloc] init];
+        VC = self.tabBarController;
     }
     else if (indexPath.row == 1) {
         VC = [[PFProductsViewController alloc] init];
@@ -236,6 +253,70 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self updateButtonTitle];
 
+}
+
+
+- (void)configureTabBar {
+    self.tabBarController = [[PAPTabBarController alloc] init];
+    self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
+    //    [self.homeViewController setFirstLaunch:firstLaunch];
+    self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
+    UINavigationController *emptyNavigationController = [[UINavigationController alloc] init];
+    UINavigationController *activityFeedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.activityViewController];
+    
+    [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:homeNavigationController];
+    [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:emptyNavigationController];
+    [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:activityFeedNavigationController];
+    
+    UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"IconHome.png"]  tag:0];
+    //    [homeTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconHomeSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"IconHome.png"]];
+    [homeTabBarItem initWithTitle:@"Home" image:[UIImage imageNamed:@"IconHome.png"] selectedImage:[UIImage imageNamed:@"IconHomeSelected.png"]];
+    
+    [homeTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIColor colorWithRed:86.0f/255.0f green:55.0f/255.0f blue:42.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
+                                            nil] forState:UIControlStateNormal];
+    [homeTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIColor colorWithRed:129.0f/255.0f green:99.0f/255.0f blue:69.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
+                                            nil] forState:UIControlStateSelected];
+    
+    UITabBarItem *activityFeedTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Activity" image:nil tag:0];
+    [activityFeedTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconTimelineSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"IconTimeline.png"]];
+    [activityFeedTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                    [UIColor colorWithRed:86.0f/255.0f green:55.0f/255.0f blue:42.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
+                                                    nil] forState:UIControlStateNormal];
+    [activityFeedTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                    [UIColor colorWithRed:129.0f/255.0f green:99.0f/255.0f blue:69.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
+                                                    nil] forState:UIControlStateSelected];
+    
+    [homeNavigationController setTabBarItem:homeTabBarItem];
+    [activityFeedNavigationController setTabBarItem:activityFeedTabBarItem];
+    
+    [self.tabBarController setDelegate:self];
+    [self.tabBarController setViewControllers:[NSArray arrayWithObjects:homeNavigationController, emptyNavigationController, activityFeedNavigationController, nil]];
+    
+    //    [self.navigationController setViewControllers:[NSArray arrayWithObjects:self, self.tabBarController, nil] animated:NO];
+//    [self.navigationController pushViewController:self.tabBarController animated:NO];
+    
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
+    
+    
+    NSLog(@"Downloading user's profile picture");
+    // Download user's profile picture
+    NSURL *profilePictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", [[PFUser currentUser] objectForKey:kPAPUserFacebookIDKey]]];
+    NSURLRequest *profilePictureURLRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f]; // Facebook profile picture cache policy: Expires in 2 weeks
+    [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
+}
+
+#pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)aTabBarController shouldSelectViewController:(UIViewController *)viewController {
+    // The empty UITabBarItem behind our Camera button should not load a view controller
+    return ![viewController isEqual:[[aTabBarController viewControllers] objectAtIndex:PAPEmptyTabBarItemIndex]];
 }
 
 @end

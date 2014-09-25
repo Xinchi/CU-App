@@ -21,6 +21,12 @@
 @property (retain) NSString *phone;
 @property (retain) PFFile *profilePic;
 @property (retain) PFFile *IDPic;
+@property (retain) PFFile *profilePictureMedium;
+@property (retain) PFFile *profilePictureSmall;
+@property (retain) NSString *facebookId;
+@property (retain) NSArray *facebookFriends;
+@property (retain) NSString *channel;
+
 @property BOOL emailVerified;
 @property BOOL IDPicVerified;
 

@@ -1,7 +1,13 @@
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
+
 const CuMemberCycle = "12";
+
+require('cloud/installation.js');
+require('cloud/activity.js');
+require('cloud/photo.js');
+
 
 Parse.Cloud.define("activationFailResponse", function(request, response) {
   response.success("Member ID is invalid");

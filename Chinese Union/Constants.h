@@ -28,6 +28,7 @@ extern NSString* const CREATION_DATE;
 extern NSString* const PUBLIC_PROFILE;
 extern NSString* const EMAIL;
 extern NSString* const USER_BIRTHDAY;
+extern NSString* const USER_FRIENDS;
 
 //The facebook fields
 extern NSString* const FB_USER_ID;
