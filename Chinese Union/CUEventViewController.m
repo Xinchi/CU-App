@@ -58,7 +58,9 @@ NSString * const bigCellID = @"bigCellID";
 {
     [super viewWillAppear:animated];
     
-    [self.viewModel.getEventsCommand execute:nil];
+    if ([self isMovingToParentViewController]) {
+        [self.viewModel.getEventsCommand execute:nil];
+    }
 }
 
 - (void)bindViewModel
@@ -82,6 +84,13 @@ NSString * const bigCellID = @"bigCellID";
          }
          else {
              [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+             
+             if ([self.viewModel.eventItemViewModels count] == 0) {
+                 [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"No content!", @"") mode:MRProgressOverlayViewModeCross animated:YES];
+                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     [self.navigationController popViewControllerAnimated:YES];
+                 });
+             }
          }
      }];
 }

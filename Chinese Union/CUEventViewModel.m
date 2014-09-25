@@ -11,6 +11,7 @@
 #import "CUEvents.h"
 #import "CUTimeManager.h"
 #import "ServiceCallManager.h"
+#import "Common.h"
 
 @implementation CUEventViewModel
 
@@ -26,7 +27,12 @@
 - (void)initialize
 {
     self.getEventsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [self getEventsSignal];
+        return [[[self getCurrentDateSignal] doNext:^(id x) {
+            MyLog(@"Current date %@", x);
+            [CUTimeManager sharedInstance].referenceDate = x;
+        }] then:^RACSignal *{
+            return [self getEventsSignal];
+        }];
     }];
     
     @weakify(self);
@@ -55,6 +61,24 @@
                                                     [subscriber sendCompleted];
                                                 }
                                             }];
+        return nil;
+    }];
+}
+
+- (RACSignal *)getCurrentDateSignal
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [ServiceCallManager getCurrentDateWithBlock:^(NSDate *date, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+                //MyLog(@"!!!! %@", [Common getUsefulErrorMessage:error]);
+            }
+            else
+            {
+                [subscriber sendNext:date];
+                [subscriber sendCompleted];
+            }
+        }];
         return nil;
     }];
 }

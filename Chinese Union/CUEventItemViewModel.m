@@ -34,9 +34,11 @@
 - (void)initialize
 {
     self.name = self.event.name;
-    self.eventDescription = self.event.description;
+    self.eventDescription = self.event.eventDetail;
     self.duration = self.event.duration;
     self.eventDate = self.event.start;
+    
+    MyLog(@"Event %@", self.event);
     
     @weakify(self);
     [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {

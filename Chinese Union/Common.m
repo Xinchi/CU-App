@@ -28,7 +28,7 @@
 
 + (NSString *)getUsefulErrorMessage: (NSError *)error
 {
-    return [error userInfo][@"error]"];
+    return [error userInfo][@"error"];
 }
 
 

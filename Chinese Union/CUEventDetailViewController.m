@@ -32,8 +32,8 @@
     self.cell.backgroundFadeColor = self.cellColor;
 //    self.cell.layer.cornerRadius = 6;
 //    self.cell.layer.masksToBounds = YES;
-    self.cell.layer.borderWidth = 1;
-    self.cell.layer.borderColor = self.cellColor.CGColor;
+//    self.cell.layer.borderWidth = 1;
+//    self.cell.layer.borderColor = self.cellColor.CGColor;
 //    self.cell.layer.shadowColor = [UIColor blackColor].CGColor;
 //    self.cell.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
 //    self.cell.layer.shadowOpacity = 0.5f;
