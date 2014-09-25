@@ -62,7 +62,7 @@
     [self.view addSubview:congratulationsLabel];
     
     UILabel *ownerLabel = [[UILabel alloc] init];
-    ownerLabel.text = [NSString stringWithFormat:@"You are now the proud owner of\na Parse %@.", self.product[@"description"]];
+    ownerLabel.text = [NSString stringWithFormat:@"You are now the proud owner of\na CU %@.", self.product[@"description"]];
     ownerLabel.numberOfLines = 2;
     ownerLabel.textAlignment = NSTextAlignmentCenter;
     ownerLabel.backgroundColor = [UIColor clearColor];

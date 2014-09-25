@@ -207,7 +207,6 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
       var currentUser = Parse.User.current();
       var CUMembers = Parse.Object.extend("CUMembers");
       var cuMember = new CUMembers();
-      cuMember.set('memberUserID', currentUser.objectId);
       cuMember.set('memberUser', currentUser);
       cuMember.set('expireDate', new Date("October 1, 2015 00:00:00"));
 
@@ -271,7 +270,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     return Mailgun.sendEmail({
       to: request.params.email,
       from: 'ucsandiegochineseunion@gmail.com',
-      subject: 'Your order for a Parse ' + request.params.itemName + ' was successful!  Order ID : ' + order.id ,
+      subject: 'Your order for a CU ' + request.params.itemName + ' was successful!  Order ID : ' + order.id ,
       text: body
     }).then(null, function(error) {
       return Parse.Promise.error('Your purchase was successful, but we were not able to ' +

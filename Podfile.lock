@@ -45,6 +45,7 @@ PODS:
     - OCHamcrest (~> 4.0)
     - TPWeakProxy (~> 1.0)
   - PureLayout (1.1.0)
+  - RDHCollectionViewGridLayout (1.1.2)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - OCMock (~> 3.1.1)
   - OCMockito (~> 1.3.0)
   - PureLayout (~> 1.1.0)
+  - RDHCollectionViewGridLayout
   - ReactiveCocoa (~> 2.3.1)
   - ReactiveViewModel (~> 0.2)
   - RESideMenu (~> 4.0.7)
@@ -97,6 +99,7 @@ SPEC CHECKSUMS:
   OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
   OCMockito: eca2670b3ce4a457d316b046a36d6f2b980a4da7
   PureLayout: c8960fa0f3b40d849d5e177d699d0148faa63b63
+  RDHCollectionViewGridLayout: c203534d9646b8c3eaeea19ab12d3194ab189b0c
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
   RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
