@@ -217,14 +217,7 @@
     UIViewController *VC;
     
     if (indexPath.row == 0) {
-        if(![User currentUser])
-        {
-            [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.navigationController.view];
-            return;
-        }
-        [self configureTabBar];
-//        VC = [[CUEventViewController alloc] init];
-        VC = self.tabBarController;
+        VC = [[CUEventViewController alloc] init];
     }
     else if (indexPath.row == 1) {
         VC = [[PFProductsViewController alloc] init];
@@ -240,6 +233,15 @@
     else if (indexPath.row == 4) {
         VC = [[CUYearSelectionTableViewController alloc] init];
         ((CUYearSelectionTableViewController *)VC).contactType = PERSONNEL;
+    }
+    else if (indexPath.row == 5) {
+        if(![User currentUser])
+        {
+            [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.navigationController.view];
+            return;
+        }
+        [self configureTabBar];
+        VC = self.tabBarController;
     }
     
     if (VC) {

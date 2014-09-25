@@ -19,6 +19,10 @@
  {
  "imageFilename": "contacts",
  "title": "Contacts"
+ },
+ {
+ "imageFilename": "",
+ "title": "Photo Gallery"
  }
  ]
 
