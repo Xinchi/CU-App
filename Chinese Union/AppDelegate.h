@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+@protocol RemoteNotificationDelegate <NSObject>
 
+@required
+- (void) didReceiveRemoteNotification;
+
+@end
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, assign) id<RemoteNotificationDelegate> delegate;
+@property (nonatomic, readonly) int networkStatus;
+
+- (BOOL)isParseReachable;
 
 @end

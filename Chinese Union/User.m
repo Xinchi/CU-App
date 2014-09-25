@@ -23,4 +23,9 @@
 @dynamic IDPic;
 @dynamic emailVerified;
 @dynamic IDPicVerified;
+@dynamic profilePictureMedium;
+@dynamic profilePictureSmall;
+@dynamic facebookId;
+@dynamic facebookFriends;
+@dynamic channel;
 @end

@@ -24,6 +24,7 @@ NSString* const PUBLIC_PROFILE = @"public_profile";
 NSString* const CUEVENT_START_DATE = @"start";
 NSString* const EMAIL = @"email";
 NSString* const USER_BIRTHDAY = @"user_birthday";
+NSString* const USER_FRIENDS = @"user_friends";
 NSString* const FB_USER_ID = @"id";
 NSString* const FB_USER_FIRST_NAME = @"first_name";
 NSString* const FB_USER_LAST_NAME = @"last_name";

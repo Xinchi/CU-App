@@ -13,6 +13,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <AVFoundation/AVFoundation.h>
+    #import <MobileCoreServices/UTCoreTypes.h>
     #import <Parse/Parse.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import "RACEXTScope.h"
@@ -22,6 +24,9 @@
     #import "Constants.h"
     #import "PureLayout.h"
     #import "SAMCategories.h"
+    #import "PAPCache.h"
+    #import "PAPConstants.h"
+    #import "PAPUtility.h"
 #endif
 
 #ifdef NDEBUG

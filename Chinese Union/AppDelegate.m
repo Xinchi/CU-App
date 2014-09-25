@@ -30,6 +30,9 @@
 #endif
 
 @interface AppDelegate ()
+{
+    NSMutableData *_data;
+}
 
 @property (nonatomic, strong) UIViewController          *mainViewController;
 @property (nonatomic, strong) ProfileViewController     *menuViewController;
@@ -42,9 +45,15 @@
 
 @implementation AppDelegate
 
+@synthesize window;
+@synthesize delegate;
+@synthesize networkStatus;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Setup
+    [self setupAppearance];
     [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
                   clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
     
@@ -83,6 +92,8 @@
 //    self.sideMenuViewController.delegate = self;
     
     // set the side menu controller as the root view controller
+    
+    
     self.window.rootViewController = self.sideMenuViewController;
     
 //    // Override point for customization after application launch.
@@ -128,6 +139,15 @@
 //            MyLog(@"%@",[Common getUsefulErrorMessage:error]);
 //        }
 //    }];
+    
+    [ServiceCallManager getCurrentDateWithBlock:^(NSDate *date, NSError *error) {
+        if(!error)
+        {
+            MyLog(@"Time = %@",date);
+        } else {
+            MyLog(@"%@",[Common getUsefulErrorMessage:error]);
+        }
+    }];
 
 }
 - (void)addReachability {
@@ -226,6 +246,10 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    if (application.applicationIconBadgeNumber != 0) {
+        application.applicationIconBadgeNumber = 0;
+        [[PFInstallation currentInstallation] saveEventually];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -254,6 +278,90 @@
                         withSession:[PFFacebookUtils session]];
 }
 
+
+- (void)setupAppearance {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.498f green:0.388f blue:0.329f alpha:1.0f]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor whiteColor],UITextAttributeTextColor,
+                                                          [UIColor colorWithWhite:0.0f alpha:0.750f],UITextAttributeTextShadowColor,
+                                                          [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],UITextAttributeTextShadowOffset,
+                                                          nil]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[UIImage imageNamed:@"ButtonNavigationBar.png"] forState:UIControlStateNormal];
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[UIImage imageNamed:@"ButtonNavigationBarSelected.png"] forState:UIControlStateHighlighted];
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleColor:[UIColor colorWithRed:214.0f/255.0f green:210.0f/255.0f blue:197.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"ButtonBack.png"]
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"ButtonBackSelected.png"]
+                                                      forState:UIControlStateSelected
+                                                    barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor colorWithRed:214.0f/255.0f green:210.0f/255.0f blue:197.0f/255.0f alpha:1.0f],UITextAttributeTextColor,
+                                                          [UIColor colorWithWhite:0.0f alpha:0.750f],UITextAttributeTextShadowColor,
+                                                          [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],UITextAttributeTextShadowOffset,
+                                                          nil] forState:UIControlStateNormal];
+    
+    [[UISearchBar appearance] setTintColor:[UIColor colorWithRed:32.0f/255.0f green:19.0f/255.0f blue:16.0f/255.0f alpha:1.0f]];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
+    [PFPush storeDeviceToken:newDeviceToken];
+    
+    if (application.applicationIconBadgeNumber != 0) {
+        application.applicationIconBadgeNumber = 0;
+    }
+    
+    [[PFInstallation currentInstallation] addUniqueObject:@"" forKey:kPAPInstallationChannelsKey];
+    if ([PFUser currentUser]) {
+        // Make sure they are subscribed to their private push channel
+        NSString *privateChannelName = [[PFUser currentUser] objectForKey:kPAPUserPrivateChannelKey];
+        if (privateChannelName && privateChannelName.length > 0) {
+            NSLog(@"Subscribing user to %@", privateChannelName);
+            [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kPAPInstallationChannelsKey];
+        }
+    }
+    [[PFInstallation currentInstallation] saveEventually];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    if ([error code] != 3010) { // 3010 is for the iPhone Simulator
+        NSLog(@"Application failed to register for push notifications: %@", error);
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:userInfo];
+    
+    [delegate didReceiveRemoteNotification];
+    
+}
+
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    _data = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_data appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [PAPUtility processFacebookProfilePictureData:_data];
+}
+
+#pragma mark - AppDelegate
+
+- (BOOL)isParseReachable {
+    return self.networkStatus != NotReachable;
+}
 
 
 @end

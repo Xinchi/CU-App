@@ -8,8 +8,11 @@
 
 #import "Common.h"
 #import "MRProgress.h"
+#import "User.h"
 
 @implementation Common
+
+
 + (void)dismissAllOverlayViewForView: (UIView *)view
 {
     [MRProgressOverlayView dismissAllOverlaysForView:view animated:YES];
@@ -30,6 +33,9 @@
 {
     return [error userInfo][@"error"];
 }
+
+
+
 
 
 @end
