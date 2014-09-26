@@ -40,6 +40,7 @@
 		425490791957D92B005A61B0 /* CUInputButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 425490781957D92B005A61B0 /* CUInputButton.m */; };
 		42555E7519BEBEB300BA2446 /* CUEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42555E7319BEBEB300BA2446 /* CUEventDetailViewController.m */; };
 		42555E7619BEBEB300BA2446 /* CUEventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42555E7419BEBEB300BA2446 /* CUEventDetailViewController.xib */; };
+		4264B25919D4E54B00195938 /* CUPersonnelListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4264B25819D4E54B00195938 /* CUPersonnelListTableViewCell.xib */; };
 		4267107919BD376900965EB5 /* CUTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4267107819BD376900965EB5 /* CUTimeManager.m */; };
 		4267107E19BD721000965EB5 /* CUEventItemBigTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4267107C19BD721000965EB5 /* CUEventItemBigTableViewCell.xib */; };
 		4267108119BD854600965EB5 /* CUInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4267108019BD854600965EB5 /* CUInsetLabel.m */; };
@@ -398,6 +399,7 @@
 		42555E7219BEBEB300BA2446 /* CUEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventDetailViewController.h; sourceTree = "<group>"; };
 		42555E7319BEBEB300BA2446 /* CUEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUEventDetailViewController.m; sourceTree = "<group>"; };
 		42555E7419BEBEB300BA2446 /* CUEventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventDetailViewController.xib; sourceTree = "<group>"; };
+		4264B25819D4E54B00195938 /* CUPersonnelListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUPersonnelListTableViewCell.xib; sourceTree = "<group>"; };
 		4267107719BD376900965EB5 /* CUTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTimeManager.h; sourceTree = "<group>"; };
 		4267107819BD376900965EB5 /* CUTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTimeManager.m; sourceTree = "<group>"; };
 		4267107C19BD721000965EB5 /* CUEventItemBigTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventItemBigTableViewCell.xib; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 				42682DBE1996BCD60001BCB5 /* CUContactTableViewController.xib */,
 				42682DC31996C0810001BCB5 /* CUContactListTableViewCell.h */,
 				42682DC41996C0810001BCB5 /* CUContactListTableViewCell.m */,
+				4264B25819D4E54B00195938 /* CUPersonnelListTableViewCell.xib */,
 				42682DC51996C0810001BCB5 /* CUContactListTableViewCell.xib */,
 				42BCDC1719970120009326CE /* CUContactListViewModel.h */,
 				42BCDC1819970120009326CE /* CUContactListViewModel.m */,
@@ -1940,6 +1943,7 @@
 				500CC45E19D3E2CD00B14995 /* buttonNavigationBarSelected@2x.png in Resources */,
 				500CC46519D3E2CD00B14995 /* iconAddComment.png in Resources */,
 				500CC45719D3E2CD00B14995 /* buttonLike.png in Resources */,
+				4264B25919D4E54B00195938 /* CUPersonnelListTableViewCell.xib in Resources */,
 				500CC48C19D3E2CD00B14995 /* shadowProfilePicture-43@2x.png in Resources */,
 				500CC43D19D3E2CD00B14995 /* backgroundTabBarItemSelected.png in Resources */,
 				4294F82219BD1C9E001E911C /* CUEventItemTableViewCell.xib in Resources */,

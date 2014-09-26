@@ -14,6 +14,7 @@
 #import "CUFullProfileViewController.h"
 
 static NSString * const cellID = @"cell";
+static NSString * const cellIDPersonnel = @"cell2";
 
 @interface CUContactTableViewController ()
 
@@ -47,6 +48,9 @@ static NSString * const cellID = @"cell";
     [self.tableView registerNib:[UINib nibWithNibName:@"CUContactListTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CUPersonnelListTableViewCell"
+                                               bundle:nil]
+         forCellReuseIdentifier:cellIDPersonnel];
     
     self.viewModel = [[CUContactListViewModel alloc] initWithContactType:self.contactType batch:self.batch];
     [self bindViewModel];
@@ -117,15 +121,28 @@ static NSString * const cellID = @"cell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.contactType == PERSONNEL) {
+        return 162;
+    }
     return 141;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CUContactListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    CUContactListTableViewCell *cell;
+    if (self.contactType == PERSONNEL) {
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIDPersonnel forIndexPath:indexPath];
+    }
+    else
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    }
     
     CUPersonnel *person = self.viewModel.contacts[indexPath.row];
     cell.nameLabel.text = person.name;
+    if ([person respondsToSelector:@selector(role)]) {
+        cell.roleLabel.text = person.role;
+    }
     cell.collegeLabel.text = person.college;
     cell.schoolYearLabel.text = person.year;
     cell.majorLabel.text = person.major;

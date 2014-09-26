@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *collegeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *schoolYearLabel;
 @property (weak, nonatomic) IBOutlet UILabel *majorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 
 @end
