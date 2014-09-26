@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (strong, nonatomic) CUFullProfileViewModel *viewModel;
 
 @end
@@ -58,7 +61,9 @@
 //    RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
     RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
     // TODO: More info needs to be displayed here.  (email, phone, gender, and QR Code)
-    
+    RAC(self.emailLabel, text) = RACObserve(self.viewModel, email);
+    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
+    RAC(self.genderLabel, text) = RACObserve(self.viewModel, gender);    
 }
 
 - (void)didReceiveMemoryWarning

@@ -39,8 +39,11 @@
         self.profilePic = x;
     }];
     
-    self.name = [NSString stringWithFormat:@"%@ %@", self.person.firstName, self.person.lastName];
-    self.wechatId = self.person.wechatID;
+    self.name = [NSString stringWithFormat:@"Name: %@ %@", self.person.firstName, self.person.lastName];
+    self.email = [NSString stringWithFormat:@"EMail: %@", self.person.email];
+    self.phone = [NSString stringWithFormat:@"Phone: %@", self.person.phone];
+    self.gender = [NSString stringWithFormat:@"Gender: %@", self.person.gender];
+    self.wechatId = [NSString stringWithFormat:@"WeChat: %@", self.person.wechatID];
 }
 
 - (RACSignal *)getProfilePicSignal
