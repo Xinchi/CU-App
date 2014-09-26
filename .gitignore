@@ -16,5 +16,6 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+*.project.pbxproj
 # Pods - for those of you who use CocoaPods
 Pods
