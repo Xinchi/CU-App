@@ -37,6 +37,7 @@
     self.eventDescription = self.event.eventDetail;
     self.duration = self.event.duration;
     self.eventDate = self.event.start;
+    self.location = self.event.location;
     
     MyLog(@"Event %@", self.event);
     

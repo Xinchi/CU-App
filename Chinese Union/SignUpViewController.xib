@@ -40,7 +40,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-GI-VLh" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="382" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="329" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     <connections>
@@ -48,7 +48,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ed8-lo-BlV" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="154" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="101" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" secureTextEntry="YES"/>
                                     <connections>
@@ -56,7 +56,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBd-19-5hQ" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="192" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="139" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" secureTextEntry="YES"/>
                                     <connections>
@@ -64,7 +64,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYu-CF-FDA" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="306" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="253" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     <connections>
@@ -72,7 +72,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4QZ-gB-xoi" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="344" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="291" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     <connections>
@@ -80,7 +80,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATC-Rq-3h5" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="268" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="215" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     <connections>
@@ -88,7 +88,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WeChat ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-5q-efN" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="420" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="367" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                     <connections>
@@ -96,7 +96,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MuU-Bf-Aa2" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="116" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="63" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
                                     <connections>
@@ -104,7 +104,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bd-2F-XOM" customClass="SLGlowingTextField">
-                                    <rect key="frame" x="60" y="230" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="177" width="200" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     <connections>
@@ -112,7 +112,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dd-Il-sx9" customClass="CUInputButton">
-                                    <rect key="frame" x="100" y="78" width="121" height="30"/>
+                                    <rect key="frame" x="100" y="25" width="121" height="30"/>
                                     <state key="normal" title="Pick Birthday">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +122,7 @@
                                     </connections>
                                 </button>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tlB-5U-Oj0">
-                                    <rect key="frame" x="99" y="458" width="123" height="29"/>
+                                    <rect key="frame" x="99" y="405" width="123" height="29"/>
                                     <segments>
                                         <segment title="Male"/>
                                         <segment title="Female"/>
@@ -153,7 +153,6 @@
                 <constraint firstItem="7MQ-NG-SFc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qnC-KH-6Kr"/>
                 <constraint firstAttribute="trailing" secondItem="7MQ-NG-SFc" secondAttribute="trailing" id="qpW-a5-KeN"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3fd-mI-tn6">
             <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>

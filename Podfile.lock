@@ -1,5 +1,6 @@
 PODS:
   - ALAlertBanner (0.3.1)
+  - Aspects (1.4.1)
   - BFPaperTableViewCell (1.2.2):
     - UIColor+BFPaperColors
   - Bolts (1.1.2)
@@ -67,6 +68,7 @@ PODS:
 
 DEPENDENCIES:
   - ALAlertBanner (~> 0.3.1)
+  - Aspects (~> 1.4.1)
   - BFPaperTableViewCell (~> 1.2.2)
   - Expecta (~> 0.2.3)
   - Facebook-iOS-SDK (~> 3.13)
@@ -88,6 +90,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
+  Aspects: a6368eba05295b24ffe0e9acfb9080cc3b0f4b5f
   BFPaperTableViewCell: ff06fab6bafd71a9b5cb1efc911a54e5610acd16
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   Expecta: 112bcafa2304ee0f3c5e586505f24555a47b25d5

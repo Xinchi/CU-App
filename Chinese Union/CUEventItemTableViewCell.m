@@ -21,6 +21,8 @@
 //@property (weak, nonatomic) IBOutlet UIButton *timeToEventButton;
 @property (weak, nonatomic) IBOutlet UILabel *timeToEventLabelBig;
 @property (weak, nonatomic) IBOutlet CUInsetLabel *timeUnitLabelBig;
+@property (weak, nonatomic) IBOutlet UILabel *eventDurationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
 
 @end
 
@@ -31,7 +33,7 @@
     @weakify(self);
     [RACObserve(viewModel, name) subscribeNext:^(NSString *x) {
         @strongify(self);
-        self.titleLabel.text = [NSString stringWithFormat:@"Time till %@", x];
+        self.titleLabel.text = [NSString stringWithFormat:@"%@", x];
     }];
     
     [[RACSignal combineLatest:@[RACObserve(viewModel, timeToEvent),
@@ -53,8 +55,9 @@
             ((CUInsetLabel *)self.timeUnitLabel).cornerOption = UIRectCornerTopRight | UIRectCornerBottomRight;
         }
         
-        self.timeToEventLabel.text = [timeToEvent stringValue];
-        self.timeToEventLabelBig.text = [timeToEvent stringValue];
+        NSString *timeToEventString = [timeToEvent stringValue];
+        self.timeToEventLabel.text = timeToEventString;
+        self.timeToEventLabelBig.text = timeToEventString;
         self.timeUnitLabel.text = [timeUnit copy];
         self.timeUnitLabelBig.text = [timeUnit copy];
         self.timeUnitLabel.backgroundColor = color;
@@ -63,7 +66,20 @@
     
     [RACObserve(viewModel, eventDate) subscribeNext:^(id x) {
         @strongify(self);
-        self.eventDateLabel.text = [[NSDateFormatter eventDateFormatter] stringFromDate:x];
+        NSString *eventDateString = [NSString stringWithFormat:@"Date: %@", [[NSDateFormatter eventDateFormatter] stringFromDate:x]];
+        self.eventDateLabel.text = eventDateString;
+    }];
+    
+    [RACObserve(viewModel, duration) subscribeNext:^(id x) {
+        @strongify(self);
+        NSString *eventDurationString = [NSString stringWithFormat:@"Duration: %@", x];
+        self.eventDurationLabel.text = eventDurationString;
+    }];
+    
+    [RACObserve(viewModel, location) subscribeNext:^(id x) {
+        @strongify(self);
+        NSString *eventLocationString = [NSString stringWithFormat:@"Location: %@", x];
+        self.eventLocationLabel.text = eventLocationString;
     }];
     
     viewModel.active = YES;

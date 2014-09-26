@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *eventDescription;
 @property (strong, nonatomic) NSString *duration;
+@property (strong, nonatomic) NSString *location;
 @property (strong, nonatomic) NSNumber *timeToEvent;
 @property (strong, nonatomic) NSString *timeUnit;
 @property (strong, nonatomic) NSDate   *eventDate;

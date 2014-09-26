@@ -2,6 +2,7 @@
 # platform :ios, "6.0"
 
 #target "Chinese Union" do
+pod 'Aspects', '~> 1.4.1'
 pod 'MRProgress'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'ALAlertBanner', '~> 0.3.1'

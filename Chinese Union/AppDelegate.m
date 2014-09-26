@@ -25,6 +25,7 @@
 #import "RESideMenu.h"
 #import "Common.h"
 #import "Order.h"
+#import "Aspects.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -53,6 +54,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Setup
+    [self customizeTableView];
     [self setupAppearance];
     [Parse setApplicationId:@"TMkpbVAQb00DIAVcYnIK7jnL6qGxlBPepygCUClI"
                   clientKey:@"5Y5wflzXCSajnw3fksrIrv9V5gkIbLi7v15v007r"];
@@ -196,6 +198,19 @@
     NSDictionary *attributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Light" size:18.0]};
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
     //[[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
+
+- (void)customizeTableView
+{
+    [UITableView aspect_hookSelector:@selector(awakeFromNib)
+                         withOptions:AspectPositionAfter
+                          usingBlock:^(id<AspectInfo> aspectInfo){
+                              UITableView *tableView = aspectInfo.instance;
+                              UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:tableView.bounds];
+                              texturedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]];
+                              tableView.backgroundView = texturedBackgroundView;
+                          }
+                               error:nil];
 }
 
 - (void)createMembers: (NSInteger)n

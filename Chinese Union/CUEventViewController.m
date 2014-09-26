@@ -105,14 +105,15 @@ NSString * const bigCellID = @"bigCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CUEventItemTableViewCell *cell;
-    if (indexPath.row == 0)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:bigCellID];
-    }
-    else
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    }
+//    if (indexPath.row == 0)
+//    {
+//        cell = [tableView dequeueReusableCellWithIdentifier:bigCellID];
+//    }
+//    else
+//    {
+//        cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    }
+    cell = [tableView dequeueReusableCellWithIdentifier:bigCellID];
     
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
     [cell bindViewModel:viewModel];
@@ -125,14 +126,15 @@ NSString * const bigCellID = @"bigCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return 120;
-    }
-    else
-    {
-        return 44;
-    }
+    return 174;
+//    if (indexPath.row == 0)
+//    {
+//        return 120;
+//    }
+//    else
+//    {
+//        return 44;
+//    }
 }
 
 #pragma mark - UITableViewDelegate

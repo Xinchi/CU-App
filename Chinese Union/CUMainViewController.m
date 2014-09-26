@@ -72,6 +72,10 @@
     
     [self.collectionView registerClass:[MosaicCell class] forCellWithReuseIdentifier:@"cell"];
     [(MosaicLayout *)self.collectionView.collectionViewLayout setDelegate:self];
+    
+    UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.collectionView.bounds];
+    texturedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]];
+    self.collectionView.backgroundView = texturedBackgroundView;
 }
 
 - (void) viewWillAppear:(BOOL)animated
