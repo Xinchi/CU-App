@@ -15,6 +15,7 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
+#import "User.h"
 
 @interface PAPActivityFeedViewController ()
 
@@ -95,7 +96,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     if (indexPath.row < self.objects.count) {
         PFObject *object = [self.objects objectAtIndex:indexPath.row];
         NSString *activityString = [PAPActivityFeedViewController stringForActivityType:(NSString*)[object objectForKey:kPAPActivityTypeKey]];
-        PFUser *user = (PFUser*)[object objectForKey:kPAPActivityFromUserKey];
+        User *user = (User *)[object objectForKey:kPAPActivityFromUserKey];
         NSString *nameString = @"";
 
         if (user) {
@@ -130,15 +131,15 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
 
 - (PFQuery *)queryForTable {
     
-    if (![PFUser currentUser]) {
+    if (![User currentUser]) {
         PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
         [query setLimit:0];
         return query;
     }
 
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query whereKey:kPAPActivityToUserKey equalTo:[PFUser currentUser]];
-    [query whereKey:kPAPActivityFromUserKey notEqualTo:[PFUser currentUser]];
+    [query whereKey:kPAPActivityToUserKey equalTo:[User currentUser]];
+    [query whereKey:kPAPActivityFromUserKey notEqualTo:[User currentUser]];
     [query whereKeyExists:kPAPActivityFromUserKey];
     [query includeKey:kPAPActivityFromUserKey];
     [query includeKey:kPAPActivityPhotoKey];

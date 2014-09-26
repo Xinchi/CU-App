@@ -16,13 +16,17 @@
 - (void)FBrequestdidLoad:(id)result {
     // This method is called twice - once for the user's /me profile, and a second time when obtaining their friends. We will try and handle both scenarios in a single method.
     MyLog(@"FBrequestdidLoad delegate");
+    
+    MyLog(@"In FBrequestdidLoad, the result passed in = %@", result);
     NSArray *data = [result objectForKey:@"data"];
     
     if (data) {
         // we have friends data
+        MyLog(@"We have friends data here!");
         NSMutableArray *facebookIds = [[NSMutableArray alloc] initWithCapacity:[data count]];
         for (NSDictionary *friendData in data) {
             [facebookIds addObject:[friendData objectForKey:@"id"]];
+            MyLog(@"Friend fb id = %@",[friendData objectForKey:@"id"]);
         }
         
         // cache friend data

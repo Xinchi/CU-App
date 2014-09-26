@@ -194,7 +194,7 @@
         } else {
             
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                FBCallBack *fbCallBack;
+                FBCallBack *fbCallBack = [[FBCallBack alloc] init];
                 if (!error) {
                     // Success! Include your code to handle the results here
                     NSDictionary *userInfo = result;
@@ -238,22 +238,26 @@
                                   completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                       if (!error){
                                           NSDictionary *permissions= result;
-                                          MyLog(@"permissions = %@",permissions);
+//                                          MyLog(@"permissions = %@",permissions);
                                       } else {
                                           // There was an error, handle it
                                           // See https://developers.facebook.com/docs/ios/errors/
                                       }
             }];
-            [FBRequestConnection startWithGraphPath:@"me/friends" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                FBCallBack *fbCallBack;
-                if (!error) {
-                    NSDictionary *permissions= result;
-                    MyLog(@"friends = %@",permissions);
-                    [fbCallBack FBrequestdidLoad:result];
-                } else {
-                    [fbCallBack FBrequestDidFailWithError:error];
-                }
-            }];
+//            [FBRequestConnection startWithGraphPath:@"me/friends" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//                FBCallBack *fbCallBack;
+//                if (!error) {
+//                    NSDictionary *permissions= result;
+////                    MyLog(@"friends = %@",permissions);
+//                    if(fbCallBack == nil)
+//                    {
+//                        fbCallBack = [[FBCallBack alloc] init];
+//                    }
+//                    [fbCallBack FBrequestdidLoad:result];
+//                } else {
+//                    [fbCallBack FBrequestDidFailWithError:error];
+//                }
+//            }];
         }
     }];
 }
