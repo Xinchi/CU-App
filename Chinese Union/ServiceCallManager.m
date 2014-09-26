@@ -135,6 +135,7 @@
     else if(type == PERSONNEL)
     {
         query = [CUPersonnel query];
+        [query orderByAscending:@"order"];
     }
     else {
         [NSException raise:@"Invalid Figure Type" format:@"type of %d is invalid",type];
