@@ -31,7 +31,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundFindFriendsCell.png"]]];
+        [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundFindFriendsCell"]]];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         self.avatarImageView = [[PAPProfileImageView alloc] init];
@@ -67,9 +67,9 @@
         self.followButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.followButton.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
         [self.followButton setTitleEdgeInsets:UIEdgeInsetsMake( 0.0f, 10.0f, 0.0f, 0.0f)];
-        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollow.png"] forState:UIControlStateNormal];
-        [self.followButton setBackgroundImage:[UIImage imageNamed:@"ButtonFollowing.png"] forState:UIControlStateSelected];
-        [self.followButton setImage:[UIImage imageNamed:@"IconTick.png"] forState:UIControlStateSelected];
+        [self.followButton setBackgroundImage:[UIImage imageNamed:@"buttonFollow"] forState:UIControlStateNormal];
+        [self.followButton setBackgroundImage:[UIImage imageNamed:@"buttonFollowing"] forState:UIControlStateSelected];
+        [self.followButton setImage:[UIImage imageNamed:@"iconTick.png"] forState:UIControlStateSelected];
         [self.followButton setTitle:@"Follow  " forState:UIControlStateNormal]; // space added for centering
         [self.followButton setTitle:@"Following" forState:UIControlStateSelected];
         [self.followButton setTitleColor:[UIColor colorWithRed:84.0f/255.0f green:57.0f/255.0f blue:45.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];

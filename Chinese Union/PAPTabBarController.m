@@ -21,8 +21,8 @@
     [super viewDidLoad];
 
     MyLog(@"Settgin tabbar background");
-    [[self tabBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundTabBar.png"]];
-    [[self tabBar] setSelectionIndicatorImage:[UIImage imageNamed:@"BackgroundTabBarItemSelected.png"]];
+    [[self tabBar] setBackgroundImage:[UIImage imageNamed:@"backgroundTabBar"]];
+    [[self tabBar] setSelectionIndicatorImage:[UIImage imageNamed:@"backgroundTabBarItemSelected"]];
     
     self.navController = [[UINavigationController alloc] init];
     [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:self.navController];
@@ -36,8 +36,8 @@
     
     UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cameraButton.frame = CGRectMake( 94.0f, 0.0f, 131.0f, self.tabBar.bounds.size.height);
-    [cameraButton setImage:[UIImage imageNamed:@"ButtonCamera.png"] forState:UIControlStateNormal];
-    [cameraButton setImage:[UIImage imageNamed:@"ButtonCameraSelected.png"] forState:UIControlStateHighlighted];
+    [cameraButton setImage:[UIImage imageNamed:@"buttonCamera"] forState:UIControlStateNormal];
+    [cameraButton setImage:[UIImage imageNamed:@"buttonCameraSelected"] forState:UIControlStateHighlighted];
     [cameraButton addTarget:self action:@selector(photoCaptureButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.tabBar addSubview:cameraButton];
     

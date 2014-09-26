@@ -235,7 +235,7 @@ static TTTTimeIntervalFormatter *timeFormatter;
      Create top of header view with name and avatar
      */
     self.nameHeaderView = [[UIView alloc] initWithFrame:CGRectMake(nameHeaderX, nameHeaderY, nameHeaderWidth, nameHeaderHeight)];
-    self.nameHeaderView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]];
+    self.nameHeaderView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundComments"]];
     [self addSubview:self.nameHeaderView];
     
     CALayer *layer = self.nameHeaderView.layer;
@@ -300,7 +300,7 @@ static TTTTimeIntervalFormatter *timeFormatter;
      Create bottom section fo the header view; the likes
      */
     likeBarView = [[UIView alloc] initWithFrame:CGRectMake(likeBarX, likeBarY, likeBarWidth, likeBarHeight)];
-    [likeBarView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]]];
+    [likeBarView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundComments"]]];
     [self addSubview:likeBarView];
     
     // Create the heart-shaped like button
@@ -318,14 +318,14 @@ static TTTTimeIntervalFormatter *timeFormatter;
     [[likeButton titleLabel] setShadowOffset:CGSizeMake(0.0f, 1.0f)];
     [likeButton setAdjustsImageWhenDisabled:NO];
     [likeButton setAdjustsImageWhenHighlighted:NO];
-    [likeButton setBackgroundImage:[UIImage imageNamed:@"ButtonLike.png"] forState:UIControlStateNormal];
-    [likeButton setBackgroundImage:[UIImage imageNamed:@"ButtonLikeSelected.png"] forState:UIControlStateSelected];
+    [likeButton setBackgroundImage:[UIImage imageNamed:@"buttonLike"] forState:UIControlStateNormal];
+    [likeButton setBackgroundImage:[UIImage imageNamed:@"buttonLikeSelected"] forState:UIControlStateSelected];
     [likeButton addTarget:self action:@selector(didTapLikePhotoButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [likeBarView addSubview:likeButton];
     
     [self reloadLikeBar];
     
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"SeparatorComments.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 1.0f, 0.0f, 1.0f)]];
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"separatorComments"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 1.0f, 0.0f, 1.0f)]];
     [separator setFrame:CGRectMake(0.0f, likeBarView.frame.size.height - 2.0f, likeBarView.frame.size.width, 2.0f)];
     [likeBarView addSubview:separator];    
 }

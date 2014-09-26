@@ -272,9 +272,9 @@
     [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:emptyNavigationController];
     [PAPUtility addBottomDropShadowToNavigationBarForNavigationController:activityFeedNavigationController];
     
-    UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"IconHome.png"]  tag:0];
-    //    [homeTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconHomeSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"IconHome.png"]];
-    [homeTabBarItem initWithTitle:@"Home" image:[UIImage imageNamed:@"IconHome.png"] selectedImage:[UIImage imageNamed:@"IconHomeSelected.png"]];
+    UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"iconHome"]  tag:0];
+    //    [homeTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconHomeSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"iconHome.png"]];
+    [homeTabBarItem initWithTitle:@"Home" image:[UIImage imageNamed:@"iconHome"] selectedImage:[UIImage imageNamed:@"IconHomeSelected"]];
     
     [homeTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIColor colorWithRed:86.0f/255.0f green:55.0f/255.0f blue:42.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
@@ -284,7 +284,7 @@
                                             nil] forState:UIControlStateSelected];
     
     UITabBarItem *activityFeedTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Activity" image:nil tag:0];
-    [activityFeedTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconTimelineSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"IconTimeline.png"]];
+    [activityFeedTabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"IconTimelineSelected"] withFinishedUnselectedImage:[UIImage imageNamed:@"iconTimeline"]];
     [activityFeedTabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                     [UIColor colorWithRed:86.0f/255.0f green:55.0f/255.0f blue:42.0f/255.0f alpha:1.0f], UITextAttributeTextColor,
                                                     nil] forState:UIControlStateNormal];

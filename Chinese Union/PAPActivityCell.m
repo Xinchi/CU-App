@@ -105,9 +105,9 @@ static TTTTimeIntervalFormatter *timeFormatter;
 
 - (void)setIsNew:(BOOL)isNew {
     if (isNew) {
-        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundNewActivity.png"]]];
+        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundNewActivity"]]];
     } else {
-        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]]];
+        [self.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundComments"]]];
     }
 }
 

@@ -72,10 +72,10 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     [super viewDidLoad];
     
     UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]]];
+    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]]];
     self.tableView.backgroundView = texturedBackgroundView;
         
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TitleFindFriends.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"titleFindFriends.png"]];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake(0, 0, 52.0f, 32.0f)];
@@ -84,13 +84,13 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     [[backButton titleLabel] setFont:[UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]]];
     [backButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 5.0f, 0, 0)];
     [backButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setBackgroundImage:[UIImage imageNamed:@"ButtonBack.png"] forState:UIControlStateNormal];
-    [backButton setBackgroundImage:[UIImage imageNamed:@"ButtonBackSelected.png"] forState:UIControlStateHighlighted];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"buttonBack"] forState:UIControlStateNormal];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"buttonBackSelected"] forState:UIControlStateHighlighted];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     if ([MFMailComposeViewController canSendMail] || [MFMessageComposeViewController canSendText]) {
         self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 67)];
-        [self.headerView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundFindFriendsCell.png"]]];
+        [self.headerView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundFindFriendsCell"]]];
         UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [clearButton setBackgroundColor:[UIColor clearColor]];
         [clearButton addTarget:self action:@selector(inviteFriendsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -104,7 +104,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
         [inviteLabel setTextColor:[UIColor colorWithRed:87.0f/255.0f green:72.0f/255.0f blue:49.0f/255.0f alpha:1.0]];
         [inviteLabel setBackgroundColor:[UIColor clearColor]];
         [self.headerView addSubview:inviteLabel];
-        UIImageView *separatorImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SeparatorTimeline.png"]];
+        UIImageView *separatorImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separatorTimeline"]];
         [separatorImage setFrame:CGRectMake(0, self.headerView.frame.size.height-2, 320, 2)];
         [self.headerView addSubview:separatorImage];
         [self.tableView setTableHeaderView:self.headerView];
@@ -277,7 +277,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     
     if (cell == nil) {
         cell = [[PAPLoadMoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NextPageCellIdentifier];
-        [cell.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundFindFriendsCell.png"]]];
+        [cell.mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundFindFriendsCell"]]];
         cell.hideSeparatorBottom = YES;
         cell.hideSeparatorTop = YES;
     }

@@ -70,7 +70,7 @@
     [super viewDidLoad];
     
     UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
-    texturedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]];
+    texturedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]];
     self.tableView.backgroundView = texturedBackgroundView;
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidPublishPhoto:) name:PAPTabBarControllerDidFinishEditingPhotoNotification object:nil];
@@ -311,7 +311,7 @@
         object = [self.objects objectAtIndex:cell.photoButton.tag];
         cell.imageView.file = [object objectForKey:kPAPPhotoPictureKey];
         UIImageView *av = [[UIImageView alloc] init];
-        av.image = [UIImage imageNamed:@"backgroundLeather.png"];
+        av.image = [UIImage imageNamed:@"backgroundLeather@2x.png"];
         cell.backgroundView = av;
         
         // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.

@@ -36,15 +36,15 @@
         self.backgroundColor = [UIColor clearColor];
         
         mainView = [[UIView alloc] initWithFrame:self.contentView.frame];
-        [mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]]];
+        [mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundComments"]]];
         
-        self.loadMoreImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellLoadMore.png"]];
+        self.loadMoreImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellLoadMore"]];
         [mainView addSubview:self.loadMoreImageView];
         
-        self.separatorImageTop = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"SeparatorComments.png"] resizableImageWithCapInsets:UIEdgeInsetsMake( 0.0f, 1.0f, 0.0f, 1.0f)]];
+        self.separatorImageTop = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"separatorComments"] resizableImageWithCapInsets:UIEdgeInsetsMake( 0.0f, 1.0f, 0.0f, 1.0f)]];
         [mainView addSubview:separatorImageTop];
         
-        self.separatorImageBottom = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"SeparatorComments.png"] resizableImageWithCapInsets:UIEdgeInsetsMake( 0.0f, 1.0f, 0.0f, 1.0f)]];
+        self.separatorImageBottom = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"separatorComments"] resizableImageWithCapInsets:UIEdgeInsetsMake( 0.0f, 1.0f, 0.0f, 1.0f)]];
         [mainView addSubview:separatorImageBottom];
 
         [self.contentView addSubview:mainView];

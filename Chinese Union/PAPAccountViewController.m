@@ -30,7 +30,7 @@
         [NSException raise:NSInvalidArgumentException format:@"user cannot be nil"];
     }
 
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoNavigationBar"]];
 
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake( 0.0f, 0.0f, 52.0f, 32.0f)];
@@ -39,15 +39,15 @@
     [[backButton titleLabel] setFont:[UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]]];
     [backButton setTitleEdgeInsets:UIEdgeInsetsMake( 0.0f, 5.0f, 0.0f, 0.0f)];
     [backButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setBackgroundImage:[UIImage imageNamed:@"ButtonBack.png"] forState:UIControlStateNormal];
-    [backButton setBackgroundImage:[UIImage imageNamed:@"ButtonBackSelected.png"] forState:UIControlStateHighlighted];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"buttonBack"] forState:UIControlStateNormal];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"buttonBackSelected"] forState:UIControlStateHighlighted];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake( 0.0f, 0.0f, self.tableView.bounds.size.width, 222.0f)];
     [self.headerView setBackgroundColor:[UIColor clearColor]]; // should be clear, this will be the container for our avatar, photo count, follower count, following count, and so on
     
     UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.png"]]];
+    [texturedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]]];
     self.tableView.backgroundView = texturedBackgroundView;
 
     UIView *profilePictureBackgroundView = [[UIView alloc] initWithFrame:CGRectMake( 94.0f, 38.0f, 132.0f, 132.0f)];
@@ -67,7 +67,7 @@
     profilePictureImageView.alpha = 0.0f;
     UIImageView *profilePictureStrokeImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 88.0f, 34.0f, 143.0f, 143.0f)];
     profilePictureStrokeImageView.alpha = 0.0f;
-    [profilePictureStrokeImageView setImage:[UIImage imageNamed:@"ProfilePictureStroke.png"]];
+    [profilePictureStrokeImageView setImage:[UIImage imageNamed:@"profilePictureStroke"]];
     [self.headerView addSubview:profilePictureStrokeImageView];
 
     
@@ -86,7 +86,7 @@
     }
     
     UIImageView *photoCountIconImageView = [[UIImageView alloc] initWithImage:nil];
-    [photoCountIconImageView setImage:[UIImage imageNamed:@"IconPics.png"]];
+    [photoCountIconImageView setImage:[UIImage imageNamed:@"iconPics"]];
     [photoCountIconImageView setFrame:CGRectMake( 26.0f, 50.0f, 45.0f, 37.0f)];
     [self.headerView addSubview:photoCountIconImageView];
     
@@ -100,7 +100,7 @@
     [self.headerView addSubview:photoCountLabel];
     
     UIImageView *followersIconImageView = [[UIImageView alloc] initWithImage:nil];
-    [followersIconImageView setImage:[UIImage imageNamed:@"IconFollowers.png"]];
+    [followersIconImageView setImage:[UIImage imageNamed:@"iconFollowers"]];
     [followersIconImageView setFrame:CGRectMake( 247.0f, 50.0f, 52.0f, 37.0f)];
     [self.headerView addSubview:followersIconImageView];
     
@@ -235,7 +235,7 @@
     if (!cell) {
         cell = [[PAPLoadMoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LoadMoreCellIdentifier];
         cell.selectionStyle =UITableViewCellSelectionStyleGray;
-        cell.separatorImageTop.image = [UIImage imageNamed:@"SeparatorTimelineDark.png"];
+        cell.separatorImageTop.image = [UIImage imageNamed:@"separatorTimelineDark"];
         cell.hideSeparatorBottom = YES;
         cell.mainView.backgroundColor = [UIColor clearColor];
     }

@@ -57,7 +57,7 @@ static TTTTimeIntervalFormatter *timeFormatter;
         self.backgroundColor = [UIColor clearColor];
         
         mainView = [[UIView alloc] initWithFrame:self.contentView.frame];
-        [mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundComments.png"]]];
+        [mainView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundComments"]]];
         
         self.avatarImageView = [[PAPProfileImageView alloc] init];
         [self.avatarImageView setBackgroundColor:[UIColor clearColor]];
@@ -101,7 +101,7 @@ static TTTTimeIntervalFormatter *timeFormatter;
 
         [mainView addSubview:self.avatarImageButton];
         
-        self.separatorImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"SeparatorComments.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1)]];
+        self.separatorImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"separatorComments"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1)]];
         [mainView addSubview:separatorImage];
         
         [self.contentView addSubview:mainView];
