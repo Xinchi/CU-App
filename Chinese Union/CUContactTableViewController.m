@@ -12,6 +12,7 @@
 #import "CUContactListViewModel.h"
 #import "MRProgress.h"
 #import "CUFullProfileViewController.h"
+#import "CUInsetLabel.h"
 
 static NSString * const cellID = @"cell";
 static NSString * const cellIDPersonnel = @"cell2";

@@ -7,22 +7,27 @@
 //
 
 #import "CUContactListTableViewCell.h"
+#import "CUInsetLabel.h"
 
 @implementation CUContactListTableViewCell
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     // Initialization code
     self.profilePicImageView.layer.cornerRadius = 8;
     self.profilePicImageView.layer.masksToBounds = YES;
     self.profilePicImageView.layer.borderWidth = 0;
+    
+    ((CUInsetLabel *)self.roleLabel).cornerOption = UIRectCornerAllCorners;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)layoutSubviews
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    [super layoutSubviews];
+    
+    [self.roleLabel sizeToFit];
 }
 
 @end
