@@ -14,6 +14,7 @@ extern NSString* const BATCH1011;
 extern NSString* const BATCH1112;
 extern NSString* const BATCH1213;
 extern NSString* const BATCH1314;
+extern NSString* const BATCH1415;
 
 //The parse database fields
 extern NSString* const BATCH_FIELD;

@@ -16,6 +16,7 @@
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
 @property (nonatomic, strong) NSMutableSet *reusableSectionHeaderViews;
 @property (nonatomic, strong) NSMutableDictionary *outstandingSectionHeaderQueries;
+@property BOOL pullAllPictures;
 @end
 
 @implementation PAPPhotoTimelineViewController
@@ -36,6 +37,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    self.pullAllPictures = YES;
     self = [super initWithStyle:style];
     if (self) {
         
@@ -95,12 +97,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger sections = self.objects.count;
+    MyLog(@"# of sections in the photo table %d", sections);
     if (self.paginationEnabled && sections != 0)
         sections++;
     return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    MyLog(@"Setting numberOfRowsInSection");
     return 1;
 }
 
@@ -263,7 +267,17 @@
     [photosFromCurrentUserQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser]];
     [photosFromCurrentUserQuery whereKeyExists:kPAPPhotoPictureKey];
 
-    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:photosFromFollowedUsersQuery, photosFromCurrentUserQuery, nil]];
+    PFQuery *query;
+    if(_pullAllPictures)
+    {
+        query = [PFQuery queryWithClassName:kPAPPhotoClassKey];
+        
+    } else {
+        query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:photosFromFollowedUsersQuery, photosFromCurrentUserQuery, nil]];
+    }
+    
+    
+    
     [query includeKey:kPAPPhotoUserKey];
     [query orderByDescending:@"createdAt"];
 
@@ -283,7 +297,8 @@
     return query;
 }
 
-- (PFObject *)objectAtIndex:(NSIndexPath *)indexPath {
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    MyLog(@"########################");
     // overridden, since we want to implement sections
     if (indexPath.section < self.objects.count) {
         return [self.objects objectAtIndex:indexPath.section];
@@ -308,7 +323,7 @@
         
         cell.photoButton.tag = indexPath.section;
         cell.imageView.image = [UIImage imageNamed:@"PlaceholderPhoto.png"];
-        object = [self.objects objectAtIndex:cell.photoButton.tag];
+//        object = [self.objects objectAtIndex:cell.photoButton.tag];
         cell.imageView.file = [object objectForKey:kPAPPhotoPictureKey];
 //        UIImageView *av = [[UIImageView alloc] init];
 //        av.image = [UIImage imageNamed:@"backgroundLeather@2x.png"];

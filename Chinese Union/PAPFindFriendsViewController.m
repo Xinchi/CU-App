@@ -203,9 +203,9 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
         NSString *pluralizedPhoto;
         NSNumber *number = [[PAPCache sharedCache] photoCountForUser:(User *)object];
         if ([number intValue] == 1) {
-            pluralizedPhoto = @"photo";
+            pluralizedPhoto = kPAPActivityPhotoKey;
         } else {
-            pluralizedPhoto = @"photos";
+            pluralizedPhoto = kPAPActivityPhotoKey;
         }
         [cell.photoLabel setText:[NSString stringWithFormat:@"%@ %@", number, pluralizedPhoto]];
     } else {

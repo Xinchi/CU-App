@@ -27,7 +27,7 @@
 static NSString *const kPAPActivityTypeLikeString = @"liked your photo";
 static NSString *const kPAPActivityTypeCommentString = @"commented on your photo";
 static NSString *const kPAPActivityTypeFollowString = @"started following you";
-static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
+static NSString *const kPAPActivityTypeJoinedString = @"joined UCSD CU";
 
 @implementation PAPActivityFeedViewController
 

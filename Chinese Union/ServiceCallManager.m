@@ -116,7 +116,7 @@
 
 + (NSArray *)getAllTheBatches
 {
-    NSArray *batches = [NSArray arrayWithObjects:BATCH1213,BATCH1314,nil];
+    NSArray *batches = [NSArray arrayWithObjects:BATCH1314, BATCH1415, nil];
     return batches;
 }
 

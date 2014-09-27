@@ -17,6 +17,7 @@
 #import "ServiceCallManager.h"
 #import "Constants.h"
 #import "FBCallBack.h"
+#import "Common.h"
 
 @interface CULoginViewController ()
 
@@ -188,6 +189,7 @@
         
         if(error){
             MyLog(@"Error: %@",error);
+            [Common showAlertTitle:@"Login Failed" msg:[Common getUsefulErrorMessage:error] onView:self.view];
         }else if (!user) {
             MyLog(@"Uh oh. The user cancelled the Facebook login.");
             [self showAlertTitle:@"Login fail" msg:@"Please check Settings->Facebook and make sure the the toggle for Chinese Union is on"];

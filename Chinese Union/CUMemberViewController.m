@@ -142,7 +142,7 @@
 - (bool)isAMember
 {
 
-    [self.user refresh];
+//    [ServiceCallManager getCurrentUser];
     if(self.user.cuMember != nil)
     {
         MyLog(@"Member ID is ? = %@",self.user.cuMember.objectId);
