@@ -8,6 +8,7 @@
 
 #import "FBCallBack.h"
 #import "User.h"
+#import "PAPUtility.h"
 
 @implementation FBCallBack
 

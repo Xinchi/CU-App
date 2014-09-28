@@ -12,6 +12,7 @@
 #import "PAPAccountViewController.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+#import "PAPUtility.h"
 
 typedef enum {
     PAPFindFriendsFollowingNone = 0,    // User isn't following anybody in Friends list

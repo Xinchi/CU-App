@@ -10,6 +10,7 @@
 #import "TTTTimeIntervalFormatter.h"
 #import "PAPLoadMoreCell.h"
 #import "User.h"
+#import "PAPUtility.h"
 
 @interface PAPAccountViewController()
 @property (nonatomic, strong) UIView *headerView;

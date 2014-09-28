@@ -6,6 +6,7 @@
 //
 
 #import "PAPTabBarController.h"
+#import "PAPUtility.h"
 
 @interface PAPTabBarController ()
 @property (nonatomic,strong) UINavigationController *navController;

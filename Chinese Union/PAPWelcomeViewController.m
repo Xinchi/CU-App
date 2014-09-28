@@ -12,6 +12,7 @@
 #import "PAPHomeViewController.h"
 #import "PAPActivityFeedViewController.h"
 #import "Common.h"
+#import "PAPUtility.h"
 
 @interface PAPWelcomeViewController ()
 @property (nonatomic, strong) PAPHomeViewController *homeViewController;

@@ -28,7 +28,7 @@
 #import "PAPHomeViewController.h"
 #import "PAPActivityFeedViewController.h"
 #import "Common.h"
-
+#import "PAPUtility.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5

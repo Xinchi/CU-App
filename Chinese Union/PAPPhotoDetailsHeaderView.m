@@ -8,6 +8,7 @@
 #import "PAPPhotoDetailsHeaderView.h"
 #import "PAPProfileImageView.h"
 #import "TTTTimeIntervalFormatter.h"
+#import "PAPUtility.h"
 
 #define baseHorizontalOffset 20.0f
 #define baseWidth 280.0f
