@@ -323,11 +323,7 @@
         
         cell.photoButton.tag = indexPath.section;
         cell.imageView.image = [UIImage imageNamed:@"PlaceholderPhoto.png"];
-//        object = [self.objects objectAtIndex:cell.photoButton.tag];
         cell.imageView.file = [object objectForKey:kPAPPhotoPictureKey];
-//        UIImageView *av = [[UIImageView alloc] init];
-//        av.image = [UIImage imageNamed:@"backgroundLeather@2x.png"];
-//        cell.backgroundView = av;
         
         // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
         cell.backgroundColor = [UIColor clearColor];
