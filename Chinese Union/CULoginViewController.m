@@ -301,6 +301,7 @@
     }
     currentUser.firstName = userInfo[FB_USER_FIRST_NAME];
     currentUser.lastName = userInfo[FB_USER_LAST_NAME];
+    currentUser.displayName = [NSString stringWithFormat:@"%@ %@",currentUser.firstName, currentUser.lastName];
     currentUser.email = userInfo[FB_USER_EMAIL];
     currentUser.gender = userInfo[FB_USER_GENDER];
     currentUser.facebookId = userInfo[FB_USER_ID];

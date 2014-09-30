@@ -50,7 +50,7 @@
         self.pullToRefreshEnabled = YES;
         
         // Whether the built-in pagination is enabled
-        self.paginationEnabled = YES;
+        self.paginationEnabled = NO;
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
@@ -97,14 +97,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger sections = self.objects.count;
-    MyLog(@"# of sections in the photo table %d", sections);
+//    MyLog(@"# of sections in the photo table %d", sections);
     if (self.paginationEnabled && sections != 0)
         sections++;
     return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    MyLog(@"Setting numberOfRowsInSection");
+//    MyLog(@"Setting numberOfRowsInSection");
     return 1;
 }
 
@@ -298,7 +298,6 @@
 }
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
-    MyLog(@"########################");
     // overridden, since we want to implement sections
     if (indexPath.section < self.objects.count) {
         return [self.objects objectAtIndex:indexPath.section];

@@ -7,6 +7,7 @@
 
 #import "PAPUtility.h"
 #import "UIImage+ResizeAdditions.h"
+#import "User.h"
 
 @implementation PAPUtility
 
@@ -221,12 +222,12 @@
     }
 }
 
-+ (BOOL)userHasValidFacebookData:(PFUser *)user {
++ (BOOL)userHasValidFacebookData:(User *)user {
     NSString *facebookId = [user objectForKey:kPAPUserFacebookIDKey];
     return (facebookId && facebookId.length > 0);
 }
 
-+ (BOOL)userHasProfilePictures:(PFUser *)user {
++ (BOOL)userHasProfilePictures:(User *)user {
     PFFile *profilePictureMedium = [user objectForKey:kPAPUserProfilePicMediumKey];
     PFFile *profilePictureSmall = [user objectForKey:kPAPUserProfilePicSmallKey];
     
@@ -253,13 +254,13 @@
 
 #pragma mark User Following
 
-+ (void)followUserInBackground:(PFUser *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
-    if ([[user objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
++ (void)followUserInBackground:(User *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
+    if ([[user objectId] isEqualToString:[[User currentUser] objectId]]) {
         return;
     }
     
     PFObject *followActivity = [PFObject objectWithClassName:kPAPActivityClassKey];
-    [followActivity setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
+    [followActivity setObject:[User currentUser] forKey:kPAPActivityFromUserKey];
     [followActivity setObject:user forKey:kPAPActivityToUserKey];
     [followActivity setObject:kPAPActivityTypeFollow forKey:kPAPActivityTypeKey];
     
@@ -279,7 +280,7 @@
     [[PAPCache sharedCache] setFollowStatus:YES user:user];
 }
 
-+ (void)followUserEventually:(PFUser *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
++ (void)followUserEventually:(User *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
     if ([[user objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
         return;
     }
@@ -298,13 +299,13 @@
 }
 
 + (void)followUsersEventually:(NSArray *)users block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
-    for (PFUser *user in users) {
+    for (User *user in users) {
         [PAPUtility followUserEventually:user block:completionBlock];
         [[PAPCache sharedCache] setFollowStatus:YES user:user];
     }
 }
 
-+ (void)unfollowUserEventually:(PFUser *)user {
++ (void)unfollowUserEventually:(User *)user {
     PFQuery *query = [PFQuery queryWithClassName:kPAPActivityClassKey];
     [query whereKey:kPAPActivityFromUserKey equalTo:[PFUser currentUser]];
     [query whereKey:kPAPActivityToUserKey equalTo:user];
@@ -331,7 +332,7 @@
             [activity deleteEventually];
         }
     }];
-    for (PFUser *user in users) {
+    for (User *user in users) {
         [[PAPCache sharedCache] setFollowStatus:NO user:user];
     }
 }
@@ -339,7 +340,7 @@
 
 #pragma mark Push
 
-+ (void)sendFollowingPushNotification:(PFUser *)user {
++ (void)sendFollowingPushNotification:(User *)user {
     NSString *privateChannelName = [user objectForKey:kPAPUserPrivateChannelKey];
     if (privateChannelName && privateChannelName.length != 0) {
         NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:

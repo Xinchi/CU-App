@@ -54,6 +54,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     //Setup
     [self customizeTableView];
     [self setupAppearance];
@@ -62,6 +63,20 @@
     
     //[BugSenseController sharedControllerWithBugSenseAPIKey:@"fdc41c40"];
     [Appsee start:@"fa1fbc2f07994a42abf777db222bd85a"];
+    
+//    // Tracking Pushes and App Opens
+//    if (application.applicationState != UIApplicationStateBackground) {
+//        // Track an app open here if we launch with a push, unless
+//        // "content_available" was used to trigger a background push (introduced
+//        // in iOS 7). In that case, we skip tracking here to avoid double
+//        // counting the app-open.
+//        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+//        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+//        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+//            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//        }
+//    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
@@ -328,6 +343,7 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
+    MyLog(@"didRegisterForRemoteNotificationsWithDeviceToken:%@",newDeviceToken);
     [PFPush storeDeviceToken:newDeviceToken];
     
     if (application.applicationIconBadgeNumber != 0) {
@@ -347,12 +363,18 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    MyLog(@"didFailToRegisterForRemoteNotificationsWithError: %@",error);
     if ([error code] != 3010) { // 3010 is for the iPhone Simulator
         NSLog(@"Application failed to register for push notifications: %@", error);
     }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    if (application.applicationState == UIApplicationStateInactive) {
+//        // The application was just brought from the background to the foreground,
+//        // so we consider the app as having been "opened by a push notification."
+//    [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:userInfo];
     
     [delegate didReceiveRemoteNotification];

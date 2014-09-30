@@ -305,10 +305,29 @@
     //    [self.navigationController setViewControllers:[NSArray arrayWithObjects:self, self.tabBarController, nil] animated:NO];
 //    [self.navigationController pushViewController:self.tabBarController animated:NO];
     
+    MyLog(@"About to call registerForRemoteNotificationTypes");
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+//     UIRemoteNotificationTypeAlert|
+//     UIRemoteNotificationTypeSound];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
-     UIRemoteNotificationTypeAlert|
-     UIRemoteNotificationTypeSound];
+    if ([[UIApplication sharedApplication]respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        MyLog(@"iOS 8 Remote Notification Registration");
+        // iOS 8 Notifications
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        // iOS < 8 Notifications
+        MyLog(@"iOS 7 Remote Notification Registration");
+
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+
+    
     
     
     NSLog(@"Downloading user's profile picture");
