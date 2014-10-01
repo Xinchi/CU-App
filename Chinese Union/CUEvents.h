@@ -17,5 +17,6 @@
 @property(retain) NSString *duration;
 @property(retain) PFFile *image;
 @property(retain) CUProducts *product;
+@property(retain) PFGeoPoint *locationGeoPoint;
 
 @end

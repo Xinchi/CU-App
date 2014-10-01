@@ -16,8 +16,9 @@
 @dynamic start;
 @dynamic duration;
 @dynamic location;
-@dynamic product;
 @dynamic image;
+@dynamic product;
+@dynamic locationGeoPoint;
 
 + (NSString *)parseClassName {
     return NSStringFromClass([self class]);

@@ -24,6 +24,7 @@
 #import "CUFullProfileViewController.h"
 #import "UIViewController+Additions.h"
 #import "CUPurchaseHistoryViewController.h"
+#import "UIViewController+Additions.h"
 
 @interface ProfileViewController ()
 
@@ -153,7 +154,9 @@
 
 - (IBAction)myQRCodePressed:(UIButton *)sender {
     CUPurchaseHistoryViewController *vc = [[CUPurchaseHistoryViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:NULL];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [vc addExitButton];
+    [self presentViewController:nav animated:YES completion:NULL];
 }
 
 #pragma mark - ZBarReaderDelegate

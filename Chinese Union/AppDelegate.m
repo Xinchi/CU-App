@@ -120,6 +120,8 @@
     [self.window makeKeyAndVisible];
 //    NSInteger number= 10;
 //    [self createMembers:number];
+    [self handlePush:launchOptions];
+
     [self test];
     [self addReachability];
     
@@ -130,6 +132,15 @@
     return YES;
 }
 
+
+- (void)handlePush:(NSDictionary *)launchOptions {
+    MyLog(@"handlePush");
+    // If the app was launched in response to a push notification, we'll handle the payload here
+    NSDictionary *remoteNotificationPayload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (remoteNotificationPayload) {
+        MyLog(@"remoteNotificationPayload != null");
+    }
+}
 - (void)test {
 //    [ServiceCallManager getAllPurchaseHistoryWithBlock:^(NSArray *objects, NSError *error) {
 //        if(!error)
@@ -282,6 +293,8 @@
         [[PFInstallation currentInstallation] saveEventually];
     }
 }
+
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

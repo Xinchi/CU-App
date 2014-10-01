@@ -7,6 +7,8 @@
 //
 
 #import "CUPurchaseHistoryViewController.h"
+#import "Order.h"
+#import "User.h"
 
 @interface CUPurchaseHistoryViewController ()
 
@@ -33,5 +35,49 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Initialization
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if (self) {
+        
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = NO;
+        
+        [self.tableView setSeparatorColor:[UIColor colorWithRed:210.0f/255.0f green:203.0f/255.0f blue:182.0f/255.0f alpha:1.0]];
+    }
+    return self;
+}
+
+
+#pragma mark - PFQueryTableViewController
+
+- (PFQuery *)queryForTable {
+
+    PFQuery *query = [Order query];
+    [query whereKey:ORDERS_CUSTOMER equalTo:[User currentUser]];
+    [query orderByAscending:CREATION_DATE];
+    return query;
+}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+//    static UITableViewCell *FriendCellIdentifier;
+//    return FriendCellIdentifier;
+//}
+
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    MyLog(@"ObectsDidLoad");
+}
+
+
+
+
 
 @end
