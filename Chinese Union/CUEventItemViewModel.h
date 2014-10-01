@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSString *timeUnit;
 @property (strong, nonatomic) NSDate   *eventDate;
 @property (strong, nonatomic) UIColor  *timeUnitColor;
+@property (strong, nonatomic) UIImage  *image;
 
 @end
