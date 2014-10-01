@@ -128,7 +128,7 @@ NSString * const bigCellID = @"bigCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 174;
+    return 453;
 //    if (indexPath.row == 0)
 //    {
 //        return 120;

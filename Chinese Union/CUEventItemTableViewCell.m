@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet CUInsetLabel *timeUnitLabelBig;
 @property (weak, nonatomic) IBOutlet UILabel *eventDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 
 @end
 
@@ -98,6 +100,16 @@
         @strongify(self);
         NSString *eventLocationString = [NSString stringWithFormat:@"Location: %@", x];
         self.eventLocationLabel.text = eventLocationString;
+    }];
+    
+    [RACObserve(viewModel, image) subscribeNext:^(id x) {
+        @strongify(self);
+        self.eventImageView.image = x;
+    }];
+    
+    [RACObserve(viewModel, eventDescription) subscribeNext:^(id x) {
+        @strongify(self);
+        self.eventDescriptionLabel.text = x;
     }];
     
     viewModel.active = YES;

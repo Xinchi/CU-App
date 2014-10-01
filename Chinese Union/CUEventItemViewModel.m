@@ -38,6 +38,7 @@
     self.duration = self.event.duration;
     self.eventDate = self.event.start;
     self.location = self.event.location;
+    RAC(self, image) = [self imageSignal];
     
     //MyLog(@"Event %@", self.event);
     
@@ -45,6 +46,24 @@
     [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {
         @strongify(self);
         [self updateTimeToEventAndUnitReferenceDate:x];
+    }];
+}
+
+- (RACSignal *)imageSignal
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self.event.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (error)
+            {
+                [subscriber sendError:error];
+            }
+            else
+            {
+                [subscriber sendNext:[UIImage imageWithData:data]];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
     }];
 }
 
