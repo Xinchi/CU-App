@@ -52,6 +52,7 @@
 		426CEE51194D2BDE00522DCF /* CULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE4F194D2BDE00522DCF /* CULoginViewController.m */; };
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
+		4271114F19DC94160084F0B0 /* CUPurchaseHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -301,6 +302,8 @@
 		426CEE50194D2BDE00522DCF /* CULoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CULoginViewController.xib; sourceTree = "<group>"; };
 		426CEE54194D459400522DCF /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		4271114D19DC94160084F0B0 /* CUPurchaseHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPurchaseHistoryViewController.h; sourceTree = "<group>"; };
+		4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPurchaseHistoryViewController.m; sourceTree = "<group>"; };
 		4294F81519BCFDE4001E911C /* CUTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUTestHeader.h; sourceTree = "<group>"; };
 		4294F81619BCFE1B001E911C /* CUTestDateDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTestDateDifference.m; sourceTree = "<group>"; };
 		4294F81819BD1389001E911C /* CUEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewModel.h; sourceTree = "<group>"; };
@@ -737,6 +740,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		4271114B19DC936B0084F0B0 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				4271114D19DC94160084F0B0 /* CUPurchaseHistoryViewController.h */,
+				4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
 		42BCDC22199712B2009326CE /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +900,7 @@
 		5005F22B193EAC1600BF3DAC /* Chinese Union */ = {
 			isa = PBXGroup;
 			children = (
+				4271114B19DC936B0084F0B0 /* Order */,
 				500CC3A019D3C76500B14995 /* External */,
 				500CC31A19D3BB4000B14995 /* Anypic */,
 				5078487C19BE2B280036BC7A /* Common */,
@@ -1660,6 +1673,7 @@
 				42308B2D193FBEE30022D3E7 /* MosaicLayout.m in Sources */,
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
 				50932AB81959013600674269 /* PFProducts.m in Sources */,
+				4271114F19DC94160084F0B0 /* CUPurchaseHistoryViewController.m in Sources */,
 				500CC36919D3C5DA00B14995 /* PAPImageView.m in Sources */,
 				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
 				42A7620C19BCF9F1001CDE2A /* NSDate+Difference.m in Sources */,
