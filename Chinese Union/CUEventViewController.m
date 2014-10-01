@@ -46,7 +46,7 @@ NSString * const bigCellID = @"bigCellID";
     self.viewModel = [CUEventViewModel new];
     [self bindViewModel];
     
-    [self setupColors];
+    //[self setupColors];
 }
 
 - (void)setupColors
@@ -58,6 +58,8 @@ NSString * const bigCellID = @"bigCellID";
 {
     [super viewWillAppear:animated];
     
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow]
+                                  animated:YES];
     if ([self isMovingToParentViewController]) {
         [self.viewModel.getEventsCommand execute:nil];
     }
@@ -118,8 +120,8 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
     [cell bindViewModel:viewModel];
     
-    NSUInteger randomIndex = arc4random() % [self.colors count];
-    cell.textLabel.textColor = self.colors[randomIndex];
+    //NSUInteger randomIndex = arc4random() % [self.colors count];
+    //cell.textLabel.textColor = self.colors[randomIndex];
     
     return cell;
 }
@@ -141,16 +143,16 @@ NSString * const bigCellID = @"bigCellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CUEventItemTableViewCell *cell = (CUEventItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    //CUEventItemTableViewCell *cell = (CUEventItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     CUEventDetailViewController *vc = [[CUEventDetailViewController alloc] initWithNibName:@"CUEventDetailViewController" bundle:nil];
     vc.viewModel = self.viewModel.eventItemViewModels[indexPath.row];
-    vc.cellColor = cell.tapCircleColor;
+    //vc.cellColor = cell.tapCircleColor;
     [self.navigationController pushViewController:vc animated:YES];
     
-    NSUInteger randomIndex = arc4random() % [self.colors count];
-    cell.tapCircleColor = self.colors[randomIndex];
-    cell.backgroundFadeColor = self.colors[randomIndex];
+    //NSUInteger randomIndex = arc4random() % [self.colors count];
+    //cell.tapCircleColor = self.colors[randomIndex];
+    //cell.backgroundFadeColor = self.colors[randomIndex];
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @class CUEventItemViewModel;
 
-@interface CUEventItemTableViewCell : BFPaperTableViewCell
+@interface CUEventItemTableViewCell : UITableViewCell
 
 - (void)bindViewModel:(CUEventItemViewModel *)viewModel;
 

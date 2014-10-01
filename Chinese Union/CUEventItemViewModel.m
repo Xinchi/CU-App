@@ -39,7 +39,7 @@
     self.eventDate = self.event.start;
     self.location = self.event.location;
     
-    MyLog(@"Event %@", self.event);
+    //MyLog(@"Event %@", self.event);
     
     @weakify(self);
     [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {

@@ -28,8 +28,8 @@
     
     UINib *nib = [UINib nibWithNibName:@"CUEventItemBigTableViewCell" bundle:nil];
     self.cell = [[nib instantiateWithOwner:nil options:nil] firstObject];
-    self.cell.tapCircleColor = self.cellColor;
-    self.cell.backgroundFadeColor = self.cellColor;
+    //self.cell.tapCircleColor = self.cellColor;
+    //self.cell.backgroundFadeColor = self.cellColor;
 //    self.cell.layer.cornerRadius = 6;
 //    self.cell.layer.masksToBounds = YES;
 //    self.cell.layer.borderWidth = 1;

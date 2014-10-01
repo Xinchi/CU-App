@@ -28,6 +28,24 @@
 
 @implementation CUEventItemTableViewCell
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    UIEdgeInsets capInsets = UIEdgeInsetsMake(18, 0, 18, 0);
+    UIImage *backgroundImage = [UIImage imageNamed:@"EventCell"];
+    backgroundImage = [backgroundImage resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.image = backgroundImage;
+    self.backgroundView = imageView;
+    
+    UIImage *backgroundImageSelect = [UIImage imageNamed:@"EventCellSelect"];
+    backgroundImageSelect = [backgroundImageSelect resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+    UIImageView *imageViewSelect = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageViewSelect.image = backgroundImageSelect;
+    self.selectedBackgroundView = imageViewSelect;
+}
+
 - (void)bindViewModel:(CUEventItemViewModel *)viewModel
 {
     @weakify(self);
@@ -66,7 +84,7 @@
     
     [RACObserve(viewModel, eventDate) subscribeNext:^(id x) {
         @strongify(self);
-        NSString *eventDateString = [NSString stringWithFormat:@"Date: %@", [[NSDateFormatter eventDateFormatter] stringFromDate:x]];
+        NSString *eventDateString = [NSString stringWithFormat:@"%@", [[NSDateFormatter eventDateFormatter] stringFromDate:x]];
         self.eventDateLabel.text = eventDateString;
     }];
     
