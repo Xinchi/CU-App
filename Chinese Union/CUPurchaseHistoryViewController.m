@@ -9,6 +9,7 @@
 #import "CUPurchaseHistoryViewController.h"
 #import "Order.h"
 #import "User.h"
+#import "CUProducts.h"
 
 @interface CUPurchaseHistoryViewController ()
 
@@ -19,29 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = NSLocalizedString(@"Purchase History", @"");
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -65,19 +52,31 @@
     return query;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-//    static UITableViewCell *FriendCellIdentifier;
-//    return FriendCellIdentifier;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                        object:(Order *)object {
+    MyLog(@"object:%@", object);
+    
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    //cell.imageView.file = object.item.image;
+    cell.textLabel.text = object.name;
+    
+    MyLog(@"object name %@", object.name);
+    
+    cell.detailTextLabel.text = [object.item.price stringValue];
+    
+    return cell;
+}
 
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
-    MyLog(@"ObectsDidLoad");
+    //MyLog(@"ObectsDidLoad %@", self.objects);
 }
-
-
-
-
 
 @end
