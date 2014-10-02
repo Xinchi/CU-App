@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (strong, nonatomic) CUFullProfileViewModel *viewModel;
@@ -55,15 +55,31 @@
 
 - (void)bindViewModel
 {
-    RAC(self.nameLabel, text) = RACObserve(self.viewModel, name);
-    RAC(self.wechatLabel, text) = RACObserve(self.viewModel, wechatId);
+    @weakify(self);
+    [[RACSignal combineLatest:@[RACObserve(self.viewModel, name),
+                               RACObserve(self.viewModel, email),
+                               RACObserve(self.viewModel, phone),
+                               RACObserve(self.viewModel, gender),
+                               RACObserve(self.viewModel, wechatId)
+                               ]] subscribeNext:^(RACTuple *x) {
+        @strongify(self);
+        NSString *name = [x first];
+        NSString *email = [x second];
+        NSString *phone = [x third];
+        NSString *gender = [x fourth];
+        NSString *wechatID = [x fifth];
+        
+        self.textView.text = [NSString stringWithFormat:@"%@\n\n%@\n\n%@\n\n%@\n\n%@", name, email, phone, gender, wechatID];
+    }];
+//    RAC(self.nameLabel, text) = RACObserve(self.viewModel, name);
+//    RAC(self.wechatLabel, text) = RACObserve(self.viewModel, wechatId);
 //    RAC(self.yearLabel, text) = RACObserve(self.viewModel.person, year);
 //    RAC(self.majorLabel, text) = RACObserve(self.viewModel.person, major);
     RAC(self.profilePicImageView, image) = RACObserve(self.viewModel, profilePic);
     // TODO: More info needs to be displayed here.  (email, phone, gender, and QR Code)
-    RAC(self.emailLabel, text) = RACObserve(self.viewModel, email);
-    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
-    RAC(self.genderLabel, text) = RACObserve(self.viewModel, gender);    
+//    RAC(self.emailLabel, text) = RACObserve(self.viewModel, email);
+//    RAC(self.phoneLabel, text) = RACObserve(self.viewModel, phone);
+//    RAC(self.genderLabel, text) = RACObserve(self.viewModel, gender);    
 }
 
 - (void)didReceiveMemoryWarning
