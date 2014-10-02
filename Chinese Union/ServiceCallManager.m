@@ -159,6 +159,7 @@
     } else if (order == DESCENDING) {
         [query orderByDescending:CUEVENT_START_DATE];
     }
+    [query includeKey:@"product"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects, error);
     }];
