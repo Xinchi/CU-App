@@ -60,17 +60,17 @@
     MyLog(@"object:%@", object);
     
     static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     
-    //cell.imageView.file = object.item.image;
+    cell.imageView.file = object.item.image;
     cell.textLabel.text = object.name;
     
     MyLog(@"object name %@", object.name);
     
-//    cell.detailTextLabel.text = [object.item.price stringValue];
+    cell.detailTextLabel.text = [object.item.price stringValue];
     
     return cell;
 }
