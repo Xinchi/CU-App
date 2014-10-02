@@ -370,7 +370,9 @@
                 NSNumber *badgeValue = [numberFormatter numberFromString:currentBadgeValue];
                 NSNumber *newBadgeValue = [NSNumber numberWithInt:[badgeValue intValue] + 1];
                 tabBarItem.badgeValue = [numberFormatter stringFromNumber:newBadgeValue];
+                MyLog(@"At Possible place 4, badgeValue has been set to %@", tabBarItem.badgeValue);
             } else {
+                
                 tabBarItem.badgeValue = @"1";
             }
             MyLog(@"currentBadgeValue = %@", tabBarItem.badgeValue);
