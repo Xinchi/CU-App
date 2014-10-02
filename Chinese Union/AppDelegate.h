@@ -12,8 +12,8 @@
 @protocol RemoteNotificationDelegate <NSObject>
 
 @required
-- (void) didReceiveRemoteNotification;
-
+- (void) didReceiveRemoteNotification: (NSDictionary *)userInfo;
+- (void) didReceiveRemoteNotificationPayload:(NSDictionary *)remoteNotificationPayload;
 @end
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

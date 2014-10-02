@@ -10,6 +10,9 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
+#import "PAPPhotoDetailsViewController.h"
+#import "PAPAccountViewController.h"
+#import "Common.h"
 
 @interface PAPHomeViewController ()
 @property (nonatomic, strong) PAPSettingsActionSheetDelegate *settingsActionSheetDelegate;
@@ -125,31 +128,13 @@
     [self.hud setLabelText:@"Following Friends"];
 }
 
-#pragma mark - RemoteNotificationDelegate
 
-- (void) didReceiveRemoteNotification{
-        if ([PFUser currentUser]) {
-            if ([self.tabBarController viewControllers].count > PAPActivityTabBarItemIndex) {
-                UITabBarItem *tabBarItem = [[[self.tabBarController viewControllers] objectAtIndex:PAPActivityTabBarItemIndex] tabBarItem];
-    
-                NSString *currentBadgeValue = tabBarItem.badgeValue;
-    
-                if (currentBadgeValue && currentBadgeValue.length > 0) {
-                    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-                    NSNumber *badgeValue = [numberFormatter numberFromString:currentBadgeValue];
-                    NSNumber *newBadgeValue = [NSNumber numberWithInt:[badgeValue intValue] + 1];
-                    tabBarItem.badgeValue = [numberFormatter stringFromNumber:newBadgeValue];
-                } else {
-                    tabBarItem.badgeValue = @"1";
-                }
-            }
-        }
-}
 - (void)autoFollowTimerFired:(NSTimer *)aTimer {
     [MBProgressHUD hideHUDForView:self.navigationController.presentedViewController.view animated:YES];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self loadObjects];
 }
+
 
 
 @end

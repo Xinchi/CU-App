@@ -54,7 +54,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    MyLog(@"[AppDelegate didFinishLaunchingWithOptions");
     //Setup
     [self customizeTableView];
     [self setupAppearance];
@@ -138,7 +138,13 @@
     // If the app was launched in response to a push notification, we'll handle the payload here
     NSDictionary *remoteNotificationPayload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (remoteNotificationPayload) {
-        MyLog(@"remoteNotificationPayload != null");
+        [Common showAlertTitle:@"Push" msg:@"remoteNotificationPayload !+ null" onView:self.mainViewController.view];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:remoteNotificationPayload];
+        if([User currentUser])
+        {
+//            [delegate didReceiveRemoteNotificationPayload:remoteNotificationPayload];
+        }
+        
     }
 }
 - (void)test {
@@ -383,14 +389,14 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    MyLog(@"AppDelegate application didReceiveRemoteNotification userInfo");
+    
 //    if (application.applicationState == UIApplicationStateInactive) {
 //        // The application was just brought from the background to the foreground,
 //        // so we consider the app as having been "opened by a push notification."
 //    [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:userInfo];
-    
-    [delegate didReceiveRemoteNotification];
+
+    [delegate didReceiveRemoteNotification:userInfo];
     
 }
 

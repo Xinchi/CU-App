@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MosaicLayoutDelegate.h"
 #import "SignUpViewController.h"
+#import "AppDelegate.h"
 
 @class PAPTabBarController;
-@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate, CUSignUpViewControllerDelegate, UITabBarControllerDelegate>
+@interface CUMainViewController : UIViewController<UICollectionViewDelegate, MosaicLayoutDelegate, CUSignUpViewControllerDelegate, UITabBarControllerDelegate, RemoteNotificationDelegate>
 
 @property (nonatomic, strong) PAPTabBarController *tabBarController;
 

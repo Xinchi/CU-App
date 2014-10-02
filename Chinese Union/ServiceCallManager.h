@@ -50,6 +50,8 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (NSArray *)getAllTheBatches;
 
+
++ (void)logOut;
 /**
  * Highly dangerous method, use with extra caution
  */

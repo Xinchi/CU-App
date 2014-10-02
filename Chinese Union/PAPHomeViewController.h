@@ -9,7 +9,7 @@
 #import "FBCallBack.h"
 #import "AppDelegate.h"
 
-@interface PAPHomeViewController : PAPPhotoTimelineViewController <FBCallBackDelegate, RemoteNotificationDelegate>
+@interface PAPHomeViewController : PAPPhotoTimelineViewController <FBCallBackDelegate>
 
 @property (nonatomic, assign, getter = isFirstLaunch) BOOL firstLaunch;
 
