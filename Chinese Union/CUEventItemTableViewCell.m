@@ -125,6 +125,11 @@
         self.expandLabel.text = x;
     }];
     
+    [RACObserve(viewModel, product) subscribeNext:^(id x) {
+        @strongify(self);
+        self.buyTicketButton.enabled = x != nil;
+    }];
+    
 //    if (![self.eventDescriptionTextView hasMoreText]) {
 //        @strongify(self);
 //        self.expandLabelConstraint.constant = 0;
