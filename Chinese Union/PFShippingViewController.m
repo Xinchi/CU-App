@@ -224,6 +224,7 @@ typedef enum {
     
     PFImageView *productImageView = [[PFImageView alloc] init];
     productImageView.file = self.product[@"image"];
+    [productImageView loadInBackground];
     productImageView.contentMode = UIViewContentModeScaleAspectFit;
     productImageView.frame = CGRectMake(x, 0.0f, 120.0f - 40.0f, 94.0f);
     productImageView.clipsToBounds = YES;

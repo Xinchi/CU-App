@@ -15,6 +15,7 @@
 #import "MRProgress.h"
 #import "CUResizableTextView.h"
 #import "PFShippingViewController.h"
+#import "ServiceCallManager.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -148,9 +149,35 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
     CUProducts *product = viewModel.product;
     
-    PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:product size:nil];
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [[[[[self fetchSignalForObject:product]
+     initially:^{
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    }] finally:^{
+        [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+        
+    }] deliverOn:[RACScheduler mainThreadScheduler]]
+     subscribeNext:^(id x) {
+         MyLog(@"Product %@", x);
+         PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:x size:nil];
+         [self.navigationController pushViewController:vc animated:YES];
+     }];
+}
+
+- (RACSignal *)fetchSignalForObject:(PFObject *)product
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [product fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else
+            {
+                [subscriber sendNext:object];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
 }
 
 - (void)tapped:(UITapGestureRecognizer *)sender
