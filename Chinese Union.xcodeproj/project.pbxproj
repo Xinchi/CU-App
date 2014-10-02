@@ -54,6 +54,7 @@
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
 		4271114F19DC94160084F0B0 /* CUPurchaseHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */; };
 		4271115519DCBA350084F0B0 /* CUResizableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115419DCBA350084F0B0 /* CUResizableTextView.m */; };
+		4271115819DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115719DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -307,6 +308,8 @@
 		4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPurchaseHistoryViewController.m; sourceTree = "<group>"; };
 		4271115319DCBA350084F0B0 /* CUResizableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUResizableTextView.h; sourceTree = "<group>"; };
 		4271115419DCBA350084F0B0 /* CUResizableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUResizableTextView.m; sourceTree = "<group>"; };
+		4271115619DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPurchaseHistoryDetailTableViewController.h; sourceTree = "<group>"; };
+		4271115719DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPurchaseHistoryDetailTableViewController.m; sourceTree = "<group>"; };
 		4294F81519BCFDE4001E911C /* CUTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUTestHeader.h; sourceTree = "<group>"; };
 		4294F81619BCFE1B001E911C /* CUTestDateDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTestDateDifference.m; sourceTree = "<group>"; };
 		4294F81819BD1389001E911C /* CUEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewModel.h; sourceTree = "<group>"; };
@@ -748,6 +751,8 @@
 			children = (
 				4271114D19DC94160084F0B0 /* CUPurchaseHistoryViewController.h */,
 				4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */,
+				4271115619DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.h */,
+				4271115719DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1626,6 +1631,7 @@
 				500CC35119D3C45500B14995 /* PAPPhotoDetailsFooterView.m in Sources */,
 				42308B2F193FBEE30022D3E7 /* MosaicCell.m in Sources */,
 				50932AB71959013600674269 /* PFShippingViewController.m in Sources */,
+				4271115819DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m in Sources */,
 				5078487F19BE2B530036BC7A /* Common.m in Sources */,
 				500CC37E19D3C64E00B14995 /* PAPAccountViewController.m in Sources */,
 				5078485219B869810036BC7A /* PKCard.m in Sources */,

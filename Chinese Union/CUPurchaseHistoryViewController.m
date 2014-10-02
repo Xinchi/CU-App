@@ -10,6 +10,7 @@
 #import "Order.h"
 #import "User.h"
 #import "CUProducts.h"
+#import "CUPurchaseHistoryDetailTableViewController.h"
 
 @interface CUPurchaseHistoryViewController ()
 
@@ -70,6 +71,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CUPurchaseHistoryDetailTableViewController *vc = [[CUPurchaseHistoryDetailTableViewController alloc] initWithOrder:[self objectAtIndexPath:indexPath]];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
