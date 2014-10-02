@@ -49,6 +49,8 @@
     PFQuery *query = [Order query];
     [query whereKey:ORDERS_CUSTOMER equalTo:[User currentUser]];
     [query orderByAscending:CREATION_DATE];
+    [query includeKey:@"item"];
+    [query includeKey:@"customer"];
     return query;
 }
 
@@ -68,7 +70,7 @@
     
     MyLog(@"object name %@", object.name);
     
-    cell.detailTextLabel.text = [object.item.price stringValue];
+//    cell.detailTextLabel.text = [object.item.price stringValue];
     
     return cell;
 }
