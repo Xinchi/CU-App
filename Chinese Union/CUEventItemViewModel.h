@@ -25,4 +25,6 @@
 @property (strong, nonatomic) UIColor  *timeUnitColor;
 @property (strong, nonatomic) UIImage  *image;
 
+@property (nonatomic) BOOL isExpanded;
+
 @end

@@ -10,6 +10,7 @@
 #import "CUEventItemViewModel.h"
 #import "NSDateFormatter+Additions.h"
 #import "CUInsetLabel.h"
+#import "CUResizableTextView.h"
 
 @interface CUEventItemTableViewCell ()
 
@@ -24,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
-@property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 
 @end
 
@@ -109,7 +109,16 @@
     
     [RACObserve(viewModel, eventDescription) subscribeNext:^(id x) {
         @strongify(self);
-        self.eventDescriptionLabel.text = x;
+        self.eventDescriptionTextView.text = x;
+//        [self.eventDescriptionTextView sizeToFit];
+//        self.textViewHeightConstraint.constant = self.eventDescriptionTextView.contentSize.height;
+        MyLog(@"Contentsize %@", NSStringFromCGSize(self.eventDescriptionTextView.contentSize));
+//        [self.eventDescriptionTextView layoutIfNeeded];
+    }];
+    
+    [RACObserve(viewModel, isExpanded) subscribeNext:^(id x) {
+        @strongify(self);
+        self.eventDescriptionTextView.isOriginal = ![x boolValue];
     }];
     
     viewModel.active = YES;

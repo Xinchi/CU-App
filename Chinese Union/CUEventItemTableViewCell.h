@@ -10,9 +10,11 @@
 #import "BFPaperTableViewCell.h"
 
 @class CUEventItemViewModel;
+@class CUResizableTextView;
 
 @interface CUEventItemTableViewCell : UITableViewCell
 
 - (void)bindViewModel:(CUEventItemViewModel *)viewModel;
+@property (weak, nonatomic) IBOutlet CUResizableTextView *eventDescriptionTextView;
 
 @end

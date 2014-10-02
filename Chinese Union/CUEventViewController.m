@@ -13,6 +13,7 @@
 #import "UIColor+BFPaperColors.h"
 #import "CUEventDetailViewController.h"
 #import "MRProgress.h"
+#import "CUResizableTextView.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -23,10 +24,19 @@ NSString * const bigCellID = @"bigCellID";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *colors;
+@property (strong, nonatomic) CUEventItemTableViewCell *protoCell;
 
 @end
 
 @implementation CUEventViewController
+
+- (CUEventItemTableViewCell *)protoCell
+{
+    if (_protoCell == nil) {
+        _protoCell = [self.tableView dequeueReusableCellWithIdentifier:bigCellID];
+    }
+    return _protoCell;
+}
 
 - (void)viewDidLoad
 {
@@ -120,14 +130,32 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
     [cell bindViewModel:viewModel];
     
+    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [cell.eventDescriptionTextView addGestureRecognizer:gr];
+    
     //NSUInteger randomIndex = arc4random() % [self.colors count];
     //cell.textLabel.textColor = self.colors[randomIndex];
     
     return cell;
 }
 
+- (void)tapped:(UITapGestureRecognizer *)sender
+{
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.view.superview.superview];
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
+    viewModel.isExpanded = !viewModel.isExpanded;
+    [self.tableView reloadData];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CUEventItemTableViewCell *cell = self.protoCell;
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+    [cell bindViewModel:viewModel];
+    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height;
+    
     return 453;
 //    if (indexPath.row == 0)
 //    {
@@ -141,18 +169,18 @@ NSString * const bigCellID = @"bigCellID";
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //CUEventItemTableViewCell *cell = (CUEventItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
-    CUEventDetailViewController *vc = [[CUEventDetailViewController alloc] initWithNibName:@"CUEventDetailViewController" bundle:nil];
-    vc.viewModel = self.viewModel.eventItemViewModels[indexPath.row];
-    //vc.cellColor = cell.tapCircleColor;
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    //NSUInteger randomIndex = arc4random() % [self.colors count];
-    //cell.tapCircleColor = self.colors[randomIndex];
-    //cell.backgroundFadeColor = self.colors[randomIndex];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    //CUEventItemTableViewCell *cell = (CUEventItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    
+//    CUEventDetailViewController *vc = [[CUEventDetailViewController alloc] initWithNibName:@"CUEventDetailViewController" bundle:nil];
+//    vc.viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+//    //vc.cellColor = cell.tapCircleColor;
+//    [self.navigationController pushViewController:vc animated:YES];
+//    
+//    //NSUInteger randomIndex = arc4random() % [self.colors count];
+//    //cell.tapCircleColor = self.colors[randomIndex];
+//    //cell.backgroundFadeColor = self.colors[randomIndex];
+//}
 
 @end

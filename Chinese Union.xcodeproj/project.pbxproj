@@ -53,6 +53,7 @@
 		426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426CEE50194D2BDE00522DCF /* CULoginViewController.xib */; };
 		426CEE56194D459400522DCF /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 426CEE55194D459400522DCF /* NSString+Additions.m */; };
 		4271114F19DC94160084F0B0 /* CUPurchaseHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */; };
+		4271115519DCBA350084F0B0 /* CUResizableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115419DCBA350084F0B0 /* CUResizableTextView.m */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -304,6 +305,8 @@
 		426CEE55194D459400522DCF /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		4271114D19DC94160084F0B0 /* CUPurchaseHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPurchaseHistoryViewController.h; sourceTree = "<group>"; };
 		4271114E19DC94160084F0B0 /* CUPurchaseHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPurchaseHistoryViewController.m; sourceTree = "<group>"; };
+		4271115319DCBA350084F0B0 /* CUResizableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUResizableTextView.h; sourceTree = "<group>"; };
+		4271115419DCBA350084F0B0 /* CUResizableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUResizableTextView.m; sourceTree = "<group>"; };
 		4294F81519BCFDE4001E911C /* CUTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUTestHeader.h; sourceTree = "<group>"; };
 		4294F81619BCFE1B001E911C /* CUTestDateDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTestDateDifference.m; sourceTree = "<group>"; };
 		4294F81819BD1389001E911C /* CUEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewModel.h; sourceTree = "<group>"; };
@@ -824,6 +827,8 @@
 				4267107819BD376900965EB5 /* CUTimeManager.m */,
 				4267107F19BD854600965EB5 /* CUInsetLabel.h */,
 				4267108019BD854600965EB5 /* CUInsetLabel.m */,
+				4271115319DCBA350084F0B0 /* CUResizableTextView.h */,
+				4271115419DCBA350084F0B0 /* CUResizableTextView.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1688,6 +1693,7 @@
 				5005F282193EDD7500BF3DAC /* ProfileViewController.m in Sources */,
 				500CC36319D3C4E000B14995 /* PAPPhotoCell.m in Sources */,
 				500CC37419D3C61C00B14995 /* PAPLogInViewController.m in Sources */,
+				4271115519DCBA350084F0B0 /* CUResizableTextView.m in Sources */,
 				5005F314194968E300BF3DAC /* qrinput.c in Sources */,
 				42079F0519A4858F0054EF14 /* CUYearSelectionTableViewCell.m in Sources */,
 				42308B53193FC1030022D3E7 /* AFNetworkActivityIndicatorManager.m in Sources */,
