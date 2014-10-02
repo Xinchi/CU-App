@@ -29,13 +29,21 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi0-OF-Vyg">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D14-uX-zgh">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D14-uX-zgh">
                             <rect key="frame" x="17" y="112" width="286" height="140"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="140" id="LKn-14-cgX"/>
+                                <constraint firstAttribute="width" constant="286" id="T1c-eZ-vxq"/>
+                            </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJE-WT-rRw">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJE-WT-rRw">
                             <rect key="frame" x="17" y="289" width="286" height="113"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="286" id="DPo-NT-WIG"/>
+                                <constraint firstAttribute="height" constant="113" id="Smu-wP-3eG"/>
+                            </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-Ha-CyK">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ge-Ha-CyK">
                             <rect key="frame" x="132" y="197" width="56" height="30"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                             <state key="normal" title="Activate">
@@ -45,7 +53,7 @@
                                 <action selector="activateButtonPressed:" destination="-1" eventType="touchUpInside" id="ndd-6N-ow0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJF-S3-tF3">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJF-S3-tF3">
                             <rect key="frame" x="83" y="331" width="154" height="30"/>
                             <state key="normal" title="Purchase Membership">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,37 +62,57 @@
                                 <action selector="purchaseMemberButtonPressed:" destination="-1" eventType="touchUpInside" id="xuo-9X-8Uk"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gjt-TI-Kj6" customClass="SLGlowingTextField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gjt-TI-Kj6" customClass="SLGlowingTextField">
                             <rect key="frame" x="66" y="159" width="188" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="You haven't purchased membership" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="ApR-CS-l5i">
                             <rect key="frame" x="23" y="84" width="274" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="lCM-JH-1Gt"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MR1-78-s4o">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MR1-78-s4o">
                             <rect key="frame" x="151" y="260" width="19" height="21"/>
                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activate a member ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zn1-wT-mye">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Activate a member ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zn1-wT-mye">
                             <rect key="frame" x="77" y="130" width="166" height="21"/>
                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="hYn-jp-GaS">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="hYn-jp-GaS">
                             <rect key="frame" x="17" y="270" width="126" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="126" id="Ayl-WZ-yJo"/>
+                                <constraint firstAttribute="height" constant="1" id="FSE-XD-9wR"/>
+                            </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="ZsJ-0d-OXR">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="ZsJ-0d-OXR">
                             <rect key="frame" x="177" y="270" width="126" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="126" id="5rk-LL-9vL"/>
+                                <constraint firstAttribute="height" constant="1" id="8SC-aH-CkC"/>
+                            </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="ApR-CS-l5i" firstAttribute="top" secondItem="pi0-OF-Vyg" secondAttribute="top" constant="84" id="TKv-3Y-Nfo"/>
+                        <constraint firstItem="aJF-S3-tF3" firstAttribute="top" secondItem="hJE-WT-rRw" secondAttribute="bottom" constant="-71" id="6QG-xb-CRh"/>
+                        <constraint firstItem="hJE-WT-rRw" firstAttribute="top" secondItem="MR1-78-s4o" secondAttribute="bottom" constant="8" id="9wI-Us-gHe"/>
+                        <constraint firstItem="0ge-Ha-CyK" firstAttribute="top" secondItem="gjt-TI-Kj6" secondAttribute="bottom" constant="8" id="Ryn-SI-PDw"/>
+                        <constraint firstItem="ApR-CS-l5i" firstAttribute="top" secondItem="pi0-OF-Vyg" secondAttribute="top" constant="20" id="TKv-3Y-Nfo"/>
+                        <constraint firstItem="D14-uX-zgh" firstAttribute="top" secondItem="ApR-CS-l5i" secondAttribute="bottom" constant="8" id="WG2-uR-ebH"/>
+                        <constraint firstItem="gjt-TI-Kj6" firstAttribute="top" secondItem="Zn1-wT-mye" secondAttribute="bottom" constant="8" id="b6t-ef-g6r"/>
+                        <constraint firstItem="ZsJ-0d-OXR" firstAttribute="centerY" secondItem="MR1-78-s4o" secondAttribute="centerY" id="bSC-ov-A6f"/>
+                        <constraint firstItem="MR1-78-s4o" firstAttribute="top" secondItem="D14-uX-zgh" secondAttribute="bottom" constant="8" id="jS8-DP-EGH"/>
+                        <constraint firstItem="MR1-78-s4o" firstAttribute="centerY" secondItem="hYn-jp-GaS" secondAttribute="centerY" id="jca-of-sVg"/>
+                        <constraint firstItem="gjt-TI-Kj6" firstAttribute="top" secondItem="ApR-CS-l5i" secondAttribute="bottom" constant="55" id="rE5-qT-wTB"/>
                     </constraints>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="JuE-EQ-l02" appends="YES" id="8fS-5g-Kkq"/>
