@@ -194,12 +194,22 @@ NSString * const bigCellID = @"bigCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CUEventItemTableViewCell *cell = self.protoCell;
+//    cell.translatesAutoresizingMaskIntoConstraints = NO;
+//    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+//    
+//    [cell setNeedsUpdateConstraints];
+//    [cell updateConstraintsIfNeeded];
+    
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
     [cell bindViewModel:viewModel];
-    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height;
     
-    return 453;
+//    [cell setNeedsLayout];
+//    [cell layoutIfNeeded];
+
+    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1;
+    
+    return 488;
 //    if (indexPath.row == 0)
 //    {
 //        return 120;
