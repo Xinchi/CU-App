@@ -19,11 +19,13 @@
 #import "PFProductsViewController.h"
 #import "Constants.h"
 #import "ServiceCallManager.h"
+#import "CUProducts.h"
 
 @interface CUMemberViewController ()
 
 @property (retain) User *user;
 @property CUMembers *cuMember;
+@property (retain) CUProducts *memberProduct;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
 @property (weak, nonatomic) IBOutlet UIView *memberView;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
@@ -129,6 +131,7 @@
         self.memberCardBackgroundImageView.image = backgroundImage;
     }
     else {
+        
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
         UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);
         backgroundImage = [backgroundImage resizableImageWithCapInsets:backgroundInsets];
