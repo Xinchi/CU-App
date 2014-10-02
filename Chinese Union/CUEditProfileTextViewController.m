@@ -75,10 +75,12 @@
         case CUProfileEditFirstName:
             MyLog(@"Editing first name");
             user.firstName = self.textField.text;
+            user.displayName = [NSString stringWithFormat:@"%@ %@",user.firstName, user.lastName];
             break;
             
         case CUProfileEditLastName:
             user.lastName = self.textField.text;
+            user.displayName = [NSString stringWithFormat:@"%@ %@",user.firstName, user.lastName];
             break;
             
         case CUProfileEditEmail:

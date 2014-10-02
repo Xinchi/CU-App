@@ -142,7 +142,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:remoteNotificationPayload];
         if([User currentUser])
         {
-//            [delegate didReceiveRemoteNotificationPayload:remoteNotificationPayload];
+            [delegate didReceiveRemoteNotificationPayload:remoteNotificationPayload];
         }
         
     }
@@ -417,7 +417,24 @@
 #pragma mark - AppDelegate
 
 - (BOOL)isParseReachable {
+    MyLog(@"isParseReachable");
+    networkStatus = [self.reach currentReachabilityStatus];
     return self.networkStatus != NotReachable;
+}
+
+//Called by Reachability whenever status changes.
+- (void)reachabilityChanged:(NSNotification* )note {
+    Reachability *curReach = (Reachability *)[note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    NSLog(@"Reachability changed: %@", curReach);
+//    networkStatus = [curReach currentReachabilityStatus];
+    networkStatus = [self.reach currentReachabilityStatus];
+    
+//    if ([self isParseReachable] && [PFUser currentUser] && self.homeViewController.objects.count == 0) {
+//        // Refresh home timeline on network restoration. Takes care of a freshly installed app that failed to load the main timeline under bad network conditions.
+//        // In this case, they'd see the empty timeline placeholder and have no way of refreshing the timeline unless they followed someone.
+//        [self.homeViewController loadObjects];
+//    }
 }
 
 

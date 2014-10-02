@@ -105,6 +105,7 @@
     user.phone = self.phoneTextField.text;
     user.wechatID = self.weChatTextField.text;
     user.birthday = self.birthday;
+    user.displayName = [NSString stringWithFormat:@"%@ %@",user.firstName, user.lastName];
     if(self.segmentControl.selectedSegmentIndex==0)
         user.gender = kMale;
     else
