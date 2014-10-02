@@ -57,20 +57,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
                         object:(Order *)object {
-    MyLog(@"object:%@", object);
-    
     static NSString *cellID = @"cellID";
     PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     
     cell.imageView.file = object.item.image;
-    cell.textLabel.text = object.name;
-    
-    MyLog(@"object name %@", object.name);
-    
-    cell.detailTextLabel.text = [object.item.price stringValue];
+    cell.textLabel.text = object.item.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%@", [object.item.price stringValue]];
     
     return cell;
 }
