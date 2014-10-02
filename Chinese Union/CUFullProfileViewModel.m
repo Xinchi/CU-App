@@ -40,7 +40,7 @@
     }];
     
     self.name = [NSString stringWithFormat:@"Name: %@ %@", self.person.firstName, self.person.lastName];
-    self.email = [NSString stringWithFormat:@"EMail: %@", self.person.email];
+    self.email = [NSString stringWithFormat:@"Email: %@", self.person.email];
     self.phone = [NSString stringWithFormat:@"Phone: %@", self.person.phone];
     self.gender = [NSString stringWithFormat:@"Gender: %@", self.person.gender];
     self.wechatId = [NSString stringWithFormat:@"WeChat: %@", self.person.wechatID];

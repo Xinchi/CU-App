@@ -33,12 +33,15 @@
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         self.parseClassName = @"CUProducts";
         [self.tableView registerClass:[PFProductTableViewCell class] forCellReuseIdentifier:@"ParseProduct"];
+        MyLog(@"Here");
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
 
 - (void)viewDidLoad {
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"CU Store", @"");
@@ -58,6 +61,7 @@
     self.pickerView.delegate = self;
     self.pickerView.hidden = YES;
     [self.view addSubview:self.pickerView];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

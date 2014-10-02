@@ -14,6 +14,7 @@
 #import "CUEvents.h"
 #import "Constants.h"
 #import "Order.h"
+#import "CUProducts.h"
 
 @implementation ServiceCallManager
 
@@ -236,6 +237,14 @@
     
     [User logOut];
     
+}
+
++ (void)getMembershipProductWithBlock: (PFObjectResultBlock)block
+{
+    PFQuery *query = [CUProducts query];
+    [query getObjectInBackgroundWithId:@"oVPBv4Aqqu" block:^(PFObject *object, NSError *error){
+        block(object, error);
+    }];
 }
 
 
