@@ -341,15 +341,19 @@ static NSString * const choosePhoto = @"Choose Existing Photo";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading ... " mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
     User *user = [User currentUser];
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     NSData *imageData = UIImagePNGRepresentation(chosenImage);
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     user.profilePic = image;
+    user.profilePictureMedium = image;
+    user.profilePictureSmall = image;
 
 
-    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view title:@"Uploading ... " mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
+
 
     [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         // Handle success or failure here ...
@@ -384,7 +388,7 @@ static NSString * const choosePhoto = @"Choose Existing Photo";
         [MRProgressOverlayView overlayForView:self.navigationController.view].progress = ratio;
     }];
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
     [self.tableView reloadData];
 }
 

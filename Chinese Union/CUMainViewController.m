@@ -270,9 +270,10 @@
 
 
 - (void)configureTabBar {
+    MyLog(@"configureTabBar");
     self.tabBarController = [[PAPTabBarController alloc] init];
     self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
-    //    [self.homeViewController setFirstLaunch:firstLaunch];
+//    [self.homeViewController setFirstLaunch:firstLaunch];
     self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
     
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
@@ -364,7 +365,6 @@
             UITabBarItem *tabBarItem = [[[self.tabBarController viewControllers] objectAtIndex:PAPActivityTabBarItemIndex] tabBarItem];
             
             NSString *currentBadgeValue = tabBarItem.badgeValue;
-            
             if (currentBadgeValue && currentBadgeValue.length > 0) {
                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
                 NSNumber *badgeValue = [numberFormatter numberFromString:currentBadgeValue];
@@ -373,6 +373,7 @@
             } else {
                 tabBarItem.badgeValue = @"1";
             }
+            MyLog(@"currentBadgeValue = %@", tabBarItem.badgeValue);
         }
     }
 }
