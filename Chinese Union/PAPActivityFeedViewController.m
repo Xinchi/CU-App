@@ -90,6 +90,12 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined UCSD CU";
     lastRefresh = [[NSUserDefaults standardUserDefaults] objectForKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    self.navigationController.tabBarItem.badgeValue = nil;
+
+}
 
 #pragma mark - UITableViewDelegate
 
@@ -178,7 +184,9 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined UCSD CU";
     
     if (self.objects.count == 0 && ![[self queryForTable] hasCachedResult]) {
         self.tableView.scrollEnabled = NO;
+        
         self.navigationController.tabBarItem.badgeValue = nil;
+        MyLog(@"At Possible place 1, badgeValue has been set to %@", self.navigationController.tabBarItem.badgeValue);
 
         if (!self.blankTimelineView.superview) {
             self.blankTimelineView.alpha = 0.0f;
@@ -194,16 +202,19 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined UCSD CU";
         
         NSUInteger unreadCount = 0;
         for (PFObject *activity in self.objects) {
+//            MyLog(@"lastRefresh = %@  and activity was created at = %@", lastRefresh, [activity createdAt]);
             if ([lastRefresh compare:[activity createdAt]] == NSOrderedAscending && ![[activity objectForKey:kPAPActivityTypeKey] isEqualToString:kPAPActivityTypeJoined]) {
                 unreadCount++;
             }
         }
         
-        if (unreadCount > 0) {
-            self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",unreadCount];
-        } else {
-            self.navigationController.tabBarItem.badgeValue = nil;
-        }
+//        if (unreadCount > 0) {
+//            self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",unreadCount];
+//            MyLog(@"At Possible place 2, badgeValue has been set to %@", self.navigationController.tabBarItem.badgeValue);
+//        } else {
+//            self.navigationController.tabBarItem.badgeValue = nil;
+//            MyLog(@"At Possible place 3, badgeValue has been set to %@", self.navigationController.tabBarItem.badgeValue);
+//        }
     }
 }
 
