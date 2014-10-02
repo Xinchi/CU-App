@@ -218,5 +218,24 @@
     }];
 }
 
++ (void)logOut{
+    MyLog(@"[ServiceCallManager logOut]");
+    // clear cache
+    [[PAPCache sharedCache] clear];
+    
+    // clear NSUserDefaults
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPAPUserDefaultsCacheFacebookFriendsKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPAPUserDefaultsActivityFeedViewControllerLastRefreshKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Unsubscribe from push notifications
+    [[PFInstallation currentInstallation] removeObjectForKey:kPAPInstallationUserKey];
+    [[PFInstallation currentInstallation] removeObject:[[PFUser currentUser] objectForKey:kPAPUserPrivateChannelKey] forKey:kPAPInstallationChannelsKey];
+    [[PFInstallation currentInstallation] saveEventually];
+    
+    [User logOut];
+    
+}
+
 
 @end

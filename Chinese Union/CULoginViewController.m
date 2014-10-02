@@ -127,13 +127,28 @@
     [ServiceCallManager callFunctionInBackground:@"loginSuccessful" withParameters:@{} block:^(NSString *result, NSError *error){
         if(!error){
 
-            
+            [self subscribeToPrivateChannelForFacebookUser:NO];
             [self showAlertTitle:NSLocalizedString(@"Success!", @"")
                              msg:result];
             [self dismissViewControllerAnimated:YES completion:nil];
 
         }
     }];
+}
+
+-(void) subscribeToPrivateChannelForFacebookUser:(BOOL)facebookUser
+{
+    // Subscribe to private push channel
+    User *user = [User currentUser];
+    if (user) {
+        NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", [user objectId]];
+        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPAPInstallationUserKey];
+        [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kPAPInstallationChannelsKey];
+        [[PFInstallation currentInstallation] saveEventually];
+        [user setObject:privateChannelName forKey:kPAPUserPrivateChannelKey];
+        if(!facebookUser)
+            [user saveInBackground];
+    }
 }
 
 - (IBAction)viewTapped:(id)sender {
@@ -203,14 +218,7 @@
                     NSLog(@"user info: %@", [userInfo description]);
                     
                     // Subscribe to private push channel
-                    User *user = [User currentUser];
-                    if (user) {
-                        NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", [user objectId]];
-                        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kPAPInstallationUserKey];
-                        [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kPAPInstallationChannelsKey];
-                        [[PFInstallation currentInstallation] saveEventually];
-                        [user setObject:privateChannelName forKey:kPAPUserPrivateChannelKey];
-                    }
+                    [self subscribeToPrivateChannelForFacebookUser:YES];
                     
                     //
                     if(syncFromFBAllowedByUser)
@@ -249,8 +257,8 @@
 //            [FBRequestConnection startWithGraphPath:@"me/friends" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 //                FBCallBack *fbCallBack;
 //                if (!error) {
-//                    NSDictionary *permissions= result;
-////                    MyLog(@"friends = %@",permissions);
+//                    NSDictionary *friends= result;
+//                    MyLog(@"friends = %@",friends);
 //                    if(fbCallBack == nil)
 //                    {
 //                        fbCallBack = [[FBCallBack alloc] init];

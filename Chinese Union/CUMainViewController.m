@@ -29,6 +29,8 @@
 #import "PAPActivityFeedViewController.h"
 #import "Common.h"
 #import "PAPUtility.h"
+#import "PAPPhotoDetailsViewController.h"
+#import "PAPAccountViewController.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -53,7 +55,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    AppDelegate *allDelegate = [[UIApplication sharedApplication] delegate];
+    allDelegate.delegate = self;
+    
+    //set up anypic
+    [self configureTabBar];
+    
     //register reachability
     [ReachabilityController registerForViewController:self];
     
@@ -244,7 +251,7 @@
             [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.navigationController.view];
             return;
         }
-        [self configureTabBar];
+        
         VC = self.tabBarController;
     }
     
@@ -342,6 +349,81 @@
 - (BOOL)tabBarController:(UITabBarController *)aTabBarController shouldSelectViewController:(UIViewController *)viewController {
     // The empty UITabBarItem behind our Camera button should not load a view controller
     return ![viewController isEqual:[[aTabBarController viewControllers] objectAtIndex:PAPEmptyTabBarItemIndex]];
+}
+
+#pragma mark - RemoteNotificationDelegate
+
+- (void)didReceiveRemoteNotification: (NSDictionary *)userInfo
+{
+    MyLog(@"[CUMainViewController didReceiveRemoteNotification]");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:userInfo];
+    
+    if ([PFUser currentUser]) {
+        if ([self.tabBarController viewControllers].count > PAPActivityTabBarItemIndex) {
+            UITabBarItem *tabBarItem = [[[self.tabBarController viewControllers] objectAtIndex:PAPActivityTabBarItemIndex] tabBarItem];
+            
+            NSString *currentBadgeValue = tabBarItem.badgeValue;
+            
+            if (currentBadgeValue && currentBadgeValue.length > 0) {
+                NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                NSNumber *badgeValue = [numberFormatter numberFromString:currentBadgeValue];
+                NSNumber *newBadgeValue = [NSNumber numberWithInt:[badgeValue intValue] + 1];
+                tabBarItem.badgeValue = [numberFormatter stringFromNumber:newBadgeValue];
+            } else {
+                tabBarItem.badgeValue = @"1";
+            }
+        }
+    }
+}
+
+- (void) didReceiveRemoteNotificationPayload:(NSDictionary *)remoteNotificationPayload
+{
+    if ([PFUser currentUser]) {
+        // if the push notification payload references a photo, we will attempt to push this view controller into view
+        NSString *photoObjectId = [remoteNotificationPayload objectForKey:kPAPPushPayloadPhotoObjectIdKey];
+        NSString *fromObjectId = [remoteNotificationPayload objectForKey:kPAPPushPayloadFromUserObjectIdKey];
+        if (photoObjectId && photoObjectId.length > 0) {
+            // check if this photo is already available locally.
+            
+            PFObject *targetPhoto = [PFObject objectWithoutDataWithClassName:kPAPPhotoClassKey objectId:photoObjectId];
+            for (PFObject *photo in [self.homeViewController objects]) {
+                if ([[photo objectId] isEqualToString:photoObjectId]) {
+                    NSLog(@"Found a local copy");
+                    targetPhoto = photo;
+                    break;
+                }
+            }
+            
+            // if we have a local copy of this photo, this won't result in a network fetch
+            [targetPhoto fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                if (!error) {
+                    UINavigationController *homeNavigationController = [[self.tabBarController viewControllers] objectAtIndex:PAPHomeTabBarItemIndex];
+                    [self.tabBarController setSelectedViewController:homeNavigationController];
+                    
+                    PAPPhotoDetailsViewController *detailViewController = [[PAPPhotoDetailsViewController alloc] initWithPhoto:object];
+                    [homeNavigationController pushViewController:detailViewController animated:YES];
+                }
+            }];
+        } else if (fromObjectId && fromObjectId.length > 0) {
+            // load fromUser's profile
+            
+            PFQuery *query = [PFUser query];
+            query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+            [query getObjectInBackgroundWithId:fromObjectId block:^(PFObject *user, NSError *error) {
+                if (!error) {
+                    UINavigationController *homeNavigationController = [[self.tabBarController viewControllers] objectAtIndex:PAPHomeTabBarItemIndex];
+                    [self.tabBarController setSelectedViewController:homeNavigationController];
+                    
+                    PAPAccountViewController *accountViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+                    [accountViewController setUser:(User *)user];
+                    [homeNavigationController pushViewController:accountViewController animated:YES];
+                }
+            }];
+            
+        }
+    }
+
 }
 
 @end

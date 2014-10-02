@@ -109,7 +109,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == self.actionSheet.destructiveButtonIndex) {
         [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-        [User logOut];
+        [ServiceCallManager logOut];
         [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
         [self.navigationController popViewControllerAnimated:YES];
 //        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
@@ -120,7 +120,6 @@
 #pragma mark - IBAction
 
 - (IBAction)logOutButtonTapAction:(id)sender {
-    NSLog(@"Logging out...");
     [self.actionSheet showInView:self.view];
 }
 
