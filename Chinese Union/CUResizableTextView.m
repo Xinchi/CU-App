@@ -10,12 +10,16 @@
 
 @interface CUResizableTextView ()
 
-@property (nonatomic) CGFloat originalHeight;
-@property (weak, nonatomic) NSLayoutConstraint *heightConstraint;
-
 @end
 
 @implementation CUResizableTextView
+
+- (BOOL)hasMoreText
+{
+    MyLog(@"%@", self.text);
+    CGSize contentSize = [self sizeThatFits:CGSizeMake(self.frame.size.width, FLT_MAX)];
+    return contentSize.height > self.originalHeight;
+}
 
 - (void)awakeFromNib
 {

@@ -38,6 +38,8 @@
     self.duration = self.event.duration;
     self.eventDate = self.event.start;
     self.location = self.event.location;
+    self.product = self.event.product;
+    
     RAC(self, image) = [self imageSignal];
     
     //MyLog(@"Event %@", self.event);
@@ -46,6 +48,17 @@
     [RACObserve(self.manager, referenceDate) subscribeNext:^(id x) {
         @strongify(self);
         [self updateTimeToEventAndUnitReferenceDate:x];
+    }];
+    
+    [RACObserve(self, isExpanded) subscribeNext:^(id x) {
+        @strongify(self);
+        if ([x boolValue]) {
+            self.expandHintString = NSLocalizedString(@"Less", @"");
+        }
+        else
+        {
+            self.expandHintString = NSLocalizedString(@"More", @"");
+        }
     }];
 }
 

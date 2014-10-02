@@ -10,6 +10,7 @@
 
 @class CUEvents;
 @class CUTimeManager;
+@class CUProducts;
 
 @interface CUEventItemViewModel : RVMViewModel
 
@@ -24,7 +25,9 @@
 @property (strong, nonatomic) NSDate   *eventDate;
 @property (strong, nonatomic) UIColor  *timeUnitColor;
 @property (strong, nonatomic) UIImage  *image;
+@property (strong, nonatomic) CUProducts *product;
 
+@property (strong, nonatomic) NSString *expandHintString;
 @property (nonatomic) BOOL isExpanded;
 
 @end

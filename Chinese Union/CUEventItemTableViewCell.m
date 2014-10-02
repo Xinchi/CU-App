@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *expandLabelConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *expandLabel;
 
 @end
 
@@ -110,16 +112,23 @@
     [RACObserve(viewModel, eventDescription) subscribeNext:^(id x) {
         @strongify(self);
         self.eventDescriptionTextView.text = x;
-//        [self.eventDescriptionTextView sizeToFit];
-//        self.textViewHeightConstraint.constant = self.eventDescriptionTextView.contentSize.height;
-        MyLog(@"Contentsize %@", NSStringFromCGSize(self.eventDescriptionTextView.contentSize));
-//        [self.eventDescriptionTextView layoutIfNeeded];
+        
     }];
     
     [RACObserve(viewModel, isExpanded) subscribeNext:^(id x) {
         @strongify(self);
         self.eventDescriptionTextView.isOriginal = ![x boolValue];
     }];
+    
+    [RACObserve(viewModel, expandHintString) subscribeNext:^(id x) {
+        @strongify(self);
+        self.expandLabel.text = x;
+    }];
+    
+//    if (![self.eventDescriptionTextView hasMoreText]) {
+//        @strongify(self);
+//        self.expandLabelConstraint.constant = 0;
+//    }
     
     viewModel.active = YES;
     [[self rac_prepareForReuseSignal] subscribeNext:^(id x) {

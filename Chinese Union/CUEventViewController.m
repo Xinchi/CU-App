@@ -14,6 +14,7 @@
 #import "CUEventDetailViewController.h"
 #import "MRProgress.h"
 #import "CUResizableTextView.h"
+#import "PFShippingViewController.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -133,10 +134,23 @@ NSString * const bigCellID = @"bigCellID";
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [cell.eventDescriptionTextView addGestureRecognizer:gr];
     
+    [cell.buyTicketButton addTarget:self action:@selector(buyTicketButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     //NSUInteger randomIndex = arc4random() % [self.colors count];
     //cell.textLabel.textColor = self.colors[randomIndex];
     
     return cell;
+}
+
+- (void)buyTicketButtonPressed:(UIButton *)sender
+{
+    NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.superview.superview];
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
+    CUProducts *product = viewModel.product;
+    
+    PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:product size:nil];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tapped:(UITapGestureRecognizer *)sender
