@@ -17,5 +17,7 @@
 
 + (NSString *)getUsefulErrorMessage: (NSError *)error;
 
++ (UIImage *)generateQRCodeWithData: (NSString *)data withSize:(CGFloat)size withFillColor: (UIColor *)fillColor;
+
 
 @end

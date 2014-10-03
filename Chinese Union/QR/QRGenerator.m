@@ -24,4 +24,10 @@
     }
     return nil;
 }
+
++ (UIImage *)QRImageWithSize:(CGFloat)size withString:(NSString *)data fillColor:(UIColor *)fillColor
+{
+    UIImage *QR = [UIImage mdQRCodeForString:data size:size fillColor:fillColor];
+    return QR;
+}
 @end

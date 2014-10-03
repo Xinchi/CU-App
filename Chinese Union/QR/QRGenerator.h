@@ -10,6 +10,6 @@
 
 @interface QRGenerator : NSObject
 
-+ (UIImage *)QRImageWithSize:(CGFloat)size fillColor:(UIColor *)fillColor;
++ (UIImage *)QRImageWithSize:(CGFloat)size withString:(NSString *)data fillColor:(UIColor *)fillColor;
 
 @end

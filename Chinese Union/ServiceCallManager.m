@@ -242,7 +242,7 @@
 + (void)getMembershipProductWithBlock: (PFObjectResultBlock)block
 {
     PFQuery *query = [CUProducts query];
-    [query getObjectInBackgroundWithId:@"oVPBv4Aqqu" block:^(PFObject *object, NSError *error){
+    [query getObjectInBackgroundWithId:CUMemberObjectID block:^(PFObject *object, NSError *error){
         block(object, error);
     }];
 }

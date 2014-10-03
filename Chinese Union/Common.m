@@ -9,6 +9,9 @@
 #import "Common.h"
 #import "MRProgress.h"
 #import "User.h"
+#import "QRGenerator.h"
+#import "UIImage+MDQRCode.h"
+
 
 @implementation Common
 
@@ -34,7 +37,11 @@
     return [error userInfo][@"error"];
 }
 
-
++ (UIImage *)generateQRCodeWithData: (NSString *)data withSize:(CGFloat)size withFillColor: (UIColor *)fillColor
+{
+    UIImage *QR = [UIImage mdQRCodeForString:data size:size fillColor:fillColor];
+    return QR;
+}
 
 
 

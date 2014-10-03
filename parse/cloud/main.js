@@ -207,7 +207,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     // order and mark it as 'charged'.
     order.set('stripePaymentId', purchase.id);
     order.set('charged', true);
-    if(request.params.itemName == "Membership") {
+    if(request.params.itemName == "CU Membership") {
 
       // Update the membership 
       var currentUser = Parse.User.current();

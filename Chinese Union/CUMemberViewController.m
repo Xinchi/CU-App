@@ -20,6 +20,7 @@
 #import "Constants.h"
 #import "ServiceCallManager.h"
 #import "CUProducts.h"
+#import "Common.h"
 
 @interface CUMemberViewController ()
 
@@ -123,7 +124,7 @@
         self.userPicImageView.layer.cornerRadius = 8;
         self.userPicImageView.layer.masksToBounds = YES;
         self.userPicImageView.layer.borderWidth = 0;
-        self.QRcodeImageView.image =  [QRGenerator QRImageWithSize:self.QRcodeImageView.frame.size.width  fillColor:[UIColor darkGrayColor]];;
+        self.QRcodeImageView.image = [Common generateQRCodeWithData:self.user.objectId withSize:self.QRcodeImageView.frame.size.width withFillColor:[UIColor darkGrayColor]];
         
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
         UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);
