@@ -13,7 +13,7 @@
 
 
 @property (retain) NSString *name;
-@property (retain) NSString *description;
+@property (retain) NSString *detail;
 @property (retain) PFFile *image;
 @property (retain) NSNumber *price;
 @property (retain) NSNumber *price_non_member_male;
