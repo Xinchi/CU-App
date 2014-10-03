@@ -193,23 +193,23 @@ NSString * const bigCellID = @"bigCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CUEventItemTableViewCell *cell = self.protoCell;
+//    CUEventItemTableViewCell *cell = self.protoCell;
 //    cell.translatesAutoresizingMaskIntoConstraints = NO;
 //    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
 //    
 //    [cell setNeedsUpdateConstraints];
 //    [cell updateConstraintsIfNeeded];
     
-    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
-    [cell bindViewModel:viewModel];
+//    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+//    [cell bindViewModel:viewModel];
     
 //    [cell setNeedsLayout];
 //    [cell layoutIfNeeded];
 
-    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 1;
+//    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    return size.height + 1;
     
-    return 488;
+    return 498;
 //    if (indexPath.row == 0)
 //    {
 //        return 120;
