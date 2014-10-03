@@ -22,7 +22,7 @@ NSString * const cellId = @"cellId";
 
 - (instancetype)initWithOrder:(Order *)order
 {
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.order = order;
     }

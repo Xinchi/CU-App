@@ -77,6 +77,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
     //MyLog(@"ObectsDidLoad %@", self.objects);
