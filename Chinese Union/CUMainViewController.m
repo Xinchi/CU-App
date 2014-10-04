@@ -80,6 +80,8 @@
         self.title = currentConfig[@"AppTitle"] ? : @"UCSD CU";
     }];
     
+    [PFConfig currentConfig];
+    
     self.dataSource = [[CustomDataSource alloc] init];
     self.collectionView.dataSource = self.dataSource;
 
