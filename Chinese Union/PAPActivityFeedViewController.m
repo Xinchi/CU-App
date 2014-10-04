@@ -160,15 +160,14 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined UCSD CU";
     // If there is no network connection, we will hit the cache first.
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     
-//    if (self.objects.count == 0 || ![appDelegate isParseReachable]) {
-//        if(![appDelegate isParseReachable])
-//            MyLog(@"isParseReachable ＝ NO");
-//        if(self.objects.count == 0)
-//            MyLog(@"self.objects.count == 0");
-//        MyLog(@"Loading from cache");
-//        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
-//    }
-    
+    if (self.objects.count == 0 || ![appDelegate isParseReachable]) {
+        if(![appDelegate isParseReachable])
+            MyLog(@"isParseReachable ＝ NO");
+        if(self.objects.count == 0)
+            MyLog(@"self.objects.count == 0");
+        MyLog(@"Loading from cache first and then network");
+        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    }
 
     return query;
 }

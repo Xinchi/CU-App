@@ -66,4 +66,7 @@ typedef void (^CompletionBlock)(id, NSError*);
 + (void)getAllPurchaseHistoryWithSortingOrder: (SortOrder)order WithBlock: (PFArrayResultBlock)block;
 
 + (void)getMembershipProductWithBlock: (PFObjectResultBlock)block;
+
++ (void)getAppConfigWithBlock: (CUAppConfigResultBlock)block;
+
 @end

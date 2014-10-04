@@ -72,7 +72,10 @@
     self.sideMenuViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     
     // Do any additional setup after loading the view from its nib.
-    self.title = @"UCSD CU";
+//    self.title = @"UCSD CU";
+    [ServiceCallManager getAppConfigWithBlock:^(PFConfig *config, NSError *error) {
+        self.title = config[@"AppTitle"];
+    }];
     
     self.dataSource = [[CustomDataSource alloc] init];
     self.collectionView.dataSource = self.dataSource;

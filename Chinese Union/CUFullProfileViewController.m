@@ -46,7 +46,7 @@
     self.profilePicImageView.layer.borderWidth = 0;
     
     //we need to pull the person info first
-    self.person = (User *)[ServiceCallManager fecthForObject:self.person];
+//    self.person = (User *)[ServiceCallManager fecthForObject:self.person];
     self.title = [NSString stringWithFormat:@"%@ %@", self.person.firstName, self.person.lastName];
     
     self.viewModel = [[CUFullProfileViewModel alloc] initWithPerson:self.person];

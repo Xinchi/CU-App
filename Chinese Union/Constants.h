@@ -58,6 +58,7 @@ extern BOOL const STATIC_MEMBERSHIP_ENDING_DATE;
 
 typedef void (^CUUserResultBlock)(User *user, NSError *error);
 typedef void (^CUDateResultBlock)(NSDate *date, NSError *error);
+typedef void (^CUAppConfigResultBlock)(PFConfig *config, NSError *error);
 
 #ifndef Constants_h
 #define Constants_h

@@ -20,12 +20,14 @@
 @implementation ServiceCallManager
 
 static CUMainViewController *mainViewController;
-
+const NSTimeInterval configRefreshInterval = 12.0 * 60.0 * 60.0;
+static NSDate *lastFetchedDate;
 
 + (void)setMainViewController:(CUMainViewController *) mainVC
 {
     mainViewController = mainVC;
 }
+
 + (ServiceCallManager *)manager
 {
     static ServiceCallManager *sharedInstance;
@@ -155,6 +157,7 @@ static CUMainViewController *mainViewController;
         [query whereKey:BATCH_FIELD equalTo:batch];
     }
     query.limit = 1000;
+    [query includeKey:@"associatedPerson"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         block(objects, error);
     }];
@@ -259,6 +262,23 @@ static CUMainViewController *mainViewController;
     [query getObjectInBackgroundWithId:CUMemberObjectID block:^(PFObject *object, NSError *error){
         block(object, error);
     }];
+}
+
++ (void)getAppConfigWithBlock: (CUAppConfigResultBlock)block
+{
+    // Fetches the config at most once every 12 hours per app runtime
+
+    if (lastFetchedDate == nil ||
+        [lastFetchedDate timeIntervalSinceNow] * -1.0 > configRefreshInterval) {
+        MyLog(@"Fetching new config");
+        [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error) {
+            block(config,error);
+        }];
+        lastFetchedDate = [NSDate date];
+    } else {
+        MyLog(@"Using cached config");
+        block([PFConfig currentConfig],nil);
+    }
 }
 
 
