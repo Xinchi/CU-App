@@ -43,7 +43,7 @@
     imageView.image = backgroundImage;
     self.backgroundView = imageView;
     
-    UIImage *backgroundImageSelect = [UIImage imageNamed:@"EventCellSelect"];
+    UIImage *backgroundImageSelect = [UIImage imageNamed:@"EventCell"];
     backgroundImageSelect = [backgroundImageSelect resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     UIImageView *imageViewSelect = [[UIImageView alloc] initWithFrame:self.bounds];
     imageViewSelect.image = backgroundImageSelect;
@@ -111,14 +111,14 @@
     
     [RACObserve(viewModel, eventDescription) subscribeNext:^(id x) {
         @strongify(self);
-        self.eventDescriptionTextView.text = x;
+        self.eventDescriptionLabel.text = x;
         
     }];
     
-    [RACObserve(viewModel, isExpanded) subscribeNext:^(id x) {
-        @strongify(self);
-        self.eventDescriptionTextView.isOriginal = ![x boolValue];
-    }];
+//    [RACObserve(viewModel, isExpanded) subscribeNext:^(id x) {
+//        @strongify(self);
+//        self.eventDescriptionTextView.isOriginal = ![x boolValue];
+//    }];
     
     [RACObserve(viewModel, expandHintString) subscribeNext:^(id x) {
         @strongify(self);
