@@ -57,6 +57,8 @@
 		4271115819DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115719DDFF4A0084F0B0 /* CUPurchaseHistoryDetailTableViewController.m */; };
 		4271115C19DE238D0084F0B0 /* CUQRCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115A19DE238D0084F0B0 /* CUQRCodeTableViewCell.m */; };
 		4271115D19DE238D0084F0B0 /* CUQRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4271115B19DE238D0084F0B0 /* CUQRCodeTableViewCell.xib */; };
+		4271116119DF5EB80084F0B0 /* CUTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115F19DF5EB80084F0B0 /* CUTextViewController.m */; };
+		4271116219DF5EB80084F0B0 /* CUTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4271116019DF5EB80084F0B0 /* CUTextViewController.xib */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -315,6 +317,9 @@
 		4271115919DE238D0084F0B0 /* CUQRCodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUQRCodeTableViewCell.h; sourceTree = "<group>"; };
 		4271115A19DE238D0084F0B0 /* CUQRCodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUQRCodeTableViewCell.m; sourceTree = "<group>"; };
 		4271115B19DE238D0084F0B0 /* CUQRCodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUQRCodeTableViewCell.xib; sourceTree = "<group>"; };
+		4271115E19DF5EB80084F0B0 /* CUTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTextViewController.h; sourceTree = "<group>"; };
+		4271115F19DF5EB80084F0B0 /* CUTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTextViewController.m; sourceTree = "<group>"; };
+		4271116019DF5EB80084F0B0 /* CUTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUTextViewController.xib; sourceTree = "<group>"; };
 		4294F81519BCFDE4001E911C /* CUTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUTestHeader.h; sourceTree = "<group>"; };
 		4294F81619BCFE1B001E911C /* CUTestDateDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTestDateDifference.m; sourceTree = "<group>"; };
 		4294F81819BD1389001E911C /* CUEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewModel.h; sourceTree = "<group>"; };
@@ -842,6 +847,9 @@
 				4267108019BD854600965EB5 /* CUInsetLabel.m */,
 				4271115319DCBA350084F0B0 /* CUResizableTextView.h */,
 				4271115419DCBA350084F0B0 /* CUResizableTextView.m */,
+				4271115E19DF5EB80084F0B0 /* CUTextViewController.h */,
+				4271115F19DF5EB80084F0B0 /* CUTextViewController.m */,
+				4271116019DF5EB80084F0B0 /* CUTextViewController.xib */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1508,6 +1516,7 @@
 				5078485C19B869810036BC7A /* amex@2x.png in Resources */,
 				50932B771960B77000674269 /* CUMemberViewController.xib in Resources */,
 				42079F0419A4842F0054EF14 /* CUYearSelectionTableViewCell.xib in Resources */,
+				4271116219DF5EB80084F0B0 /* CUTextViewController.xib in Resources */,
 				426CEE52194D2BDE00522DCF /* CULoginViewController.xib in Resources */,
 				4264B25B19D501C500195938 /* CUPersonnelListTableViewCell.xib in Resources */,
 				5078485F19B869810036BC7A /* cvc.png in Resources */,
@@ -1669,6 +1678,7 @@
 				50932AC21959027E00674269 /* STPCheckoutView.m in Sources */,
 				50932A9F1957714900674269 /* CUSales.m in Sources */,
 				500CC38219D3C66B00B14995 /* PAPEditPhotoViewController.m in Sources */,
+				4271116119DF5EB80084F0B0 /* CUTextViewController.m in Sources */,
 				425490791957D92B005A61B0 /* CUInputButton.m in Sources */,
 				500CC37819D3C63100B14995 /* PAPPhotoTimelineViewController.m in Sources */,
 				500CC36219D3C4E000B14995 /* PAPLoadMoreCell.m in Sources */,

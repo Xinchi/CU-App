@@ -16,6 +16,9 @@
 #import "CUResizableTextView.h"
 #import "PFShippingViewController.h"
 #import "ServiceCallManager.h"
+//#import "FPPopoverController.h"
+#import "CUTextViewController.h"
+#import "WYPopoverController.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -27,6 +30,7 @@ NSString * const bigCellID = @"bigCellID";
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *colors;
 @property (strong, nonatomic) CUEventItemTableViewCell *protoCell;
+@property (strong, nonatomic) WYPopoverController *popover;
 
 @end
 
@@ -133,7 +137,7 @@ NSString * const bigCellID = @"bigCellID";
     [cell bindViewModel:viewModel];
     
     UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    [cell.eventDescriptionTextView addGestureRecognizer:gr];
+    [cell.eventDescriptionLabel addGestureRecognizer:gr];
     
     [cell.buyTicketButton addTarget:self action:@selector(buyTicketButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -186,30 +190,44 @@ NSString * const bigCellID = @"bigCellID";
 {
     NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.view.superview.superview];
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
-    viewModel.isExpanded = !viewModel.isExpanded;
-    [self.tableView reloadData];
+    CUTextViewController *vc = [[CUTextViewController alloc] init];
+    vc.aString = viewModel.eventDescription;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+    
+    self.popover = [[WYPopoverController alloc] initWithContentViewController:nav];
+    self.popover.theme = [WYPopoverTheme themeForIOS7];
+    self.popover.popoverLayoutMargins = UIEdgeInsetsMake(40, 40, 40, 40);
+    [self.popover presentPopoverFromRect:sender.view.bounds inView:sender.view permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
+
+//    self.popover = [[FPPopoverController alloc] initWithViewController:vc];
+//    [self.popover presentPopoverFromView:sender.view];
+    
+//    viewModel.isExpanded = !viewModel.isExpanded;
+//    [self.tableView reloadData];
 //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CUEventItemTableViewCell *cell = self.protoCell;
+//    CUEventItemTableViewCell *cell = self.protoCell;
 //    cell.translatesAutoresizingMaskIntoConstraints = NO;
 //    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
 //    
 //    [cell setNeedsUpdateConstraints];
 //    [cell updateConstraintsIfNeeded];
     
-    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
-    [cell bindViewModel:viewModel];
+//    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+//    [cell bindViewModel:viewModel];
     
 //    [cell setNeedsLayout];
 //    [cell layoutIfNeeded];
 
-    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 1;
+//    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    return size.height + 1;
     
-    return 488;
+    return 498;
 //    if (indexPath.row == 0)
 //    {
 //        return 120;
@@ -221,6 +239,18 @@ NSString * const bigCellID = @"bigCellID";
 }
 
 #pragma mark - UITableViewDelegate
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
+//    CUTextViewController *vc = [[CUTextViewController alloc] init];
+//    vc.aString = viewModel.eventDescription;
+//    
+//    CUEventItemTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    self.popover = [[FPPopoverController alloc] initWithViewController:vc];
+//    [self.popover presentPopoverFromView:cell.eventDescriptionLabel];
+//}
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{

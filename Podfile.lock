@@ -65,6 +65,7 @@ PODS:
   - TPWeakProxy (1.0.1)
   - TTTAttributedLabel (1.10.1)
   - UIColor+BFPaperColors (1.2.1)
+  - WYPopoverController (0.3.0)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Specta (~> 0.2.1)
   - TTTAttributedLabel (~> 1.10.1)
   - UIColor+BFPaperColors (~> 1.2.1)
+  - WYPopoverController (~> 0.3.0)
   - ZBarSDK (~> 1.2)
 
 SPEC CHECKSUMS:
@@ -114,6 +116,7 @@ SPEC CHECKSUMS:
   TPWeakProxy: da4177b6ae5eff685642c1cd9698f71ef7060ea5
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
   UIColor+BFPaperColors: 7b45ea51681ab93307a215e4d6b937dd2ea9968d
+  WYPopoverController: baedfa782641cf1d59b95730a5a9a9d613a9a12c
   ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
 
 COCOAPODS: 0.33.1

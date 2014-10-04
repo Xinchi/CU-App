@@ -15,7 +15,8 @@
 @interface CUEventItemTableViewCell : UITableViewCell
 
 - (void)bindViewModel:(CUEventItemViewModel *)viewModel;
-@property (weak, nonatomic) IBOutlet CUResizableTextView *eventDescriptionTextView;
+//@property (weak, nonatomic) IBOutlet CUResizableTextView *eventDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buyTicketButton;
 
 @end
