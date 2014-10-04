@@ -12,7 +12,7 @@
 @implementation CUProducts
 
 @dynamic name;
-@dynamic description;
+@dynamic detail;
 @dynamic image;
 @dynamic price;
 @dynamic price_non_member_male;

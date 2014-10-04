@@ -26,7 +26,7 @@
 @interface CUMemberViewController ()
 
 @property (retain) User *user;
-@property CUMembers *cuMember;
+//@property CUMembers *cuMember;
 @property __block CUProducts *membershipProduct;
 @property (retain) CUProducts *memberProduct;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
@@ -91,10 +91,11 @@
     self.memberView.hidden    = !isAMember;
     
     if (isAMember) {
+        [self.user.cuMember fetchIfNeeded];
         self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
         self.memberIDLabel.text = self.user.cuMember.objectId;
-        MyLog(@"Membership Expire Date = %@",self.cuMember.expireDate);
-        self.expireDateLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.cuMember.expireDate];
+        MyLog(@"Membership Expire Date = %@",self.user.cuMember.expireDate);
+        self.expireDateLabel.text = [[NSDateFormatter birthdayFormatter] stringFromDate:self.user.cuMember.expireDate];
         NSData *imageData = [self.user.profilePic getData];
         UIImage *profileImage = [UIImage imageWithData:imageData];
         self.userPicImageView.image = profileImage;
