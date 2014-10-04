@@ -17,6 +17,7 @@
 @property (nonatomic, strong) PFFile *thumbnailFile;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
+@property BOOL keyBoardAppearsForTheFirstTime;
 @end
 
 @implementation PAPEditPhotoViewController
@@ -27,6 +28,7 @@
 @synthesize thumbnailFile;
 @synthesize fileUploadBackgroundTaskId;
 @synthesize photoPostBackgroundTaskId;
+@synthesize keyBoardAppearsForTheFirstTime;
 
 #pragma mark - NSObject
 
@@ -46,6 +48,7 @@
         self.fileUploadBackgroundTaskId = UIBackgroundTaskInvalid;
         self.photoPostBackgroundTaskId = UIBackgroundTaskInvalid;
     }
+    keyBoardAppearsForTheFirstTime = YES;
     return self;
 }
 
@@ -160,15 +163,23 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)note {
-    CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGSize scrollViewContentSize = self.scrollView.bounds.size;
-    scrollViewContentSize.height += keyboardFrameEnd.size.height;
-    [self.scrollView setContentSize:scrollViewContentSize];
+    if(keyBoardAppearsForTheFirstTime)
+    {
+        CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGSize scrollViewContentSize = self.scrollView.bounds.size;
+        scrollViewContentSize.height += keyboardFrameEnd.size.height;
+        [self.scrollView setContentSize:scrollViewContentSize];
+        
+        CGPoint scrollViewContentOffset = self.scrollView.contentOffset;
+        scrollViewContentOffset.y += keyboardFrameEnd.size.height;
+        scrollViewContentOffset.y -= 42.0f;
+        [self.scrollView setContentOffset:scrollViewContentOffset animated:YES];
+        keyBoardAppearsForTheFirstTime = NO;
+    } else {
+        MyLog(@"not the first time showing the keyboard");
+        return;
+    }
     
-    CGPoint scrollViewContentOffset = self.scrollView.contentOffset;
-    scrollViewContentOffset.y += keyboardFrameEnd.size.height;
-    scrollViewContentOffset.y -= 42.0f;
-    [self.scrollView setContentOffset:scrollViewContentOffset animated:YES];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note {
@@ -178,6 +189,7 @@
     [UIView animateWithDuration:0.200f animations:^{
         [self.scrollView setContentSize:scrollViewContentSize];
     }];
+    keyBoardAppearsForTheFirstTime = YES;
 }
 
 - (void)doneButtonAction:(id)sender {
