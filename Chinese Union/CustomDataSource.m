@@ -12,9 +12,25 @@
 
 @interface CustomDataSource()
 -(void)loadFromDisk;
+
+@property (strong, nonatomic) NSArray *tileImageKeys;
+
 @end
 
 @implementation CustomDataSource
+
+- (NSArray *)tileImageKeys
+{
+    if (_tileImageKeys == nil) {
+        _tileImageKeys = @[@"Event_Image",
+                           @"Store_Image",
+                           @"Soccer_Image",
+                           @"Basketball_Image",
+                           @"Contact_Image",
+                           @"Market_Image"];
+    }
+    return _tileImageKeys;
+}
 
 #pragma mark - Private
 -(void)loadFromDisk{
@@ -56,8 +72,12 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cell";
+    
+    PFConfig *config = [PFConfig currentConfig];
+    
     MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MosaicData *data = [_elements objectAtIndex:indexPath.row];
+    data.image = config[self.tileImageKeys[indexPath.row]];
     cell.mosaicData = data;
     
     float randomWhite = (arc4random() % 40 + 10) / 255.0;

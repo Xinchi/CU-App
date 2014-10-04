@@ -72,9 +72,12 @@
     self.sideMenuViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Blur_background"]];
     
     // Do any additional setup after loading the view from its nib.
-//    self.title = @"UCSD CU";
-    [ServiceCallManager getAppConfigWithBlock:^(PFConfig *config, NSError *error) {
-        self.title = config[@"AppTitle"];
+    [[self getConfigSignal] subscribeNext:^(PFConfig *x) {
+        self.title = x[@"AppTitle"];
+        [self.collectionView reloadData];
+    } error:^(NSError *error) {
+        PFConfig *currentConfig = [PFConfig currentConfig];
+        self.title = currentConfig[@"AppTitle"] ? : @"UCSD CU";
     }];
     
     self.dataSource = [[CustomDataSource alloc] init];
@@ -90,6 +93,23 @@
     UIView *texturedBackgroundView = [[UIView alloc] initWithFrame:self.collectionView.bounds];
     texturedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundLeather"]];
     self.collectionView.backgroundView = texturedBackgroundView;
+}
+
+- (RACSignal *)getConfigSignal
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [ServiceCallManager getAppConfigWithBlock:^(PFConfig *config, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else
+            {
+                [subscriber sendNext:config];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
 }
 
 - (void) viewWillAppear:(BOOL)animated

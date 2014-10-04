@@ -110,32 +110,52 @@
 
     _mosaicData = newMosaicData;
     
-    
-    //  Image set
-    if ([_mosaicData.imageFilename hasPrefix:@"http://"] ||
-        [_mosaicData.imageFilename hasPrefix:@"https://"]){
-        //  Download image from the web
-        void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
-            
-            //  This check is to avoid wrong images on reused cells
-            if ([newMosaicData.title isEqualToString:_mosaicData.title]){
-                self.image = downloadedImage;
+    if (_mosaicData.image) {
+        [_mosaicData.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (data) {
+                if ([newMosaicData.title isEqualToString:_mosaicData.title]){
+                    self.image = [UIImage imageWithData:data];
+                }
             }
-        };
-        
-        NSURL *anURL = [NSURL URLWithString:_mosaicData.imageFilename];
-        NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
-        AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
-                                                                                               success:imageSuccess];
-        [operation start];
-    }else{
-        //  Load image from bundle
-        self.image = [UIImage imageNamed:_mosaicData.imageFilename];
+            else
+            {
+                [self setDefaultImage];
+            }
+        }];
     }
-    
+    else
+    {
+        [self setDefaultImage];
+    }
     
     //  Title set
     _titleLabel.text = _mosaicData.title;
+}
+
+- (void)setDefaultImage
+{
+    self.image = [UIImage imageNamed:_mosaicData.imageFilename];
+//    //  Image set
+//    if ([_mosaicData.imageFilename hasPrefix:@"http://"] ||
+//        [_mosaicData.imageFilename hasPrefix:@"https://"]){
+//        //  Download image from the web
+//        void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
+//            
+//            //  This check is to avoid wrong images on reused cells
+//            if ([newMosaicData.title isEqualToString:_mosaicData.title]){
+//                self.image = downloadedImage;
+//            }
+//        };
+//        
+//        NSURL *anURL = [NSURL URLWithString:_mosaicData.imageFilename];
+//        NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
+//        AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
+//                                                                                               success:imageSuccess];
+//        [operation start];
+//    }else{
+//        //  Load image from bundle
+//        self.image = [UIImage imageNamed:_mosaicData.imageFilename];
+//    }
 }
 
 #pragma mark - Public

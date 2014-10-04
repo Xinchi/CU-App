@@ -18,6 +18,7 @@ typedef enum {
 
 -(id)initWithDictionary:(NSDictionary *)aDict;
 
+@property (strong, nonatomic) PFFile *image; // Image file pulled from Parse. If nil, use imageFilename instead.
 @property (strong) NSString *imageFilename;
 @property (strong) NSString *title;
 @property (assign) BOOL firstTimeShown;
