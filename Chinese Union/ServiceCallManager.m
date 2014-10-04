@@ -15,9 +15,17 @@
 #import "Constants.h"
 #import "Order.h"
 #import "CUProducts.h"
+#import "CUMainViewController.h"
 
 @implementation ServiceCallManager
 
+static CUMainViewController *mainViewController;
+
+
++ (void)setMainViewController:(CUMainViewController *) mainVC
+{
+    mainViewController = mainVC;
+}
 + (ServiceCallManager *)manager
 {
     static ServiceCallManager *sharedInstance;
@@ -238,7 +246,12 @@
     
     [User logOut];
     
+    if(mainViewController != nil && [mainViewController respondsToSelector:@selector(cleanupAfterLoggingOut)]) {
+        [mainViewController cleanupAfterLoggingOut];
+    }
+    
 }
+
 
 + (void)getMembershipProductWithBlock: (PFObjectResultBlock)block
 {

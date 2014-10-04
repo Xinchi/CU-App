@@ -31,6 +31,7 @@
 #import "PAPUtility.h"
 #import "PAPPhotoDetailsViewController.h"
 #import "PAPAccountViewController.h"
+#import "ServiceCallManager.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -55,6 +56,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //setting up delegates
+    [ServiceCallManager setMainViewController:self];
+    
     AppDelegate *allDelegate = [[UIApplication sharedApplication] delegate];
     allDelegate.delegate = self;
     
@@ -251,7 +255,11 @@
             [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.navigationController.view];
             return;
         }
-        
+        // In case user swithces his account and new tabbar needs to be initialized here 
+        if(self.tabBarController == nil)
+        {
+            [self configureTabBar];
+        }
         VC = self.tabBarController;
     }
     
@@ -427,6 +435,14 @@
         }
     }
 
+}
+
+-(void) cleanupAfterLoggingOut
+{
+    MyLog(@"[CUMainViewController cleanupAfterLoggingout]");
+    self.tabBarController = nil;
+//    self.homeViewController = nil;
+//    self.activityViewController = nil;
 }
 
 @end

@@ -11,7 +11,11 @@
 typedef void (^CompletionBlock)(id, NSError*);
 
 @class User;
+@class CUMainViewController;
 @interface ServiceCallManager : NSObject
+
+
++ (void)setMainViewController:(CUMainViewController *) mainVC;
 
 + (ServiceCallManager *)manager;
 
