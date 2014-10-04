@@ -276,7 +276,7 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     return Mailgun.sendEmail({
       to: request.params.email,
       from: 'ucsandiegochineseunion@gmail.com',
-      subject: 'Your order for a CU ' + request.params.itemName + ' was successful!  Order ID : ' + order.id ,
+      subject: 'Your order for a ' + request.params.itemName + ' was successful!  Order ID : ' + order.id ,
       text: body
     }).then(null, function(error) {
       return Parse.Promise.error('Your purchase was successful, but we were not able to ' +
