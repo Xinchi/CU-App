@@ -163,8 +163,6 @@
 		500CC3AE19D3C7BF00B14995 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 500CC3AB19D3C7BF00B14995 /* UIImage+RoundedCornerAdditions.m */; };
 		500CC3B019D3E06E00B14995 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 500CC3AF19D3E06E00B14995 /* Images.xcassets */; };
 		500CC49F19D482B200B14995 /* FBCallBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 500CC49E19D482B200B14995 /* FBCallBack.m */; };
-		50413DD519D20FAE0009315D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50413DD319D20FAE0009315D /* Parse.framework */; };
-		50413DD619D20FAE0009315D /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50413DD419D20FAE0009315D /* ParseFacebookUtils.framework */; };
 		505A4FA019730273000B7CEF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4F9F19730273000B7CEF /* Reachability.m */; };
 		505A4FA319730A74000B7CEF /* ReachabilityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505A4FA219730A74000B7CEF /* ReachabilityController.m */; };
 		5078485119B869810036BC7A /* PKAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078482919B869810036BC7A /* PKAddressZip.m */; };
@@ -214,6 +212,8 @@
 		50932B761960B77000674269 /* CUMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B741960B77000674269 /* CUMemberViewController.m */; };
 		50932B771960B77000674269 /* CUMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50932B751960B77000674269 /* CUMemberViewController.xib */; };
 		50932B7A196D215C00674269 /* QRGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932B79196D215C00674269 /* QRGenerator.m */; };
+		50CD4CAB19DFBFF400E89943 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CD4CA919DFBFF400E89943 /* Parse.framework */; };
+		50CD4CAC19DFBFF400E89943 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CD4CAA19DFBFF400E89943 /* ParseFacebookUtils.framework */; };
 		50E64C1C198EBA0E00647814 /* CUBasketballPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C1B198EBA0E00647814 /* CUBasketballPlayer.m */; };
 		50E64C25198EFB4500647814 /* CUSoccerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C24198EFB4500647814 /* CUSoccerPlayer.m */; };
 		50E64C28198EFBA400647814 /* CUPersonnel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E64C27198EFBA400647814 /* CUPersonnel.m */; };
@@ -490,8 +490,6 @@
 		500CC3AF19D3E06E00B14995 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		500CC49D19D482B200B14995 /* FBCallBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBCallBack.h; sourceTree = "<group>"; };
 		500CC49E19D482B200B14995 /* FBCallBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBCallBack.m; sourceTree = "<group>"; };
-		50413DD319D20FAE0009315D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		50413DD419D20FAE0009315D /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		505A4F9E19730273000B7CEF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		505A4F9F19730273000B7CEF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Reachability.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		505A4FA119730A74000B7CEF /* ReachabilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityController.h; sourceTree = "<group>"; };
@@ -573,6 +571,8 @@
 		50932B751960B77000674269 /* CUMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUMemberViewController.xib; sourceTree = "<group>"; };
 		50932B78196D215C00674269 /* QRGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRGenerator.h; sourceTree = "<group>"; };
 		50932B79196D215C00674269 /* QRGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRGenerator.m; sourceTree = "<group>"; };
+		50CD4CA919DFBFF400E89943 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		50CD4CAA19DFBFF400E89943 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		50E64C1A198EBA0E00647814 /* CUBasketballPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUBasketballPlayer.h; sourceTree = "<group>"; };
 		50E64C1B198EBA0E00647814 /* CUBasketballPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUBasketballPlayer.m; sourceTree = "<group>"; };
 		50E64C23198EFB4500647814 /* CUSoccerPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSoccerPlayer.h; sourceTree = "<group>"; };
@@ -604,6 +604,7 @@
 				420CDC3219639AB9001EED84 /* CoreMedia.framework in Frameworks */,
 				5005F228193EAC1600BF3DAC /* CoreGraphics.framework in Frameworks */,
 				420CDC3019639AA8001EED84 /* AVFoundation.framework in Frameworks */,
+				50CD4CAC19DFBFF400E89943 /* ParseFacebookUtils.framework in Frameworks */,
 				5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */,
 				42E313F01963D6B000F5CFBC /* Appsee.framework in Frameworks */,
 				5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */,
@@ -611,8 +612,7 @@
 				5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */,
 				5005F261193ECDAF00BF3DAC /* QuartzCore.framework in Frameworks */,
 				5005F25D193ECD9F00BF3DAC /* libz.dylib in Frameworks */,
-				50413DD619D20FAE0009315D /* ParseFacebookUtils.framework in Frameworks */,
-				50413DD519D20FAE0009315D /* Parse.framework in Frameworks */,
+				50CD4CAB19DFBFF400E89943 /* Parse.framework in Frameworks */,
 				5005F259193ECD7C00BF3DAC /* CFNetwork.framework in Frameworks */,
 				5005F257193ECD7400BF3DAC /* AudioToolbox.framework in Frameworks */,
 				5005F22A193EAC1600BF3DAC /* UIKit.framework in Frameworks */,
@@ -891,12 +891,12 @@
 			isa = PBXGroup;
 			children = (
 				500CC32319D3BC0700B14995 /* libz.1.1.3.dylib */,
+				50CD4CA919DFBFF400E89943 /* Parse.framework */,
+				50CD4CAA19DFBFF400E89943 /* ParseFacebookUtils.framework */,
 				500CC32119D3BBF400B14995 /* ImageIO.framework */,
 				500CC31F19D3BBD300B14995 /* AddressBookUI.framework */,
 				500CC31D19D3BBCA00B14995 /* MessageUI.framework */,
 				500CC31B19D3BBBA00B14995 /* AddressBook.framework */,
-				50413DD319D20FAE0009315D /* Parse.framework */,
-				50413DD419D20FAE0009315D /* ParseFacebookUtils.framework */,
 				50E64C29198F0ADF00647814 /* libiconv.dylib */,
 				42E313EF1963D6B000F5CFBC /* Appsee.framework */,
 				420CDC3319639AC2001EED84 /* CoreVideo.framework */,
