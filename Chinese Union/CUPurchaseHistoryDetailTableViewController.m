@@ -7,10 +7,13 @@
 //
 
 #import "CUPurchaseHistoryDetailTableViewController.h"
+#import "NSDateFormatter+Additions.h"
 #import "CUQRCodeTableViewCell.h"
 #import "Order.h"
 #import "CUProducts.h"
 #import "Common.h"
+#import "WYPopoverController.h"
+#import "CUTextViewController.h"
 
 NSString * const cellId = @"cellId";
 NSString * const QRCellId = @"QRCellId";
@@ -18,10 +21,20 @@ NSString * const QRCellId = @"QRCellId";
 @interface CUPurchaseHistoryDetailTableViewController ()
 
 @property (strong, nonatomic) Order *order;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) WYPopoverController *popover;
 
 @end
 
 @implementation CUPurchaseHistoryDetailTableViewController
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (_dateFormatter == nil) {
+        _dateFormatter = [NSDateFormatter eventDateFormatter];
+    }
+    return _dateFormatter;
+}
 
 - (instancetype)initWithOrder:(Order *)order
 {
@@ -42,8 +55,6 @@ NSString * const QRCellId = @"QRCellId";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellId];
     [self.tableView registerNib:[UINib nibWithNibName:@"CUQRCodeTableViewCell" bundle:nil] forCellReuseIdentifier:QRCellId];
-    
-    self.tableView.allowsSelection = NO;
 }
 
 #pragma mark - Table view data source
@@ -71,7 +82,7 @@ NSString * const QRCellId = @"QRCellId";
         return 3;
     }
     else if (section == 1) {
-        return 3;
+        return 4;
     }
     else if (section == 2) {
         return 1;
@@ -107,6 +118,8 @@ NSString * const QRCellId = @"QRCellId";
         
         cell.imageView.image = nil;
         cell.textLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (indexPath.section == 0) {
             CUProducts *product = self.order.item;
@@ -119,7 +132,8 @@ NSString * const QRCellId = @"QRCellId";
                 cell.textLabel.text = [NSString stringWithFormat:@"Price: $%@", [product.price stringValue]];
             }
             else if (indexPath.row == 2) {
-                cell.textLabel.text = [NSString stringWithFormat:@"Description: %@", product.detail];
+                cell.textLabel.text = [NSString stringWithFormat:@"Description: %@", product.detail ? : @""];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }
         else if (indexPath.section == 1) {
@@ -132,6 +146,10 @@ NSString * const QRCellId = @"QRCellId";
             }
             else if (indexPath.row == 2) {
                 cell.textLabel.text = [NSString stringWithFormat:@"Address: %@", self.order.address];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+            else if (indexPath.row == 3) {
+                cell.textLabel.text = [NSString stringWithFormat:@"Purchase Date: %@", [self.dateFormatter stringFromDate:self.order.createdAt]];
             }
         }
         return cell;
@@ -146,6 +164,33 @@ NSString * const QRCellId = @"QRCellId";
         
         return cell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        [self showPopoverInView:cell title:@"Description" content:self.order.item.detail];
+    }
+    else if (indexPath.section == 1 && indexPath.row == 2) {
+        [self showPopoverInView:cell title:@"Address" content:self.order.address];
+    }
+}
+
+- (void)showPopoverInView:(UIView *)view title:(NSString *)title content:(NSString *)content
+{
+    CUTextViewController *vc = [[CUTextViewController alloc] init];
+    vc.aString = content;
+    vc.title = title;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+    
+    self.popover = [[WYPopoverController alloc] initWithContentViewController:nav];
+    self.popover.theme = [WYPopoverTheme themeForIOS7];
+    self.popover.popoverLayoutMargins = UIEdgeInsetsMake(40, 40, 40, 40);
+    
+    [self.popover presentPopoverFromRect:view.bounds inView:view permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
 }
 
 @end

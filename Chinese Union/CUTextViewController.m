@@ -20,7 +20,6 @@
 {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Description", @"");
     RAC(self.textView, text) = RACObserve(self, aString);
 }
 

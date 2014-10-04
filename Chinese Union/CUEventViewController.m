@@ -192,6 +192,7 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
     CUTextViewController *vc = [[CUTextViewController alloc] init];
     vc.aString = viewModel.eventDescription;
+    vc.title = @"Description";
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
