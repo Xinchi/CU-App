@@ -16,4 +16,5 @@
 
 @property (nonatomic, strong) PAPTabBarController *tabBarController;
 
+-(void) cleanupAfterLoggingOut;
 @end
