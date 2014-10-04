@@ -38,6 +38,7 @@
 + (User *)getCurrentUser
 {
     User *user = [User currentUser];
+    MyLog(@"Expensive operation here: [user refresh] in [ServiceCallManager getCurrentUser]");
     [user refresh];
     return user;
 }

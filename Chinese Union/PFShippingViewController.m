@@ -11,6 +11,8 @@
 #import "ServiceCallManager.h"
 #import "MRProgress.h"
 #import "Common.h"
+#import "UIViewController+Additions.h"
+
 
 #define TEXT_FIELD_TAG_OFFSET 1000
 #define NUM_TEXT_FIELD 5
@@ -47,7 +49,7 @@ typedef enum {
 
 @implementation PFShippingViewController
 
-
+@synthesize shouldAddExitButton;
 #pragma mark - Life cycle
 
 - (id)initWithProduct:(PFObject *)product size:(NSString *)size {
@@ -71,6 +73,8 @@ typedef enum {
     [self addHeaderView];
     [self addFooterView];
     [self addTextFields];
+    
+
     
     // Any tap on the view would dismiss the keyboard.
     UITapGestureRecognizer *tapGestureRecognizer =
@@ -97,6 +101,13 @@ typedef enum {
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.shouldAddExitButton) {
+        [self addExitButton];
+    }
+}
 
 #pragma mark - UITableViewDataSource
 

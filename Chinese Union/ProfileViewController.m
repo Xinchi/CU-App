@@ -130,7 +130,7 @@
 }
 
 - (IBAction)memberButtonPressed:(id)sender {
-    [ReachabilityController checkConnectionStatusForViewController:self];
+//    [ReachabilityController checkConnectionStatusForViewController:self];
 //    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileViewController = self;

@@ -35,12 +35,13 @@
 {
 //    if(reach.currentReachabilityStatus==NotReachable)
 //    {
+//        MyLog(@"No internet!!!");
 //        dispatch_async(dispatch_get_main_queue(), ^{
 //            [MRProgressOverlayView showOverlayAddedTo:VC.view title:@"No internet connection" mode:MRProgressOverlayViewModeCross animated:YES];
 //            [self performSelector:@selector(dismissOverlayWithController:) withObject:VC afterDelay:1.0];
 //        });
 //    }
-        MyLog(@"No internet!");
+    
 }
 
 + (void) dismissOverlayWithController:(UIViewController *)VC

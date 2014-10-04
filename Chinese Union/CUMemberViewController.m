@@ -21,11 +21,13 @@
 #import "ServiceCallManager.h"
 #import "CUProducts.h"
 #import "Common.h"
+#import "PFShippingViewController.h"
 
 @interface CUMemberViewController ()
 
 @property (retain) User *user;
 @property CUMembers *cuMember;
+@property __block CUProducts *membershipProduct;
 @property (retain) CUProducts *memberProduct;
 @property (weak, nonatomic) IBOutlet UIView *notMemberView;
 @property (weak, nonatomic) IBOutlet UIView *memberView;
@@ -62,6 +64,7 @@
     [self addExitButton];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -71,34 +74,7 @@
     [super viewDidAppear:animated];
     
 
-    self.user = [ServiceCallManager getCurrentUser];
-    
-    if([self isAMember])
-    {
-        
-        //get member object
-//        PFQuery *query = [PFQuery queryWithClassName:@"CUMembers"];
-//        [query whereKey:@"uid" equalTo:self.user.objectId];
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            if(!error && [objects count]==1)
-//            {
-//                _cuMember = (CUMembers *)objects[0];
-//                MyLog(@"Get member record! Expire date = %@",_cuMember.expireDate);
-//            }else if(error){
-//                // Log details of the failure
-//                MyLog(@"Error: %@ %@", error, [error userInfo]);
-//            }else
-//            {
-//                MyLog(@"Error !More than one member record has been found!");
-//            }
-//            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:NO];
-////            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//            
-//            [self updateMemberView];
-//        }];
-        
-        
-    }
+    self.user = [User currentUser];
     [self updateMemberView];
     [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
 }
@@ -110,10 +86,11 @@
     [MRProgressOverlayView dismissAllOverlaysForView:self.profileViewController.view animated:YES];
 }
 - (void)updateMemberView {
-    self.notMemberView.hidden = [self isAMember];
-    self.memberView.hidden    = ![self isAMember];
+    BOOL isAMember = [self isAMember];
+    self.notMemberView.hidden = isAMember;
+    self.memberView.hidden    = !isAMember;
     
-    if ([self isAMember]) {
+    if (isAMember) {
         self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
         self.memberIDLabel.text = self.user.cuMember.objectId;
         MyLog(@"Membership Expire Date = %@",self.cuMember.expireDate);
@@ -136,6 +113,10 @@
         UIImage *backgroundImage = [UIImage imageNamed:@"Product.png"];
         UIEdgeInsets backgroundInsets = UIEdgeInsetsMake(backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f, backgroundImage.size.height/2.0f, backgroundImage.size.width/2.0f);
         backgroundImage = [backgroundImage resizableImageWithCapInsets:backgroundInsets];
+        PFQuery *query = [CUProducts query];
+        [query getObjectInBackgroundWithId:CUMemberObjectID block:^(PFObject *object, NSError *error) {
+            _membershipProduct = (CUProducts *)object;
+        }];
         
         self.upperImageView.image = backgroundImage;
         self.lowerImageView.image = backgroundImage;
@@ -146,7 +127,7 @@
 - (bool)isAMember
 {
 
-//    [ServiceCallManager getCurrentUser];
+    [ServiceCallManager getCurrentUser];
     if(self.user.cuMember != nil)
     {
         MyLog(@"Member ID is ? = %@",self.user.cuMember.objectId);
@@ -267,9 +248,16 @@
 }
 
 - (IBAction)purchaseMemberButtonPressed:(id)sender {
-    PFProductsViewController *storeVC = [[PFProductsViewController alloc] init];
-    storeVC.shouldAddExitButton = YES;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:storeVC];
+
+    PFShippingViewController *shippingViewController;
+    if(_membershipProduct != nil)
+    {
+        shippingViewController = [[PFShippingViewController alloc] initWithProduct:_membershipProduct size:nil];
+    }
+    
+    shippingViewController.shouldAddExitButton = YES;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:shippingViewController];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

@@ -27,7 +27,7 @@
 
 - (void)loadView {
     [super loadView];
-    
+    [self.navigationItem setHidesBackButton:YES animated:YES];
     UIImage *backgroundStripe = [UIImage imageNamed:@"TopBarBg.png"];
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, backgroundStripe.size.height)];
@@ -95,7 +95,9 @@
 
 - (void)buy:(id)sender {
     // reset to the first view controller.
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSArray *array = [self.navigationController viewControllers];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
 }
 
 @end
