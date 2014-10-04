@@ -7,4 +7,6 @@
 
 @interface PFShippingViewController : UITableViewController <UITextFieldDelegate>
 - (id)initWithProduct:(PFObject *)product size:(NSString *)size;
+@property (nonatomic) BOOL shouldAddExitButton;
+
 @end
