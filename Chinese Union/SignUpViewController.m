@@ -18,6 +18,7 @@
 #import "CUProfileEditOption.h"
 #import "SLGlowingTextField+Valid.h"
 #import "ServiceCallManager.h"
+#import "Common.h"
 
 @interface SignUpViewController ()
 
@@ -128,6 +129,7 @@
         }
         else {
             NSLog(@"Hey weiping, the error message needs to be printed out is : %@",[error userInfo][@"error"]);
+            [Common showAlertTitle:@"Error" msg:[Common getUsefulErrorMessage:error] onView:self.navigationController.view];
         }
     }];
 }
