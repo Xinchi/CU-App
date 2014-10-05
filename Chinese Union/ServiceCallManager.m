@@ -16,6 +16,7 @@
 #import "Order.h"
 #import "CUProducts.h"
 #import "CUMainViewController.h"
+#import "Order.h"
 
 @implementation ServiceCallManager
 
@@ -281,5 +282,12 @@ static NSDate *lastFetchedDate;
     }
 }
 
+
++ (Order *)getOrderWithObjectId: (NSString *)orderId
+{
+    PFQuery *query = [Order query];
+    Order *order = (Order *)[query getObjectWithId:orderId];
+    return order;
+}
 
 @end

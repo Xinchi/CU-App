@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ucsd.ChineseUnion. All rights reserved.
 //
 @class User;
-@class Orders;
+@class Order;
 #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
@@ -59,6 +59,7 @@ extern BOOL const STATIC_MEMBERSHIP_ENDING_DATE;
 typedef void (^CUUserResultBlock)(User *user, NSError *error);
 typedef void (^CUDateResultBlock)(NSDate *date, NSError *error);
 typedef void (^CUAppConfigResultBlock)(PFConfig *config, NSError *error);
+typedef void (^CUOrderResultBlock)(Order *order, NSError *error);
 
 #ifndef Constants_h
 #define Constants_h

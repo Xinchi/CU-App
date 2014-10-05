@@ -26,6 +26,7 @@
 #import "CUPurchaseHistoryViewController.h"
 #import "UIViewController+Additions.h"
 #import "CUNavigationController.h"
+#import "Order.h"
 
 @interface ProfileViewController ()
 
@@ -42,6 +43,8 @@
 @end
 
 @implementation ProfileViewController
+
+static NSString* orderId;
 
 - (UIActionSheet *)actionSheet {
     if (_actionSheet == nil) {
@@ -165,44 +168,80 @@
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    NSString *userId;
+    NSString *encryptedData;
     MyLog(@"Finished reading QR code...");
     //Handle the data read in
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     for(ZBarSymbol *symbol in results)
     {
-        userId = symbol.data;
-        NSLog(@"FROM QR Scanning, userId = %@",userId);
+        encryptedData = symbol.data;
+        NSLog(@"FROM QR Scanning, encrypted data = %@",encryptedData);
     }
     
-    [ServiceCallManager getUserWithObjectId:userId WithBlock:^(User *user, NSError *error) {
-        if(!error){
-            /**
-            * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
-            * Modal view is preferred here for the User Profile, if you agree with that.  Maybe CUFullProfileViewController can be reused here
-            */
-            
+    NSArray *lines = [Common getDeliminatedString:encryptedData];
+    if([[lines objectAtIndex:0] isEqualToString:@"user"])
+    {
+        NSString *userId = [lines objectAtIndex:1];
+        MyLog(@"It's user QR code, and user id = %@", userId);
+        [ServiceCallManager getUserWithObjectId:userId WithBlock:^(User *user, NSError *error) {
+            if(!error){
+                /**
+                 * Weiping, please use scannedUser object above to get all the user profile in the VC to be created here
+                 * Modal view is preferred here for the User Profile, if you agree with that.  Maybe CUFullProfileViewController can be reused here
+                 */
+                
+                [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+                
+                CUFullProfileViewController *detailViewController = [[CUFullProfileViewController alloc] initWithNibName:@"CUFullProfileViewController" bundle:nil];
+                detailViewController.person = user;
+                [detailViewController addExitButton];
+                
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+                
+                [self presentViewController:nav
+                                   animated:YES
+                                 completion:NULL];
+                
+            } else {
+                MyLog(@"Error = %@",error);
+                [Common showAlertTitle:@"Error" msg:[error description] onView:self.view];
+            }
+        }];
+    } else if([[lines objectAtIndex:0] isEqualToString:@"order"]){
+        orderId = [lines objectAtIndex:1];
+        MyLog(@"It's the order QR code, and the order id = %@", orderId);
+        
+        Order *order = [ServiceCallManager getOrderWithObjectId:orderId];
+        UIAlertView *alert;
+        NSString *msg = [NSString stringWithFormat:@"%@ \n %@", order.name, order.product];
+        if(order != nil)
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"Check In For : "
+                                               message:msg
+                                              delegate:self
+                                     cancelButtonTitle:@"Cancel"
+                                     otherButtonTitles:@"Ok",nil];
+            [alert show];
             [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
-            
-            CUFullProfileViewController *detailViewController = [[CUFullProfileViewController alloc] initWithNibName:@"CUFullProfileViewController" bundle:nil];
-            detailViewController.person = user;
-            [detailViewController addExitButton];
-            
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-            
-            [self presentViewController:nav
-                               animated:YES
-                             completion:NULL];
-            
         } else {
-            MyLog(@"Error = %@",error);
-            [Common showAlertTitle:@"Error" msg:[error description] onView:self.view];
+            [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"Failed to get order with id %@",orderId] onView:self.view];
         }
-    }];
-    
+    }
     
     [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
+# pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        MyLog(@"Checking in starts for order id %@", orderId);
+        
+    }
+    
 }
 
 

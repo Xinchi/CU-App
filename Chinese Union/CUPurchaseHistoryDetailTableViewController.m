@@ -161,8 +161,7 @@ NSString * const QRCellId = @"QRCellId";
     else
     {
         CUQRCodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QRCellId];
-        UIImage *image = [Common generateQRCodeWithData:self.order.objectId
-                                               withSize:160.0
+        UIImage *image = [Common generateQRCodeWithData:[NSString stringWithFormat:@"order_%@",self.order.objectId] withSize:160.0
                                           withFillColor:[UIColor darkGrayColor]];
         cell.QRImageView.image = image;
         
