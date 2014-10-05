@@ -295,3 +295,31 @@ Parse.Cloud.define("purchaseItem", function(request, response) {
     response.error(error);
   });
 });
+
+Parse.Cloud.define("checkIn", function(request, response){
+  var Order = Parse.Object.extend("Order");
+  var query = new Parse.Query(Order);
+  query.get(request.params.orderId, {
+    success: function(order) {
+      console.log('The order object was retrieved successfully ');
+      // The object was retrieved successfully.
+      if(order.get("checkInDate") != null){
+        response.error("This ticket has already been checked in at " + order.get("checkInDate"));
+      }
+      else {
+        order.set('checkInDate', new Date());
+        order.save();
+        response.success("Check in successfully!");
+      }
+
+
+    },
+    error: function(order, error) {
+      console.log('The order object was not retrieved successfully ');
+
+      response.error();
+      // The object was not retrieved successfully.
+      // error is a Parse.Error with an error code and message.
+    } 
+  });
+});

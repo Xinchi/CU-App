@@ -236,10 +236,24 @@ static NSString* orderId;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if(buttonIndex == 0)
+    {
+        return;
+    }
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     if(buttonIndex == 1)
     {
         MyLog(@"Checking in starts for order id %@", orderId);
-        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:orderId, @"orderId", nil];
+        [PFCloud callFunctionInBackground:@"checkIn" withParameters:dictionary block:^(NSString *result, NSError *error){
+            if(!error){
+                MyLog(@"No Error!");
+                [Common showAlertTitle:@"Success!" msg:result onView:self.view];
+            } else {
+                MyLog(@"Error = %@",error);
+                [Common showAlertTitle:@"Error" msg:[Common getUsefulErrorMessage:error] onView:self.view];
+            }
+        }];
     }
     
 }
