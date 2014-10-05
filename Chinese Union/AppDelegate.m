@@ -27,6 +27,7 @@
 #import "Order.h"
 #import "Aspects.h"
 #import "PAPUtility.h"
+#import "CUNavigationController.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -92,15 +93,16 @@
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
-    self.menuViewController = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
+    self.menuViewController = [[ProfileViewController alloc] init];
 //    self.mainViewController = [[TWTMainViewController alloc] initWithNibName:nil bundle:nil];
     self.mainViewController = [[CUMainViewController alloc] initWithNibName:@"CUMainViewController" bundle:nil];
     
     // create a new side menu
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:self.mainViewController];
 //    [nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 //    self.sideMenuViewController = [[RESideMenu alloc] initWithMenuViewController:self.menuViewController mainViewController:nav];
     self.sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav leftMenuViewController:self.menuViewController rightMenuViewController:nil];
+    self.sideMenuViewController.menuPreferredStatusBarStyle = self.sideMenuViewController.leftMenuViewController.preferredStatusBarStyle;
     
     
     //side menu controller configuration
@@ -126,7 +128,7 @@
     [self addReachability];
     
 #if DEBUG
-    [[FLEXManager sharedManager] showExplorer];
+    //[[FLEXManager sharedManager] showExplorer];
 #endif
 
     return YES;

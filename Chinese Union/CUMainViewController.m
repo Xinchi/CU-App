@@ -95,6 +95,11 @@
     self.collectionView.backgroundView = texturedBackgroundView;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (RACSignal *)getConfigSignal
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

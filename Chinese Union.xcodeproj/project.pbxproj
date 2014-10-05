@@ -59,6 +59,7 @@
 		4271115D19DE238D0084F0B0 /* CUQRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4271115B19DE238D0084F0B0 /* CUQRCodeTableViewCell.xib */; };
 		4271116119DF5EB80084F0B0 /* CUTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271115F19DF5EB80084F0B0 /* CUTextViewController.m */; };
 		4271116219DF5EB80084F0B0 /* CUTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4271116019DF5EB80084F0B0 /* CUTextViewController.xib */; };
+		4271116819E0C72F0084F0B0 /* CUNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271116719E0C72F0084F0B0 /* CUNavigationController.m */; };
 		4294F81219BCFD9A001E911C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		4294F81319BCFDA5001E911C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		4294F81419BCFDB8001E911C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F28C193EE09200BF3DAC /* Social.framework */; };
@@ -320,6 +321,8 @@
 		4271115E19DF5EB80084F0B0 /* CUTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUTextViewController.h; sourceTree = "<group>"; };
 		4271115F19DF5EB80084F0B0 /* CUTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTextViewController.m; sourceTree = "<group>"; };
 		4271116019DF5EB80084F0B0 /* CUTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUTextViewController.xib; sourceTree = "<group>"; };
+		4271116619E0C72F0084F0B0 /* CUNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUNavigationController.h; sourceTree = "<group>"; };
+		4271116719E0C72F0084F0B0 /* CUNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUNavigationController.m; sourceTree = "<group>"; };
 		4294F81519BCFDE4001E911C /* CUTestHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUTestHeader.h; sourceTree = "<group>"; };
 		4294F81619BCFE1B001E911C /* CUTestDateDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUTestDateDifference.m; sourceTree = "<group>"; };
 		4294F81819BD1389001E911C /* CUEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUEventViewModel.h; sourceTree = "<group>"; };
@@ -949,6 +952,8 @@
 				42308B35193FBF260022D3E7 /* CUMainViewController.xib */,
 				42308B38193FC0670022D3E7 /* CustomDataSource.h */,
 				42308B39193FC0670022D3E7 /* CustomDataSource.m */,
+				4271116619E0C72F0084F0B0 /* CUNavigationController.h */,
+				4271116719E0C72F0084F0B0 /* CUNavigationController.m */,
 				42308B58193FC14A0022D3E7 /* data.json */,
 				500CC3AF19D3E06E00B14995 /* Images.xcassets */,
 				5005F22C193EAC1600BF3DAC /* Supporting Files */,
@@ -1708,6 +1713,7 @@
 				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
 				42A7620C19BCF9F1001CDE2A /* NSDate+Difference.m in Sources */,
 				5005F325194A587100BF3DAC /* User.m in Sources */,
+				4271116819E0C72F0084F0B0 /* CUNavigationController.m in Sources */,
 				500CC39E19D3C73600B14995 /* PAPConstants.m in Sources */,
 				5005F312194968E300BF3DAC /* mask.c in Sources */,
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,

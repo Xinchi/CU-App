@@ -63,7 +63,8 @@
     self.profilePicView.layer.borderWidth = 0;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
     return UIStatusBarStyleLightContent;
 }
 
