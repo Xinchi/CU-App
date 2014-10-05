@@ -136,8 +136,13 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexPath.row];
     [cell bindViewModel:viewModel];
     
-    UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    [cell.eventDescriptionLabel addGestureRecognizer:gr];
+    if ([cell.eventDescriptionLabel.gestureRecognizers count] == 0) {
+        UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [cell.eventDescriptionLabel addGestureRecognizer:gr];
+    }
+    
+    cell.eventDescriptionLabel.tag = indexPath.row;
+    cell.buyTicketButton.tag = indexPath.row;
     
     [cell.buyTicketButton addTarget:self action:@selector(buyTicketButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -149,8 +154,8 @@ NSString * const bigCellID = @"bigCellID";
 
 - (void)buyTicketButtonPressed:(UIButton *)sender
 {
-    NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.superview.superview];
-    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
+    NSInteger row = sender.tag;
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[row];
     CUProducts *product = viewModel.product;
     PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:product size:nil];
     [self.navigationController pushViewController:vc animated:YES];
@@ -188,8 +193,8 @@ NSString * const bigCellID = @"bigCellID";
 
 - (void)tapped:(UITapGestureRecognizer *)sender
 {
-    NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.view.superview.superview];
-    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
+    NSInteger row = sender.view.tag;
+    CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[row];
     CUTextViewController *vc = [[CUTextViewController alloc] init];
     vc.aString = viewModel.eventDescription;
     vc.title = @"Description";

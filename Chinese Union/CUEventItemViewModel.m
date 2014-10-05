@@ -40,6 +40,8 @@
     self.location = self.event.location;
     self.product = self.event.product;
     
+    MyLog(@"Event product %@", self.event.product);
+    
     RAC(self, image) = [self imageSignal];
     
     //MyLog(@"Event %@", self.event);
