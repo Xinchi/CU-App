@@ -19,6 +19,8 @@
 //#import "FPPopoverController.h"
 #import "CUTextViewController.h"
 #import "WYPopoverController.h"
+#import "User.h"
+#import "Common.h"
 
 NSString * const cellID = @"cellID";
 NSString * const bigCellID = @"bigCellID";
@@ -158,7 +160,12 @@ NSString * const bigCellID = @"bigCellID";
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[row];
     CUProducts *product = viewModel.product;
     PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:product size:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    if([User currentUser] == nil)
+    {
+        [Common showAlertTitle:@"Error" msg:@"Please log in first" onView:self.view];
+    } else {
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 //    [[[[[self fetchSignalForObject:product]
 //     initially:^{
