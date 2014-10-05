@@ -140,7 +140,7 @@
     // If the app was launched in response to a push notification, we'll handle the payload here
     NSDictionary *remoteNotificationPayload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (remoteNotificationPayload) {
-        [Common showAlertTitle:@"Push" msg:@"remoteNotificationPayload !+ null" onView:self.mainViewController.view];
+//        [Common showAlertTitle:@"Push" msg:@"remoteNotificationPayload !+ null" onView:self.mainViewController.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:PAPAppDelegateApplicationDidReceiveRemoteNotification object:nil userInfo:remoteNotificationPayload];
         if([User currentUser])
         {

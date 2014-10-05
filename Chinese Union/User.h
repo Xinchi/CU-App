@@ -12,6 +12,7 @@
 
 @property (retain) NSString *objectId;
 @property (retain) NSString *role;
+@property BOOL admin; 
 @property (retain) NSString *firstName;
 @property (retain) NSString *lastName;
 @property (retain) NSString *displayName;
