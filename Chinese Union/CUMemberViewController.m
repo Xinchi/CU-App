@@ -22,6 +22,7 @@
 #import "CUProducts.h"
 #import "Common.h"
 #import "PFShippingViewController.h"
+#import "CUNavigationController.h"
 
 @interface CUMemberViewController ()
 
@@ -258,7 +259,7 @@
     
     shippingViewController.shouldAddExitButton = YES;
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:shippingViewController];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:shippingViewController];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

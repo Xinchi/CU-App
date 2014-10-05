@@ -18,6 +18,7 @@
 #import "Constants.h"
 #import "FBCallBack.h"
 #import "Common.h"
+#import "CUNavigationController.h"
 
 @interface CULoginViewController ()
 
@@ -86,7 +87,7 @@
 
 - (IBAction)signUpButtonPressed:(id)sender {
     SignUpViewController *signUpVC = [[SignUpViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:signUpVC];
     signUpVC.delegate = self.delegate;
     MyLog(@"Delegate:%@", signUpVC.delegate);
     [self presentViewController:nav animated:YES completion:nil];

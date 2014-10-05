@@ -32,6 +32,7 @@
 #import "PAPPhotoDetailsViewController.h"
 #import "PAPAccountViewController.h"
 #import "ServiceCallManager.h"
+#import "CUNavigationController.h"
 
 #define kDoubleColumnProbability 40
 #define kColumnsiPadLandscape 5
@@ -157,7 +158,7 @@
 //        [self presentViewController:logInViewController animated:YES completion:NULL];
         CULoginViewController *loginVC = [[CULoginViewController alloc] init];
         loginVC.delegate = self;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:nil];
         
 //        SignUpViewController *signUpVC = [[SignUpViewController alloc] init];

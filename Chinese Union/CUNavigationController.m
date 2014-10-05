@@ -12,10 +12,10 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    UIStatusBarStyle style = UIStatusBarStyleDefault;
-    if (self.topViewController) {
-        style = [self.topViewController preferredStatusBarStyle];
-    }
+    UIStatusBarStyle style = UIStatusBarStyleLightContent;
+//    if (self.topViewController) {
+//        style = [self.topViewController preferredStatusBarStyle];
+//    }
     return style;
 }
 
