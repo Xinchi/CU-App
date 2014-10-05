@@ -19,5 +19,6 @@
 
 + (UIImage *)generateQRCodeWithData: (NSString *)data withSize:(CGFloat)size withFillColor: (UIColor *)fillColor;
 
++ (NSArray *)getDeliminatedString: (NSString *)string;
 
 @end

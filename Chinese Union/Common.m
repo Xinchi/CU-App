@@ -43,6 +43,10 @@
     return QR;
 }
 
-
++ (NSArray *)getDeliminatedString: (NSString *)string
+{
+    NSArray *lines = [string componentsSeparatedByString: @"_"];
+    return lines;
+}
 
 @end
