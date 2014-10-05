@@ -25,6 +25,7 @@
 #import "UIViewController+Additions.h"
 #import "CUPurchaseHistoryViewController.h"
 #import "UIViewController+Additions.h"
+#import "CUNavigationController.h"
 
 @interface ProfileViewController ()
 
@@ -126,7 +127,7 @@
 
 - (IBAction)editButtonPressed:(id)sender {
     CUEditProfileViewController *vc = [[CUEditProfileViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -134,7 +135,7 @@
 
     CUMemberViewController *controller = [[CUMemberViewController alloc] init];
     controller.profileViewController = self;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -153,7 +154,7 @@
 
 - (IBAction)myQRCodePressed:(UIButton *)sender {
     CUPurchaseHistoryViewController *vc = [[CUPurchaseHistoryViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    CUNavigationController *nav = [[CUNavigationController alloc] initWithRootViewController:vc];
     [vc addExitButton];
     [self presentViewController:nav animated:YES completion:NULL];
 }
