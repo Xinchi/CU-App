@@ -14,6 +14,7 @@
 @dynamic role;
 @dynamic firstName;
 @dynamic lastName;
+@dynamic admin;
 @dynamic displayName;
 @dynamic gender;
 @dynamic cuMember;

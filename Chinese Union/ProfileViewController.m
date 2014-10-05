@@ -209,24 +209,32 @@ static NSString* orderId;
             }
         }];
     } else if([[lines objectAtIndex:0] isEqualToString:@"order"]){
-        orderId = [lines objectAtIndex:1];
-        MyLog(@"It's the order QR code, and the order id = %@", orderId);
+        User *user = [User currentUser];
         
-        Order *order = [ServiceCallManager getOrderWithObjectId:orderId];
-        UIAlertView *alert;
-        NSString *msg = [NSString stringWithFormat:@"%@ \n %@", order.name, order.product];
-        if(order != nil)
+        if(user.admin)
         {
-            alert = [[UIAlertView alloc] initWithTitle:@"Check In For : "
-                                               message:msg
-                                              delegate:self
-                                     cancelButtonTitle:@"Cancel"
-                                     otherButtonTitles:@"Ok",nil];
-            [alert show];
-            [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+            orderId = [lines objectAtIndex:1];
+            MyLog(@"It's the order QR code, and the order id = %@", orderId);
+            
+            Order *order = [ServiceCallManager getOrderWithObjectId:orderId];
+            UIAlertView *alert;
+            NSString *msg = [NSString stringWithFormat:@"%@ \n %@", order.name, order.product];
+            if(order != nil)
+            {
+                alert = [[UIAlertView alloc] initWithTitle:@"Check In For : "
+                                                   message:msg
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                         otherButtonTitles:@"Ok",nil];
+                [alert show];
+                [MRProgressOverlayView dismissAllOverlaysForView:self.view animated:YES];
+            } else {
+                [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"Failed to get order with id %@",orderId] onView:self.view];
+            }
         } else {
-            [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"Failed to get order with id %@",orderId] onView:self.view];
+            [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"You don't have access to check people in"] onView:self.view];
         }
+        
     }
     
     [reader dismissViewControllerAnimated:YES completion:nil];
