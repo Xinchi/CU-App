@@ -6,6 +6,9 @@
 //
 
 #import "PFFinishViewController.h"
+#import "PFProductsViewController.h"
+#import "PFShippingViewController.h"
+#import "NSArray+Additions.h"
 
 @interface PFFinishViewController ()
 @property (nonatomic, strong) PFObject *product;
@@ -75,7 +78,7 @@
     [self.view addSubview:ownerLabel];
     
     UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buyButton setTitle:NSLocalizedString(@"Buy something else", @"Buy something else") forState:UIControlStateNormal];
+    [buyButton setTitle:NSLocalizedString(@"Finish", @"Finish") forState:UIControlStateNormal];
     buyButton.titleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
     buyButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -0.5f);
     buyButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f];
@@ -96,8 +99,26 @@
 - (void)buy:(id)sender {
     // reset to the first view controller.
     NSArray *array = [self.navigationController viewControllers];
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
+    if ([array containsObjectOfClass:[PFProductsViewController class]]) {
+        NSUInteger idx = [array indexOfObjectOfClass:[PFProductsViewController class]];
+        [self.navigationController popToViewController:array[idx] animated:YES];
+    }
+    else
+    {
+        NSInteger idx = [array indexOfObjectOfClass:[PFShippingViewController class]];
+        if (idx == 0) {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }
+        else
+        {
+            if (idx - 1 >= 0) {
+                [self.navigationController popToViewController:array[idx - 1] animated:YES];
+            }
+            else{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+        }
+    }
 }
 
 @end
