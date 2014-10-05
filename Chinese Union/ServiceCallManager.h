@@ -69,4 +69,5 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (void)getAppConfigWithBlock: (CUAppConfigResultBlock)block;
 
++ (Order *)getOrderWithObjectId: (NSString *)orderId;
 @end

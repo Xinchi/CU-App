@@ -152,6 +152,7 @@ NSString * const bigCellID = @"bigCellID";
     NSIndexPath *indexpath = [self.tableView indexPathForCell:sender.superview.superview];
     CUEventItemViewModel *viewModel = self.viewModel.eventItemViewModels[indexpath.row];
     CUProducts *product = viewModel.product;
+    
     PFShippingViewController *vc = [[PFShippingViewController alloc] initWithProduct:product size:nil];
     [self.navigationController pushViewController:vc animated:YES];
     
