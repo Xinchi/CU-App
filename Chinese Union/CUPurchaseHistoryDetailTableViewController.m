@@ -82,7 +82,7 @@ NSString * const QRCellId = @"QRCellId";
         return 3;
     }
     else if (section == 1) {
-        return 4;
+        return 5;
     }
     else if (section == 2) {
         return 1;
@@ -126,6 +126,7 @@ NSString * const QRCellId = @"QRCellId";
             
             if (indexPath.row == 0) {
                 cell.imageView.file = product.image;
+                //[cell.imageView loadInBackground];
                 cell.textLabel.text = product.name;
             }
             else if (indexPath.row == 1) {
@@ -149,6 +150,9 @@ NSString * const QRCellId = @"QRCellId";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             else if (indexPath.row == 3) {
+                cell.textLabel.text = [NSString stringWithFormat:@"Zip: %@", self.order.zip];
+            }
+            else if (indexPath.row == 4) {
                 cell.textLabel.text = [NSString stringWithFormat:@"Purchase Date: %@", [self.dateFormatter stringFromDate:self.order.createdAt]];
             }
         }

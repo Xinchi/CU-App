@@ -19,6 +19,7 @@
 @property (retain) NSString *size;
 @property (retain) NSString *address;
 @property (retain) NSString *email;
+@property (retain) NSString *zip;
 @property bool fulfilled;
 @property (retain) NSDate *redeemed;
 

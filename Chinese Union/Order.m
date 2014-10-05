@@ -18,6 +18,7 @@
 @dynamic size;
 @dynamic address;
 @dynamic email;
+@dynamic zip;
 @dynamic fulfilled;
 @dynamic redeemed;
 
