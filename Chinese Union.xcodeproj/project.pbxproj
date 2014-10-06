@@ -107,7 +107,6 @@
 		5005F25F193ECDA700BF3DAC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */; };
 		5005F261193ECDAF00BF3DAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F260193ECDAF00BF3DAC /* QuartzCore.framework */; };
 		5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F262193ECDB500BF3DAC /* Security.framework */; };
-		5005F265193ECDBC00BF3DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F264193ECDBC00BF3DAC /* StoreKit.framework */; };
 		5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */; };
 		5005F280193EDD7500BF3DAC /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F27A193EDD7500BF3DAC /* MyLogInViewController.m */; };
 		5005F281193EDD7500BF3DAC /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5005F27C193EDD7500BF3DAC /* MySignUpViewController.m */; };
@@ -391,7 +390,6 @@
 		5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5005F260193ECDAF00BF3DAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5005F262193ECDB500BF3DAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		5005F264193ECDBC00BF3DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5005F279193EDD7500BF3DAC /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
 		5005F27A193EDD7500BF3DAC /* MyLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLogInViewController.m; sourceTree = "<group>"; };
@@ -615,7 +613,6 @@
 				5005F28D193EE09200BF3DAC /* Social.framework in Frameworks */,
 				42E313F01963D6B000F5CFBC /* Appsee.framework in Frameworks */,
 				5005F267193ECDC400BF3DAC /* SystemConfiguration.framework in Frameworks */,
-				5005F265193ECDBC00BF3DAC /* StoreKit.framework in Frameworks */,
 				5005F263193ECDB500BF3DAC /* Security.framework in Frameworks */,
 				5005F261193ECDAF00BF3DAC /* QuartzCore.framework in Frameworks */,
 				5005F25D193ECD9F00BF3DAC /* libz.dylib in Frameworks */,
@@ -913,7 +910,6 @@
 				420CDC2F19639AA8001EED84 /* AVFoundation.framework */,
 				5005F28C193EE09200BF3DAC /* Social.framework */,
 				5005F266193ECDC400BF3DAC /* SystemConfiguration.framework */,
-				5005F264193ECDBC00BF3DAC /* StoreKit.framework */,
 				5005F262193ECDB500BF3DAC /* Security.framework */,
 				5005F260193ECDAF00BF3DAC /* QuartzCore.framework */,
 				5005F25E193ECDA700BF3DAC /* MobileCoreServices.framework */,
@@ -1495,6 +1491,9 @@
 					5005F221193EAC1600BF3DAC = {
 						DevelopmentTeam = XBXPNW7EZC;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 							com.apple.OMC = {
 								enabled = 0;
 							};
@@ -1907,7 +1906,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Chinese Union/Chinese Union.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -1924,7 +1922,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c09f332-cc4c-4f72-830f-d688eb326f11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1935,9 +1933,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Chinese Union/Chinese Union.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Xinchi Gu (XBXPNW7EZC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Xinchi Gu (XBXPNW7EZC)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1952,7 +1949,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c09f332-cc4c-4f72-830f-d688eb326f11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
