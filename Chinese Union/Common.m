@@ -11,7 +11,8 @@
 #import "User.h"
 #import "QRGenerator.h"
 #import "UIImage+MDQRCode.h"
-
+#import "CUEvents.h"
+#import "ServiceCallManager.h"
 
 @implementation Common
 
@@ -48,5 +49,33 @@
     NSArray *lines = [string componentsSeparatedByString: @"_"];
     return lines;
 }
+
++ (NSArray *)sortEventsAccordingToCurrentDateWithEvents: (NSArray *)events
+{
+    NSDate *currentDate = [ServiceCallManager getCurrentDate];
+    NSArray *res = [events sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        CUEvents *o1 = (CUEvents *)obj1;
+        CUEvents *o2 = (CUEvents *)obj2;
+        // events earlier than currentDate
+        if([o1.start compare:currentDate] == NSOrderedAscending &&
+           [o2.start compare:currentDate] == NSOrderedDescending)
+            return NSOrderedDescending;
+        else if([o1.start compare:currentDate] == NSOrderedDescending &&
+           [o2.start compare:currentDate] == NSOrderedAscending)
+            return NSOrderedAscending;
+        // both events are happened before currentDate
+        else if([o1.start compare:currentDate] == NSOrderedAscending &&
+                [o2.start compare:currentDate] == NSOrderedAscending) {
+            if([o1.start compare:o2.start] == NSOrderedAscending)
+                return NSOrderedDescending;
+            else
+                return NSOrderedAscending;
+        }
+        else {
+            return [o1.start compare:o2.start];
+        }
+    }];
+    return res;
+};
 
 @end

@@ -21,6 +21,8 @@ typedef void (^CompletionBlock)(id, NSError*);
 
 + (void)getCurrentDateWithBlock: (CUDateResultBlock)block;
 
++ (NSDate *)getCurrentDate;
+
 + (User *)getCurrentUser;
 
 + (void)checkIfTheUserIsAMemberWithBlock:(PFBooleanResultBlock)block;

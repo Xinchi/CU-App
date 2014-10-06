@@ -57,7 +57,7 @@
                                                 }
                                                 else
                                                 {
-                                                    [subscriber sendNext:objects];
+                                                    [subscriber sendNext:[Common sortEventsAccordingToCurrentDateWithEvents:objects]];
                                                     [subscriber sendCompleted];
                                                 }
                                             }];

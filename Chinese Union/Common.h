@@ -21,4 +21,5 @@
 
 + (NSArray *)getDeliminatedString: (NSString *)string;
 
++ (NSArray *)sortEventsAccordingToCurrentDateWithEvents: (NSArray *)events;
 @end

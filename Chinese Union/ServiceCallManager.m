@@ -46,6 +46,13 @@ static NSDate *lastFetchedDate;
         block((NSDate *)object, error);
     }];
 }
+
++ (NSDate *)getCurrentDate
+{
+    NSDate *date = (NSDate *)[PFCloud callFunction:CloudFunctionGetCurrentDate withParameters:@{}];
+    return date;
+}
+
 + (User *)getCurrentUser
 {
     User *user = [User currentUser];
