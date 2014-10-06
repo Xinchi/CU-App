@@ -180,6 +180,7 @@ static NSString* orderId;
     }
     
     NSArray *lines = [Common getDeliminatedString:encryptedData];
+    
     if([[lines objectAtIndex:0] isEqualToString:@"user"])
     {
         NSString *userId = [lines objectAtIndex:1];
@@ -235,6 +236,8 @@ static NSString* orderId;
             [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"You don't have access to check people in"] onView:self.view];
         }
         
+    } else {
+        [Common showAlertTitle:@"Error" msg:[NSString stringWithFormat:@"Wrong QR Code"] onView:self.view];
     }
     
     [reader dismissViewControllerAnimated:YES completion:nil];
