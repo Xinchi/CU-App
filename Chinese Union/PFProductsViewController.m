@@ -79,6 +79,14 @@
 
 #pragma mark - UITableViewDataSource
 
+- (PFQuery *)queryForTable
+{
+    PFQuery *query = [CUProducts query];
+    [query orderByAscending:@"order"];
+    return query;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"ParseProduct";
     PFProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];

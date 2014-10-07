@@ -79,8 +79,12 @@ static NSString* orderId;
 //    [user refresh];
     
     if (user) {
+
         self.userNameLabel.text = [NSString stringWithFormat:@"%@", user.username];
-        self.realNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        if(user.admin)
+            self.realNameLabel.text = [NSString stringWithFormat:@"%@ (Admin)", user.displayName];
+        else
+            self.realNameLabel.text = [NSString stringWithFormat:@"%@", user.displayName];
         self.emailLabel.text    = [NSString stringWithFormat:@"%@", user.email];
         self.birthdayLabel.text = [NSString stringWithFormat:@"%@", [[NSDateFormatter birthdayFormatter] stringFromDate:user.birthday]];
         MyLog(@"User b day:%@", user.birthday);
