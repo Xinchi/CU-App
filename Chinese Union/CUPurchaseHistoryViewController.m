@@ -49,6 +49,7 @@
 
     PFQuery *query = [Order query];
     [query whereKey:ORDERS_CUSTOMER equalTo:[User currentUser]];
+    [query whereKey:ORDERS_CHARGED equalTo:@YES];
     [query orderByAscending:CREATION_DATE];
     [query includeKey:@"item"];
     [query includeKey:@"customer"];

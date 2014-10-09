@@ -102,7 +102,9 @@
     creditCardLabel.frame = CGRectMake(25.0f, 115.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
     [self.view addSubview:creditCardLabel];
     
-    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake(15.0f, 165.0f, 290.0f, 55.0f) andKey:@"pk_test_ASG5k9xvfxs21LjSgaKeBIX1"];
+    NSString *stripePublishableKey = [PFConfig currentConfig][@"stripe_publishable_key"];
+    MyLog(@"stripe publishable key = %@", stripePublishableKey);
+    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake(15.0f, 165.0f, 290.0f, 55.0f) andKey:stripePublishableKey];
     self.checkoutView.delegate = self;
     [self.view addSubview:self.checkoutView];
     

@@ -272,7 +272,6 @@ static const CGFloat kPAPCellInsetWidth = 20.0f;
                 }
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:PAPPhotoDetailsViewControllerUserCommentedOnPhotoNotification object:self.photo userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.objects.count + 1] forKey:@"comments"]];
-            MyLog(@"Reached here 2 ");
             [MBProgressHUD hideHUDForView:self.view.superview animated:YES];
             [self loadObjects];
         }];

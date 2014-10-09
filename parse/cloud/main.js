@@ -97,7 +97,10 @@ Parse.Cloud.define("uploadFBImage", function(request, response) {
 
 /* Initialize the Stripe and Mailgun Cloud Modules */
 var Stripe = require('stripe');
-Stripe.initialize('sk_test_nAt6j3GrlrxLxoYKZr7KU1zq');
+// Test
+// Stripe.initialize('sk_test_nAt6j3GrlrxLxoYKZr7KU1zq');
+// Live
+Stripe.initialize('sk_live_4ddFYnVvW21ZA7j6Xz6eAPBg');
 
 var Mailgun = require('mailgun');
 Mailgun.initialize('ucsdcu.com', 'key-5ddpmzp-a-kg5v58c7t9gv02pdw2ecs1');

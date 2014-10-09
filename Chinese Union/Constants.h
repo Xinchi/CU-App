@@ -22,6 +22,7 @@ extern NSString* const USERNAME_FIELD;
 extern NSString* const EMAIL_FIELD;
 extern NSString* const CUEVENT_START_DATE;
 extern NSString* const ORDERS_CUSTOMER;
+extern NSString* const ORDERS_CHARGED;
 extern NSString* const CREATION_DATE;
 
 

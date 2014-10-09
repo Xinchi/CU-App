@@ -20,6 +20,7 @@ NSString* const BATCH_FIELD = @"batch";
 NSString* const USERNAME_FIELD = @"username";
 NSString* const EMAIL_FIELD = @"email";
 NSString* const ORDERS_CUSTOMER = @"customer";
+NSString* const ORDERS_CHARGED = @"charged";
 NSString* const CREATION_DATE = @"createdAt";
 NSString* const PUBLIC_PROFILE = @"public_profile";
 NSString* const CUEVENT_START_DATE = @"start";

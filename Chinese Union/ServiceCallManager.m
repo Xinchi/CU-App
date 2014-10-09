@@ -226,8 +226,14 @@ static NSDate *lastFetchedDate;
 
 + (void)getAllPurchaseHistoryWithSortingOrder: (SortOrder)order WithBlock: (PFArrayResultBlock)block
 {
+//    PFQuery *customer = [Order query];
+//    [customer whereKey:ORDERS_CUSTOMER equalTo:[self getCurrentUser]];
+//    PFQuery *charged = [Order query];
+//    [charged whereKey:ORDERS_CHARGED equalTo:@YES];
+//    PFQuery *query = [PFQuery orQueryWithSubqueries:@[customer, charged]];
     PFQuery *query = [Order query];
     [query whereKey:ORDERS_CUSTOMER equalTo:[self getCurrentUser]];
+    [query whereKey:ORDERS_CHARGED equalTo:@YES];
     if(order == ASCENDING)
     {
         [query orderByAscending:CREATION_DATE];
