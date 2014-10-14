@@ -14,6 +14,7 @@
 -(void)loadFromDisk;
 
 @property (strong, nonatomic) NSArray *tileImageKeys;
+@property (strong, nonatomic) NSArray *tileTitleKeys;
 
 @end
 
@@ -30,6 +31,20 @@
                            @"Market_Image"];
     }
     return _tileImageKeys;
+}
+
+- (NSArray *)tileTitleKeys
+{
+    if (_tileTitleKeys == nil) {
+        _tileTitleKeys = @[@"Event_Title",
+                           @"Store_Title",
+                           @"Soccer_Title",
+                           @"Basketball_Title",
+                           @"Contact_Title",
+                           @"Market_Title"];
+    }
+    
+    return _tileTitleKeys;
 }
 
 #pragma mark - Private
@@ -78,6 +93,7 @@
     MosaicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     MosaicData *data = [_elements objectAtIndex:indexPath.row];
     data.image = config[self.tileImageKeys[indexPath.row]];
+    data.title = config[self.tileTitleKeys[indexPath.row]];
     cell.mosaicData = data;
     
     float randomWhite = (arc4random() % 40 + 10) / 255.0;
