@@ -35,7 +35,7 @@ NSString* const FB_USER_BIRTHDAY = @"birthday";
 NSString* const FB_USER_GENDER = @"gender";
 NSString* const FB_USER_PROFILE_IMAGE_BASE_URL = @"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1";
 NSString* const CUBASKETBALLPLAYER_CLASS = @"CUBasketballPlayer";
-NSString* const CUSOCCERPLAYER_CLASS = @"CUSocckerPlayer";
+NSString* const CUSOCCERPLAYER_CLASS = @"CUSoccerPlayer";
 NSString* const CU_IMAGE_FIELD_KEY = @"profilePic";
 NSString* const CUMemberObjectID = @"oVPBv4Aqqu";
 BOOL const STATIC_MEMBERSHIP_ENDING_DATE = YES;

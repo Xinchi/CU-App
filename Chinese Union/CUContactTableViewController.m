@@ -42,6 +42,9 @@ static NSString * const cellIDPersonnel = @"cell2";
             self.title = NSLocalizedString(@"Contacts", @"");
             break;
             
+        case OFFICER:
+            self.title = NSLocalizedString(@"Officers", @"");
+            
         default:
             break;
     }
@@ -122,7 +125,7 @@ static NSString * const cellIDPersonnel = @"cell2";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.contactType == PERSONNEL) {
+    if (self.contactType == PERSONNEL || self.contactType == OFFICER) {
         return 162;
     }
     return 141;
@@ -131,7 +134,7 @@ static NSString * const cellIDPersonnel = @"cell2";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CUContactListTableViewCell *cell;
-    if (self.contactType == PERSONNEL) {
+    if (self.contactType == PERSONNEL || self.contactType == OFFICER) {
         cell = [tableView dequeueReusableCellWithIdentifier:cellIDPersonnel forIndexPath:indexPath];
     }
     else

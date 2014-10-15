@@ -68,6 +68,7 @@ typedef void (^CUOrderResultBlock)(Order *order, NSError *error);
 typedef enum {
     BASKETBALL,
     SOCCER,
+    OFFICER,
     PERSONNEL,
     EVENT
 } ObjectType;

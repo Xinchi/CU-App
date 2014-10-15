@@ -272,7 +272,7 @@
     }
     else if (indexPath.row == 3) {
         VC = [[CUYearSelectionTableViewController alloc] init];
-        ((CUYearSelectionTableViewController *)VC).contactType = BASKETBALL;
+        ((CUYearSelectionTableViewController *)VC).contactType = OFFICER;
     }
     else if (indexPath.row == 4) {
         VC = [[CUYearSelectionTableViewController alloc] init];

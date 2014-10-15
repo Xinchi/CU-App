@@ -28,6 +28,7 @@
 #import "Aspects.h"
 #import "PAPUtility.h"
 #import "CUNavigationController.h"
+#import "CUOfficers.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -318,7 +319,9 @@
     [CUBasketballPlayer registerSubclass];
     [CUSoccerPlayer registerSubclass];
     [CUPersonnel registerSubclass];
+    [CUOfficers registerSubclass];
     [Order registerSubclass];
+    
 }
 
 - (BOOL)application:(UIApplication *)application

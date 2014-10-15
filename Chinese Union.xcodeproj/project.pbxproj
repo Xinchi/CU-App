@@ -199,6 +199,7 @@
 		5078487919B86B410036BC7A /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487419B86B410036BC7A /* Stripe.m */; };
 		5078487A19B86B410036BC7A /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487619B86B410036BC7A /* StripeError.m */; };
 		5078487F19BE2B530036BC7A /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5078487E19BE2B530036BC7A /* Common.m */; };
+		50820F5819EE680B00CEB2E3 /* CUOfficers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50820F5719EE680B00CEB2E3 /* CUOfficers.m */; };
 		508845711997F5C900FF3D44 /* ServiceCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845701997F5C900FF3D44 /* ServiceCallManager.m */; };
 		508845771998180700FF3D44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 508845761998180700FF3D44 /* Constants.m */; };
 		50932A9F1957714900674269 /* CUSales.m in Sources */ = {isa = PBXBuildFile; fileRef = 50932A9E1957714900674269 /* CUSales.m */; };
@@ -548,6 +549,8 @@
 		5078487619B86B410036BC7A /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
 		5078487D19BE2B530036BC7A /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		5078487E19BE2B530036BC7A /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		50820F5619EE680B00CEB2E3 /* CUOfficers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUOfficers.h; sourceTree = "<group>"; };
+		50820F5719EE680B00CEB2E3 /* CUOfficers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUOfficers.m; sourceTree = "<group>"; };
 		508801FE19E275390051CCB8 /* Chinese Union.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Chinese Union.entitlements"; sourceTree = "<group>"; };
 		5088456F1997F5C900FF3D44 /* ServiceCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCallManager.h; sourceTree = "<group>"; };
 		508845701997F5C900FF3D44 /* ServiceCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCallManager.m; sourceTree = "<group>"; };
@@ -1085,6 +1088,8 @@
 				50E64C27198EFBA400647814 /* CUPersonnel.m */,
 				500CC31819D2A46000B14995 /* Order.h */,
 				500CC31719D2A46000B14995 /* Order.m */,
+				50820F5619EE680B00CEB2E3 /* CUOfficers.h */,
+				50820F5719EE680B00CEB2E3 /* CUOfficers.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -1730,6 +1735,7 @@
 				42308B57193FC1030022D3E7 /* UIImageView+AFNetworking.m in Sources */,
 				4271115C19DE238D0084F0B0 /* CUQRCodeTableViewCell.m in Sources */,
 				5078485119B869810036BC7A /* PKAddressZip.m in Sources */,
+				50820F5819EE680B00CEB2E3 /* CUOfficers.m in Sources */,
 				5078487919B86B410036BC7A /* Stripe.m in Sources */,
 				42555E7519BEBEB300BA2446 /* CUEventDetailViewController.m in Sources */,
 				50932B761960B77000674269 /* CUMemberViewController.m in Sources */,
@@ -1922,7 +1928,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6fb6c33-b320-4594-8448-38eaf7654be1";
+				PROVISIONING_PROFILE = "21806643-c15b-4411-8d7f-1a101205a817";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1949,7 +1955,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6fb6c33-b320-4594-8448-38eaf7654be1";
+				PROVISIONING_PROFILE = "21806643-c15b-4411-8d7f-1a101205a817";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

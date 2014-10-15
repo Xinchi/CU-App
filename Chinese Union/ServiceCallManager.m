@@ -17,6 +17,7 @@
 #import "CUProducts.h"
 #import "CUMainViewController.h"
 #import "Order.h"
+#import "CUOfficers.h"
 
 @implementation ServiceCallManager
 
@@ -151,6 +152,10 @@ static NSDate *lastFetchedDate;
     else if(type == SOCCER)
     {
         query = [CUSoccerPlayer query];
+    }
+    else if(type == OFFICER)
+    {
+        query = [CUOfficers query];
     }
     else if(type == PERSONNEL)
     {
