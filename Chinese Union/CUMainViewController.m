@@ -24,6 +24,8 @@
 #import "CUEventViewController.h"
 #import "CUContactTableViewController.h"
 #import "CUYearSelectionTableViewController.h"
+#import "CUSponsorTableViewController.h"
+#import "CUNoteTableViewController.h"
 #import "PAPTabBarController.h"
 #import "PAPHomeViewController.h"
 #import "PAPActivityFeedViewController.h"
@@ -290,6 +292,14 @@
             [self configureTabBar];
         }
         VC = self.tabBarController;
+    }
+    else if (indexPath.row == 6)
+    {
+        VC = [[CUNoteTableViewController alloc] init];
+    }
+    else if (indexPath.row == 7)
+    {
+        VC = [[CUSponsorTableViewController alloc] init];
     }
     
     if (VC) {

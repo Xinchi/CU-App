@@ -70,6 +70,10 @@
 		4294F82119BD1C9E001E911C /* CUEventItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4294F81F19BD1C9E001E911C /* CUEventItemTableViewCell.m */; };
 		4294F82219BD1C9E001E911C /* CUEventItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4294F82019BD1C9E001E911C /* CUEventItemTableViewCell.xib */; };
 		42A7620C19BCF9F1001CDE2A /* NSDate+Difference.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A7620B19BCF9F1001CDE2A /* NSDate+Difference.m */; };
+		42AB53941A7486AA00E021D5 /* CUNoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AB53921A7486AA00E021D5 /* CUNoteTableViewController.m */; };
+		42AB53951A7486AA00E021D5 /* CUNoteTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AB53931A7486AA00E021D5 /* CUNoteTableViewController.xib */; };
+		42AB53991A7486D400E021D5 /* CUSponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AB53971A7486D400E021D5 /* CUSponsorTableViewController.m */; };
+		42AB539A1A7486D400E021D5 /* CUSponsorTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AB53981A7486D400E021D5 /* CUSponsorTableViewController.xib */; };
 		42BCDC1919970120009326CE /* CUContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC1819970120009326CE /* CUContactListViewModel.m */; };
 		42BCDC1D19971076009326CE /* CUFullProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCDC1B19971076009326CE /* CUFullProfileViewController.m */; };
 		42BCDC1E19971076009326CE /* CUFullProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BCDC1C19971076009326CE /* CUFullProfileViewController.xib */; };
@@ -337,6 +341,12 @@
 		4294F82019BD1C9E001E911C /* CUEventItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUEventItemTableViewCell.xib; sourceTree = "<group>"; };
 		42A7620A19BCF9F1001CDE2A /* NSDate+Difference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Difference.h"; sourceTree = "<group>"; };
 		42A7620B19BCF9F1001CDE2A /* NSDate+Difference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Difference.m"; sourceTree = "<group>"; };
+		42AB53911A7486AA00E021D5 /* CUNoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUNoteTableViewController.h; sourceTree = "<group>"; };
+		42AB53921A7486AA00E021D5 /* CUNoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUNoteTableViewController.m; sourceTree = "<group>"; };
+		42AB53931A7486AA00E021D5 /* CUNoteTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUNoteTableViewController.xib; sourceTree = "<group>"; };
+		42AB53961A7486D400E021D5 /* CUSponsorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUSponsorTableViewController.h; sourceTree = "<group>"; };
+		42AB53971A7486D400E021D5 /* CUSponsorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUSponsorTableViewController.m; sourceTree = "<group>"; };
+		42AB53981A7486D400E021D5 /* CUSponsorTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUSponsorTableViewController.xib; sourceTree = "<group>"; };
 		42BCDC1719970120009326CE /* CUContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUContactListViewModel.h; sourceTree = "<group>"; };
 		42BCDC1819970120009326CE /* CUContactListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUContactListViewModel.m; sourceTree = "<group>"; };
 		42BCDC1A19971076009326CE /* CUFullProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUFullProfileViewController.h; sourceTree = "<group>"; };
@@ -827,6 +837,12 @@
 				42079F0019A4842F0054EF14 /* CUYearSelectionTableViewCell.h */,
 				42079F0119A4842F0054EF14 /* CUYearSelectionTableViewCell.m */,
 				42079F0219A4842F0054EF14 /* CUYearSelectionTableViewCell.xib */,
+				42AB53911A7486AA00E021D5 /* CUNoteTableViewController.h */,
+				42AB53921A7486AA00E021D5 /* CUNoteTableViewController.m */,
+				42AB53931A7486AA00E021D5 /* CUNoteTableViewController.xib */,
+				42AB53961A7486D400E021D5 /* CUSponsorTableViewController.h */,
+				42AB53971A7486D400E021D5 /* CUSponsorTableViewController.m */,
+				42AB53981A7486D400E021D5 /* CUSponsorTableViewController.xib */,
 			);
 			name = "Static pages";
 			sourceTree = "<group>";
@@ -1533,6 +1549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D3395F1960DBF300F1CB8F /* CUEditProfileViewController.xib in Resources */,
+				42AB53951A7486AA00E021D5 /* CUNoteTableViewController.xib in Resources */,
 				42D339661960DD5A00F1CB8F /* CUProfileTextCell.xib in Resources */,
 				5078485C19B869810036BC7A /* amex@2x.png in Resources */,
 				50932B771960B77000674269 /* CUMemberViewController.xib in Resources */,
@@ -1548,6 +1565,7 @@
 				5078486519B869810036BC7A /* jcb.png in Resources */,
 				42C1F92D198EEAF90050A234 /* CUEventViewController.xib in Resources */,
 				5078486B19B869810036BC7A /* visa.png in Resources */,
+				42AB539A1A7486D400E021D5 /* CUSponsorTableViewController.xib in Resources */,
 				5078486819B869810036BC7A /* mastercard@2x.png in Resources */,
 				5078486C19B869810036BC7A /* visa@2x.png in Resources */,
 				5078486919B869810036BC7A /* placeholder.png in Resources */,
@@ -1725,6 +1743,7 @@
 				50932AB51959013600674269 /* PFProductsViewController.m in Sources */,
 				50932AB81959013600674269 /* PFProducts.m in Sources */,
 				4271114F19DC94160084F0B0 /* CUPurchaseHistoryViewController.m in Sources */,
+				42AB53941A7486AA00E021D5 /* CUNoteTableViewController.m in Sources */,
 				500CC36919D3C5DA00B14995 /* PAPImageView.m in Sources */,
 				5005F315194968E300BF3DAC /* qrspec.c in Sources */,
 				42A7620C19BCF9F1001CDE2A /* NSDate+Difference.m in Sources */,
@@ -1782,6 +1801,7 @@
 				421C0EF71971E84B008711BD /* CUEditProfileGenderViewController.m in Sources */,
 				4294F81D19BD13C2001E911C /* CUEventItemViewModel.m in Sources */,
 				421C0EFF1971F2E1008711BD /* CUForgotPasswordViewController.m in Sources */,
+				42AB53991A7486D400E021D5 /* CUSponsorTableViewController.m in Sources */,
 				42C1F92C198EEAF90050A234 /* CUEventViewController.m in Sources */,
 				4271116B19E0D4440084F0B0 /* NSArray+Additions.m in Sources */,
 				505A4FA319730A74000B7CEF /* ReachabilityController.m in Sources */,

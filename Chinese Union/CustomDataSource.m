@@ -28,7 +28,9 @@
                            @"Soccer_Image",
                            @"Basketball_Image",
                            @"Contact_Image",
-                           @"Market_Image"];
+                           @"Market_Image",
+                           @"Note_Image",
+                           @"Sponsor_Image"];
     }
     return _tileImageKeys;
 }
@@ -41,7 +43,9 @@
                            @"Soccer_Title",
                            @"Basketball_Title",
                            @"Contact_Title",
-                           @"Market_Title"];
+                           @"Market_Title",
+                           @"Note_Title",
+                           @"Sponsor_Title"];
     }
     
     return _tileTitleKeys;
